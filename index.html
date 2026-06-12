@@ -12,12 +12,13 @@
 
   <style>
     :root {
-      --bg: #d8d8d8;
+      --bg: #eeeeec;
       --paper: #ffffff;
-      --ink: #5d5d5d;
-      --text: #1f1f1f;
-      --muted: #747474;
-      --line: #d7d7d2;
+      --ink: #5e5e5e;
+      --text: #222222;
+      --muted: #777777;
+      --line: #deded9;
+      --line-dark: #c9c9c3;
       --gold: #d6b16c;
       --coral: #b9735d;
     }
@@ -38,142 +39,135 @@
       word-break: keep-all;
     }
 
-    .stage {
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 32px 14px;
-    }
-
     .page {
-      position: relative;
       width: 100%;
-      max-width: 640px;
-      min-height: calc(100vh - 64px);
-      background: var(--paper);
-      overflow: hidden;
-      perspective: 1800px;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      max-width: 430px;
+      margin: 0 auto;
+      background: var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* 본문 */
-    .content {
-      opacity: 0;
-      transform: scale(0.965) translateY(20px);
-      transform-origin: center top;
-      transition:
-        opacity 0.9s ease 0.35s,
-        transform 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+    /* 첫 화면: 종이 청첩장 커버가 놓인 영역 */
+    .intro {
+      min-height: 52vh;
+      padding: 26px 22px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1400px;
     }
 
-    .page.is-open .content {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-    }
-
-    .page.is-closing .content {
-      opacity: 0;
-      transform: scale(0.975) translateY(16px);
-      transition: opacity 0.5s ease, transform 0.55s ease;
-    }
-
-    /* 종이 표지 */
-    .paper-cover {
-      position: fixed;
-      top: 32px;
-      left: 50%;
-      width: calc(100% - 28px);
-      max-width: 640px;
-      height: calc(100vh - 64px);
-      transform: translateX(-50%);
-      z-index: 30;
-      background: var(--paper);
+    .paper-shell {
+      width: 100%;
+      max-width: 285px;
+      aspect-ratio: 1.48 / 1;
+      position: relative;
       transform-style: preserve-3d;
-      pointer-events: auto;
-    }
-
-    .paper-cover-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background: var(--paper);
-    }
-
-    .upper-flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60%;
-      background: var(--paper);
-      border-bottom: 1px solid #bdbdb8;
-      transform-origin: top center;
-      transform: rotateX(0deg);
-      backface-visibility: hidden;
-      box-shadow: 0 2px 18px rgba(0, 0, 0, 0.03);
       transition:
-        transform 1.35s cubic-bezier(0.76, 0, 0.24, 1),
-        opacity 0.8s ease,
-        box-shadow 1s ease;
-      z-index: 2;
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.8s ease;
     }
 
-    .page.is-open .upper-flap {
-      transform: rotateX(110deg) translateY(-20px);
-      opacity: 0.08;
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
-      pointer-events: none;
+    .page.is-open .paper-shell {
+      transform: translateY(-26px) scale(0.96);
     }
 
-    .lower-panel {
+    .paper-base {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 40%;
+      inset: 0;
       background: var(--paper);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.035);
+    }
+
+    .paper-lower {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 38%;
+      background: var(--paper);
+      border-top: 1px solid var(--line-dark);
       z-index: 1;
     }
 
-    .fold-line {
-      position: absolute;
-      left: 0;
-      top: 60%;
-      width: 100%;
-      height: 1px;
-      background: #bdbdb8;
-      z-index: 3;
-    }
-
-    .upper-content {
-      width: 100%;
+    .paper-lower-note {
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      color: #8a8a8a;
+      font-size: 8px;
+      letter-spacing: 0.24em;
+      line-height: 1.8;
+    }
+
+    .paper-cover {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 62%;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line-dark);
+      z-index: 3;
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      transition:
+        transform 1.35s cubic-bezier(0.76, 0, 0.24, 1),
+        box-shadow 1.1s ease,
+        opacity 0.8s ease;
+    }
+
+    .page.is-open .paper-cover {
+      transform: rotateX(118deg) translateY(-10px);
+      opacity: 0.18;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
+      pointer-events: none;
+    }
+
+    .paper-cover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 1px;
+      background: var(--line-dark);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .paper-cover-content {
+      height: 100%;
+      display: flex;
       flex-direction: column;
-      gap: 22px;
+      align-items: center;
+      justify-content: center;
       color: var(--ink);
       text-align: center;
-      padding: 20px;
+      gap: 14px;
+      padding-top: 4px;
     }
 
     .cover-title {
-      font-size: 24px;
-      letter-spacing: 0.28em;
+      font-size: 11px;
       font-weight: 300;
+      letter-spacing: 0.32em;
+      margin-left: 0.32em;
     }
 
     .mandarin-button {
-      width: 118px;
-      height: 72px;
+      width: 76px;
+      height: 45px;
       padding: 0;
+      margin: 0;
       border: 0;
       background: transparent;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
-      position: relative;
     }
 
     .mandarin-button:active {
@@ -188,7 +182,7 @@
 
     .bird-line {
       fill: none;
-      stroke: #6a6a6a;
+      stroke: #6f6f6f;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -197,7 +191,7 @@
 
     .bird-fill {
       fill: transparent;
-      transition: fill 0.7s ease;
+      transition: fill 0.75s ease;
     }
 
     .page.is-coloring .bird-fill.left {
@@ -212,92 +206,80 @@
       stroke: #4f4f4f;
     }
 
-    .cover-guide {
-      position: absolute;
-      bottom: 28px;
-      width: 100%;
-      left: 0;
-      text-align: center;
-      font-size: 12px;
-      color: #8a8a8a;
-      line-height: 1.7;
-      z-index: 4;
+    /* 본문: 커버 아래에서 확대되듯 등장 */
+    .content {
+      background: var(--paper);
+      min-height: 100vh;
+      opacity: 0;
+      transform: scale(0.94) translateY(38px);
+      transform-origin: center top;
+      transition:
+        opacity 0.9s ease 0.35s,
+        transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
     }
 
-    /* 본문 섹션 */
-    .inner-page {
-      background: #fff;
-      min-height: 100vh;
+    .page.is-open .content {
+      opacity: 1;
+      transform: scale(1) translateY(0);
     }
 
-    .thesis-cover {
-      min-height: 100vh;
-      padding: 56px 34px 42px;
+    .page.is-closing .content {
+      opacity: 0;
+      transform: scale(0.965) translateY(22px);
+      transition:
+        opacity 0.55s ease,
+        transform 0.65s ease;
+    }
+
+    .invitation-cover {
+      min-height: 72vh;
+      padding: 66px 28px 48px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      background: #fff;
+      justify-content: center;
+      text-align: center;
+      background: var(--paper);
     }
 
-    .thesis-top {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .cover-main {
-      margin-top: 68px;
-    }
-
-    .label {
-      font-size: 12px;
-      letter-spacing: 0.26em;
-      color: var(--muted);
-      margin-bottom: 42px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 31px;
-      line-height: 1.38;
+    .main-title {
+      font-size: 20px;
       font-weight: 300;
       letter-spacing: -0.02em;
+      color: #555;
+      margin-bottom: 34px;
     }
 
-    .subtitle {
-      margin-top: 30px;
-      font-size: 14px;
+    .main-message {
+      font-size: 15px;
       line-height: 1.9;
-      color: var(--muted);
+      color: #777;
+      letter-spacing: -0.04em;
+      margin: 0 auto;
     }
 
-    .thesis-info {
-      margin-top: 74px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 22px 0;
-      display: grid;
-      grid-template-columns: 76px 1fr;
-      gap: 12px 18px;
-      font-size: 13px;
-      line-height: 1.7;
+    .main-message p {
+      margin: 0 0 18px;
     }
 
-    .thesis-info dt {
-      color: var(--muted);
-      margin: 0;
+    .families {
+      margin-top: 48px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 11px;
+      line-height: 1.9;
+      color: #666;
+      text-align: left;
     }
 
-    .thesis-info dd {
-      margin: 0;
-      color: var(--text);
+    .families div:last-child {
+      text-align: right;
     }
 
     section {
-      padding: 84px 34px;
+      padding: 78px 30px;
       border-top: 1px solid var(--line);
-      background: #fff;
+      background: var(--paper);
     }
 
     .section-kicker {
@@ -306,16 +288,6 @@
       color: var(--muted);
       text-transform: uppercase;
       margin-bottom: 28px;
-    }
-
-    .message {
-      font-size: 16px;
-      line-height: 2.05;
-      letter-spacing: -0.03em;
-    }
-
-    .message p {
-      margin: 0 0 24px;
     }
 
     .info-card {
@@ -384,12 +356,12 @@
       line-height: 1.9;
       color: var(--muted);
       border-top: 1px solid var(--line);
-      background: #fff;
+      background: var(--paper);
     }
 
     .music-btn {
       position: fixed;
-      right: calc(50% - 300px);
+      right: calc(50% - 196px);
       bottom: 22px;
       width: 42px;
       height: 42px;
@@ -409,172 +381,141 @@
       display: flex;
     }
 
-    @media (max-width: 640px) {
-      .paper-cover {
-        top: 32px;
-        width: calc(100% - 28px);
-      }
-
+    @media (max-width: 430px) {
       .music-btn {
         right: 22px;
-      }
-
-      .cover-title {
-        font-size: 20px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="stage">
-    <div class="page" id="page">
+  <div class="page" id="page">
 
-      <div class="content">
-        <div class="inner-page">
-          <header class="thesis-cover">
-            <div>
-              <div class="thesis-top">HIGH GLOSSY WORKS · 1003</div>
+    <div class="intro" id="intro">
+      <div class="paper-shell">
+        <div class="paper-base"></div>
 
-              <div class="cover-main">
-                <div class="label">WEDDING INVITATION</div>
-
-                <h1>
-                  A Record<br />
-                  of Our Time
-                </h1>
-
-                <div class="subtitle">
-                  함께 쌓아온 시간 위에<br />
-                  가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
-                </div>
-
-                <dl class="thesis-info">
-                  <dt>Authors</dt>
-                  <dd>김창수 · 최보규</dd>
-
-                  <dt>Date</dt>
-                  <dd>2026. 10. 03.</dd>
-
-                  <dt>Place</dt>
-                  <dd>호텔농심 야외정원</dd>
-                </dl>
-              </div>
-            </div>
-          </header>
-
-          <section id="invitation">
-            <div class="section-kicker">Preface</div>
-            <div class="message">
-              <p>
-                9년 동안 함께 쌓아온 수많은 기억들 위에<br />
-                가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
-              </p>
-              <p>
-                저희에게 가장 행복한 기억으로 남을 10월 3일,<br />
-                그날의 시간과 장면 속에<br />
-                함께 웃고 있는 여러분이 계셨으면 좋겠습니다.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <div class="section-kicker">Wedding Day</div>
-            <div class="info-card">
-              <div class="wedding-date">
-                2026년 10월 3일 토요일<br />
-                오후 1시
-              </div>
-              <div class="place">
-                호텔농심 야외정원<br />
-                부산광역시 동래구 금강공원로20번길 23
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <div class="section-kicker">Film</div>
-            <div class="film-box">
-              추후 이 영역에 웨딩 영상이 들어갑니다.<br />
-              intro.mp4 또는 wedding-film.mp4를 연결할 수 있어요.
-            </div>
-          </section>
-
-          <section>
-            <div class="section-kicker">Location</div>
-            <div class="map-box">
-              <div class="map-title">오시는 길</div>
-
-              <div class="route">
-                <div>
-                  <strong>주소</strong>
-                  부산광역시 동래구 금강공원로20번길 23<br />
-                  호텔농심 야외정원
-                </div>
-
-                <div>
-                  <strong>지하철</strong>
-                  1호선 온천장역 하차 후 도보 이동
-                </div>
-
-                <div>
-                  <strong>주차</strong>
-                  호텔농심 주차장 이용
-                </div>
-
-                <div>
-                  <strong>안내</strong>
-                  예식은 야외에서 진행됩니다.<br />
-                  우천 시 동일 장소 내 실내 예식으로 변경됩니다.
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <footer class="footer">
-            이 페이지는 예식 이후에도<br />
-            저희의 기록으로 남겨둘 예정입니다.
-          </footer>
-        </div>
-      </div>
-
-      <div class="paper-cover" id="paperCover">
-        <div class="paper-cover-inner">
-          <div class="upper-flap">
-            <div class="upper-content">
-              <div class="cover-title">초대합니다</div>
-
-              <button class="mandarin-button" onclick="openInvitation()" aria-label="초대장 열기">
-                <svg class="mandarin-icon" viewBox="0 0 240 130" role="img" aria-label="원앙 두 마리">
-                  <path class="bird-fill left" d="M66 72 C50 58 50 39 67 30 C83 21 105 30 112 48 C119 66 101 85 78 84 C73 84 69 80 66 72 Z" />
-                  <path class="bird-line" d="M66 72 C50 58 50 39 67 30 C83 21 105 30 112 48 C119 66 101 85 78 84 C73 84 69 80 66 72 Z" />
-                  <path class="bird-line" d="M86 42 C92 48 93 57 88 64" />
-                  <path class="bird-line" d="M60 50 C50 49 43 45 39 39" />
-                  <circle cx="78" cy="40" r="1.8" fill="#6a6a6a" />
-
-                  <path class="bird-fill right" d="M174 72 C190 58 190 39 173 30 C157 21 135 30 128 48 C121 66 139 85 162 84 C167 84 171 80 174 72 Z" />
-                  <path class="bird-line" d="M174 72 C190 58 190 39 173 30 C157 21 135 30 128 48 C121 66 139 85 162 84 C167 84 171 80 174 72 Z" />
-                  <path class="bird-line" d="M154 42 C148 48 147 57 152 64" />
-                  <path class="bird-line" d="M180 50 C190 49 197 45 201 39" />
-                  <circle cx="162" cy="40" r="1.8" fill="#6a6a6a" />
-
-                  <path class="bird-line" d="M62 96 C78 102 92 102 108 96" />
-                  <path class="bird-line" d="M132 96 C148 102 162 102 178 96" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div class="fold-line"></div>
-          <div class="lower-panel"></div>
-
-          <div class="cover-guide">
+        <div class="paper-lower">
+          <div class="paper-lower-note">
             원앙을 눌러<br />
             초대장을 열어주세요
           </div>
         </div>
+
+        <div class="paper-cover">
+          <div class="paper-cover-content">
+            <div class="cover-title">초대합니다</div>
+
+            <button class="mandarin-button" onclick="openInvitation()" aria-label="초대장 열기">
+              <svg class="mandarin-icon" viewBox="0 0 240 130" role="img" aria-label="원앙 두 마리">
+                <path class="bird-fill left" d="M66 72 C50 58 50 39 67 30 C83 21 105 30 112 48 C119 66 101 85 78 84 C73 84 69 80 66 72 Z" />
+                <path class="bird-line" d="M66 72 C50 58 50 39 67 30 C83 21 105 30 112 48 C119 66 101 85 78 84 C73 84 69 80 66 72 Z" />
+                <path class="bird-line" d="M86 42 C92 48 93 57 88 64" />
+                <path class="bird-line" d="M60 50 C50 49 43 45 39 39" />
+                <circle cx="78" cy="40" r="1.8" fill="#6f6f6f" />
+
+                <path class="bird-fill right" d="M174 72 C190 58 190 39 173 30 C157 21 135 30 128 48 C121 66 139 85 162 84 C167 84 171 80 174 72 Z" />
+                <path class="bird-line" d="M174 72 C190 58 190 39 173 30 C157 21 135 30 128 48 C121 66 139 85 162 84 C167 84 171 80 174 72 Z" />
+                <path class="bird-line" d="M154 42 C148 48 147 57 152 64" />
+                <path class="bird-line" d="M180 50 C190 49 197 45 201 39" />
+                <circle cx="162" cy="40" r="1.8" fill="#6f6f6f" />
+
+                <path class="bird-line" d="M62 96 C78 102 92 102 108 96" />
+                <path class="bird-line" d="M132 96 C148 102 162 102 178 96" />
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+
+    <main class="content" id="content">
+      <div class="invitation-cover">
+        <div class="main-title">마음을 담아 초대드립니다</div>
+
+        <div class="main-message">
+          <p>
+            9년 동안 함께 쌓아온 수많은 기억들 위에<br />
+            가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
+          </p>
+          <p>
+            저희에게 가장 행복한 기억으로 남을 10월 3일,<br />
+            그날의 시간과 장면 속에<br />
+            함께 웃고 있는 여러분이 계셨으면 좋겠습니다.
+          </p>
+        </div>
+
+        <div class="families">
+          <div>
+            김상두 · 윤옥례의 아들<br />
+            김창수
+          </div>
+          <div>
+            최동연 · 박지연의 딸<br />
+            최보규
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <div class="section-kicker">Wedding Day</div>
+        <div class="info-card">
+          <div class="wedding-date">
+            2026년 10월 3일 토요일<br />
+            오후 1시
+          </div>
+          <div class="place">
+            호텔농심 야외정원<br />
+            부산광역시 동래구 금강공원로20번길 23
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Film</div>
+        <div class="film-box">
+          추후 이 영역에 웨딩 영상이 들어갑니다.<br />
+          intro.mp4 또는 wedding-film.mp4를 연결할 수 있어요.
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Location</div>
+        <div class="map-box">
+          <div class="map-title">오시는 길</div>
+
+          <div class="route">
+            <div>
+              <strong>주소</strong>
+              부산광역시 동래구 금강공원로20번길 23<br />
+              호텔농심 야외정원
+            </div>
+
+            <div>
+              <strong>지하철</strong>
+              1호선 온천장역 하차 후 도보 이동
+            </div>
+
+            <div>
+              <strong>주차</strong>
+              호텔농심 주차장 이용
+            </div>
+
+            <div>
+              <strong>안내</strong>
+              예식은 야외에서 진행됩니다.<br />
+              우천 시 동일 장소 내 실내 예식으로 변경됩니다.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        이 페이지는 예식 이후에도<br />
+        저희의 기록으로 남겨둘 예정입니다.
+      </footer>
+    </main>
   </div>
 
   <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
@@ -623,11 +564,18 @@
 
       setTimeout(() => {
         page.classList.add("is-open");
-      }, 700);
+      }, 450);
+
+      setTimeout(() => {
+        document.getElementById("content").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 1050);
 
       setTimeout(() => {
         isAnimating = false;
-      }, 1600);
+      }, 1750);
     }
 
     function reopenInvitation() {
@@ -646,15 +594,21 @@
       }, 80);
 
       setTimeout(() => {
+        document.getElementById("content").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 650);
+
+      setTimeout(() => {
         isAnimating = false;
-      }, 1100);
+      }, 1300);
     }
 
     function closeInvitationByScroll() {
       if (isAnimating || !isInvitationOpen) return;
 
       const page = document.getElementById("page");
-      const musicBtn = document.getElementById("musicBtn");
 
       isAnimating = true;
       isInvitationOpen = false;
@@ -662,23 +616,23 @@
       page.classList.add("is-closing");
 
       setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }, 80);
+
+      setTimeout(() => {
         page.classList.remove("is-open");
-      }, 120);
+      }, 320);
 
       setTimeout(() => {
         page.classList.remove("is-closing");
-
-        if (isMusicPlaying) {
-          musicBtn.classList.add("show");
-          musicBtn.textContent = "♪";
-        }
-
-        window.scrollTo(0, 0);
-      }, 1150);
+      }, 1200);
 
       setTimeout(() => {
         isAnimating = false;
-      }, 1350);
+      }, 1400);
     }
 
     function toggleMusic() {
