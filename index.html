@@ -513,52 +513,61 @@
 </audio>
 
   <script>
-    let isMusicPlaying = false;
+  let isMusicPlaying = false;
 
-    function openInvitation() {
-      const page = document.getElementById("page");
-      const musicBtn = document.getElementById("musicBtn");
+  function openInvitation() {
+    const page = document.getElementById("page");
+    const musicBtn = document.getElementById("musicBtn");
+    const bgm = document.getElementById("bgm");
 
-      page.classList.add("is-coloring");
+    page.classList.add("is-coloring");
+    musicBtn.classList.add("show");
 
-      setTimeout(() => {
-        page.classList.add("is-open");
-        musicBtn.classList.add("show");
-
-        const bgm = document.getElementById("bgm");
-        if (bgm) {
-          bgm.play()
-            .then(() => {
-              isMusicPlaying = true;
-              musicBtn.textContent = "♪";
-            })
-            .catch(() => {
-              isMusicPlaying = false;
-              musicBtn.textContent = "♪";
-            });
-        }
-      }, 750);
+    // 사용자 클릭 직후 바로 재생 시도
+    if (bgm) {
+      bgm.volume = 0.7;
+      bgm.play()
+        .then(() => {
+          isMusicPlaying = true;
+          musicBtn.textContent = "♪";
+        })
+        .catch((error) => {
+          isMusicPlaying = false;
+          musicBtn.textContent = "×";
+          console.log("BGM play failed:", error);
+        });
     }
 
-    function toggleMusic() {
-      const bgm = document.getElementById("bgm");
-      const musicBtn = document.getElementById("musicBtn");
+    // 음악 재생 시도 후 커버 열림
+    setTimeout(() => {
+      page.classList.add("is-open");
+    }, 750);
+  }
 
-      if (!bgm) {
-        musicBtn.textContent = "♪";
-        return;
-      }
+  function toggleMusic() {
+    const bgm = document.getElementById("bgm");
+    const musicBtn = document.getElementById("musicBtn");
 
-      if (isMusicPlaying) {
-        bgm.pause();
-        isMusicPlaying = false;
-        musicBtn.textContent = "×";
-      } else {
-        bgm.play();
-        isMusicPlaying = true;
-        musicBtn.textContent = "♪";
-      }
+    if (!bgm) {
+      musicBtn.textContent = "×";
+      return;
     }
-  </script>
+
+    if (isMusicPlaying) {
+      bgm.pause();
+      isMusicPlaying = false;
+      musicBtn.textContent = "×";
+    } else {
+      bgm.play()
+        .then(() => {
+          isMusicPlaying = true;
+          musicBtn.textContent = "♪";
+        })
+        .catch((error) => {
+          console.log("BGM toggle failed:", error);
+        });
+    }
+  }
+</script>
 </body>
 </html>
