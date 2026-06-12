@@ -19,6 +19,8 @@
       --soft: #d9d9d4;
       --line: #e5e5df;
       --accent: #6f6a5f;
+      --gold: #d6b16c;
+      --coral: #b9735d;
     }
 
     * {
@@ -38,24 +40,149 @@
     }
 
     .page {
+      position: relative;
       width: 100%;
       max-width: 430px;
       margin: 0 auto;
       background: var(--paper);
       min-height: 100vh;
       overflow: hidden;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .content {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 1s ease 0.45s, transform 1s ease 0.45s;
+    }
+
+    .page.is-open .content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .cover {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      max-width: 430px;
+      height: 100vh;
+      transform: translateX(-50%);
+      z-index: 30;
+      padding: 56px 34px 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      transform-origin: top center;
+      transition:
+        transform 1.2s cubic-bezier(0.76, 0, 0.24, 1),
+        opacity 0.9s ease;
+    }
+
+    .page.is-open .cover {
+      transform: translateX(-50%) translateY(-104%) rotateX(7deg);
+      opacity: 0.98;
+      pointer-events: none;
+    }
+
+    .cover-top {
+      text-align: center;
+      padding-top: 48px;
+    }
+
+    .cover-title {
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+    }
+
+    .mandarin-button {
+      display: block;
+      width: 176px;
+      height: 128px;
+      margin: 82px auto 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .mandarin-button:active {
+      transform: scale(0.98);
+    }
+
+    .mandarin-icon {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .bird-line {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.6s ease;
+    }
+
+    .bird-fill {
+      fill: transparent;
+      transition: fill 0.8s ease;
+    }
+
+    .page.is-coloring .bird-fill.left {
+      fill: var(--gold);
+    }
+
+    .page.is-coloring .bird-fill.right {
+      fill: var(--coral);
+    }
+
+    .page.is-coloring .bird-line {
+      stroke: #2a2926;
+    }
+
+    .cover-bottom {
+      border-top: 1px solid var(--line);
+      padding-top: 26px;
+      text-align: center;
+    }
+
+    .names {
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      margin-bottom: 28px;
+    }
+
+    .open-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .thesis-cover {
       min-height: 100vh;
       padding: 56px 34px 42px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,1)),
-        var(--paper);
+      background: var(--paper);
     }
 
     .thesis-top {
@@ -111,43 +238,6 @@
     .thesis-info dd {
       margin: 0;
       color: var(--ink);
-    }
-
-    .cover-bottom {
-      margin-top: auto;
-    }
-
-    .names {
-      font-size: 18px;
-      letter-spacing: 0.08em;
-      font-weight: 400;
-      margin-bottom: 18px;
-    }
-
-    .date {
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      margin-bottom: 30px;
-    }
-
-    .open-btn {
-      width: 100%;
-      height: 48px;
-      background: transparent;
-      border: 1px solid var(--ink);
-      color: var(--ink);
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    .open-note {
-      margin-top: 12px;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
     }
 
     section {
@@ -255,7 +345,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 20;
+      z-index: 40;
       cursor: pointer;
     }
 
@@ -272,117 +362,147 @@
 </head>
 
 <body>
-  <div class="page">
-    <header class="cover" id="cover">
-      <div>
-        <div class="thesis-top">HIGH GLOSSY WORKS · 1003</div>
+  <div class="page" id="page">
 
-        <div class="cover-main">
-          <div class="label">WEDDING INVITATION</div>
+    <div class="content">
+      <header class="thesis-cover">
+        <div>
+          <div class="thesis-top">HIGH GLOSSY WORKS · 1003</div>
 
-          <h1>
-            A Record<br />
-            of Our Time
-          </h1>
+          <div class="cover-main">
+            <div class="label">WEDDING INVITATION</div>
 
-          <div class="subtitle">
-            함께 쌓아온 시간 위에<br />
-            가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
+            <h1>
+              A Record<br />
+              of Our Time
+            </h1>
+
+            <div class="subtitle">
+              함께 쌓아온 시간 위에<br />
+              가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
+            </div>
+
+            <dl class="thesis-info">
+              <dt>Authors</dt>
+              <dd>김창수 · 최보규</dd>
+
+              <dt>Date</dt>
+              <dd>2026. 10. 03.</dd>
+
+              <dt>Place</dt>
+              <dd>호텔농심 야외정원</dd>
+            </dl>
           </div>
-
-          <dl class="thesis-info">
-            <dt>Authors</dt>
-            <dd>김창수 · 최보규</dd>
-
-            <dt>Date</dt>
-            <dd>2026. 10. 03.</dd>
-
-            <dt>Place</dt>
-            <dd>호텔농심 야외정원</dd>
-          </dl>
         </div>
+      </header>
+
+      <section id="invitation">
+        <div class="section-kicker">Preface</div>
+        <div class="message">
+          <p>
+            9년 동안 함께 쌓아온 수많은 기억들 위에<br />
+            가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
+          </p>
+          <p>
+            저희에게 가장 행복한 기억으로 남을 10월 3일,<br />
+            그날의 시간과 장면 속에<br />
+            함께 웃고 있는 여러분이 계셨으면 좋겠습니다.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Wedding Day</div>
+        <div class="info-card">
+          <div class="wedding-date">
+            2026년 10월 3일 토요일<br />
+            오후 1시
+          </div>
+          <div class="place">
+            호텔농심 야외정원<br />
+            부산광역시 동래구 금강공원로20번길 23
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Film</div>
+        <div class="film-box">
+          추후 이 영역에 웨딩 영상이 들어갑니다.<br />
+          intro.mp4 또는 wedding-film.mp4를 연결할 수 있어요.
+        </div>
+      </section>
+
+      <section>
+        <div class="section-kicker">Location</div>
+        <div class="map-box">
+          <div class="map-title">오시는 길</div>
+
+          <div class="route">
+            <div>
+              <strong>주소</strong>
+              부산광역시 동래구 금강공원로20번길 23<br />
+              호텔농심 야외정원
+            </div>
+
+            <div>
+              <strong>지하철</strong>
+              1호선 온천장역 하차 후 도보 이동
+            </div>
+
+            <div>
+              <strong>주차</strong>
+              호텔농심 주차장 이용
+            </div>
+
+            <div>
+              <strong>안내</strong>
+              예식은 야외에서 진행됩니다.<br />
+              우천 시 동일 장소 내 실내 예식으로 변경됩니다.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        이 페이지는 예식 이후에도<br />
+        저희의 기록으로 남겨둘 예정입니다.
+      </footer>
+    </div>
+
+    <section class="cover" id="cover">
+      <div class="cover-top">
+        <div class="cover-title">초대합니다</div>
+
+        <button class="mandarin-button" onclick="openInvitation()" aria-label="초대장 열기">
+          <svg class="mandarin-icon" viewBox="0 0 240 130" role="img" aria-label="원앙 두 마리">
+            <path class="bird-fill left" d="M66 72 C50 58 50 39 67 30 C83 21 105 30 112 48 C119 66 101 85 78 84 C73 84 69 80 66 72 Z" />
+            <path class="bird-line" d="M66 72 C50 58 50 39 67 30 C83 21 105 30 112 48 C119 66 101 85 78 84 C73 84 69 80 66 72 Z" />
+            <path class="bird-line" d="M86 42 C92 48 93 57 88 64" />
+            <path class="bird-line" d="M60 50 C50 49 43 45 39 39" />
+            <circle cx="78" cy="40" r="1.8" fill="#1f1f1f" />
+
+            <path class="bird-fill right" d="M174 72 C190 58 190 39 173 30 C157 21 135 30 128 48 C121 66 139 85 162 84 C167 84 171 80 174 72 Z" />
+            <path class="bird-line" d="M174 72 C190 58 190 39 173 30 C157 21 135 30 128 48 C121 66 139 85 162 84 C167 84 171 80 174 72 Z" />
+            <path class="bird-line" d="M154 42 C148 48 147 57 152 64" />
+            <path class="bird-line" d="M180 50 C190 49 197 45 201 39" />
+            <circle cx="162" cy="40" r="1.8" fill="#1f1f1f" />
+
+            <path class="bird-line" d="M62 96 C78 102 92 102 108 96" />
+            <path class="bird-line" d="M132 96 C148 102 162 102 178 96" />
+          </svg>
+        </button>
       </div>
 
       <div class="cover-bottom">
         <div class="names">김창수 · 최보규</div>
         <div class="date">2026.10.03 SAT 1:00 PM</div>
-        <button class="open-btn" onclick="openInvitation()">초대장 열기</button>
-        <div class="open-note">음악이 함께 재생될 수 있습니다</div>
-      </div>
-    </header>
-
-    <section id="invitation">
-      <div class="section-kicker">Preface</div>
-      <div class="message">
-        <p>
-          9년 동안 함께 쌓아온 수많은 기억들 위에<br />
-          가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
-        </p>
-        <p>
-          저희에게 가장 행복한 기억으로 남을 10월 3일,<br />
-          그날의 시간과 장면 속에<br />
-          함께 웃고 있는 여러분이 계셨으면 좋겠습니다.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-kicker">Wedding Day</div>
-      <div class="info-card">
-        <div class="wedding-date">
-          2026년 10월 3일 토요일<br />
-          오후 1시
-        </div>
-        <div class="place">
-          호텔농심 야외정원<br />
-          부산광역시 동래구 금강공원로20번길 23
+        <div class="open-note">
+          원앙을 눌러<br />
+          초대장을 열어주세요
         </div>
       </div>
     </section>
-
-    <section>
-      <div class="section-kicker">Film</div>
-      <div class="film-box">
-        추후 이 영역에 웨딩 영상이 들어갑니다.<br />
-        intro.mp4 또는 wedding-film.mp4를 연결할 수 있어요.
-      </div>
-    </section>
-
-    <section>
-      <div class="section-kicker">Location</div>
-      <div class="map-box">
-        <div class="map-title">오시는 길</div>
-
-        <div class="route">
-          <div>
-            <strong>주소</strong>
-            부산광역시 동래구 금강공원로20번길 23<br />
-            호텔농심 야외정원
-          </div>
-
-          <div>
-            <strong>지하철</strong>
-            1호선 온천장역 하차 후 도보 이동
-          </div>
-
-          <div>
-            <strong>주차</strong>
-            호텔농심 주차장 이용
-          </div>
-
-          <div>
-            <strong>안내</strong>
-            예식은 야외에서 진행됩니다.<br />
-            우천 시 동일 장소 내 실내 예식으로 변경됩니다.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      이 페이지는 예식 이후에도<br />
-      저희의 기록으로 남겨둘 예정입니다.
-    </footer>
   </div>
 
   <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
@@ -398,24 +518,28 @@
     let isMusicPlaying = false;
 
     function openInvitation() {
-      const target = document.getElementById("invitation");
-      target.scrollIntoView({ behavior: "smooth" });
-
+      const page = document.getElementById("page");
       const musicBtn = document.getElementById("musicBtn");
-      musicBtn.classList.add("show");
 
-      const bgm = document.getElementById("bgm");
-      if (bgm) {
-        bgm.play()
-          .then(() => {
-            isMusicPlaying = true;
-            musicBtn.textContent = "♪";
-          })
-          .catch(() => {
-            isMusicPlaying = false;
-            musicBtn.textContent = "♪";
-          });
-      }
+      page.classList.add("is-coloring");
+
+      setTimeout(() => {
+        page.classList.add("is-open");
+        musicBtn.classList.add("show");
+
+        const bgm = document.getElementById("bgm");
+        if (bgm) {
+          bgm.play()
+            .then(() => {
+              isMusicPlaying = true;
+              musicBtn.textContent = "♪";
+            })
+            .catch(() => {
+              isMusicPlaying = false;
+              musicBtn.textContent = "♪";
+            });
+        }
+      }, 750);
     }
 
     function toggleMusic() {
