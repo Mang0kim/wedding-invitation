@@ -3,73 +3,440 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1003 Wedding Invitation</title>
+
+  <title>김창수 · 최보규의 결혼식에 초대합니다</title>
+
+  <meta property="og:title" content="김창수 · 최보규의 결혼식에 초대합니다" />
+  <meta property="og:description" content="2026년 10월 3일, 저희의 하루에 함께해 주세요." />
+  <meta property="og:url" content="https://1003.highglossyworks.life" />
+
   <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f8f9fa;
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      color: #333;
-      text-align: center;
+    :root {
+      --bg: #f7f7f4;
+      --paper: #ffffff;
+      --ink: #1f1f1f;
+      --muted: #747474;
+      --soft: #d9d9d4;
+      --line: #e5e5df;
+      --accent: #6f6a5f;
     }
 
-    .card {
-      width: min(88vw, 420px);
-      padding: 64px 28px;
-      background: #fff;
-      border: 1px solid #e8e8e8;
+    * {
       box-sizing: border-box;
     }
 
-    .small {
-      font-size: 13px;
-      letter-spacing: 0.24em;
-      color: #777;
-      margin-bottom: 28px;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      word-break: keep-all;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      background: var(--paper);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .cover {
+      min-height: 100vh;
+      padding: 56px 34px 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,1)),
+        var(--paper);
+    }
+
+    .thesis-top {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .cover-main {
+      margin-top: 68px;
+    }
+
+    .label {
+      font-size: 12px;
+      letter-spacing: 0.26em;
+      color: var(--muted);
+      margin-bottom: 42px;
     }
 
     h1 {
       margin: 0;
-      font-size: 24px;
-      font-weight: 400;
+      font-size: 31px;
+      line-height: 1.38;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin-top: 30px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .thesis-info {
+      margin-top: 74px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 12px 18px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .thesis-info dt {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .thesis-info dd {
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .cover-bottom {
+      margin-top: auto;
+    }
+
+    .names {
+      font-size: 18px;
       letter-spacing: 0.08em;
+      font-weight: 400;
+      margin-bottom: 18px;
     }
 
     .date {
-      margin-top: 20px;
-      font-size: 15px;
-      color: #555;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 30px;
     }
 
-    .line {
-      width: 32px;
-      height: 1px;
-      margin: 32px auto;
-      background: #ddd;
-    }
-
-    p {
-      margin: 0;
+    .open-btn {
+      width: 100%;
+      height: 48px;
+      background: transparent;
+      border: 1px solid var(--ink);
+      color: var(--ink);
       font-size: 14px;
+      letter-spacing: 0.08em;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .open-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    section {
+      padding: 84px 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 2.05;
+      letter-spacing: -0.03em;
+    }
+
+    .message p {
+      margin: 0 0 24px;
+    }
+
+    .info-card {
+      border-top: 1px solid var(--ink);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+    }
+
+    .wedding-date {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .place {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .film-box {
+      aspect-ratio: 4 / 5;
+      background: #f0f0ec;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      color: var(--muted);
+      font-size: 13px;
       line-height: 1.8;
-      color: #666;
+    }
+
+    .map-box {
+      border: 1px solid var(--line);
+      padding: 26px 22px;
+      background: #fbfbf9;
+    }
+
+    .map-title {
+      font-size: 16px;
+      margin-bottom: 22px;
+    }
+
+    .route {
+      display: grid;
+      gap: 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .route strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      padding: 64px 34px 80px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    .music-btn {
+      position: fixed;
+      right: calc(50% - 200px);
+      bottom: 22px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.92);
+      color: var(--ink);
+      font-size: 16px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      cursor: pointer;
+    }
+
+    .music-btn.show {
+      display: flex;
+    }
+
+    @media (max-width: 430px) {
+      .music-btn {
+        right: 22px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main class="card">
-    <div class="small">INVITATION</div>
-    <h1>초대합니다</h1>
-    <div class="date">2026.10.03</div>
-    <div class="line"></div>
-    <p>
-      보규와 창수의 모바일 청첩장<br />
-      준비 중입니다.
-    </p>
-  </main>
+  <div class="page">
+    <header class="cover" id="cover">
+      <div>
+        <div class="thesis-top">HIGH GLOSSY WORKS · 1003</div>
+
+        <div class="cover-main">
+          <div class="label">WEDDING INVITATION</div>
+
+          <h1>
+            A Record<br />
+            of Our Time
+          </h1>
+
+          <div class="subtitle">
+            함께 쌓아온 시간 위에<br />
+            가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
+          </div>
+
+          <dl class="thesis-info">
+            <dt>Authors</dt>
+            <dd>김창수 · 최보규</dd>
+
+            <dt>Date</dt>
+            <dd>2026. 10. 03.</dd>
+
+            <dt>Place</dt>
+            <dd>호텔농심 야외정원</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="cover-bottom">
+        <div class="names">김창수 · 최보규</div>
+        <div class="date">2026.10.03 SAT 1:00 PM</div>
+        <button class="open-btn" onclick="openInvitation()">초대장 열기</button>
+        <div class="open-note">음악이 함께 재생될 수 있습니다</div>
+      </div>
+    </header>
+
+    <section id="invitation">
+      <div class="section-kicker">Preface</div>
+      <div class="message">
+        <p>
+          9년 동안 함께 쌓아온 수많은 기억들 위에<br />
+          가장 오래 꺼내 보고 싶은 하루를 남기려 합니다.
+        </p>
+        <p>
+          저희에게 가장 행복한 기억으로 남을 10월 3일,<br />
+          그날의 시간과 장면 속에<br />
+          함께 웃고 있는 여러분이 계셨으면 좋겠습니다.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-kicker">Wedding Day</div>
+      <div class="info-card">
+        <div class="wedding-date">
+          2026년 10월 3일 토요일<br />
+          오후 1시
+        </div>
+        <div class="place">
+          호텔농심 야외정원<br />
+          부산광역시 동래구 금강공원로20번길 23
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-kicker">Film</div>
+      <div class="film-box">
+        추후 이 영역에 웨딩 영상이 들어갑니다.<br />
+        intro.mp4 또는 wedding-film.mp4를 연결할 수 있어요.
+      </div>
+    </section>
+
+    <section>
+      <div class="section-kicker">Location</div>
+      <div class="map-box">
+        <div class="map-title">오시는 길</div>
+
+        <div class="route">
+          <div>
+            <strong>주소</strong>
+            부산광역시 동래구 금강공원로20번길 23<br />
+            호텔농심 야외정원
+          </div>
+
+          <div>
+            <strong>지하철</strong>
+            1호선 온천장역 하차 후 도보 이동
+          </div>
+
+          <div>
+            <strong>주차</strong>
+            호텔농심 주차장 이용
+          </div>
+
+          <div>
+            <strong>안내</strong>
+            예식은 야외에서 진행됩니다.<br />
+            우천 시 동일 장소 내 실내 예식으로 변경됩니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      이 페이지는 예식 이후에도<br />
+      저희의 기록으로 남겨둘 예정입니다.
+    </footer>
+  </div>
+
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
+
+  <!-- 나중에 bgm.mp3 파일을 올리면 아래 주석을 풀면 돼요. -->
+  <!--
+  <audio id="bgm" loop>
+    <source src="bgm.mp3" type="audio/mpeg" />
+  </audio>
+  -->
+
+  <script>
+    let isMusicPlaying = false;
+
+    function openInvitation() {
+      const target = document.getElementById("invitation");
+      target.scrollIntoView({ behavior: "smooth" });
+
+      const musicBtn = document.getElementById("musicBtn");
+      musicBtn.classList.add("show");
+
+      const bgm = document.getElementById("bgm");
+      if (bgm) {
+        bgm.play()
+          .then(() => {
+            isMusicPlaying = true;
+            musicBtn.textContent = "♪";
+          })
+          .catch(() => {
+            isMusicPlaying = false;
+            musicBtn.textContent = "♪";
+          });
+      }
+    }
+
+    function toggleMusic() {
+      const bgm = document.getElementById("bgm");
+      const musicBtn = document.getElementById("musicBtn");
+
+      if (!bgm) {
+        musicBtn.textContent = "♪";
+        return;
+      }
+
+      if (isMusicPlaying) {
+        bgm.pause();
+        isMusicPlaying = false;
+        musicBtn.textContent = "×";
+      } else {
+        bgm.play();
+        isMusicPlaying = true;
+        musicBtn.textContent = "♪";
+      }
+    }
+  </script>
 </body>
 </html>
