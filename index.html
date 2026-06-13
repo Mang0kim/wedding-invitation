@@ -344,30 +344,168 @@
       line-height: 1.8;
     }
 
-    .map-box {
+    /* Location */
+    .location-section {
+      padding: 78px 30px;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .location-card {
+      text-align: center;
+    }
+
+    .naver-map-box {
+      width: 100%;
+      aspect-ratio: 1.68 / 1;
+      border-radius: 16px;
+      overflow: hidden;
       border: 1px solid var(--line);
-      padding: 26px 22px;
-      background: #fbfbf9;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0)),
+        #f3f3f0;
+      margin-bottom: 30px;
+      position: relative;
     }
 
-    .map-title {
-      font-size: 16px;
-      margin-bottom: 22px;
+    .map-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 12px;
+      letter-spacing: 0.08em;
     }
 
-    .route {
-      display: grid;
-      gap: 18px;
-      font-size: 13px;
-      line-height: 1.75;
-      color: var(--muted);
+    .map-placeholder::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 46%;
+      height: 1px;
+      background: #d6d6d0;
+      transform: rotate(-7deg);
     }
 
-    .route strong {
-      display: block;
+    .map-placeholder::after {
+      content: "";
+      position: absolute;
+      left: 26%;
+      top: 14px;
+      width: 1px;
+      height: 88%;
+      background: #d6d6d0;
+      transform: rotate(18deg);
+    }
+
+    .map-pin {
+      position: absolute;
+      left: 50%;
+      top: 44%;
+      width: 28px;
+      height: 28px;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .map-pin::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #4d7fe8;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.16);
+    }
+
+    .map-pin::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .location-title {
+      font-size: 22px;
+      font-weight: 400;
       color: var(--text);
-      font-weight: 500;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    .location-address {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .map-link-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .map-link-btn {
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #333;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+
+    .map-link-btn:active {
+      transform: scale(0.98);
+    }
+
+    .map-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .naver-icon {
+      background: #03c75a;
+    }
+
+    .tmap-icon {
+      background: #111;
+    }
+
+    .kakao-icon {
+      background: #f7d94c;
+      color: #222;
+    }
+
+    .location-note {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--muted);
     }
 
     .footer {
@@ -522,6 +660,14 @@
       .contact-close {
         right: 18px;
       }
+
+      .map-link-buttons {
+        gap: 7px;
+      }
+
+      .map-link-btn {
+        font-size: 11px;
+      }
     }
   </style>
 </head>
@@ -535,7 +681,8 @@
 
         <div class="paper-lower">
           <div class="paper-lower-note">
-            원앙을 눌러 초대장을 열어주세요
+            원앙을 눌러<br />
+            초대장을 열어주세요
           </div>
         </div>
 
@@ -588,7 +735,7 @@
             김창수
           </div>
           <div>
-            최동영 · 박지원의 딸<br />
+            최동연 · 박지연의 딸<br />
             최보규
           </div>
         </div>
@@ -620,33 +767,57 @@
         </div>
       </section>
 
-      <section>
+      <section class="location-section">
         <div class="section-kicker">Location</div>
-        <div class="map-box">
-          <div class="map-title">오시는 길</div>
 
-          <div class="route">
-            <div>
-              <strong>주소</strong>
-              부산광역시 동래구 금강공원로20번길 23<br />
-              호텔농심 야외정원
-            </div>
+        <div class="location-card">
+          <div class="naver-map-box" id="map">
+            <!-- 네이버 지도 API 키 발급 후 이 영역에 실제 지도를 연결하면 됩니다. -->
+            <div class="map-placeholder">NAVER MAP</div>
+            <div class="map-pin" aria-hidden="true"></div>
+          </div>
 
-            <div>
-              <strong>지하철</strong>
-              1호선 온천장역 하차 후 도보 이동
-            </div>
+          <div class="location-title">호텔농심 야외정원</div>
+          <div class="location-address">
+            부산광역시 동래구 금강공원로20번길 23
+          </div>
 
-            <div>
-              <strong>주차</strong>
-              호텔농심 주차장 이용
-            </div>
+          <div class="map-link-buttons">
+            <a
+              class="map-link-btn"
+              href="https://map.naver.com/p/search/호텔농심%20야외정원"
+              target="_blank"
+              rel="noopener"
+              aria-label="네이버지도에서 보기"
+            >
+              <span class="map-icon naver-icon">N</span>
+              <span>네이버지도</span>
+            </a>
 
-            <div>
-              <strong>안내</strong>
-              예식은 야외에서 진행됩니다.<br />
-              우천 시 동일 장소 내 실내 예식으로 변경됩니다.
-            </div>
+            <a
+              class="map-link-btn"
+              href="tmap://route?goalname=호텔농심%20야외정원&goalx=129.0824&goaly=35.2206"
+              aria-label="티맵에서 보기"
+            >
+              <span class="map-icon tmap-icon">T</span>
+              <span>티맵</span>
+            </a>
+
+            <a
+              class="map-link-btn"
+              href="https://map.kakao.com/link/search/호텔농심%20야외정원"
+              target="_blank"
+              rel="noopener"
+              aria-label="카카오맵에서 보기"
+            >
+              <span class="map-icon kakao-icon">K</span>
+              <span>카카오맵</span>
+            </a>
+          </div>
+
+          <div class="location-note">
+            예식은 호텔농심 야외정원에서 진행됩니다.<br />
+            주차는 호텔농심 주차장을 이용해 주세요.
           </div>
         </div>
       </section>
@@ -704,14 +875,14 @@
 
         <div class="contact-row">
           <div class="contact-role">신부 아버지</div>
-          <div class="contact-name">최동영</div>
+          <div class="contact-name">최동연</div>
           <a class="contact-icon" href="tel:01000000000" aria-label="신부 아버지에게 전화">☎</a>
           <a class="contact-icon" href="sms:01000000000" aria-label="신부 아버지에게 문자">✉</a>
         </div>
 
         <div class="contact-row">
           <div class="contact-role">신부 어머니</div>
-          <div class="contact-name">박지원</div>
+          <div class="contact-name">박지연</div>
           <a class="contact-icon" href="tel:01000000000" aria-label="신부 어머니에게 전화">☎</a>
           <a class="contact-icon" href="sms:01000000000" aria-label="신부 어머니에게 문자">✉</a>
         </div>
