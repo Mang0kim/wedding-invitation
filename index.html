@@ -39,6 +39,10 @@
       word-break: keep-all;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     .page {
       width: 100%;
       max-width: 430px;
@@ -48,7 +52,7 @@
       overflow-x: hidden;
     }
 
-    /* 첫 화면: 종이 청첩장 커버가 놓인 영역 */
+    /* 첫 화면 */
     .intro {
       min-height: 52vh;
       padding: 26px 22px 34px;
@@ -206,7 +210,7 @@
       stroke: #4f4f4f;
     }
 
-    /* 본문: 커버 아래에서 확대되듯 등장 */
+    /* 본문 */
     .content {
       background: var(--paper);
       min-height: 100vh;
@@ -274,6 +278,23 @@
 
     .families div:last-child {
       text-align: right;
+    }
+
+    .contact-open-btn {
+      margin: 38px auto 0;
+      padding: 11px 22px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: #666;
+      font-family: inherit;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+    }
+
+    .contact-open-btn:active {
+      transform: scale(0.98);
     }
 
     section {
@@ -381,9 +402,125 @@
       display: flex;
     }
 
+    /* 연락처 모달 */
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+    }
+
+    .contact-modal.show {
+      display: block;
+    }
+
+    .contact-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 15, 15, 0.9);
+      backdrop-filter: blur(5px);
+    }
+
+    .contact-panel {
+      position: relative;
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 84px 32px 60px;
+      color: #f3f3f3;
+      z-index: 1;
+    }
+
+    .contact-close {
+      position: fixed;
+      top: 22px;
+      right: calc(50% - 190px);
+      width: 36px;
+      height: 36px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font-size: 32px;
+      font-weight: 200;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 110;
+    }
+
+    .contact-kicker {
+      font-size: 12px;
+      letter-spacing: 0.32em;
+      color: #bdbdbd;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .contact-title {
+      margin: 0 0 52px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 300;
+      color: #fff;
+    }
+
+    .contact-group {
+      margin-bottom: 44px;
+    }
+
+    .contact-group-title {
+      padding-bottom: 14px;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.35);
+      font-size: 15px;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-group-title span {
+      margin-left: 5px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: #9f9f9f;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 92px 1fr 36px 36px;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 0;
+      font-size: 15px;
+    }
+
+    .contact-role {
+      color: #d8d8d8;
+    }
+
+    .contact-name {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .contact-icon {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      background: transparent;
+      color: #f5f5f5;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
     @media (max-width: 430px) {
       .music-btn {
         right: 22px;
+      }
+
+      .contact-close {
+        right: 18px;
       }
     }
   </style>
@@ -456,6 +593,10 @@
             최보규
           </div>
         </div>
+
+        <button class="contact-open-btn" onclick="openContactModal()">
+          연락하기
+        </button>
       </div>
 
       <section>
@@ -518,6 +659,67 @@
     </main>
   </div>
 
+  <div class="contact-modal" id="contactModal" aria-hidden="true">
+    <div class="contact-backdrop" onclick="closeContactModal()"></div>
+
+    <div class="contact-panel">
+      <button class="contact-close" onclick="closeContactModal()" aria-label="연락처 닫기">×</button>
+
+      <div class="contact-kicker">CONTACT</div>
+      <h2 class="contact-title">연락하기</h2>
+
+      <div class="contact-group">
+        <div class="contact-group-title">신랑측 <span>GROOM</span></div>
+
+        <div class="contact-row">
+          <div class="contact-role">신랑</div>
+          <div class="contact-name">김창수</div>
+          <a class="contact-icon" href="tel:01000000000" aria-label="신랑에게 전화">☎</a>
+          <a class="contact-icon" href="sms:01000000000" aria-label="신랑에게 문자">✉</a>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-role">신랑 아버지</div>
+          <div class="contact-name">김상두</div>
+          <a class="contact-icon" href="tel:01000000000" aria-label="신랑 아버지에게 전화">☎</a>
+          <a class="contact-icon" href="sms:01000000000" aria-label="신랑 아버지에게 문자">✉</a>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-role">신랑 어머니</div>
+          <div class="contact-name">윤옥례</div>
+          <a class="contact-icon" href="tel:01000000000" aria-label="신랑 어머니에게 전화">☎</a>
+          <a class="contact-icon" href="sms:01000000000" aria-label="신랑 어머니에게 문자">✉</a>
+        </div>
+      </div>
+
+      <div class="contact-group">
+        <div class="contact-group-title">신부측 <span>BRIDE</span></div>
+
+        <div class="contact-row">
+          <div class="contact-role">신부</div>
+          <div class="contact-name">최보규</div>
+          <a class="contact-icon" href="tel:01000000000" aria-label="신부에게 전화">☎</a>
+          <a class="contact-icon" href="sms:01000000000" aria-label="신부에게 문자">✉</a>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-role">신부 아버지</div>
+          <div class="contact-name">최동연</div>
+          <a class="contact-icon" href="tel:01000000000" aria-label="신부 아버지에게 전화">☎</a>
+          <a class="contact-icon" href="sms:01000000000" aria-label="신부 아버지에게 문자">✉</a>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-role">신부 어머니</div>
+          <div class="contact-name">박지연</div>
+          <a class="contact-icon" href="tel:01000000000" aria-label="신부 어머니에게 전화">☎</a>
+          <a class="contact-icon" href="sms:01000000000" aria-label="신부 어머니에게 문자">✉</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
 
   <audio id="bgm" loop preload="auto">
@@ -531,6 +733,11 @@
     let hasEnteredOnce = false;
     let lastScrollY = 0;
     let touchStartY = 0;
+
+    function isModalOpen() {
+      const modal = document.getElementById("contactModal");
+      return modal && modal.classList.contains("show");
+    }
 
     function openInvitation() {
       if (isAnimating || isInvitationOpen) return;
@@ -579,7 +786,7 @@
     }
 
     function reopenInvitation() {
-      if (isAnimating || isInvitationOpen || !hasEnteredOnce) return;
+      if (isAnimating || isInvitationOpen || !hasEnteredOnce || isModalOpen()) return;
 
       const page = document.getElementById("page");
 
@@ -606,7 +813,7 @@
     }
 
     function closeInvitationByScroll() {
-      if (isAnimating || !isInvitationOpen) return;
+      if (isAnimating || !isInvitationOpen || isModalOpen()) return;
 
       const page = document.getElementById("page");
 
@@ -660,9 +867,34 @@
       }
     }
 
-    window.addEventListener("scroll", () => {
-      const currentScrollY = window.scrollY;
+    function openContactModal() {
+      const modal = document.getElementById("contactModal");
+      if (!modal) return;
 
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeContactModal() {
+      const modal = document.getElementById("contactModal");
+      if (!modal) return;
+
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeContactModal();
+      }
+    });
+
+    window.addEventListener("scroll", () => {
+      if (isModalOpen()) return;
+
+      const currentScrollY = window.scrollY;
       const isScrollingUp = currentScrollY < lastScrollY;
       const isNearTop = currentScrollY <= 12;
 
@@ -674,6 +906,8 @@
     });
 
     window.addEventListener("wheel", (event) => {
+      if (isModalOpen()) return;
+
       const isWheelDown = event.deltaY > 0;
 
       if (!isInvitationOpen && hasEnteredOnce && !isAnimating && isWheelDown) {
@@ -686,6 +920,8 @@
     });
 
     window.addEventListener("touchmove", (event) => {
+      if (isModalOpen()) return;
+
       const touchCurrentY = event.touches[0].clientY;
       const isSwipeUp = touchStartY - touchCurrentY > 24;
 
