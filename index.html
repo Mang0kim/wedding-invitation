@@ -18,10 +18,12 @@
       --ink: #555555;
       --muted: #777777;
       --soft: #f2f2ef;
+      --soft-2: #f7f7f5;
       --line: #deded9;
       --line-dark: #c9c9c3;
       --red: #ef3347;
       --deep-red: #c92835;
+      --pink: #eb69a3;
     }
 
     * {
@@ -281,7 +283,6 @@
       font-size: 11px;
       letter-spacing: 0.24em;
       color: var(--muted);
-      text-transform: uppercase;
       margin-bottom: 28px;
     }
 
@@ -293,50 +294,77 @@
       margin: 0 0 34px;
     }
 
-    /* Couple */
-    .couple-grid {
+    /* Couple cards */
+    .intro-couple-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: start;
-      margin-top: 6px;
+      gap: 20px;
     }
 
-    .person-card {
+    .intro-couple-card {
+      background: #f1f1ef;
+      border-radius: 18px;
+      padding: 16px 14px 22px;
       text-align: center;
     }
 
-    .person-photo {
+    .intro-couple-photo {
       width: 100%;
-      aspect-ratio: 3 / 4;
-      background: var(--soft);
-      border: 1px solid var(--line);
+      aspect-ratio: 1 / 1;
       overflow: hidden;
-      margin-bottom: 16px;
+      border-radius: 16px;
+      background: #ddd;
+      margin-bottom: 18px;
     }
 
-    .person-photo img {
+    .intro-couple-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .person-family {
-      font-size: 11px;
-      line-height: 1.75;
-      color: var(--muted);
-      margin-bottom: 5px;
+    .intro-couple-role {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--pink);
+      margin-bottom: 10px;
     }
 
-    .person-name {
-      font-size: 16px;
-      color: var(--text);
-      letter-spacing: 0.04em;
+    .intro-couple-name {
+      font-size: 23px;
+      font-weight: 500;
+      color: #111;
+      margin-bottom: 15px;
+      letter-spacing: -0.03em;
+    }
+
+    .intro-couple-family {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #6e6e6e;
+      word-break: keep-all;
+    }
+
+    .intro-couple-buttons {
+      display: grid;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .intro-sub-btn {
+      width: 100%;
+      height: 46px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #555;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
     }
 
     .contact-open-btn {
-      margin: 40px auto 0;
+      margin: 24px auto 0;
       padding: 11px 22px;
       border: 1px solid var(--line);
       border-radius: 999px;
@@ -586,42 +614,66 @@
       font-weight: 400;
     }
 
-    /* Accordion */
-    .accordion {
+    /* Wedding guide tabs */
+    .guide-tabs {
       display: grid;
-      gap: 10px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      background: #f1f1ef;
+      border-radius: 14px;
+      padding: 4px;
+      margin-bottom: 28px;
     }
 
-    .accordion-item {
-      border: 1px solid var(--line);
-      background: #fff;
-    }
-
-    .accordion-button {
-      width: 100%;
-      height: 52px;
+    .guide-tab-btn {
+      height: 56px;
       border: 0;
-      background: #fff;
-      color: var(--text);
+      background: transparent;
+      color: #9a9a9a;
       font-size: 13px;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      border-radius: 12px;
       cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    .accordion-content {
+    .guide-tab-btn.active {
+      background: #ffffff;
+      color: var(--pink);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .guide-panel {
       display: none;
-      padding: 0 20px 22px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-      text-align: center;
     }
 
-    .accordion-item.open .accordion-content {
+    .guide-panel.active {
       display: block;
     }
 
-    /* Food */
+    .guide-image-card {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--soft);
+      margin-bottom: 28px;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .guide-description {
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.85;
+      color: #5d5d5d;
+      letter-spacing: -0.03em;
+    }
+
+    /* Food accordion */
     .food-intro {
       text-align: center;
       font-size: 13px;
@@ -630,27 +682,71 @@
       margin-bottom: 30px;
     }
 
-    .food-list {
+    .food-accordion {
       display: grid;
-      gap: 14px;
+      gap: 10px;
     }
 
-    .food-card {
+    .food-item {
       border: 1px solid var(--line);
-      padding: 18px 18px;
+      border-radius: 16px;
+      overflow: hidden;
       background: #fff;
     }
 
-    .food-name {
-      font-size: 15px;
-      margin-bottom: 6px;
+    .food-button {
+      width: 100%;
+      min-height: 58px;
+      border: 0;
+      background: #fff;
+      color: var(--text);
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .food-button-title {
+      font-size: 14px;
       color: var(--text);
     }
 
-    .food-desc {
-      font-size: 12px;
-      line-height: 1.7;
+    .food-button-sub {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
       color: var(--muted);
+    }
+
+    .food-plus {
+      font-size: 20px;
+      color: #aaa;
+      transition: transform 0.2s ease;
+    }
+
+    .food-item.open .food-plus {
+      transform: rotate(45deg);
+    }
+
+    .food-content {
+      display: none;
+      padding: 0 18px 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .food-item.open .food-content {
+      display: block;
+    }
+
+    .food-content strong {
+      display: block;
+      color: var(--text);
+      font-weight: 400;
+      margin: 14px 0 4px;
     }
 
     /* Gallery */
@@ -925,6 +1021,24 @@
       text-decoration: none;
     }
 
+    /* Intro letter modal */
+    .intro-letter-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intro-letter-card {
+      background: rgba(255, 255, 255, 0.97);
+      color: #444;
+      padding: 32px 26px;
+      border-radius: 20px;
+      font-size: 15px;
+      line-height: 2;
+      letter-spacing: -0.03em;
+      white-space: pre-line;
+    }
+
     @media (max-width: 430px) {
       .music-btn {
         right: 22px;
@@ -935,6 +1049,22 @@
       }
 
       .map-link-btn {
+        font-size: 11px;
+      }
+
+      .intro-couple-grid {
+        gap: 12px;
+      }
+
+      .intro-couple-card {
+        padding: 12px 10px 18px;
+      }
+
+      .intro-couple-name {
+        font-size: 20px;
+      }
+
+      .intro-couple-family {
         font-size: 11px;
       }
     }
@@ -994,25 +1124,32 @@
       </div>
 
       <section>
-        <div class="section-kicker">Bride & Groom</div>
-        <h2 class="section-title">창수 그리고 보규</h2>
+        <div class="section-kicker">소개</div>
+        <h2 class="section-title">신랑 · 신부 소개</h2>
 
-        <div class="couple-grid">
-          <div class="person-card">
-            <div class="person-photo">
+        <div class="intro-couple-grid">
+          <div class="intro-couple-card">
+            <div class="intro-couple-photo">
               <img src="groom.jpg" alt="신랑 김창수 사진" />
             </div>
-            <div class="person-family">김상두 · 윤옥례의 아들</div>
-            <div class="person-name">김창수</div>
+            <div class="intro-couple-role">신랑</div>
+            <div class="intro-couple-name">김창수</div>
+            <div class="intro-couple-family">김상두 · 윤옥례의 아들</div>
           </div>
 
-          <div class="person-card">
-            <div class="person-photo">
+          <div class="intro-couple-card">
+            <div class="intro-couple-photo">
               <img src="bride.jpg" alt="신부 최보규 사진" />
             </div>
-            <div class="person-family">최동영 · 박지원의 딸</div>
-            <div class="person-name">최보규</div>
+            <div class="intro-couple-role">신부</div>
+            <div class="intro-couple-name">최보규</div>
+            <div class="intro-couple-family">최동영 · 박지원의 딸</div>
           </div>
+        </div>
+
+        <div class="intro-couple-buttons">
+          <button class="intro-sub-btn" onclick="openIntroModal('groom')">신부가 소개하는 신랑</button>
+          <button class="intro-sub-btn" onclick="openIntroModal('bride')">신랑이 소개하는 신부</button>
         </div>
 
         <button class="contact-open-btn" onclick="openContactModal()">
@@ -1021,7 +1158,7 @@
       </section>
 
       <section>
-        <div class="section-kicker">Wedding Day</div>
+        <div class="section-kicker">날짜</div>
 
         <div class="wedding-center">
           <div class="wedding-date">
@@ -1067,7 +1204,7 @@
       </section>
 
       <section>
-        <div class="section-kicker">Location</div>
+        <div class="section-kicker">오시는 길</div>
 
         <div class="location-card">
           <div class="naver-map-box" id="map">
@@ -1128,38 +1265,42 @@
       </section>
 
       <section>
-        <div class="section-kicker">Wedding Guide</div>
+        <div class="section-kicker">예식 안내</div>
         <h2 class="section-title">예식 안내</h2>
 
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion(this)">식사 안내</button>
-            <div class="accordion-content">
-              식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
-              자세한 안내는 현장 안내에 따라 부탁드립니다.
-            </div>
-          </div>
+        <div class="guide-tabs">
+          <button class="guide-tab-btn active" onclick="switchGuideTab('meal', this)">식사 안내</button>
+          <button class="guide-tab-btn" onclick="switchGuideTab('rain', this)">우천 안내</button>
+          <button class="guide-tab-btn" onclick="switchGuideTab('flower', this)">화환 안내</button>
+        </div>
 
-          <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion(this)">우천 안내</button>
-            <div class="accordion-content">
-              예식은 야외정원에서 진행됩니다.<br />
-              우천 시 동일 장소 내 실내 공간으로 변경될 수 있습니다.
-            </div>
+        <div class="guide-panel active" id="guide-meal">
+          <div class="guide-image-card">식사 안내 이미지</div>
+          <div class="guide-description">
+            식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
+            현장 안내에 따라 편하게 이동해 주세요.
           </div>
+        </div>
 
-          <div class="accordion-item">
-            <button class="accordion-button" onclick="toggleAccordion(this)">화환 안내</button>
-            <div class="accordion-content">
-              축하의 마음만으로도 충분히 감사드립니다.<br />
-              화환 관련 안내는 추후 확정하여 기재할 예정입니다.
-            </div>
+        <div class="guide-panel" id="guide-rain">
+          <div class="guide-image-card">우천 안내 이미지</div>
+          <div class="guide-description">
+            예식은 야외정원에서 진행됩니다.<br />
+            우천 시 동일 장소 내 실내 공간으로 변경될 수 있습니다.
+          </div>
+        </div>
+
+        <div class="guide-panel" id="guide-flower">
+          <div class="guide-image-card">화환 안내 이미지</div>
+          <div class="guide-description">
+            축하의 마음만으로도 충분히 감사드립니다.<br />
+            화환 관련 안내는 추후 확정 후 추가하겠습니다.
           </div>
         </div>
       </section>
 
       <section>
-        <div class="section-kicker">For Guests</div>
+        <div class="section-kicker">부산 안내</div>
         <h2 class="section-title">멀리서 오신 분들을 위해</h2>
 
         <div class="food-intro">
@@ -1167,26 +1308,62 @@
           예식 전후로 들르기 좋은 곳을 조용히 골라두었습니다.
         </div>
 
-        <div class="food-list">
-          <div class="food-card">
-            <div class="food-name">맛집 이름 01</div>
-            <div class="food-desc">호텔 근처에서 가볍게 들르기 좋은 곳입니다.</div>
+        <div class="food-accordion">
+          <div class="food-item">
+            <button class="food-button" onclick="toggleFood(this)">
+              <span>
+                <span class="food-button-title">호텔 근처</span>
+                <span class="food-button-sub">예식 전후로 가볍게 들르기 좋은 곳</span>
+              </span>
+              <span class="food-plus">+</span>
+            </button>
+            <div class="food-content">
+              <strong>맛집 이름 01</strong>
+              호텔 근처에서 부담 없이 식사하기 좋은 곳입니다.
+
+              <strong>맛집 이름 02</strong>
+              짧은 이동으로 들르기 좋은 카페 또는 식당입니다.
+            </div>
           </div>
 
-          <div class="food-card">
-            <div class="food-name">맛집 이름 02</div>
-            <div class="food-desc">부산에 오신 분들께 추천하고 싶은 곳입니다.</div>
+          <div class="food-item">
+            <button class="food-button" onclick="toggleFood(this)">
+              <span>
+                <span class="food-button-title">부산역 근처</span>
+                <span class="food-button-sub">기차로 오시는 분들을 위해</span>
+              </span>
+              <span class="food-plus">+</span>
+            </button>
+            <div class="food-content">
+              <strong>맛집 이름 03</strong>
+              부산역 도착 후 들르기 좋은 곳입니다.
+
+              <strong>맛집 이름 04</strong>
+              이동 전후로 간단히 식사하기 좋은 곳입니다.
+            </div>
           </div>
 
-          <div class="food-card">
-            <div class="food-name">맛집 이름 03</div>
-            <div class="food-desc">식사 후 산책과 함께 들르기 좋은 곳입니다.</div>
+          <div class="food-item">
+            <button class="food-button" onclick="toggleFood(this)">
+              <span>
+                <span class="food-button-title">바다 근처</span>
+                <span class="food-button-sub">부산에 온 김에 들르기 좋은 곳</span>
+              </span>
+              <span class="food-plus">+</span>
+            </button>
+            <div class="food-content">
+              <strong>맛집 이름 05</strong>
+              바다를 함께 보고 싶은 분들께 추천하는 곳입니다.
+
+              <strong>맛집 이름 06</strong>
+              식사 후 산책과 함께 즐기기 좋은 곳입니다.
+            </div>
           </div>
         </div>
       </section>
 
       <section>
-        <div class="section-kicker">Gallery</div>
+        <div class="section-kicker">사진첩</div>
         <h2 class="section-title">사진첩</h2>
 
         <div class="gallery">
@@ -1208,7 +1385,7 @@
       </section>
 
       <section>
-        <div class="section-kicker">Record of Love</div>
+        <div class="section-kicker">사랑의 기록</div>
         <h2 class="section-title">사랑의 기록</h2>
 
         <div class="story-list">
@@ -1235,7 +1412,7 @@
       </section>
 
       <section>
-        <div class="section-kicker">Account</div>
+        <div class="section-kicker">마음 전하실 곳</div>
         <h2 class="section-title">마음 전하실 곳</h2>
 
         <div class="account-list">
@@ -1332,6 +1509,21 @@
     </div>
   </div>
 
+  <div class="contact-modal" id="introModal" aria-hidden="true">
+    <div class="contact-backdrop" onclick="closeIntroModal()"></div>
+
+    <div class="contact-panel intro-letter-panel">
+      <button class="contact-close" onclick="closeIntroModal()" aria-label="소개글 닫기">×</button>
+
+      <div class="contact-kicker" id="introModalKicker">신부의 기록</div>
+      <h2 class="contact-title" id="introModalTitle">신부가 소개하는 신랑</h2>
+
+      <div class="intro-letter-card" id="introModalText">
+        소개글이 들어갑니다.
+      </div>
+    </div>
+  </div>
+
   <button class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
 
   <audio id="bgm" loop preload="auto">
@@ -1339,7 +1531,7 @@
   </audio>
 
   <script>
-    const MEET_DATE = "2018-10-13"; 
+    const MEET_DATE = "2017-01-01"; 
     const WEDDING_DATE = "2026-10-03";
 
     let isMusicPlaying = false;
@@ -1373,8 +1565,13 @@
     }
 
     function isModalOpen() {
-      const modal = document.getElementById("contactModal");
-      return modal && modal.classList.contains("show");
+      const contactModal = document.getElementById("contactModal");
+      const introModal = document.getElementById("introModal");
+
+      return (
+        contactModal.classList.contains("show") ||
+        introModal.classList.contains("show")
+      );
     }
 
     function openInvitation() {
@@ -1523,8 +1720,59 @@
       document.body.classList.remove("modal-open");
     }
 
-    function toggleAccordion(button) {
-      const item = button.closest(".accordion-item");
+    function openIntroModal(type) {
+      const modal = document.getElementById("introModal");
+      const kicker = document.getElementById("introModalKicker");
+      const title = document.getElementById("introModalTitle");
+      const text = document.getElementById("introModalText");
+
+      if (type === "groom") {
+        kicker.textContent = "신부의 기록";
+        title.textContent = "신부가 소개하는 신랑";
+        text.textContent =
+`창수는 오래 보고 있으면 더 단단한 사람입니다.
+쉽게 말하지 않지만 늘 필요한 순간에 곁을 지켜주었고,
+제가 흔들릴 때마다 조용히 기준이 되어주었습니다.
+
+함께하는 시간이 쌓일수록 더 믿게 되는 사람,
+그래서 가장 먼저 떠오르는 제 편입니다.`;
+      } else {
+        kicker.textContent = "신랑의 기록";
+        title.textContent = "신랑이 소개하는 신부";
+        text.textContent =
+`보규는 작은 것들을 오래 기억하는 사람입니다.
+무심히 지나칠 수 있는 순간에도 의미를 발견하고,
+그 시간을 글처럼 사진처럼 소중히 남겨두는 사람입니다.
+
+함께 있으면 평범한 날도 조금 더 따뜻해지고,
+저는 그런 보규와 오래도록 함께하고 싶었습니다.`;
+      }
+
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    function closeIntroModal() {
+      const modal = document.getElementById("introModal");
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+    function switchGuideTab(tabName, button) {
+      const panels = document.querySelectorAll(".guide-panel");
+      const buttons = document.querySelectorAll(".guide-tab-btn");
+
+      panels.forEach((panel) => panel.classList.remove("active"));
+      buttons.forEach((btn) => btn.classList.remove("active"));
+
+      document.getElementById(`guide-${tabName}`).classList.add("active");
+      button.classList.add("active");
+    }
+
+    function toggleFood(button) {
+      const item = button.closest(".food-item");
       item.classList.toggle("open");
     }
 
@@ -1561,6 +1809,7 @@
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         closeContactModal();
+        closeIntroModal();
       }
     });
 
