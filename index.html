@@ -685,14 +685,14 @@
 
     .modal-sheet {
       position: relative;
-      width: calc(100% - 24px);
-      max-width: 430px;
-      max-height: calc(100vh - 32px);
-      margin: 16px auto;
+      width: calc(100% - 44px);
+      max-width: 390px;
+      max-height: calc(100dvh - 120px);
+      margin: 24px auto;
       background: var(--bg);
       border: 1px solid #a6a6a6;
       overflow: auto;
-      padding: 28px 18px 30px;
+      padding: 34px 28px 28px;
     }
 
     .close-x {
@@ -708,46 +708,52 @@
       cursor: pointer;
     }
 
-    .profile-layout {
-      padding-top: 48px;
-      min-height: 620px;
+        .profile-layout {
+      padding-top: 54px;
+      min-height: auto;
       display: flex;
       flex-direction: column;
     }
-
+    
     .profile-info {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
       font-size: var(--font-body);
       color: #747474;
-      line-height: 1.9;
-      padding: 0 8px;
+      line-height: 1.85;
+      padding: 0;
     }
-
+    
     .profile-info-row {
       display: grid;
-      grid-template-columns: 54px 1fr;
-      gap: 10px;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
     }
-
+    
     .profile-intro-title {
-      margin-top: 48px;
+      width: 100%;
+      max-width: 300px;
+      margin: 52px auto 16px;
       font-size: 15px;
       color: var(--text-strong);
-      margin-bottom: 14px;
     }
-
+    
     .profile-body {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
       font-size: var(--font-body);
-      line-height: 1.9;
+      line-height: 1.85;
       color: #6f6f6f;
       white-space: pre-line;
     }
-
+    
     .modal-bottom-btn {
-      margin-top: auto;
+      margin-top: 54px;
       text-align: center;
-      padding-top: 34px;
+      padding-top: 0;
     }
-
     /* 맛집 팝업 */
     .food-modal-content {
       padding-top: 36px;
@@ -811,13 +817,7 @@
     }
 
     .viewer-note-top {
-      position: absolute;
-      right: 36px;
-      top: 52px;
-      color: #555;
-      font-size: var(--font-body);
-      font-weight: 600;
-      z-index: 2;
+      display: none;
     }
 
     .viewer-image-wrap {
@@ -850,14 +850,15 @@
       height: 38px;
       border: 0;
       border-radius: 0;
-      background: rgba(255,255,255,0.84);
+      background: transparent;
       color: var(--accent);
-      font-size: 28px;
+      font-size: 34px;
       line-height: 1;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-shadow: 0 1px 6px rgba(255,255,255,0.8);
     }
 
     .viewer-prev {
@@ -1320,7 +1321,7 @@
 
     <div class="viewer-sheet">
       <button class="viewer-close" onclick="closeViewer()">×</button>
-      <div class="viewer-note-top">전체화면 보기 닫기</div>
+
 
       <div class="viewer-image-wrap">
         <button class="viewer-nav viewer-prev" onclick="moveViewer(-1)">‹</button>
