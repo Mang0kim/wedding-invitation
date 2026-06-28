@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>김창수 · 최보규의 결혼식에 초대합니다</title>
 
   <meta property="og:title" content="김창수 · 최보규의 결혼식에 초대합니다" />
@@ -14,13 +15,20 @@
       --bg: #f6f5f4;
       --card: #f1f0f0;
       --white: #ffffff;
-      --text: #5f5f5f;
-      --text-strong: #484848;
+      --text: #6f6f6f;
+      --text-strong: #555555;
       --muted: #8a8a8a;
       --line: #dedcdc;
       --accent: #e24433;
       --accent-dark: #cf3d2d;
-      --radius-lg: 22px;
+
+      /* Font rule */
+      --font-kicker: 11px;
+      --font-title: 18px;
+      --font-body: 13px;
+      --font-small: 11px;
+      --font-button: 12px;
+      --font-name: 16px;
     }
 
     * {
@@ -35,9 +43,11 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: var(--font-body);
+      font-weight: 400;
       word-break: keep-all;
-      font-size: 14px;
+      letter-spacing: -0.02em;
     }
 
     body.modal-open {
@@ -60,10 +70,6 @@
       padding: 0 0 100px;
     }
 
-    /*
-      구역 간 간격 확대:
-      기존보다 훨씬 넓게 분리되도록 section 상단 여백을 크게 둠
-    */
     section {
       padding: 220px 22px 0;
     }
@@ -75,7 +81,7 @@
     .kicker {
       text-align: center;
       color: var(--accent);
-      font-size: 11px;
+      font-size: var(--font-kicker);
       font-weight: 500;
       margin-bottom: 20px;
       letter-spacing: -0.01em;
@@ -84,29 +90,47 @@
     .title {
       text-align: center;
       color: var(--text-strong);
-      font-size: 20px;
+      font-size: var(--font-title);
       font-weight: 300;
-      line-height: 1.45;
+      line-height: 1.6;
       margin: 0 0 24px;
+      letter-spacing: -0.02em;
     }
 
     .desc {
       text-align: center;
-      font-size: 14px;
-      line-height: 1.85;
-      color: var(--text);
+      font-size: var(--font-body);
+      line-height: 2;
+      color: #777777;
       margin: 0 auto;
+      font-weight: 400;
+      letter-spacing: -0.01em;
     }
 
-    .soft-card {
-      background: var(--card);
-      border-radius: var(--radius-lg);
+    .pill-btn {
+      border: 0;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: var(--font-button);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 14px rgba(226, 68, 51, 0.16);
+    }
+
+    .pill-btn.small {
+      padding: 8px 15px;
+      font-size: var(--font-small);
     }
 
     /* 1. 인트로 */
     .intro-message {
       max-width: 310px;
       margin: 0 auto 44px;
+      font-size: var(--font-body);
+      line-height: 2.1;
+      color: #787878;
     }
 
     .couple-grid {
@@ -123,7 +147,7 @@
     .couple-photo {
       width: 100%;
       aspect-ratio: 1 / 1.08;
-      background: var(--card);
+      background: #eceaea;
       overflow: hidden;
       position: relative;
     }
@@ -148,38 +172,22 @@
       align-items: center;
       justify-content: center;
       color: #8f8f8f;
-      font-size: 13px;
+      font-size: var(--font-body);
     }
 
     .couple-family {
       margin-top: 18px;
-      font-size: 13px;
-      line-height: 1.6;
-      color: #7a7a7a;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #8a8a8a;
+      font-weight: 400;
     }
 
     .couple-name {
-      margin-top: 6px;
-      font-size: 17px;
+      margin-top: 8px;
+      font-size: var(--font-name);
       font-weight: 700;
-      color: var(--text-strong);
-    }
-
-    .pill-btn {
-      border: 0;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 5px 14px rgba(226, 68, 51, 0.16);
-    }
-
-    .pill-btn.small {
-      padding: 8px 15px;
-      font-size: 11px;
+      color: #4f4f4f;
     }
 
     .couple-card .pill-btn {
@@ -190,10 +198,10 @@
     .date-line {
       text-align: center;
       color: var(--text-strong);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 400;
-      margin-bottom: 26px;
-      line-height: 1.6;
+      margin-bottom: 30px;
+      line-height: 1.7;
     }
 
     .date-card {
@@ -211,21 +219,13 @@
       margin-bottom: 16px;
     }
 
-    .calendar-month {
-      text-align: center;
-      font-size: 12px;
-      color: var(--text);
-      letter-spacing: 0.08em;
-      margin-bottom: 18px;
-    }
-
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 8px;
       max-width: 280px;
       margin: 0 auto;
-      font-size: 11px;
+      font-size: var(--font-small);
       color: #777;
     }
 
@@ -238,7 +238,7 @@
 
     .calendar-grid .day-name {
       color: #aaa;
-      font-size: 9px;
+      font-size: 10px;
       height: 18px;
     }
 
@@ -247,6 +247,9 @@
     }
 
     .calendar-grid .wedding-day {
+      width: 26px;
+      height: 26px;
+      margin: auto;
       background: var(--accent);
       color: #fff;
       border-radius: 50%;
@@ -273,13 +276,13 @@
     }
 
     .day-stat-label {
-      font-size: 12px;
+      font-size: var(--font-small);
       color: #7a7a7a;
       margin-bottom: 5px;
     }
 
     .day-stat-value {
-      font-size: 15px;
+      font-size: var(--font-body);
       font-weight: 700;
       color: var(--accent);
       letter-spacing: -0.02em;
@@ -289,8 +292,8 @@
     .location-address {
       text-align: center;
       color: var(--text-strong);
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 15px;
+      line-height: 1.6;
       margin-bottom: 22px;
     }
 
@@ -309,7 +312,7 @@
       align-items: center;
       justify-content: center;
       color: #7f7f7f;
-      font-size: 15px;
+      font-size: var(--font-body);
     }
 
     .map-links {
@@ -329,7 +332,7 @@
       justify-content: center;
       gap: 7px;
       text-decoration: none;
-      font-size: 13px;
+      font-size: var(--font-body);
       background: transparent;
     }
 
@@ -359,7 +362,7 @@
 
     .guide-tabs {
       background: var(--card);
-      border-radius: 18px;
+      border-radius: 0;
       padding: 6px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -373,9 +376,9 @@
       border: 0;
       background: transparent;
       color: #757575;
-      font-size: 13px;
-      height: 46px;
-      border-radius: 14px;
+      font-size: var(--font-body);
+      height: 44px;
+      border-radius: 0;
       cursor: pointer;
     }
 
@@ -389,7 +392,7 @@
       min-height: 88px;
       display: none;
       text-align: center;
-      font-size: 13px;
+      font-size: var(--font-body);
       line-height: 1.75;
       color: #666;
       padding: 10px 8px 0;
@@ -417,9 +420,9 @@
     .gallery-shell {
       max-width: 350px;
       margin: 0 auto;
-      background: var(--card);
-      border-radius: 18px;
-      padding: 10px;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
     }
 
     .gallery-grid {
@@ -435,7 +438,7 @@
     .gallery-thumb {
       width: 100%;
       background: #dcdcdc;
-      border-radius: 16px;
+      border-radius: 0;
       overflow: hidden;
       cursor: pointer;
       position: relative;
@@ -455,7 +458,7 @@
       align-items: center;
       justify-content: center;
       color: #868686;
-      font-size: 13px;
+      font-size: var(--font-body);
       background: #dcdcdc;
     }
 
@@ -465,38 +468,40 @@
 
     .fig-caption {
       margin-top: 8px;
-      font-size: 12px;
+      font-size: var(--font-small);
       color: #7d7d7d;
-      padding-left: 10px;
+      padding-left: 0;
     }
 
     .gallery-more {
       text-align: center;
-      padding: 18px 0 8px;
+      padding: 22px 0 8px;
     }
 
     .video-shell {
       max-width: 350px;
       margin: 16px auto 0;
-      background: var(--card);
-      border-radius: 18px;
+      background: transparent;
+      border-radius: 0;
       overflow: hidden;
     }
 
     .video-box {
       aspect-ratio: 1.2 / 1;
       background: #dddddd;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #6f6f6f;
-      font-size: 16px;
+      font-size: var(--font-body);
     }
 
     .video-box video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 0;
     }
 
     /* 7. 우리의 이야기 */
@@ -504,19 +509,19 @@
       max-width: 350px;
       margin: 0 auto;
       background: var(--card);
-      border-radius: 18px;
+      border-radius: 0;
       min-height: 190px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #6f6f6f;
-      font-size: 16px;
+      font-size: var(--font-body);
     }
 
     /* 8. 계좌 */
     .account-subtitle {
       text-align: center;
-      font-size: 14px;
+      font-size: var(--font-body);
       color: #7a7a7a;
       margin: -6px 0 22px;
       line-height: 1.6;
@@ -529,7 +534,7 @@
 
     .account-tabs {
       background: var(--card);
-      border-radius: 18px;
+      border-radius: 0;
       padding: 6px;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -538,10 +543,10 @@
 
     .account-tab {
       border: 0;
-      height: 48px;
+      height: 46px;
       background: transparent;
-      border-radius: 14px;
-      font-size: 14px;
+      border-radius: 0;
+      font-size: var(--font-body);
       color: #777;
       cursor: pointer;
     }
@@ -562,7 +567,7 @@
 
     .account-person {
       background: var(--card);
-      border-radius: 16px;
+      border-radius: 0;
       padding: 18px 16px 16px;
       margin-bottom: 14px;
     }
@@ -581,12 +586,12 @@
       gap: 10px;
       flex-wrap: wrap;
       color: #6d6d6d;
-      font-size: 13px;
+      font-size: var(--font-body);
     }
 
     .person-name-line strong {
       color: var(--text-strong);
-      font-size: 15px;
+      font-size: 14px;
     }
 
     .person-actions {
@@ -596,24 +601,25 @@
     }
 
     .icon-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+      width: auto;
+      height: auto;
+      border-radius: 0;
       border: 0;
-      background: #f7f7f7;
+      background: transparent;
       color: #666;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 15px;
       cursor: pointer;
+      padding: 0 2px;
     }
 
     .account-number-row {
       background: #f6f5f5;
-      border-radius: 10px;
-      min-height: 50px;
+      border-radius: 0;
+      min-height: 48px;
       display: grid;
       grid-template-columns: 78px 1fr 34px;
       align-items: center;
@@ -623,11 +629,11 @@
     }
 
     .bank-name {
-      font-size: 13px;
+      font-size: var(--font-body);
     }
 
     .account-number {
-      font-size: 13px;
+      font-size: var(--font-body);
       overflow-wrap: anywhere;
     }
 
@@ -635,7 +641,7 @@
       border: 0;
       background: transparent;
       color: #666;
-      font-size: 18px;
+      font-size: 16px;
       cursor: pointer;
       padding: 0;
     }
@@ -647,16 +653,16 @@
 
     .closing-heart {
       text-align: center;
-      font-size: 24px;
-      margin-bottom: 16px;
+      font-size: var(--font-body);
+      margin-bottom: 14px;
     }
 
     .closing-text {
       text-align: center;
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: var(--font-body);
+      line-height: 1.9;
       color: var(--text-strong);
-      font-weight: 300;
+      font-weight: 400;
     }
 
     /* 모달 공통 */
@@ -709,12 +715,8 @@
       flex-direction: column;
     }
 
-    /*
-      신랑/신부 소개 팝업:
-      사진 영역 제거, 텍스트 정보만 상단에 배치
-    */
     .profile-info {
-      font-size: 14px;
+      font-size: var(--font-body);
       color: #747474;
       line-height: 1.9;
       padding: 0 8px;
@@ -728,13 +730,13 @@
 
     .profile-intro-title {
       margin-top: 48px;
-      font-size: 17px;
+      font-size: 15px;
       color: var(--text-strong);
       margin-bottom: 14px;
     }
 
     .profile-body {
-      font-size: 14px;
+      font-size: var(--font-body);
       line-height: 1.9;
       color: #6f6f6f;
       white-space: pre-line;
@@ -753,7 +755,7 @@
 
     .food-modal-title {
       text-align: center;
-      font-size: 22px;
+      font-size: var(--font-title);
       color: var(--text-strong);
       margin-bottom: 16px;
       font-weight: 300;
@@ -761,7 +763,7 @@
 
     .food-modal-desc {
       text-align: center;
-      font-size: 14px;
+      font-size: var(--font-body);
       line-height: 1.8;
       color: #727272;
       margin-bottom: 26px;
@@ -774,9 +776,9 @@
 
     .food-basic-item {
       background: var(--card);
-      border-radius: 14px;
+      border-radius: 0;
       padding: 16px;
-      font-size: 14px;
+      font-size: var(--font-body);
       line-height: 1.8;
       color: #666;
     }
@@ -813,7 +815,7 @@
       right: 36px;
       top: 52px;
       color: #555;
-      font-size: 14px;
+      font-size: var(--font-body);
       font-weight: 600;
       z-index: 2;
     }
@@ -821,7 +823,7 @@
     .viewer-image-wrap {
       flex: 1;
       background: #ddd;
-      border-radius: 14px;
+      border-radius: 0;
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -847,7 +849,7 @@
       width: 38px;
       height: 38px;
       border: 0;
-      border-radius: 50%;
+      border-radius: 0;
       background: rgba(255,255,255,0.84);
       color: var(--accent);
       font-size: 28px;
@@ -870,7 +872,7 @@
       padding: 12px 6px 2px;
       text-align: center;
       color: #666;
-      font-size: 13px;
+      font-size: var(--font-body);
     }
 
     @media (max-width: 380px) {
@@ -883,19 +885,15 @@
       }
 
       .title {
-        font-size: 19px;
+        font-size: 17px;
       }
 
       .desc {
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .guide-tab {
         font-size: 12px;
-      }
-
-      .closing-text {
-        font-size: 17px;
       }
     }
   </style>
@@ -944,28 +942,27 @@
 
       <div class="date-card">
         <div class="calendar-box">
-          <div class="calendar-month">2026 OCTOBER</div>
           <div class="calendar-grid">
-            <div class="day-name">SUN</div>
-            <div class="day-name">MON</div>
-            <div class="day-name">TUE</div>
-            <div class="day-name">WED</div>
-            <div class="day-name">THU</div>
-            <div class="day-name">FRI</div>
-            <div class="day-name">SAT</div>
+            <div class="day-name">월</div>
+            <div class="day-name">화</div>
+            <div class="day-name">수</div>
+            <div class="day-name">목</div>
+            <div class="day-name">금</div>
+            <div class="day-name">토</div>
+            <div class="day-name">일</div>
 
-            <div class="empty">.</div>
             <div class="empty">.</div>
             <div class="empty">.</div>
             <div class="empty">.</div>
             <div>1</div>
             <div>2</div>
             <div class="wedding-day">3</div>
+            <div>4</div>
 
-            <div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
-            <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div>
-            <div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div>
-            <div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div>
+            <div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
+            <div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div>
+            <div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+            <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div class="empty">.</div>
           </div>
         </div>
 
@@ -995,15 +992,15 @@
       <div class="map-box">
         <div class="map-image">지도</div>
         <div class="map-links">
-          <a class="map-link" href="https://map.naver.com/p/search/호텔농심%20야외정원" target="_blank" rel="noopener">
+          <a class="map-link" href="https://map.naver.com/p/search/호텔농심" target="_blank" rel="noopener">
             <img class="map-logo" src="naver-logo.png" alt="네이버" onerror="handleLogoError(this, 'N')" />
             <span>네이버</span>
           </a>
-          <a class="map-link" href="tmap://route?goalname=호텔농심%20야외정원&goalx=129.0824&goaly=35.2206">
+          <a class="map-link" href="https://www.tmap.co.kr/search?searchKeyword=호텔농심" target="_blank" rel="noopener">
             <img class="map-logo" src="tmap-logo.png" alt="티맵" onerror="handleLogoError(this, 'T')" />
             <span>티맵</span>
           </a>
-          <a class="map-link" href="https://map.kakao.com/link/search/호텔농심%20야외정원" target="_blank" rel="noopener">
+          <a class="map-link" href="https://map.kakao.com/link/search/호텔농심" target="_blank" rel="noopener">
             <img class="map-logo" src="kakao-logo.png" alt="카카오" onerror="handleLogoError(this, 'K')" />
             <span>카카오</span>
           </a>
@@ -1029,8 +1026,7 @@
 
         <div class="guide-content" id="guide-rain">
           가을 하늘 아래에서 진행되는 야외예식입니다.<br />
-          우천 시에는 호텔 본관의 실내 홀에서 예식이 진행됩니다.<br />
-          화창한 날씨를 위해 함께 기도해주세요!
+          우천 시에는 호텔 본관의 실내 홀에서 예식이 진행됩니다.
         </div>
 
         <div class="guide-content" id="guide-flower">
@@ -1337,7 +1333,6 @@
   </div>
 
   <script>
-    /* 날짜 계산 */
     const MEET_DATE = "2018-10-13";
     const WEDDING_DATE = "2026-10-03";
 
@@ -1359,7 +1354,6 @@
       document.getElementById("weddingDayCount").textContent = "D-" + String(Math.max(weddingDiff, 0)).padStart(4, "0");
     }
 
-    /* 이미지 에러 처리 */
     function handleImageError(img) {
       img.style.display = "none";
       img.parentElement.classList.add("empty");
@@ -1378,7 +1372,6 @@
       img.replaceWith(fallback);
     }
 
-    /* body 스크롤 잠금 */
     function openModalBase(id) {
       document.getElementById(id).classList.add("show");
       document.body.classList.add("modal-open");
@@ -1392,7 +1385,6 @@
       }
     }
 
-    /* 신랑/신부 소개 모달 */
     const profileData = {
       groom: {
         info: `
@@ -1428,7 +1420,6 @@
       closeModalBase("profileModal");
     }
 
-    /* 맛집 기본 팝업 */
     function openFoodModal() {
       openModalBase("foodModal");
     }
@@ -1437,7 +1428,6 @@
       closeModalBase("foodModal");
     }
 
-    /* 예식안내 탭 */
     function switchGuide(type, btn) {
       document.querySelectorAll(".guide-tab").forEach(tab => tab.classList.remove("active"));
       document.querySelectorAll(".guide-content").forEach(panel => panel.classList.remove("active"));
@@ -1446,13 +1436,11 @@
       document.getElementById("guide-" + type).classList.add("active");
     }
 
-    /* 사진 더보기 */
     function showMorePhotos() {
       document.querySelectorAll(".extra-photo").forEach(item => item.classList.remove("hidden"));
       document.getElementById("galleryMoreWrap").style.display = "none";
     }
 
-    /* 사진 전체화면 */
     const galleryImages = [
       { src: "photo01.jpg", caption: "Fig. 01" },
       { src: "photo02.jpg", caption: "Fig. 02" },
@@ -1489,7 +1477,6 @@
       document.getElementById("viewerCaption").textContent = image.caption;
     }
 
-    /* 계좌 탭 */
     function switchAccountTab(type, btn) {
       document.querySelectorAll(".account-tab").forEach(tab => tab.classList.remove("active"));
       document.querySelectorAll(".account-panel").forEach(panel => panel.classList.remove("active"));
@@ -1498,14 +1485,12 @@
       document.getElementById("account-" + type).classList.add("active");
     }
 
-    /* 복사 */
     function copyText(text) {
       navigator.clipboard.writeText(text)
         .then(() => alert("복사되었습니다."))
         .catch(() => alert("복사에 실패했습니다."));
     }
 
-    /* ESC 닫기 */
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         closeProfileModal();
