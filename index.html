@@ -20,15 +20,16 @@
       --muted: #8a8a8a;
       --line: #dedcdc;
       --accent: #e24433;
-      --accent-dark: #cf3d2d;
+      --accent-dark: #bf3426;
+      --shadow: rgba(226, 68, 51, 0.18);
 
-      /* Font rule */
-      --font-kicker: 11px;
-      --font-title: 18px;
-      --font-body: 13px;
-      --font-small: 11px;
-      --font-button: 12px;
-      --font-name: 16px;
+      /* font rule */
+      --font-kicker: 12px;
+      --font-title: 19px;
+      --font-body: 14px;
+      --font-small: 12px;
+      --font-button: 13px;
+      --font-name: 17px;
     }
 
     * {
@@ -78,6 +79,58 @@
       padding-top: 72px;
     }
 
+    /*
+      Apple-style scroll reveal
+      - 스크롤해서 섹션이 화면에 들어오면
+      - 아래에서 올라오고
+      - 살짝 확대/블러가 풀리면서 등장
+    */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(72px) scale(0.96);
+      filter: blur(10px);
+      transition:
+        opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .scroll-reveal.reveal-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    .reveal-child {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    .reveal-visible .reveal-child {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .scroll-reveal,
+      .reveal-child {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+    }
+
     .kicker {
       text-align: center;
       color: var(--accent);
@@ -107,26 +160,33 @@
       letter-spacing: -0.01em;
     }
 
-    .pill-btn {
-      border: 0;
+    /* 공통 버튼 */
+    .btn-rect {
+      border: 1px solid var(--accent-dark);
       background: var(--accent);
       color: #fff;
-      border-radius: 999px;
+      border-radius: 0;
       padding: 10px 18px;
       font-size: var(--font-button);
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 5px 14px rgba(226, 68, 51, 0.16);
+      box-shadow: 0 4px 0 var(--accent-dark), 0 8px 16px var(--shadow);
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
     }
 
-    .pill-btn.small {
-      padding: 8px 15px;
+    .btn-rect:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--accent-dark), 0 4px 10px var(--shadow);
+    }
+
+    .btn-rect.small {
+      padding: 8px 14px;
       font-size: var(--font-small);
     }
 
     /* 1. 인트로 */
     .intro-message {
-      max-width: 310px;
+      max-width: 320px;
       margin: 0 auto 44px;
       font-size: var(--font-body);
       line-height: 2.1;
@@ -177,7 +237,7 @@
 
     .couple-family {
       margin-top: 18px;
-      font-size: 12px;
+      font-size: 13px;
       line-height: 1.7;
       color: #8a8a8a;
       font-weight: 400;
@@ -190,7 +250,7 @@
       color: #4f4f4f;
     }
 
-    .couple-card .pill-btn {
+    .couple-card .btn-rect {
       margin-top: 16px;
     }
 
@@ -198,7 +258,7 @@
     .date-line {
       text-align: center;
       color: var(--text-strong);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 400;
       margin-bottom: 30px;
       line-height: 1.7;
@@ -238,7 +298,7 @@
 
     .calendar-grid .day-name {
       color: #aaa;
-      font-size: 10px;
+      font-size: 11px;
       height: 18px;
     }
 
@@ -282,7 +342,7 @@
     }
 
     .day-stat-value {
-      font-size: var(--font-body);
+      font-size: 13px;
       font-weight: 700;
       color: var(--accent);
       letter-spacing: -0.02em;
@@ -292,7 +352,7 @@
     .location-address {
       text-align: center;
       color: var(--text-strong);
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.6;
       margin-bottom: 22px;
     }
@@ -366,26 +426,34 @@
       padding: 6px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
+      gap: 8px;
       margin-bottom: 26px;
       align-items: center;
     }
 
     .guide-tab {
       position: relative;
-      border: 0;
-      background: transparent;
+      border: 1px solid #d8d6d6;
+      background: #f8f7f7;
       color: #757575;
       font-size: var(--font-body);
       height: 44px;
       border-radius: 0;
       cursor: pointer;
+      box-shadow: 0 3px 0 #d2d0d0;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+
+    .guide-tab:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #d2d0d0;
     }
 
     .guide-tab.active {
-      background: #f8f7f7;
+      background: #fff;
       color: var(--accent);
       font-weight: 700;
+      box-shadow: 0 4px 0 #dedada;
     }
 
     .guide-content {
@@ -408,7 +476,7 @@
     }
 
     .food-section .desc {
-      max-width: 310px;
+      max-width: 320px;
       margin-bottom: 24px;
     }
 
@@ -504,20 +572,6 @@
       border-radius: 0;
     }
 
-    /* 7. 우리의 이야기 */
-    .story-placeholder {
-      max-width: 350px;
-      margin: 0 auto;
-      background: var(--card);
-      border-radius: 0;
-      min-height: 190px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6f6f6f;
-      font-size: var(--font-body);
-    }
-
     /* 8. 계좌 */
     .account-subtitle {
       text-align: center;
@@ -538,23 +592,32 @@
       padding: 6px;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 8px;
       margin-bottom: 22px;
     }
 
     .account-tab {
-      border: 0;
+      border: 1px solid #d8d6d6;
       height: 46px;
-      background: transparent;
+      background: #f8f7f7;
       border-radius: 0;
       font-size: var(--font-body);
       color: #777;
       cursor: pointer;
+      box-shadow: 0 3px 0 #d2d0d0;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+
+    .account-tab:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #d2d0d0;
     }
 
     .account-tab.active {
-      background: #f8f7f7;
+      background: #fff;
       color: var(--accent);
       font-weight: 700;
+      box-shadow: 0 4px 0 #dedada;
     }
 
     .account-panel {
@@ -591,37 +654,42 @@
 
     .person-name-line strong {
       color: var(--text-strong);
-      font-size: 14px;
+      font-size: 15px;
     }
 
     .person-actions {
       display: flex;
       gap: 10px;
       flex-shrink: 0;
+      align-items: center;
     }
 
     .icon-btn {
-      width: auto;
-      height: auto;
-      border-radius: 0;
-      border: 0;
-      background: transparent;
-      color: #666;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: transparent;
+      border: 0;
+      padding: 0;
       text-decoration: none;
-      font-size: 15px;
       cursor: pointer;
-      padding: 0 2px;
+    }
+
+    .icon-btn img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
     }
 
     .account-number-row {
       background: #f6f5f5;
       border-radius: 0;
-      min-height: 48px;
+      min-height: 52px;
       display: grid;
-      grid-template-columns: 78px 1fr 34px;
+      grid-template-columns: 78px 1fr auto;
       align-items: center;
       gap: 10px;
       padding: 0 12px;
@@ -637,13 +705,22 @@
       overflow-wrap: anywhere;
     }
 
-    .copy-icon-btn {
-      border: 0;
-      background: transparent;
-      color: #666;
-      font-size: 16px;
+    .copy-text-btn {
+      border: 1px solid var(--accent-dark);
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 10px;
+      border-radius: 0;
       cursor: pointer;
-      padding: 0;
+      box-shadow: 0 3px 0 var(--accent-dark);
+      white-space: nowrap;
+    }
+
+    .copy-text-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--accent-dark);
     }
 
     /* 9. 클로징 */
@@ -654,7 +731,7 @@
     .closing-heart {
       text-align: center;
       font-size: var(--font-body);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .closing-text {
@@ -708,52 +785,65 @@
       cursor: pointer;
     }
 
-        .profile-layout {
+    .profile-layout {
       padding-top: 54px;
       min-height: auto;
       display: flex;
       flex-direction: column;
     }
-    
+
     .profile-info {
       width: 100%;
       max-width: 300px;
       margin: 0 auto;
       font-size: var(--font-body);
       color: #747474;
-      line-height: 1.85;
+      line-height: 1.9;
       padding: 0;
     }
-    
+
     .profile-info-row {
       display: grid;
-      grid-template-columns: 58px 1fr;
+      grid-template-columns: 82px 1fr;
       gap: 18px;
+      align-items: start;
+      margin-bottom: 12px;
     }
-    
+
+    .profile-label {
+      color: #6d6d6d;
+      font-size: var(--font-body);
+    }
+
+    .profile-value {
+      color: #6d6d6d;
+      font-size: var(--font-body);
+    }
+
     .profile-intro-title {
       width: 100%;
       max-width: 300px;
-      margin: 52px auto 16px;
-      font-size: 15px;
+      margin: 42px auto 16px;
+      font-size: 16px;
       color: var(--text-strong);
     }
-    
+
     .profile-body {
       width: 100%;
       max-width: 300px;
       margin: 0 auto;
       font-size: var(--font-body);
-      line-height: 1.85;
+      line-height: 1.9;
       color: #6f6f6f;
       white-space: pre-line;
     }
-    
+
     .modal-bottom-btn {
-      margin-top: 54px;
+      margin-top: 36px;
       text-align: center;
       padding-top: 0;
     }
+
     /* 맛집 팝업 */
     .food-modal-content {
       padding-top: 36px;
@@ -794,7 +884,7 @@
       position: relative;
       width: calc(100% - 12px);
       max-width: 430px;
-      height: calc(100vh - 16px);
+      height: calc(100dvh - 16px);
       margin: 8px auto;
       background: rgba(255,255,255,0.96);
       border: 1px solid #a5a5a5;
@@ -816,20 +906,16 @@
       z-index: 2;
     }
 
-    .viewer-note-top {
-      display: none;
-    }
-
     .viewer-image-wrap {
       flex: 1;
       background: #ddd;
-      border-radius: 0;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       margin-top: 8px;
+      touch-action: pan-y;
     }
 
     .viewer-image-wrap img {
@@ -837,22 +923,22 @@
       height: 100%;
       object-fit: contain;
       background: #ddd;
-      touch-action: pan-y;
       user-select: none;
       -webkit-user-drag: none;
+      pointer-events: none;
     }
 
     .viewer-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       border: 0;
       border-radius: 0;
       background: transparent;
       color: var(--accent);
-      font-size: 34px;
+      font-size: 36px;
       line-height: 1;
       cursor: pointer;
       display: flex;
@@ -870,10 +956,7 @@
     }
 
     .viewer-caption {
-      padding: 12px 6px 2px;
-      text-align: center;
-      color: #666;
-      font-size: var(--font-body);
+      display: none;
     }
 
     @media (max-width: 380px) {
@@ -886,15 +969,20 @@
       }
 
       .title {
-        font-size: 17px;
+        font-size: 18px;
       }
 
       .desc {
-        font-size: 12px;
+        font-size: 13px;
       }
 
-      .guide-tab {
-        font-size: 12px;
+      .guide-tab,
+      .account-tab {
+        font-size: 13px;
+      }
+
+      .profile-info-row {
+        grid-template-columns: 76px 1fr;
       }
     }
   </style>
@@ -904,10 +992,9 @@
   <div class="wrap">
 
     <!-- 1. 인트로 -->
-    <section class="intro-section">
-      <div class="kicker">여는 글</div>
-      <h2 class="title">마음을 담아 초대드립니다</h2>
-      <p class="desc intro-message">
+    <section class="intro-section scroll-reveal">
+      <h2 class="title reveal-child" style="--delay: 0ms;">마음을 담아 초대드립니다</h2>
+      <p class="desc intro-message reveal-child" style="--delay: 120ms;">
         9년 동안 함께 쌓아온 수많은 기억들 위에<br />
         오래 꺼내 보고 싶은 하루를 남기려 합니다.<br /><br />
         저희에게 행복한 기억으로 남을 10월 3일,<br />
@@ -915,14 +1002,14 @@
         함께 웃고 있는 여러분이 계셨으면 좋겠습니다.
       </p>
 
-      <div class="couple-grid">
+      <div class="couple-grid reveal-child" style="--delay: 240ms;">
         <div class="couple-card">
           <div class="couple-photo fallback-box" data-fallback="창수사진">
             <img src="groom.jpg" alt="신랑 김창수 사진" onerror="handleImageError(this)" />
           </div>
           <div class="couple-family">김상두 · 윤옥례의 아들</div>
           <div class="couple-name">김창수</div>
-          <button class="pill-btn small" onclick="openProfileModal('groom')">신랑을 소개합니다</button>
+          <button class="btn-rect small" onclick="openProfileModal('groom')">신랑을 소개합니다</button>
         </div>
 
         <div class="couple-card">
@@ -931,17 +1018,17 @@
           </div>
           <div class="couple-family">최동영 · 박지원의 딸</div>
           <div class="couple-name">최보규</div>
-          <button class="pill-btn small" onclick="openProfileModal('bride')">신부를 소개합니다</button>
+          <button class="btn-rect small" onclick="openProfileModal('bride')">신부를 소개합니다</button>
         </div>
       </div>
     </section>
 
     <!-- 2. 예식일자 -->
-    <section>
-      <div class="kicker">예식일자</div>
-      <div class="date-line">2026년 10월 3일 토요일 오후 1시</div>
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">예식일자</div>
+      <div class="date-line reveal-child" style="--delay: 100ms;">2026년 10월 3일 토요일 오후 1시</div>
 
-      <div class="date-card">
+      <div class="date-card reveal-child" style="--delay: 220ms;">
         <div class="calendar-box">
           <div class="calendar-grid">
             <div class="day-name">월</div>
@@ -983,14 +1070,14 @@
     </section>
 
     <!-- 3. 오시는 길 -->
-    <section>
-      <div class="kicker">모시는 곳</div>
-      <div class="location-address">
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">모시는 곳</div>
+      <div class="location-address reveal-child" style="--delay: 100ms;">
         부산시 동래구 금강공원로 20번길 23<br />
         호텔농심 야외정원
       </div>
 
-      <div class="map-box">
+      <div class="map-box reveal-child" style="--delay: 220ms;">
         <div class="map-image">지도</div>
         <div class="map-links">
           <a class="map-link" href="https://map.naver.com/p/search/호텔농심" target="_blank" rel="noopener">
@@ -1010,10 +1097,10 @@
     </section>
 
     <!-- 4. 예식안내 -->
-    <section>
-      <div class="kicker">예식안내</div>
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">예식안내</div>
 
-      <div class="guide-wrap">
+      <div class="guide-wrap reveal-child" style="--delay: 160ms;">
         <div class="guide-tabs">
           <button class="guide-tab active" data-guide="meal" onclick="switchGuide('meal', this)">식사안내</button>
           <button class="guide-tab" data-guide="rain" onclick="switchGuide('rain', this)">우천안내</button>
@@ -1038,25 +1125,25 @@
     </section>
 
     <!-- 5. 맛집지도 -->
-    <section class="food-section">
-      <div class="kicker">○ ○ ○ ○</div>
-      <h2 class="title">보규❤️창수의 맛집 지도</h2>
-      <p class="desc">
+    <section class="food-section scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">○ ○ ○ ○</div>
+      <h2 class="title reveal-child" style="--delay: 100ms;">보규❤️창수의 맛집 지도</h2>
+      <p class="desc reveal-child" style="--delay: 200ms;">
         부산까지 먼 걸음을 해주신 감사한 분들을 위해<br />
         나누고 싶은 부산의 맛집 목록을 준비했습니다.
       </p>
 
-      <div class="food-center-btn">
-        <button class="pill-btn" onclick="openFoodModal()">맛집 목록 둘러보기</button>
+      <div class="food-center-btn reveal-child" style="--delay: 320ms;">
+        <button class="btn-rect" onclick="openFoodModal()">맛집 목록 둘러보기</button>
       </div>
     </section>
 
     <!-- 6. 사진첩 / 영상 -->
-    <section>
-      <div class="kicker">사진첩</div>
-      <h2 class="title">우리의 기록</h2>
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">사진첩</div>
+      <h2 class="title reveal-child" style="--delay: 100ms;">우리의 기록</h2>
 
-      <div class="gallery-shell">
+      <div class="gallery-shell reveal-child" style="--delay: 220ms;">
         <div class="gallery-grid" id="galleryGrid">
           <div class="gallery-item">
             <div class="gallery-thumb thumb-sm fallback-box" data-fallback="사진 01" onclick="openViewer(0)">
@@ -1116,11 +1203,11 @@
         </div>
 
         <div class="gallery-more" id="galleryMoreWrap">
-          <button class="pill-btn small" onclick="showMorePhotos()">더보기&nbsp;&nbsp;+</button>
+          <button class="btn-rect small" onclick="showMorePhotos()">더보기 +</button>
         </div>
       </div>
 
-      <div class="video-shell">
+      <div class="video-shell reveal-child" style="--delay: 340ms;">
         <div class="video-box fallback-box" data-fallback="영상">
           <video controls playsinline onerror="handleMediaError(this)">
             <source src="wedding-film.mp4" type="video/mp4" />
@@ -1129,23 +1216,13 @@
       </div>
     </section>
 
-    <!-- 7. 우리의 이야기 -->
-    <section>
-      <div class="kicker">우리의 이야기</div>
-      <h2 class="title">우리의 이야기</h2>
-
-      <div class="story-placeholder">
-        우리의 이야기가 들어갈 공간
-      </div>
-    </section>
-
     <!-- 8. 계좌 -->
-    <section>
-      <div class="kicker">마음 전하실 곳</div>
-      <h2 class="title">마음 전하실 곳</h2>
-      <div class="account-subtitle">전해주시는 따뜻한 마음은 소중히 받겠습니다</div>
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">마음 전하실 곳</div>
+      <h2 class="title reveal-child" style="--delay: 100ms;">마음 전하실 곳</h2>
+      <div class="account-subtitle reveal-child" style="--delay: 180ms;">전해주시는 따뜻한 마음은 소중히 받겠습니다.</div>
 
-      <div class="account-wrap">
+      <div class="account-wrap reveal-child" style="--delay: 280ms;">
         <div class="account-tabs">
           <button class="account-tab active" onclick="switchAccountTab('groom', this)">신랑측</button>
           <button class="account-tab" onclick="switchAccountTab('bride', this)">신부측</button>
@@ -1158,14 +1235,18 @@
                 <span>신랑</span><strong>김창수</strong>
               </div>
               <div class="person-actions">
-                <a class="icon-btn" href="tel:01000000000">☎</a>
-                <a class="icon-btn" href="sms:01000000000">✉</a>
+                <a class="icon-btn" href="tel:01000000000">
+                  <img src="phone-icon.png" alt="전화" />
+                </a>
+                <a class="icon-btn" href="sms:01000000000">
+                  <img src="message-icon.png" alt="메시지" />
+                </a>
               </div>
             </div>
             <div class="account-number-row">
               <div class="bank-name">국민은행</div>
               <div class="account-number">000000-00-000000</div>
-              <button class="copy-icon-btn" onclick="copyText('국민은행 000000-00-000000')">📋</button>
+              <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000000')">복사하기</button>
             </div>
           </div>
 
@@ -1175,14 +1256,18 @@
                 <span>아버지</span><strong>김상두</strong>
               </div>
               <div class="person-actions">
-                <a class="icon-btn" href="tel:01000000001">☎</a>
-                <a class="icon-btn" href="sms:01000000001">✉</a>
+                <a class="icon-btn" href="tel:01000000001">
+                  <img src="phone-icon.png" alt="전화" />
+                </a>
+                <a class="icon-btn" href="sms:01000000001">
+                  <img src="message-icon.png" alt="메시지" />
+                </a>
               </div>
             </div>
             <div class="account-number-row">
               <div class="bank-name">국민은행</div>
               <div class="account-number">000000-00-000001</div>
-              <button class="copy-icon-btn" onclick="copyText('국민은행 000000-00-000001')">📋</button>
+              <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000001')">복사하기</button>
             </div>
           </div>
 
@@ -1192,14 +1277,18 @@
                 <span>어머니</span><strong>윤옥례</strong>
               </div>
               <div class="person-actions">
-                <a class="icon-btn" href="tel:01000000002">☎</a>
-                <a class="icon-btn" href="sms:01000000002">✉</a>
+                <a class="icon-btn" href="tel:01000000002">
+                  <img src="phone-icon.png" alt="전화" />
+                </a>
+                <a class="icon-btn" href="sms:01000000002">
+                  <img src="message-icon.png" alt="메시지" />
+                </a>
               </div>
             </div>
             <div class="account-number-row">
               <div class="bank-name">국민은행</div>
               <div class="account-number">000000-00-000002</div>
-              <button class="copy-icon-btn" onclick="copyText('국민은행 000000-00-000002')">📋</button>
+              <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000002')">복사하기</button>
             </div>
           </div>
         </div>
@@ -1211,14 +1300,18 @@
                 <span>신부</span><strong>최보규</strong>
               </div>
               <div class="person-actions">
-                <a class="icon-btn" href="tel:01000000003">☎</a>
-                <a class="icon-btn" href="sms:01000000003">✉</a>
+                <a class="icon-btn" href="tel:01000000003">
+                  <img src="phone-icon.png" alt="전화" />
+                </a>
+                <a class="icon-btn" href="sms:01000000003">
+                  <img src="message-icon.png" alt="메시지" />
+                </a>
               </div>
             </div>
             <div class="account-number-row">
               <div class="bank-name">카카오뱅크</div>
               <div class="account-number">0000-00-0000000</div>
-              <button class="copy-icon-btn" onclick="copyText('카카오뱅크 0000-00-0000000')">📋</button>
+              <button class="copy-text-btn" onclick="copyText('카카오뱅크 0000-00-0000000')">복사하기</button>
             </div>
           </div>
 
@@ -1228,14 +1321,18 @@
                 <span>아버지</span><strong>최동영</strong>
               </div>
               <div class="person-actions">
-                <a class="icon-btn" href="tel:01000000004">☎</a>
-                <a class="icon-btn" href="sms:01000000004">✉</a>
+                <a class="icon-btn" href="tel:01000000004">
+                  <img src="phone-icon.png" alt="전화" />
+                </a>
+                <a class="icon-btn" href="sms:01000000004">
+                  <img src="message-icon.png" alt="메시지" />
+                </a>
               </div>
             </div>
             <div class="account-number-row">
               <div class="bank-name">농협은행</div>
               <div class="account-number">0000-00-0000001</div>
-              <button class="copy-icon-btn" onclick="copyText('농협은행 0000-00-0000001')">📋</button>
+              <button class="copy-text-btn" onclick="copyText('농협은행 0000-00-0000001')">복사하기</button>
             </div>
           </div>
 
@@ -1245,14 +1342,18 @@
                 <span>어머니</span><strong>박지원</strong>
               </div>
               <div class="person-actions">
-                <a class="icon-btn" href="tel:01000000005">☎</a>
-                <a class="icon-btn" href="sms:01000000005">✉</a>
+                <a class="icon-btn" href="tel:01000000005">
+                  <img src="phone-icon.png" alt="전화" />
+                </a>
+                <a class="icon-btn" href="sms:01000000005">
+                  <img src="message-icon.png" alt="메시지" />
+                </a>
               </div>
             </div>
             <div class="account-number-row">
               <div class="bank-name">국민은행</div>
               <div class="account-number">000000-00-000003</div>
-              <button class="copy-icon-btn" onclick="copyText('국민은행 000000-00-000003')">📋</button>
+              <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000003')">복사하기</button>
             </div>
           </div>
         </div>
@@ -1260,9 +1361,9 @@
     </section>
 
     <!-- 9. 클로징 -->
-    <section class="closing">
-      <div class="closing-heart">❤️</div>
-      <div class="closing-text">
+    <section class="closing scroll-reveal">
+      <div class="closing-heart reveal-child" style="--delay: 0ms;">❤️</div>
+      <div class="closing-text reveal-child" style="--delay: 120ms;">
         먼 길 마음 내어 함께해 주시는 모든 분들께<br />
         진심으로 감사드립니다.
       </div>
@@ -1282,7 +1383,7 @@
         <div class="profile-body" id="profileEssayBody"></div>
 
         <div class="modal-bottom-btn">
-          <button class="pill-btn small" onclick="closeProfileModal()">청첩장으로 돌아가기</button>
+          <button class="btn-rect small" onclick="closeProfileModal()">청첩장으로 돌아가기</button>
         </div>
       </div>
     </div>
@@ -1309,7 +1410,7 @@
         </div>
 
         <div class="modal-bottom-btn">
-          <button class="pill-btn small" onclick="closeFoodModal()">닫기</button>
+          <button class="btn-rect small" onclick="closeFoodModal()">닫기</button>
         </div>
       </div>
     </div>
@@ -1322,8 +1423,7 @@
     <div class="viewer-sheet">
       <button class="viewer-close" onclick="closeViewer()">×</button>
 
-
-      <div class="viewer-image-wrap">
+      <div class="viewer-image-wrap" id="viewerSwipeArea">
         <button class="viewer-nav viewer-prev" onclick="moveViewer(-1)">‹</button>
         <img id="viewerImage" src="" alt="전체화면 사진" />
         <button class="viewer-nav viewer-next" onclick="moveViewer(1)">›</button>
@@ -1389,20 +1489,20 @@
     const profileData = {
       groom: {
         info: `
-          <div class="profile-info-row"><div>이 름</div><div>김창수</div></div>
-          <div class="profile-info-row"><div>생 일</div><div>1992년 8월 27일</div></div>
-          <div class="profile-info-row"><div>MBTI</div><div>INTJ</div></div>
-          <div class="profile-info-row"><div>가 족</div><div>누나가 두 명 있지만 첫째 같은 막내 아들</div></div>
+          <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">김창수</div></div>
+          <div class="profile-info-row"><div class="profile-label">생년월일</div><div class="profile-value">1992년 8월 27일</div></div>
+          <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTJ</div></div>
+          <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">누나가 두 명 있지만 첫째 같은 막내 아들</div></div>
         `,
         title: "보규가 쓰는 창수",
         body: `안녕하세요! 창수는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
       },
       bride: {
         info: `
-          <div class="profile-info-row"><div>이 름</div><div>최보규</div></div>
-          <div class="profile-info-row"><div>생 일</div><div>1996년 8월 28일</div></div>
-          <div class="profile-info-row"><div>MBTI</div><div>INTP</div></div>
-          <div class="profile-info-row"><div>가 족</div><div>남동생이 한 명 있는 K 장녀</div></div>
+          <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">최보규</div></div>
+          <div class="profile-info-row"><div class="profile-label">생년월일</div><div class="profile-value">1996년 8월 28일</div></div>
+          <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTP</div></div>
+          <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">남동생이 한 명 있는 K 장녀</div></div>
         `,
         title: "창수가 쓰는 보규",
         body: `안녕하세요! 보규는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
@@ -1454,6 +1554,8 @@
     ];
 
     let currentViewerIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
     function openViewer(index) {
       currentViewerIndex = index;
@@ -1478,6 +1580,32 @@
       document.getElementById("viewerCaption").textContent = image.caption;
     }
 
+    function setupViewerSwipe() {
+      const swipeArea = document.getElementById("viewerSwipeArea");
+      if (!swipeArea) return;
+
+      swipeArea.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      swipeArea.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
+    }
+
+    function handleSwipeGesture() {
+      const diff = touchEndX - touchStartX;
+
+      if (Math.abs(diff) < 40) return;
+
+      if (diff < 0) {
+        moveViewer(1);
+      } else {
+        moveViewer(-1);
+      }
+    }
+
     function switchAccountTab(type, btn) {
       document.querySelectorAll(".account-tab").forEach(tab => tab.classList.remove("active"));
       document.querySelectorAll(".account-panel").forEach(panel => panel.classList.remove("active"));
@@ -1492,6 +1620,30 @@
         .catch(() => alert("복사에 실패했습니다."));
     }
 
+    function setupScrollReveal() {
+      const revealSections = document.querySelectorAll(".scroll-reveal");
+
+      if (!("IntersectionObserver" in window)) {
+        revealSections.forEach(section => section.classList.add("reveal-visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+          }
+        });
+      }, {
+        threshold: 0.18,
+        rootMargin: "0px 0px -8% 0px"
+      });
+
+      revealSections.forEach(section => {
+        observer.observe(section);
+      });
+    }
+
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         closeProfileModal();
@@ -1501,6 +1653,8 @@
     });
 
     updateDayCounts();
+    setupViewerSwipe();
+    setupScrollReveal();
   </script>
 </body>
 </html>
