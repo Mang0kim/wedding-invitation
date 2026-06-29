@@ -674,7 +674,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
     }
 
@@ -713,42 +713,50 @@
       display: block;
     }
 
-    .account-person {
+    .account-box {
       background: rgba(255, 255, 255, 0.78);
       border: 1px solid rgba(0, 0, 0, 0.04);
       border-radius: var(--radius-card);
-      padding: 20px 18px 18px;
-      margin-bottom: 14px;
+      padding: 20px 18px;
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(18px);
     }
 
-    .person-top {
+    .account-person-row {
+      padding: 2px 0;
+    }
+
+    .account-person-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
+      gap: 14px;
+      margin-bottom: 12px;
     }
 
-    .person-name-line {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: var(--text);
-      font-size: var(--font-body);
+    .account-role {
+      display: inline-block;
+      min-width: 44px;
+      margin-right: 10px;
+      color: var(--text-soft);
+      font-size: var(--font-small);
     }
 
-    .person-name-line strong {
+    .account-name {
       color: var(--text-strong);
       font-size: var(--font-body);
       font-weight: 700;
     }
 
+    .account-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 18px 0;
+    }
+
     .person-actions {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-shrink: 0;
       align-items: center;
     }
@@ -757,8 +765,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       background: transparent;
       border: 0;
       padding: 0;
@@ -767,8 +775,8 @@
     }
 
     .icon-btn img {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       object-fit: contain;
       display: block;
     }
@@ -776,17 +784,18 @@
     .account-number-row {
       background: var(--surface-soft);
       border-radius: 16px;
-      min-height: 52px;
+      min-height: 50px;
       display: grid;
-      grid-template-columns: 78px 1fr auto;
+      grid-template-columns: 72px 1fr auto;
       align-items: center;
-      gap: 10px;
-      padding: 0 12px;
+      gap: 8px;
+      padding: 0 10px 0 12px;
       color: var(--text);
     }
 
     .bank-name {
       font-size: var(--font-small);
+      color: var(--text-soft);
     }
 
     .account-number {
@@ -1319,167 +1328,168 @@
 
     <!-- 8. 계좌 -->
     <section class="scroll-reveal">
-  <div class="kicker reveal-child" style="--delay: 0ms;">마음 전하실 곳</div>
-  <h2 class="title reveal-child" style="--delay: 100ms;">마음 전하실 곳</h2>
-  <div class="account-subtitle reveal-child" style="--delay: 180ms;">
-    전해주시는 따뜻한 마음은 소중히 받겠습니다.
-  </div>
+      <div class="kicker reveal-child" style="--delay: 0ms;">마음 전하실 곳</div>
+      <h2 class="title reveal-child" style="--delay: 100ms;">마음 전하실 곳</h2>
+      <div class="account-subtitle reveal-child" style="--delay: 180ms;">
+        전해주시는 따뜻한 마음은 소중히 받겠습니다.
+      </div>
 
-  <div class="account-wrap reveal-child" style="--delay: 280ms;">
-    <div class="account-tabs">
-      <button class="account-tab" onclick="toggleAccountGroup('groom', this)">신랑측</button>
-      <button class="account-tab" onclick="toggleAccountGroup('bride', this)">신부측</button>
-    </div>
+      <div class="account-wrap reveal-child" style="--delay: 280ms;">
+        <div class="account-tabs">
+          <button class="account-tab" onclick="toggleAccountGroup('groom', this)">신랑측</button>
+          <button class="account-tab" onclick="toggleAccountGroup('bride', this)">신부측</button>
+        </div>
 
-    <div class="account-panel" id="account-groom">
-      <div class="account-box">
-        <div class="account-person-row">
-          <div class="account-person-head">
-            <div>
-              <span class="account-role">신랑</span>
-              <strong class="account-name">김창수</strong>
+        <div class="account-panel" id="account-groom">
+          <div class="account-box">
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">신랑</span>
+                  <strong class="account-name">김창수</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01000000000">
+                    <img src="phone-icon.png" alt="전화" />
+                  </a>
+                  <a class="icon-btn" href="sms:01000000000">
+                    <img src="message-icon.png" alt="메시지" />
+                  </a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">국민은행</div>
+                <div class="account-number">000000-00-000000</div>
+                <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000000')">복사하기</button>
+              </div>
             </div>
-            <div class="person-actions">
-              <a class="icon-btn" href="tel:01000000000">
-                <img src="phone-icon.png" alt="전화" />
-              </a>
-              <a class="icon-btn" href="sms:01000000000">
-                <img src="message-icon.png" alt="메시지" />
-              </a>
+
+            <div class="account-divider"></div>
+
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">아버지</span>
+                  <strong class="account-name">김상두</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01000000001">
+                    <img src="phone-icon.png" alt="전화" />
+                  </a>
+                  <a class="icon-btn" href="sms:01000000001">
+                    <img src="message-icon.png" alt="메시지" />
+                  </a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">국민은행</div>
+                <div class="account-number">000000-00-000001</div>
+                <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000001')">복사하기</button>
+              </div>
             </div>
-          </div>
-          <div class="account-number-row">
-            <div class="bank-name">국민은행</div>
-            <div class="account-number">000000-00-000000</div>
-            <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000000')">복사하기</button>
+
+            <div class="account-divider"></div>
+
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">어머니</span>
+                  <strong class="account-name">윤옥례</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01000000002">
+                    <img src="phone-icon.png" alt="전화" />
+                  </a>
+                  <a class="icon-btn" href="sms:01000000002">
+                    <img src="message-icon.png" alt="메시지" />
+                  </a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">국민은행</div>
+                <div class="account-number">000000-00-000002</div>
+                <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000002')">복사하기</button>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="account-divider"></div>
+        <div class="account-panel" id="account-bride">
+          <div class="account-box">
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">신부</span>
+                  <strong class="account-name">최보규</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01000000003">
+                    <img src="phone-icon.png" alt="전화" />
+                  </a>
+                  <a class="icon-btn" href="sms:01000000003">
+                    <img src="message-icon.png" alt="메시지" />
+                  </a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">카카오뱅크</div>
+                <div class="account-number">0000-00-0000000</div>
+                <button class="copy-text-btn" onclick="copyText('카카오뱅크 0000-00-0000000')">복사하기</button>
+              </div>
+            </div>
 
-        <div class="account-person-row">
-          <div class="account-person-head">
-            <div>
-              <span class="account-role">아버지</span>
-              <strong class="account-name">김상두</strong>
-            </div>
-            <div class="person-actions">
-              <a class="icon-btn" href="tel:01000000001">
-                <img src="phone-icon.png" alt="전화" />
-              </a>
-              <a class="icon-btn" href="sms:01000000001">
-                <img src="message-icon.png" alt="메시지" />
-              </a>
-            </div>
-          </div>
-          <div class="account-number-row">
-            <div class="bank-name">국민은행</div>
-            <div class="account-number">000000-00-000001</div>
-            <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000001')">복사하기</button>
-          </div>
-        </div>
+            <div class="account-divider"></div>
 
-        <div class="account-divider"></div>
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">아버지</span>
+                  <strong class="account-name">최동영</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01000000004">
+                    <img src="phone-icon.png" alt="전화" />
+                  </a>
+                  <a class="icon-btn" href="sms:01000000004">
+                    <img src="message-icon.png" alt="메시지" />
+                  </a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">농협은행</div>
+                <div class="account-number">0000-00-0000001</div>
+                <button class="copy-text-btn" onclick="copyText('농협은행 0000-00-0000001')">복사하기</button>
+              </div>
+            </div>
 
-        <div class="account-person-row">
-          <div class="account-person-head">
-            <div>
-              <span class="account-role">어머니</span>
-              <strong class="account-name">윤옥례</strong>
+            <div class="account-divider"></div>
+
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">어머니</span>
+                  <strong class="account-name">박지원</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01000000005">
+                    <img src="phone-icon.png" alt="전화" />
+                  </a>
+                  <a class="icon-btn" href="sms:01000000005">
+                    <img src="message-icon.png" alt="메시지" />
+                  </a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">국민은행</div>
+                <div class="account-number">000000-00-000003</div>
+                <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000003')">복사하기</button>
+              </div>
             </div>
-            <div class="person-actions">
-              <a class="icon-btn" href="tel:01000000002">
-                <img src="phone-icon.png" alt="전화" />
-              </a>
-              <a class="icon-btn" href="sms:01000000002">
-                <img src="message-icon.png" alt="메시지" />
-              </a>
-            </div>
-          </div>
-          <div class="account-number-row">
-            <div class="bank-name">국민은행</div>
-            <div class="account-number">000000-00-000002</div>
-            <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000002')">복사하기</button>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="account-panel" id="account-bride">
-      <div class="account-box">
-        <div class="account-person-row">
-          <div class="account-person-head">
-            <div>
-              <span class="account-role">신부</span>
-              <strong class="account-name">최보규</strong>
-            </div>
-            <div class="person-actions">
-              <a class="icon-btn" href="tel:01000000003">
-                <img src="phone-icon.png" alt="전화" />
-              </a>
-              <a class="icon-btn" href="sms:01000000003">
-                <img src="message-icon.png" alt="메시지" />
-              </a>
-            </div>
-          </div>
-          <div class="account-number-row">
-            <div class="bank-name">카카오뱅크</div>
-            <div class="account-number">0000-00-0000000</div>
-            <button class="copy-text-btn" onclick="copyText('카카오뱅크 0000-00-0000000')">복사하기</button>
-          </div>
-        </div>
-
-        <div class="account-divider"></div>
-
-        <div class="account-person-row">
-          <div class="account-person-head">
-            <div>
-              <span class="account-role">아버지</span>
-              <strong class="account-name">최동영</strong>
-            </div>
-            <div class="person-actions">
-              <a class="icon-btn" href="tel:01000000004">
-                <img src="phone-icon.png" alt="전화" />
-              </a>
-              <a class="icon-btn" href="sms:01000000004">
-                <img src="message-icon.png" alt="메시지" />
-              </a>
-            </div>
-          </div>
-          <div class="account-number-row">
-            <div class="bank-name">농협은행</div>
-            <div class="account-number">0000-00-0000001</div>
-            <button class="copy-text-btn" onclick="copyText('농협은행 0000-00-0000001')">복사하기</button>
-          </div>
-        </div>
-
-        <div class="account-divider"></div>
-
-        <div class="account-person-row">
-          <div class="account-person-head">
-            <div>
-              <span class="account-role">어머니</span>
-              <strong class="account-name">박지원</strong>
-            </div>
-            <div class="person-actions">
-              <a class="icon-btn" href="tel:01000000005">
-                <img src="phone-icon.png" alt="전화" />
-              </a>
-              <a class="icon-btn" href="sms:01000000005">
-                <img src="message-icon.png" alt="메시지" />
-              </a>
-            </div>
-          </div>
-          <div class="account-number-row">
-            <div class="bank-name">국민은행</div>
-            <div class="account-number">000000-00-000003</div>
-            <button class="copy-text-btn" onclick="copyText('국민은행 000000-00-000003')">복사하기</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
     <!-- 9. 클로징 -->
     <section class="closing scroll-reveal">
       <div class="closing-heart reveal-child" style="--delay: 0ms;">❤️</div>
@@ -1726,12 +1736,17 @@
       }
     }
 
-    function switchAccountTab(type, btn) {
+    function toggleAccountGroup(type, btn) {
+      const targetPanel = document.getElementById("account-" + type);
+      const isAlreadyOpen = targetPanel.classList.contains("active");
+
       document.querySelectorAll(".account-tab").forEach(tab => tab.classList.remove("active"));
       document.querySelectorAll(".account-panel").forEach(panel => panel.classList.remove("active"));
 
-      btn.classList.add("active");
-      document.getElementById("account-" + type).classList.add("active");
+      if (!isAlreadyOpen) {
+        btn.classList.add("active");
+        targetPanel.classList.add("active");
+      }
     }
 
     function copyText(text) {
