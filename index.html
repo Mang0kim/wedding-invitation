@@ -93,13 +93,13 @@
       width: 100%;
       max-width: 430px;
       margin: 0 auto;
-      padding: 0 0 120px;
+      padding: 0 0 80px;
       background: transparent;
     }
 
     section {
-      min-height: 88vh;
-      padding: 150px 24px 0;
+      min-height: 62vh;
+      padding: 76px 24px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -112,8 +112,8 @@
     }
 
     .closing {
-      min-height: 88vh;
-      padding: 150px 22px 90px;
+      min-height: 62vh;
+      padding: 76px 22px 70px;
     }
 
     .scroll-reveal {
@@ -190,7 +190,6 @@
       font-weight: 200;
     }
 
-    /* 팝업/추가 기능 버튼 */
     .btn-rect {
       border: 0;
       background: var(--accent);
@@ -509,18 +508,22 @@
       width: 100%;
       max-width: 350px;
       margin: 0 auto;
+      background: var(--surface-soft);
+      border-radius: var(--radius-card);
+      padding: 8px 8px 26px;
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03);
     }
 
     .guide-tabs {
-      background: var(--surface-soft);
+      background: rgba(255, 255, 255, 0.45);
       border-radius: 999px;
       padding: 5px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0;
-      margin-bottom: 34px;
+      margin-bottom: 24px;
       align-items: center;
-      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03);
+      box-shadow: none;
     }
 
     .guide-tab {
@@ -560,7 +563,7 @@
       font-size: var(--font-body);
       line-height: 1.85;
       color: var(--text);
-      padding: 4px 8px 0;
+      padding: 4px 12px 0;
       font-weight: 200;
     }
 
@@ -646,7 +649,22 @@
 
     .gallery-more {
       text-align: center;
-      padding: 28px 0 8px;
+      padding: 20px 0 4px;
+    }
+
+    .gallery-more .btn-rect.small {
+      width: auto;
+      min-height: 30px;
+      padding: 6px 7px 6px 14px;
+      font-size: 13px;
+    }
+
+    .gallery-more .btn-rect.small::after {
+      width: 19px;
+      height: 19px;
+      line-height: 19px;
+      flex-basis: 19px;
+      font-size: 15px;
     }
 
     .video-shell {
@@ -691,17 +709,21 @@
       width: 100%;
       max-width: 350px;
       margin: 0 auto;
+      background: var(--surface-soft);
+      border-radius: var(--radius-card);
+      padding: 8px 8px 18px;
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03);
     }
 
     .account-tabs {
-      background: var(--surface-soft);
+      background: rgba(255, 255, 255, 0.45);
       border-radius: 999px;
       padding: 5px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0;
-      margin-bottom: 22px;
-      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03);
+      margin-bottom: 18px;
+      box-shadow: none;
       overflow: hidden;
     }
 
@@ -731,7 +753,7 @@
       background: var(--white);
       color: var(--accent);
       font-weight: 300;
-      box-shadow: none;
+      box-shadow: 0 8px 24px rgba(44, 44, 44, 0.06);
       border-radius: 999px;
     }
 
@@ -747,7 +769,7 @@
       background: transparent;
       border: 0;
       border-radius: var(--radius-card);
-      padding: 0;
+      padding: 0 2px;
       box-shadow: none;
       backdrop-filter: none;
     }
@@ -762,7 +784,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       padding: 0 2px;
     }
 
@@ -784,7 +806,7 @@
     .account-divider {
       height: 1px;
       background: var(--line);
-      margin: 20px 0;
+      margin: 18px 0;
     }
 
     .person-actions {
@@ -817,12 +839,12 @@
     .account-number-row {
       background: var(--white);
       border-radius: 16px;
-      min-height: 46px;
+      min-height: 44px;
       display: grid;
-      grid-template-columns: 70px 1fr auto;
+      grid-template-columns: 66px 1fr auto;
       align-items: center;
-      gap: 8px;
-      padding: 0 8px 0 12px;
+      gap: 4px;
+      padding: 0 6px 0 11px;
       color: var(--text-soft);
       box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045);
     }
@@ -846,8 +868,8 @@
       color: var(--white);
       font-size: 12px;
       font-weight: 300;
-      padding: 6px 9px;
-      min-width: 36px;
+      padding: 6px 8px;
+      min-width: 34px;
       border-radius: 999px;
       cursor: pointer;
       box-shadow: none;
@@ -975,18 +997,13 @@
     }
 
     .profile-intro-title {
-      width: 100%;
-      max-width: 300px;
-      margin: 30px auto 11px;
-      font-size: 17px;
-      color: var(--text-strong);
-      font-weight: 300;
+      display: none;
     }
 
     .profile-body {
       width: 100%;
       max-width: 300px;
-      margin: 0 auto;
+      margin: 30px auto 0;
       font-size: var(--font-body);
       line-height: 1.56;
       color: var(--text);
@@ -1110,11 +1127,18 @@
 
     @media (max-width: 380px) {
       section {
-        padding-top: 135px;
+        min-height: 58vh;
+        padding-top: 66px;
       }
 
       .intro-section {
+        min-height: 100vh;
         padding-top: 44px;
+      }
+
+      .closing {
+        min-height: 58vh;
+        padding-top: 66px;
       }
 
       .intro-message {
@@ -1147,7 +1171,8 @@
       }
 
       .account-number-row {
-        grid-template-columns: 64px 1fr auto;
+        grid-template-columns: 60px 1fr auto;
+        gap: 3px;
       }
 
       .bank-name,
@@ -1372,7 +1397,7 @@
 
     <!-- 8. 마음 전하실 곳 -->
     <section class="scroll-reveal">
-      <div class="kicker reveal-child" style="--delay: 0ms;">계좌번호 안내</div>
+      <div class="kicker reveal-child" style="--delay: 0ms;">계좌안내</div>
       <h2 class="title reveal-child" style="--delay: 100ms;">마음 전하실 곳</h2>
       <div class="account-subtitle reveal-child" style="--delay: 180ms;">
         전해주시는 따뜻한 마음은 소중히 받겠습니다.
@@ -1553,12 +1578,11 @@
       <div class="profile-layout">
         <div>
           <div class="profile-info" id="profileInfoArea"></div>
-          <div class="profile-intro-title" id="profileEssayTitle"></div>
           <div class="profile-body" id="profileEssayBody"></div>
         </div>
 
         <div class="modal-bottom-btn">
-          <button class="btn-rect small no-plus" onclick="closeProfileModal()">청첩장으로 돌아가기</button>
+          <button class="btn-rect small no-plus" onclick="closeProfileModal()">닫기</button>
         </div>
       </div>
     </div>
@@ -1661,7 +1685,6 @@
           <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTJ</div></div>
           <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">누나가 두 명 있지만 첫째 같은 막내 아들</div></div>
         `,
-        title: "보규가 쓰는 창수",
         body: `안녕하세요! 창수는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
       },
       bride: {
@@ -1671,7 +1694,6 @@
           <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTP</div></div>
           <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">남동생이 한 명 있는 K 장녀</div></div>
         `,
-        title: "창수가 쓰는 보규",
         body: `안녕하세요! 보규는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
       }
     };
@@ -1679,7 +1701,6 @@
     function openProfileModal(type) {
       const data = profileData[type];
       document.getElementById("profileInfoArea").innerHTML = data.info;
-      document.getElementById("profileEssayTitle").textContent = data.title;
       document.getElementById("profileEssayBody").textContent = data.body;
       openModalBase("profileModal");
     }
