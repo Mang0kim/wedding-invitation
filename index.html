@@ -19,22 +19,27 @@
       --surface-soft: #f5f5f7;
       --surface-deep: #eeeeef;
 
-      --text: #6e6e73;
-      --text-strong: #1d1d1f;
-      --text-soft: #86868b;
+      --black: #2C2C2C;
+      --gray: #595959;
+      --red: #EC221F;
+      --white: #FFFFFF;
 
-      --line: rgba(0, 0, 0, 0.08);
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.06);
-      --shadow-red: 0 8px 18px rgba(226, 68, 51, 0.18);
+      --text: #2C2C2C;
+      --text-strong: #2C2C2C;
+      --text-soft: #595959;
 
-      --accent: #e24433;
-      --accent-dark: #bf3426;
+      --line: rgba(44, 44, 44, 0.09);
+      --shadow-soft: 0 18px 45px rgba(44, 44, 44, 0.06);
+      --shadow-red: 0 8px 18px rgba(236, 34, 31, 0.16);
+
+      --accent: #EC221F;
+      --accent-dark: #D61D1A;
 
       --radius-card: 28px;
       --radius-small: 18px;
 
       --font-kicker: 13px;
-      --font-title: 29px;
+      --font-title: 21px;
       --font-subtitle: 21px;
       --font-body: 16px;
       --font-small: 14px;
@@ -93,8 +98,8 @@
     }
 
     section {
-      min-height: 92vh;
-      padding: 180px 24px 0;
+      min-height: 88vh;
+      padding: 150px 24px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -104,6 +109,11 @@
       min-height: 100vh;
       padding-top: 56px;
       justify-content: flex-start;
+    }
+
+    .closing {
+      min-height: 88vh;
+      padding: 150px 22px 90px;
     }
 
     .scroll-reveal {
@@ -166,9 +176,9 @@
       color: var(--text-strong);
       font-size: var(--font-title);
       font-weight: 300;
-      line-height: 1.3;
+      line-height: 1.45;
       margin: 0 0 28px;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.045em;
     }
 
     .desc {
@@ -184,7 +194,7 @@
     .btn-rect {
       border: 0;
       background: var(--accent);
-      color: #fff;
+      color: var(--white);
       border-radius: 999px;
       padding: 7px 8px 7px 16px;
       min-height: 34px;
@@ -209,18 +219,18 @@
       width: 21px;
       height: 21px;
       border-radius: 50%;
-      background: #fff;
+      background: var(--white);
       color: var(--accent);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 300;
       line-height: 21px;
       flex: 0 0 21px;
       text-align: center;
-      transform: translateY(-0.2px);
+      transform: translateY(-0.4px);
     }
 
     .btn-rect:hover {
@@ -229,7 +239,7 @@
 
     .btn-rect:active {
       transform: scale(0.97);
-      box-shadow: 0 3px 8px rgba(226, 68, 51, 0.14);
+      box-shadow: 0 3px 8px rgba(236, 34, 31, 0.14);
     }
 
     .btn-rect.small {
@@ -244,7 +254,7 @@
       height: 20px;
       line-height: 20px;
       flex-basis: 20px;
-      font-size: 15px;
+      font-size: 16px;
     }
 
     .btn-rect.no-plus {
@@ -326,7 +336,7 @@
       font-size: var(--font-subtitle);
       font-weight: 300;
       margin-bottom: 42px;
-      line-height: 1.5;
+      line-height: 1.45;
       letter-spacing: -0.045em;
     }
 
@@ -336,7 +346,7 @@
       margin: 0 auto;
       padding: 34px 14px 26px;
       background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(44, 44, 44, 0.04);
       border-radius: var(--radius-card);
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(18px);
@@ -356,7 +366,7 @@
       max-width: 340px;
       margin: 0 auto;
       font-size: var(--font-small);
-      color: var(--text);
+      color: var(--text-soft);
     }
 
     .calendar-grid div {
@@ -364,6 +374,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--text-soft);
+      font-weight: 200;
     }
 
     .calendar-grid .day-name {
@@ -381,7 +393,7 @@
       height: 28px;
       margin: auto;
       background: var(--accent);
-      color: #fff;
+      color: var(--white);
       border-radius: 50%;
       font-weight: 300;
       box-shadow: none;
@@ -411,6 +423,7 @@
       color: var(--text-soft);
       margin-bottom: 6px;
       white-space: nowrap;
+      font-weight: 200;
     }
 
     .day-stat-value {
@@ -425,7 +438,7 @@
       text-align: center;
       color: var(--text-strong);
       font-size: var(--font-subtitle);
-      line-height: 1.55;
+      line-height: 1.45;
       margin-bottom: 34px;
       font-weight: 300;
       letter-spacing: -0.045em;
@@ -443,7 +456,7 @@
       width: 100%;
       aspect-ratio: 1.36 / 1;
       background: linear-gradient(135deg, #f3f3f5, #ffffff);
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(44, 44, 44, 0.06);
       border-radius: var(--radius-card);
       display: flex;
       align-items: center;
@@ -463,7 +476,7 @@
     }
 
     .map-link {
-      border: 1px solid rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(44, 44, 44, 0.06);
       height: 40px;
       color: var(--text-strong);
       display: flex;
@@ -474,7 +487,7 @@
       font-weight: 300;
       background: rgba(255, 255, 255, 0.86);
       border-radius: 999px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.045);
+      box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045);
       backdrop-filter: blur(12px);
       letter-spacing: -0.03em;
       position: relative;
@@ -483,11 +496,12 @@
 
     .map-link::after {
       content: "›";
-      margin-left: 6px;
+      margin-left: 7px;
       color: var(--accent);
-      font-size: 16px;
+      font-size: 22px;
+      font-weight: 200;
       line-height: 1;
-      transform: translateY(-0.5px);
+      transform: translateY(-1px);
     }
 
     /* 4. 예식안내 */
@@ -506,7 +520,7 @@
       gap: 0;
       margin-bottom: 34px;
       align-items: center;
-      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03);
     }
 
     .guide-tab {
@@ -533,10 +547,10 @@
     }
 
     .guide-tab.active {
-      background: #fff;
+      background: var(--white);
       color: var(--accent);
       font-weight: 300;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 24px rgba(44, 44, 44, 0.06);
     }
 
     .guide-content {
@@ -547,6 +561,7 @@
       line-height: 1.85;
       color: var(--text);
       padding: 4px 8px 0;
+      font-weight: 200;
     }
 
     .guide-content.active {
@@ -626,6 +641,7 @@
       font-size: var(--font-small);
       color: var(--text-soft);
       padding-left: 2px;
+      font-weight: 200;
     }
 
     .gallery-more {
@@ -668,6 +684,7 @@
       color: var(--text);
       margin: -6px 0 30px;
       line-height: 1.7;
+      font-weight: 200;
     }
 
     .account-wrap {
@@ -684,7 +701,7 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0;
       margin-bottom: 22px;
-      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03);
       overflow: hidden;
     }
 
@@ -711,7 +728,7 @@
     }
 
     .account-tab.active {
-      background: #fff;
+      background: var(--white);
       color: var(--accent);
       font-weight: 300;
       box-shadow: none;
@@ -727,16 +744,16 @@
     }
 
     .account-box {
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      background: transparent;
+      border: 0;
       border-radius: var(--radius-card);
-      padding: 20px 18px;
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(18px);
+      padding: 0;
+      box-shadow: none;
+      backdrop-filter: none;
     }
 
     .account-person-row {
-      padding: 2px 0;
+      padding: 0;
       border-radius: 18px;
     }
 
@@ -746,6 +763,7 @@
       justify-content: space-between;
       gap: 14px;
       margin-bottom: 12px;
+      padding: 0 2px;
     }
 
     .account-role {
@@ -766,7 +784,7 @@
     .account-divider {
       height: 1px;
       background: var(--line);
-      margin: 18px 0;
+      margin: 20px 0;
     }
 
     .person-actions {
@@ -797,7 +815,7 @@
     }
 
     .account-number-row {
-      background: var(--surface-soft);
+      background: var(--white);
       border-radius: 16px;
       min-height: 46px;
       display: grid;
@@ -805,7 +823,8 @@
       align-items: center;
       gap: 8px;
       padding: 0 8px 0 12px;
-      color: var(--text);
+      color: var(--text-soft);
+      box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045);
     }
 
     .bank-name {
@@ -816,6 +835,7 @@
 
     .account-number {
       font-size: var(--font-small);
+      color: var(--text-soft);
       overflow-wrap: anywhere;
       font-weight: 200;
     }
@@ -823,7 +843,7 @@
     .copy-text-btn {
       border: 0;
       background: var(--accent);
-      color: #fff;
+      color: var(--white);
       font-size: 12px;
       font-weight: 300;
       padding: 6px 9px;
@@ -840,11 +860,6 @@
     }
 
     /* 9. 클로징 */
-    .closing {
-      min-height: 86vh;
-      padding: 180px 22px 90px;
-    }
-
     .closing-heart {
       text-align: center;
       font-size: var(--font-body);
@@ -889,11 +904,12 @@
       border-radius: var(--radius-card);
       overflow: auto;
       padding: 38px 30px 30px;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 28px 70px rgba(44, 44, 44, 0.18);
       backdrop-filter: blur(24px);
     }
 
-    .close-x {
+    .close-x,
+    .viewer-close {
       position: absolute;
       right: 17px;
       top: 13px;
@@ -909,6 +925,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 3;
+      padding: 0;
     }
 
     .profile-layout {
@@ -925,7 +943,7 @@
       margin: 0 auto;
       font-size: var(--font-body);
       color: var(--text);
-      line-height: 1.25;
+      line-height: 1.36;
       padding: 0;
     }
 
@@ -934,9 +952,9 @@
       grid-template-columns: 92px 1fr;
       gap: 14px;
       align-items: start;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
       text-align: left;
-      line-height: 1.25;
+      line-height: 1.36;
     }
 
     .profile-label {
@@ -959,7 +977,7 @@
     .profile-intro-title {
       width: 100%;
       max-width: 300px;
-      margin: 28px auto 10px;
+      margin: 30px auto 11px;
       font-size: 17px;
       color: var(--text-strong);
       font-weight: 300;
@@ -970,7 +988,7 @@
       max-width: 300px;
       margin: 0 auto;
       font-size: var(--font-body);
-      line-height: 1.45;
+      line-height: 1.56;
       color: var(--text);
       white-space: pre-line;
       font-weight: 200;
@@ -1030,20 +1048,7 @@
       padding: 8px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
-    }
-
-    .viewer-close {
-      position: absolute;
-      right: 14px;
-      top: 12px;
-      border: 0;
-      background: transparent;
-      color: var(--accent);
-      font-size: 24px;
-      line-height: 1;
-      cursor: pointer;
-      z-index: 2;
+      box-shadow: 0 28px 70px rgba(44, 44, 44, 0.18);
     }
 
     .viewer-image-wrap {
@@ -1073,26 +1078,30 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 42px;
-      height: 42px;
-      border: 0;
-      background: transparent;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(236, 34, 31, 0.16);
+      background: rgba(255, 255, 255, 0.78);
       color: var(--accent);
-      font-size: 34px;
+      font-size: 30px;
+      font-weight: 200;
       line-height: 1;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-shadow: none;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(44, 44, 44, 0.08);
+      backdrop-filter: blur(12px);
+      padding: 0;
     }
 
     .viewer-prev {
-      left: 10px;
+      left: 12px;
     }
 
     .viewer-next {
-      right: 10px;
+      right: 12px;
     }
 
     .viewer-caption {
@@ -1101,7 +1110,7 @@
 
     @media (max-width: 380px) {
       section {
-        padding-top: 160px;
+        padding-top: 135px;
       }
 
       .intro-section {
@@ -1113,8 +1122,10 @@
         font-size: 15px;
       }
 
-      .title {
-        font-size: 26px;
+      .title,
+      .date-line,
+      .location-address {
+        font-size: 21px;
       }
 
       .desc {
@@ -1226,7 +1237,7 @@
     <section class="scroll-reveal">
       <div class="kicker reveal-child" style="--delay: 0ms;">모시는 곳</div>
       <div class="location-address reveal-child" style="--delay: 100ms;">
-        부산시 동래구 금강공원로 20번길 23<br />
+        부산시 동래구 금강공원로 23번길 20<br />
         호텔농심 야외정원
       </div>
 
@@ -1361,12 +1372,13 @@
 
     <!-- 8. 마음 전하실 곳 -->
     <section class="scroll-reveal">
-      <div class="kicker reveal-child" style="--delay: 0ms;">마음 전하실 곳</div>
-      <div class="account-subtitle reveal-child" style="--delay: 120ms;">
+      <div class="kicker reveal-child" style="--delay: 0ms;">계좌번호 안내</div>
+      <h2 class="title reveal-child" style="--delay: 100ms;">마음 전하실 곳</h2>
+      <div class="account-subtitle reveal-child" style="--delay: 180ms;">
         전해주시는 따뜻한 마음은 소중히 받겠습니다.
       </div>
 
-      <div class="account-wrap reveal-child" style="--delay: 220ms;">
+      <div class="account-wrap reveal-child" style="--delay: 280ms;">
         <div class="account-tabs">
           <button class="account-tab" onclick="toggleAccountGroup('groom', this)">신랑측</button>
           <button class="account-tab" onclick="toggleAccountGroup('bride', this)">신부측</button>
