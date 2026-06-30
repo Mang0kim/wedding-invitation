@@ -25,7 +25,7 @@
 
       --line: rgba(0, 0, 0, 0.08);
       --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.06);
-      --shadow-button: 0 8px 20px rgba(226, 68, 51, 0.18);
+      --shadow-red: 0 8px 18px rgba(226, 68, 51, 0.18);
 
       --accent: #e24433;
       --accent-dark: #bf3426;
@@ -33,13 +33,14 @@
       --radius-card: 28px;
       --radius-small: 18px;
 
+      /* 전체 폰트 규칙 */
       --font-kicker: 13px;
-      --font-title: 28px;
-      --font-subtitle: 20px;
-      --font-body: 15px;
-      --font-small: 13px;
+      --font-title: 29px;
+      --font-subtitle: 21px;
+      --font-body: 16px;
+      --font-small: 14px;
       --font-button: 14px;
-      --font-name: 20px;
+      --font-name: 21px;
     }
 
     * {
@@ -90,7 +91,7 @@
 
     section {
       min-height: 92vh;
-      padding: 180px 26px 0;
+      padding: 190px 26px 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -101,15 +102,15 @@
       padding-top: 96px;
     }
 
-    /* Apple-style scroll reveal */
+    /* Apple-like reveal */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(88px) scale(0.965);
+      transform: translateY(90px) scale(0.965);
       filter: blur(14px);
       transition:
-        opacity 1.65s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.65s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1.65s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1.9s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: opacity, transform, filter;
     }
 
@@ -123,8 +124,8 @@
       opacity: 0;
       transform: translateY(34px);
       transition:
-        opacity 1.35s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 1.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.55s cubic-bezier(0.22, 1, 0.36, 1);
       transition-delay: var(--delay, 0ms);
       will-change: opacity, transform;
     }
@@ -148,7 +149,7 @@
       }
     }
 
-    /* Typography */
+    /* typography */
     .kicker {
       text-align: center;
       color: var(--accent);
@@ -162,8 +163,8 @@
       text-align: center;
       color: var(--text-strong);
       font-size: var(--font-title);
-      font-weight: 600;
-      line-height: 1.28;
+      font-weight: 500;
+      line-height: 1.3;
       margin: 0 0 28px;
       letter-spacing: -0.055em;
     }
@@ -177,65 +178,69 @@
       font-weight: 400;
     }
 
-    /* Common button: pill + circle icon */
+    /* 팝업/추가기능 공통 버튼 */
     .btn-rect {
       border: 0;
-      background: var(--surface-soft);
-      color: var(--text-strong);
+      background: var(--accent);
+      color: #fff;
       border-radius: 999px;
-      padding: 8px 10px 8px 20px;
-      min-height: 48px;
-      font-size: var(--font-button);
+      padding: 7px 8px 7px 16px;
+      min-height: 34px;
+      font-size: var(--font-small);
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow-red);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 9px;
       transition:
-        transform 0.16s ease,
-        box-shadow 0.16s ease,
-        background 0.16s ease;
+        transform 0.14s ease,
+        box-shadow 0.14s ease,
+        background 0.14s ease;
       white-space: nowrap;
     }
 
     .btn-rect::after {
       content: "+";
-      width: 34px;
-      height: 34px;
+      width: 21px;
+      height: 21px;
       border-radius: 50%;
-      background: var(--accent);
-      color: #fff;
+      background: #fff;
+      color: var(--accent);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      font-weight: 400;
+      font-size: 17px;
+      font-weight: 700;
       line-height: 1;
       flex: 0 0 auto;
     }
 
+    .btn-rect:hover {
+      background: var(--accent-dark);
+    }
+
     .btn-rect:active {
-      transform: scale(0.98);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      transform: scale(0.97);
+      box-shadow: 0 3px 8px rgba(226, 68, 51, 0.14);
     }
 
     .btn-rect.small {
-      padding: 7px 9px 7px 18px;
-      min-height: 44px;
-      font-size: var(--font-small);
+      padding: 6px 7px 6px 14px;
+      min-height: 32px;
+      font-size: 13px;
     }
 
     .btn-rect.small::after {
-      width: 30px;
-      height: 30px;
-      font-size: 21px;
+      width: 20px;
+      height: 20px;
+      font-size: 16px;
     }
 
     .btn-rect.no-plus {
-      padding: 10px 20px;
-      min-height: 42px;
+      padding: 9px 16px;
+      min-height: 36px;
     }
 
     .btn-rect.no-plus::after {
@@ -434,8 +439,7 @@
 
     .map-image {
       aspect-ratio: 1.32 / 1;
-      background:
-        linear-gradient(135deg, #f3f3f5, #ffffff);
+      background: linear-gradient(135deg, #f3f3f5, #ffffff);
       border: 1px solid rgba(0, 0, 0, 0.06);
       border-radius: var(--radius-card);
       display: flex;
@@ -474,19 +478,6 @@
       width: 18px;
       height: 18px;
       object-fit: contain;
-    }
-
-    .map-logo-fallback {
-      width: 18px;
-      height: 18px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: var(--surface-deep);
-      color: var(--text);
-      font-size: 10px;
-      font-weight: 700;
-      border-radius: 50%;
     }
 
     /* 4. 예식안내 */
@@ -563,7 +554,7 @@
       text-align: center;
     }
 
-    /* 6. 사진첩/영상 */
+    /* 6. 사진첩 / 영상 */
     .gallery-shell {
       max-width: 350px;
       margin: 0 auto;
@@ -585,7 +576,7 @@
     .gallery-thumb {
       width: 100%;
       background: var(--surface-soft);
-      border-radius: var(--radius-small);
+      border-radius: 0;
       overflow: hidden;
       cursor: pointer;
       position: relative;
@@ -637,7 +628,7 @@
     .video-box {
       aspect-ratio: 1.2 / 1;
       background: var(--surface-soft);
-      border-radius: var(--radius-card);
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -669,7 +660,7 @@
 
     .account-tabs {
       background: var(--surface-soft);
-      border-radius: 999px;
+      border-radius: 0;
       padding: 5px;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -682,7 +673,7 @@
       border: 0;
       height: 44px;
       background: transparent;
-      border-radius: 999px;
+      border-radius: 0;
       font-size: var(--font-small);
       color: var(--text-soft);
       cursor: pointer;
@@ -716,7 +707,7 @@
     .account-box {
       background: rgba(255, 255, 255, 0.78);
       border: 1px solid rgba(0, 0, 0, 0.04);
-      border-radius: var(--radius-card);
+      border-radius: 0;
       padding: 20px 18px;
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(18px);
@@ -756,7 +747,7 @@
 
     .person-actions {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-shrink: 0;
       align-items: center;
     }
@@ -765,8 +756,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 34px;
-      height: 34px;
+      width: 30px;
+      height: 30px;
       background: transparent;
       border: 0;
       padding: 0;
@@ -775,15 +766,15 @@
     }
 
     .icon-btn img {
-      width: 34px;
-      height: 34px;
+      width: 30px;
+      height: 30px;
       object-fit: contain;
       display: block;
     }
 
     .account-number-row {
       background: var(--surface-soft);
-      border-radius: 16px;
+      border-radius: 0;
       min-height: 50px;
       display: grid;
       grid-template-columns: 72px 1fr auto;
@@ -809,8 +800,8 @@
       color: #fff;
       font-size: 12px;
       font-weight: 700;
-      padding: 7px 11px;
-      border-radius: 999px;
+      padding: 8px 10px;
+      border-radius: 0;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(226, 68, 51, 0.14);
       white-space: nowrap;
@@ -830,8 +821,8 @@
 
     .closing-heart {
       text-align: center;
-      font-size: 18px;
-      margin-bottom: 14px;
+      font-size: var(--font-body);
+      margin-bottom: 10px;
     }
 
     .closing-text {
@@ -842,7 +833,7 @@
       font-weight: 400;
     }
 
-    /* 모달 공통 */
+    /* modal */
     .modal {
       position: fixed;
       inset: 0;
@@ -883,17 +874,18 @@
       border: 0;
       background: transparent;
       color: var(--accent);
-      font-size: 28px;
+      font-size: 20px;
       line-height: 1;
-      font-weight: 200;
+      font-weight: 300;
       cursor: pointer;
     }
 
     .profile-layout {
-      padding-top: 54px;
-      min-height: auto;
+      padding-top: 38px;
+      min-height: calc(100dvh - 140px);
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
 
     .profile-info {
@@ -917,6 +909,7 @@
     .profile-label {
       color: var(--text-soft);
       font-size: var(--font-body);
+      letter-spacing: 0.02em;
     }
 
     .profile-value {
@@ -927,7 +920,7 @@
     .profile-intro-title {
       width: 100%;
       max-width: 300px;
-      margin: 46px auto 16px;
+      margin: 34px auto 14px;
       font-size: 17px;
       color: var(--text-strong);
       font-weight: 600;
@@ -944,9 +937,8 @@
     }
 
     .modal-bottom-btn {
-      margin-top: 38px;
+      margin-top: 34px;
       text-align: center;
-      padding-top: 0;
     }
 
     /* 맛집 팝업 */
@@ -984,7 +976,7 @@
       color: var(--text);
     }
 
-    /* 사진 전체화면 */
+    /* 사진 전체보기 */
     .viewer-sheet {
       position: relative;
       width: calc(100% - 12px);
@@ -1006,7 +998,7 @@
       border: 0;
       background: transparent;
       color: var(--accent);
-      font-size: 30px;
+      font-size: 24px;
       line-height: 1;
       cursor: pointer;
       z-index: 2;
@@ -1044,13 +1036,13 @@
       border: 0;
       background: transparent;
       color: var(--accent);
-      font-size: 36px;
+      font-size: 34px;
       line-height: 1;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-shadow: 0 1px 8px rgba(255, 255, 255, 0.92);
+      text-shadow: none;
     }
 
     .viewer-prev {
@@ -1067,7 +1059,7 @@
 
     @media (max-width: 380px) {
       section {
-        padding-top: 160px;
+        padding-top: 165px;
       }
 
       .intro-section {
@@ -1079,11 +1071,11 @@
       }
 
       .title {
-        font-size: 25px;
+        font-size: 26px;
       }
 
       .desc {
-        font-size: 14px;
+        font-size: 15px;
       }
 
       .guide-tab,
@@ -1190,16 +1182,16 @@
       <div class="map-box reveal-child" style="--delay: 220ms;">
         <div class="map-image">지도</div>
         <div class="map-links">
-          <a class="map-link" href="https://map.naver.com/p/search/호텔농심" target="_blank" rel="noopener">
-            <img class="map-logo" src="naver-logo.png" alt="네이버" onerror="handleLogoError(this, 'N')" />
+          <a class="map-link" href="https://map.naver.com/p/search/%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">
+            <img class="map-logo" src="naver-logo.png" alt="네이버" />
             <span>네이버</span>
           </a>
-          <a class="map-link" href="https://www.tmap.co.kr/search?searchKeyword=호텔농심" target="_blank" rel="noopener">
-            <img class="map-logo" src="tmap-logo.png" alt="티맵" onerror="handleLogoError(this, 'T')" />
+          <a class="map-link" href="https://apis.openapi.sk.com/tmap/app/routes?appKey=search&name=%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">
+            <img class="map-logo" src="tmap-logo.png" alt="티맵" />
             <span>티맵</span>
           </a>
-          <a class="map-link" href="https://map.kakao.com/link/search/호텔농심" target="_blank" rel="noopener">
-            <img class="map-logo" src="kakao-logo.png" alt="카카오" onerror="handleLogoError(this, 'K')" />
+          <a class="map-link" href="https://map.kakao.com/link/search/%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">
+            <img class="map-logo" src="kakao-logo.png" alt="카카오" />
             <span>카카오</span>
           </a>
         </div>
@@ -1234,9 +1226,10 @@
       </div>
     </section>
 
-    <!-- 5. 맛집지도 -->
+    <!-- 5. 맛집 -->
     <section class="food-section scroll-reveal">
-      <div class="kicker reveal-child" style="--delay: 0ms;">보규❤️창수의 맛집 지도</div>
+      <div class="kicker reveal-child" style="--delay: 0ms;">○ ○ ○ ○</div>
+      <h2 class="title reveal-child" style="--delay: 100ms;">보규❤️창수의 맛집 지도</h2>
       <p class="desc reveal-child" style="--delay: 200ms;">
         부산까지 먼 걸음을 해주신 감사한 분들을 위해<br />
         나누고 싶은 부산의 맛집 목록을 준비했습니다.
@@ -1499,17 +1492,18 @@
     </section>
   </div>
 
-  <!-- 신랑/신부 소개 모달 -->
+  <!-- 신랑/신부 소개 팝업 -->
   <div class="modal" id="profileModal" aria-hidden="true">
     <div class="modal-backdrop" onclick="closeProfileModal()"></div>
     <div class="modal-sheet">
       <button class="close-x" onclick="closeProfileModal()">×</button>
 
       <div class="profile-layout">
-        <div class="profile-info" id="profileInfoArea"></div>
-
-        <div class="profile-intro-title" id="profileEssayTitle"></div>
-        <div class="profile-body" id="profileEssayBody"></div>
+        <div>
+          <div class="profile-info" id="profileInfoArea"></div>
+          <div class="profile-intro-title" id="profileEssayTitle"></div>
+          <div class="profile-body" id="profileEssayBody"></div>
+        </div>
 
         <div class="modal-bottom-btn">
           <button class="btn-rect small no-plus" onclick="closeProfileModal()">청첩장으로 돌아가기</button>
@@ -1518,7 +1512,7 @@
     </div>
   </div>
 
-  <!-- 맛집 기본 팝업 -->
+  <!-- 맛집 팝업 -->
   <div class="modal" id="foodModal" aria-hidden="true">
     <div class="modal-backdrop" onclick="closeFoodModal()"></div>
     <div class="modal-sheet">
@@ -1532,10 +1526,10 @@
         </div>
 
         <div class="food-basic-list">
-          <div class="food-basic-item">부산역 근처 추천 맛집</div>
           <div class="food-basic-item">호텔농심 근처 추천 맛집</div>
+          <div class="food-basic-item">동래 / 온천장 추천 맛집</div>
           <div class="food-basic-item">카페 / 디저트 추천</div>
-          <div class="food-basic-item">바다 보며 가기 좋은 곳</div>
+          <div class="food-basic-item">부산에서 꼭 먹어볼 음식</div>
         </div>
 
         <div class="modal-bottom-btn">
@@ -1545,7 +1539,7 @@
     </div>
   </div>
 
-  <!-- 사진 전체화면 모달 -->
+  <!-- 사진 전체보기 -->
   <div class="modal" id="viewerModal" aria-hidden="true">
     <div class="modal-backdrop" onclick="closeViewer()"></div>
 
@@ -1571,9 +1565,9 @@
       const wedding = new Date(WEDDING_DATE);
       const today = new Date();
 
-      meet.setHours(0,0,0,0);
-      wedding.setHours(0,0,0,0);
-      today.setHours(0,0,0,0);
+      meet.setHours(0, 0, 0, 0);
+      wedding.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
 
       const oneDay = 1000 * 60 * 60 * 24;
 
@@ -1594,14 +1588,6 @@
       media.parentElement.classList.add("empty");
     }
 
-    function handleLogoError(img, fallbackText) {
-      const fallback = document.createElement("span");
-      fallback.className = "map-logo-fallback";
-      fallback.textContent = fallbackText;
-      fallback.style.display = "inline-flex";
-      img.replaceWith(fallback);
-    }
-
     function openModalBase(id) {
       document.getElementById(id).classList.add("show");
       document.body.classList.add("modal-open");
@@ -1609,8 +1595,8 @@
 
     function closeModalBase(id) {
       document.getElementById(id).classList.remove("show");
-      const openModal = document.querySelector(".modal.show");
-      if (!openModal) {
+      const stillOpen = document.querySelector(".modal.show");
+      if (!stillOpen) {
         document.body.classList.remove("modal-open");
       }
     }
@@ -1618,20 +1604,20 @@
     const profileData = {
       groom: {
         info: `
-          <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">김창수</div></div>
+          <div class="profile-info-row"><div class="profile-label">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</div><div class="profile-value">김창수</div></div>
           <div class="profile-info-row"><div class="profile-label">생년월일</div><div class="profile-value">1992년 8월 27일</div></div>
           <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTJ</div></div>
-          <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">누나가 두 명 있지만 첫째 같은 막내 아들</div></div>
+          <div class="profile-info-row"><div class="profile-label">가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;족</div><div class="profile-value">누나가 두 명 있지만 첫째 같은 막내 아들</div></div>
         `,
         title: "보규가 쓰는 창수",
         body: `안녕하세요! 창수는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
       },
       bride: {
         info: `
-          <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">최보규</div></div>
+          <div class="profile-info-row"><div class="profile-label">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</div><div class="profile-value">최보규</div></div>
           <div class="profile-info-row"><div class="profile-label">생년월일</div><div class="profile-value">1996년 8월 28일</div></div>
           <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTP</div></div>
-          <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">남동생이 한 명 있는 K 장녀</div></div>
+          <div class="profile-info-row"><div class="profile-label">가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;족</div><div class="profile-value">남동생이 한 명 있는 K 장녀</div></div>
         `,
         title: "창수가 쓰는 보규",
         body: `안녕하세요! 보규는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
@@ -1725,7 +1711,6 @@
 
     function handleSwipeGesture() {
       const diff = touchEndX - touchStartX;
-
       if (Math.abs(diff) < 40) return;
 
       if (diff < 0) {
