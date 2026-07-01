@@ -55,6 +55,8 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
+      scroll-padding-top: 0;
     }
 
     body {
@@ -105,6 +107,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
 
     .intro-section {
@@ -154,6 +158,7 @@
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
+        scroll-snap-type: none;
       }
 
       .scroll-reveal,
@@ -627,6 +632,11 @@
     }
 
     /* 6. 사진첩 */
+    .gallery-section {
+      scroll-snap-stop: normal;
+      scroll-margin-top: 36px;
+    }
+
     .gallery-shell {
       width: 100%;
       max-width: 350px;
@@ -1467,7 +1477,7 @@
     </section>
 
     <!-- 6. 사진첩 / 영상 -->
-    <section class="scroll-reveal">
+    <section class="gallery-section scroll-reveal">
       <div class="kicker reveal-child" style="--delay: 0ms;">사진첩</div>
       <h2 class="title reveal-child" style="--delay: 180ms;">우리의 장면들</h2>
       <div class="gallery-subtitle reveal-child" style="--delay: 280ms;">
