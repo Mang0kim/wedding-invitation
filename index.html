@@ -32,7 +32,7 @@
 
       --line: rgba(44, 44, 44, 0.09);
       --shadow-soft: 0 18px 45px rgba(44, 44, 44, 0.06);
-      --shadow-red: 0 8px 18px rgba(236, 34, 31, 0.16);
+      --shadow-red: 0 8px 18px rgba(236, 34, 31, 0.12);
 
       --accent: #EC221F;
       --accent-dark: #D61D1A;
@@ -100,7 +100,7 @@
     }
 
     section {
-      min-height: 62vh;
+      min-height: 100vh;
       padding: 76px 24px 0;
       display: flex;
       flex-direction: column;
@@ -115,18 +115,18 @@
     }
 
     .closing {
-      min-height: 62vh;
+      min-height: 100vh;
       padding: 76px 22px 70px;
     }
 
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(90px) scale(0.965);
-      filter: blur(14px);
+      transform: translateY(56px) scale(0.985);
+      filter: blur(10px);
       transition:
-        opacity 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1.9s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 2.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 2.4s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 2.4s cubic-bezier(0.22, 1, 0.36, 1);
       will-change: opacity, transform, filter;
     }
 
@@ -138,10 +138,10 @@
 
     .reveal-child {
       opacity: 0;
-      transform: translateY(34px);
+      transform: translateY(22px);
       transition:
-        opacity 1.55s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.55s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 2.0s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 2.0s cubic-bezier(0.22, 1, 0.36, 1);
       transition-delay: var(--delay, 0ms);
       will-change: opacity, transform;
     }
@@ -401,6 +401,24 @@
       box-shadow: none;
     }
 
+    .reveal-visible .wedding-day {
+      animation: softPop 1.2s ease 0.45s both;
+    }
+
+    @keyframes softPop {
+      0% {
+        transform: scale(0.86);
+        opacity: 0;
+      }
+      55% {
+        transform: scale(1.06);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
     .date-divider {
       height: 1px;
       background: var(--line);
@@ -408,31 +426,24 @@
       max-width: 330px;
     }
 
-    .day-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 44px;
-      max-width: 330px;
-      margin: 0 auto;
-    }
-
-    .day-stat {
+    .wedding-count-text,
+    .gallery-subtitle {
       text-align: center;
-    }
-
-    .day-stat-label {
-      font-size: var(--font-small);
-      color: var(--text-soft);
-      margin-bottom: 6px;
-      white-space: nowrap;
-      font-weight: 200;
-    }
-
-    .day-stat-value {
       font-size: var(--font-body);
-      font-weight: 300;
+      color: var(--text);
+      line-height: 1.7;
+      font-weight: 200;
+      letter-spacing: -0.03em;
+    }
+
+    .wedding-count-text strong,
+    .gallery-subtitle strong {
       color: var(--accent);
-      letter-spacing: -0.02em;
+      font-weight: 300;
+    }
+
+    .gallery-subtitle {
+      margin: -12px auto 34px;
     }
 
     /* 3. 모시는 곳 */
@@ -441,9 +452,18 @@
       color: var(--text-strong);
       font-size: var(--font-subtitle);
       line-height: 1.45;
-      margin-bottom: 34px;
+      margin-bottom: 10px;
       font-weight: 300;
       letter-spacing: -0.045em;
+    }
+
+    .location-detail {
+      text-align: center;
+      color: var(--text);
+      font-size: var(--font-body);
+      line-height: 1.7;
+      margin: 0 auto 34px;
+      font-weight: 200;
     }
 
     .map-box {
@@ -1131,7 +1151,7 @@
 
     @media (max-width: 380px) {
       section {
-        min-height: 58vh;
+        min-height: 100vh;
         padding-top: 66px;
       }
 
@@ -1143,7 +1163,7 @@
       }
 
       .closing {
-        min-height: 58vh;
+        min-height: 100vh;
         padding-top: 66px;
       }
 
@@ -1251,28 +1271,21 @@
 
         <div class="date-divider"></div>
 
-        <div class="day-stats">
-          <div class="day-stat">
-            <div class="day-stat-label">처음 만난 날부터</div>
-            <div class="day-stat-value" id="meetDayCount">D+0000</div>
-          </div>
-          <div class="day-stat">
-            <div class="day-stat-label">우리 결혼식까지</div>
-            <div class="day-stat-value" id="weddingDayCount">D-0000</div>
-          </div>
+        <div class="wedding-count-text">
+          우리의 예식이 <strong id="weddingDayCount">00</strong>일 남았습니다
         </div>
       </div>
     </section>
 
-    <!-- 3. 모시는 곳 -->
+    <!-- 3. 예식장소 -->
     <section class="scroll-reveal">
-      <div class="kicker reveal-child" style="--delay: 0ms;">모시는 곳</div>
-      <div class="location-address reveal-child" style="--delay: 100ms;">
-        부산시 동래구 금강공원로 23번길 20<br />
-        호텔농심 야외정원
+      <div class="kicker reveal-child" style="--delay: 0ms;">예식장소</div>
+      <div class="location-address reveal-child" style="--delay: 180ms;">호텔농심 야외정원</div>
+      <div class="location-detail reveal-child" style="--delay: 260ms;">
+        부산시 동래구 금강공원로 23번길 20
       </div>
 
-      <div class="map-box reveal-child" style="--delay: 220ms;">
+      <div class="map-box reveal-child" style="--delay: 360ms;">
         <div class="map-image" id="map"></div>
         <div class="map-links">
           <a class="map-link" href="https://map.naver.com/p/search/%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">네이버</a>
@@ -1286,7 +1299,7 @@
     <section class="scroll-reveal">
       <div class="kicker reveal-child" style="--delay: 0ms;">예식안내</div>
 
-      <div class="guide-wrap reveal-child" style="--delay: 160ms;">
+      <div class="guide-wrap reveal-child" style="--delay: 220ms;">
         <div class="guide-tabs">
           <button class="guide-tab active" onclick="switchGuide('meal', this)">식사안내</button>
           <button class="guide-tab" onclick="switchGuide('rain', this)">우천안내</button>
@@ -1312,14 +1325,14 @@
 
     <!-- 5. 맛집 -->
     <section class="food-section scroll-reveal">
-      <div class="kicker reveal-child" style="--delay: 0ms;">○ ○ ○ ○</div>
-      <h2 class="title reveal-child" style="--delay: 100ms;">보규❤️창수의 맛집 지도</h2>
-      <p class="desc reveal-child" style="--delay: 200ms;">
+      <div class="kicker reveal-child" style="--delay: 0ms;">그리고,</div>
+      <h2 class="title reveal-child" style="--delay: 180ms;">보규❤️창수의 맛집 지도</h2>
+      <p class="desc reveal-child" style="--delay: 360ms;">
         부산까지 먼 걸음을 해주신 감사한 분들을 위해<br />
         나누고 싶은 부산의 맛집 목록을 준비했습니다.
       </p>
 
-      <div class="food-center-btn reveal-child" style="--delay: 320ms;">
+      <div class="food-center-btn reveal-child" style="--delay: 520ms;">
         <button class="btn-rect" onclick="openFoodModal()">맛집 목록 둘러보기</button>
       </div>
     </section>
@@ -1327,8 +1340,12 @@
     <!-- 6. 사진첩 / 영상 -->
     <section class="scroll-reveal">
       <div class="kicker reveal-child" style="--delay: 0ms;">사진첩</div>
+      <h2 class="title reveal-child" style="--delay: 180ms;">우리의 장면들</h2>
+      <div class="gallery-subtitle reveal-child" style="--delay: 280ms;">
+        함께한 <strong id="meetDayCount">0000</strong>일의 시간
+      </div>
 
-      <div class="gallery-shell reveal-child" style="--delay: 160ms;">
+      <div class="gallery-shell reveal-child" style="--delay: 420ms;">
         <div class="gallery-grid" id="galleryGrid">
           <div class="gallery-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 01" onclick="openViewer(0)">
@@ -1404,12 +1421,12 @@
     <!-- 8. 마음 전하실 곳 -->
     <section class="scroll-reveal">
       <div class="kicker reveal-child" style="--delay: 0ms;">계좌안내</div>
-      <h2 class="title reveal-child" style="--delay: 100ms;">마음 전하실 곳</h2>
-      <div class="account-subtitle reveal-child" style="--delay: 180ms;">
+      <h2 class="title reveal-child" style="--delay: 180ms;">마음 전하실 곳</h2>
+      <div class="account-subtitle reveal-child" style="--delay: 320ms;">
         전해주시는 따뜻한 마음은 소중히 받겠습니다.
       </div>
 
-      <div class="account-wrap reveal-child" style="--delay: 280ms;">
+      <div class="account-wrap reveal-child" style="--delay: 480ms;">
         <div class="account-tabs">
           <button class="account-tab" onclick="toggleAccountGroup('groom', this)">신랑측</button>
           <button class="account-tab" onclick="toggleAccountGroup('bride', this)">신부측</button>
@@ -1425,10 +1442,10 @@
                 </div>
                 <div class="person-actions">
                   <a class="icon-btn" href="tel:01000000000">
-                    <img src="phone-icon.png" alt="전화" />
+                    <img src="phone.png" alt="전화" />
                   </a>
                   <a class="icon-btn" href="sms:01000000000">
-                    <img src="message-icon.png" alt="메시지" />
+                    <img src="chat.png" alt="메시지" />
                   </a>
                 </div>
               </div>
@@ -1449,10 +1466,10 @@
                 </div>
                 <div class="person-actions">
                   <a class="icon-btn" href="tel:01000000001">
-                    <img src="phone-icon.png" alt="전화" />
+                    <img src="phone.png" alt="전화" />
                   </a>
                   <a class="icon-btn" href="sms:01000000001">
-                    <img src="message-icon.png" alt="메시지" />
+                    <img src="chat.png" alt="메시지" />
                   </a>
                 </div>
               </div>
@@ -1473,10 +1490,10 @@
                 </div>
                 <div class="person-actions">
                   <a class="icon-btn" href="tel:01000000002">
-                    <img src="phone-icon.png" alt="전화" />
+                    <img src="phone.png" alt="전화" />
                   </a>
                   <a class="icon-btn" href="sms:01000000002">
-                    <img src="message-icon.png" alt="메시지" />
+                    <img src="chat.png" alt="메시지" />
                   </a>
                 </div>
               </div>
@@ -1499,10 +1516,10 @@
                 </div>
                 <div class="person-actions">
                   <a class="icon-btn" href="tel:01000000003">
-                    <img src="phone-icon.png" alt="전화" />
+                    <img src="phone.png" alt="전화" />
                   </a>
                   <a class="icon-btn" href="sms:01000000003">
-                    <img src="message-icon.png" alt="메시지" />
+                    <img src="chat.png" alt="메시지" />
                   </a>
                 </div>
               </div>
@@ -1523,10 +1540,10 @@
                 </div>
                 <div class="person-actions">
                   <a class="icon-btn" href="tel:01000000004">
-                    <img src="phone-icon.png" alt="전화" />
+                    <img src="phone.png" alt="전화" />
                   </a>
                   <a class="icon-btn" href="sms:01000000004">
-                    <img src="message-icon.png" alt="메시지" />
+                    <img src="chat.png" alt="메시지" />
                   </a>
                 </div>
               </div>
@@ -1547,10 +1564,10 @@
                 </div>
                 <div class="person-actions">
                   <a class="icon-btn" href="tel:01000000005">
-                    <img src="phone-icon.png" alt="전화" />
+                    <img src="phone.png" alt="전화" />
                   </a>
                   <a class="icon-btn" href="sms:01000000005">
-                    <img src="message-icon.png" alt="메시지" />
+                    <img src="chat.png" alt="메시지" />
                   </a>
                 </div>
               </div>
@@ -1670,8 +1687,8 @@
       const meetDiff = Math.floor((today - meet) / oneDay) + 1;
       const weddingDiff = Math.ceil((wedding - today) / oneDay);
 
-      document.getElementById("meetDayCount").textContent = "D+" + String(meetDiff).padStart(4, "0");
-      document.getElementById("weddingDayCount").textContent = "D-" + String(Math.max(weddingDiff, 0)).padStart(4, "0");
+      document.getElementById("meetDayCount").textContent = String(meetDiff).padStart(4, "0");
+      document.getElementById("weddingDayCount").textContent = String(Math.max(weddingDiff, 0)).padStart(2, "0");
     }
 
     function handleImageError(img) {
