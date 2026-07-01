@@ -1378,7 +1378,7 @@
     }
 
     .gallery-item.featured-wide .gallery-thumb {
-      aspect-ratio: 16 / 9.5;
+      aspect-ratio: 16 / 11;
     }
 
     .gallery-item.featured-tall .gallery-thumb {
@@ -1495,7 +1495,7 @@
 
       <div class="guide-wrap reveal-child" style="--delay: 220ms;">
         <div class="guide-tabs">
-          <button class="guide-tab active" onclick="switchGuide('meal', this)" data-label="식사안내" data-emoji="🍽️" aria-label="식사안내">식사안내</button>
+          <button class="guide-tab active is-emoji" onclick="switchGuide('meal', this)" data-label="식사안내" data-emoji="🍽️" aria-label="식사안내">🍽️</button>
           <button class="guide-tab" onclick="switchGuide('rain', this)" data-label="우천안내" data-emoji="☀️" aria-label="우천안내">우천안내</button>
           <button class="guide-tab" onclick="switchGuide('flower', this)" data-label="화환안내" data-emoji="🌼" aria-label="화환안내">화환안내</button>
         </div>
@@ -1974,6 +1974,13 @@
       document.getElementById("guide-" + type).classList.add("active");
     }
 
+    function initGuideTabs() {
+      const activeTab = document.querySelector(".guide-tab.active");
+      if (!activeTab) return;
+      activeTab.classList.add("is-emoji");
+      activeTab.textContent = activeTab.dataset.emoji || activeTab.textContent;
+    }
+
     function showMorePhotos() {
       document.querySelectorAll(".extra-photo").forEach(item => item.classList.remove("hidden"));
       document.getElementById("galleryMoreWrap").style.display = "none";
@@ -2099,6 +2106,7 @@
     });
 
     updateDayCounts();
+    initGuideTabs();
     setupViewerSwipe();
     setupScrollReveal();
     initVenueMap();
