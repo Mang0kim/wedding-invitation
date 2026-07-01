@@ -17,7 +17,6 @@
       --bg: #fbfbfd;
       --surface: #ffffff;
       --surface-soft: #f5f5f7;
-      --surface-deep: #eeeeef;
 
       --black: #2C2C2C;
       --gray: #595959;
@@ -30,21 +29,23 @@
 
       --line: rgba(44, 44, 44, 0.09);
       --shadow-soft: 0 18px 45px rgba(44, 44, 44, 0.06);
-      --shadow-red: 0 8px 18px rgba(236, 34, 31, 0.16);
+      --shadow-button: 0 10px 22px rgba(44, 44, 44, 0.09);
 
       --accent: #EC221F;
       --accent-dark: #D61D1A;
 
       --radius-card: 28px;
-      --radius-small: 18px;
 
       --font-kicker: 13px;
       --font-title: 21px;
       --font-subtitle: 21px;
       --font-body: 16px;
       --font-small: 14px;
-      --font-button: 14px;
+      --font-button: 13px;
       --font-name: 21px;
+
+      --body-line: 1.36;
+      --section-gap: 76px;
     }
 
     * {
@@ -98,11 +99,11 @@
     }
 
     section {
-      min-height: 62vh;
-      padding: 76px 24px 0;
+      min-height: auto;
+      padding: var(--section-gap) 24px 0;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .intro-section {
@@ -113,8 +114,8 @@
     }
 
     .closing {
-      min-height: 62vh;
-      padding: 76px 22px 70px;
+      min-height: auto;
+      padding: var(--section-gap) 22px 70px;
     }
 
     .scroll-reveal {
@@ -185,23 +186,25 @@
     .desc {
       text-align: center;
       font-size: var(--font-body);
-      line-height: 2;
+      line-height: var(--body-line);
       color: var(--text);
       margin: 0 auto;
       font-weight: 200;
     }
 
+    /* 버튼 공통 규칙 */
     .btn-rect {
       border: 0;
       background: var(--accent);
       color: var(--white);
       border-radius: 999px;
-      padding: 7px 8px 7px 16px;
-      min-height: 34px;
-      font-size: var(--font-small);
+      height: 32px;
+      min-height: 32px;
+      padding: 0 7px 0 14px;
+      font-size: var(--font-button);
       font-weight: 300;
       cursor: pointer;
-      box-shadow: var(--shadow-red);
+      box-shadow: var(--shadow-button);
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
@@ -212,12 +215,13 @@
         background 0.14s ease;
       white-space: nowrap;
       line-height: 1;
+      letter-spacing: -0.03em;
     }
 
     .btn-rect::after {
       content: "+";
-      width: 21px;
-      height: 21px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: var(--white);
       color: var(--accent);
@@ -225,10 +229,10 @@
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 300;
-      line-height: 21px;
-      flex: 0 0 21px;
+      line-height: 20px;
+      flex: 0 0 20px;
       text-align: center;
       transform: translateY(-0.4px);
     }
@@ -239,14 +243,15 @@
 
     .btn-rect:active {
       transform: scale(0.97);
-      box-shadow: 0 3px 8px rgba(236, 34, 31, 0.14);
+      box-shadow: 0 4px 10px rgba(44, 44, 44, 0.08);
     }
 
     .btn-rect.small {
-      width: 148px;
-      padding: 6px 7px 6px 14px;
+      width: auto;
+      height: 32px;
       min-height: 32px;
-      font-size: 13px;
+      padding: 0 7px 0 14px;
+      font-size: var(--font-button);
     }
 
     .btn-rect.small::after {
@@ -260,12 +265,36 @@
     .btn-rect.no-plus {
       width: auto;
       justify-content: center;
-      padding: 9px 16px;
-      min-height: 36px;
+      padding: 0 15px;
+      height: 32px;
+      min-height: 32px;
+      box-shadow: none;
     }
 
     .btn-rect.no-plus::after {
       display: none;
+    }
+
+    .copy-text-btn {
+      border: 0;
+      background: var(--accent);
+      color: var(--white);
+      height: 32px;
+      min-width: 42px;
+      padding: 0 11px;
+      border-radius: 999px;
+      font-size: var(--font-button);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      cursor: pointer;
+      box-shadow: none;
+      white-space: nowrap;
+      transition: transform 0.12s ease;
+    }
+
+    .copy-text-btn:active {
+      transform: scale(0.96);
     }
 
     /* 1. 인트로 */
@@ -273,7 +302,7 @@
       max-width: 330px;
       margin: 0 auto 63px;
       font-size: var(--font-body);
-      line-height: 2.05;
+      line-height: var(--body-line);
       color: var(--text);
     }
 
@@ -291,7 +320,7 @@
     .couple-family {
       margin-top: 0;
       font-size: var(--font-small);
-      line-height: 1.7;
+      line-height: 1.45;
       color: var(--text-soft);
       font-weight: 200;
       min-height: 48px;
@@ -558,11 +587,11 @@
     }
 
     .guide-content {
-      min-height: 96px;
+      min-height: 86px;
       display: none;
       text-align: center;
       font-size: var(--font-body);
-      line-height: 1.85;
+      line-height: var(--body-line);
       color: var(--text);
       padding: 4px 12px 0;
       font-weight: 200;
@@ -580,14 +609,13 @@
     .food-section .desc {
       max-width: 330px;
       margin-bottom: 34px;
+      font-size: var(--font-body);
+      line-height: var(--body-line);
+      font-weight: 200;
     }
 
     .food-center-btn {
       text-align: center;
-    }
-
-    .food-center-btn .btn-rect {
-      width: 176px;
     }
 
     /* 6. 사진첩 */
@@ -600,10 +628,15 @@
       padding: 0;
     }
 
+    .gallery-title {
+      margin-bottom: 28px;
+    }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
+      align-items: start;
     }
 
     .gallery-item.hidden {
@@ -648,24 +681,18 @@
       font-weight: 200;
     }
 
-    .gallery-more {
-      text-align: center;
-      padding: 20px 0 4px;
+    .gallery-more-slot {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .gallery-more .btn-rect.small {
+    .gallery-more-slot .btn-rect {
       width: auto;
-      min-height: 30px;
-      padding: 6px 7px 6px 14px;
-      font-size: 13px;
-    }
-
-    .gallery-more .btn-rect.small::after {
-      width: 19px;
-      height: 19px;
-      line-height: 19px;
-      flex-basis: 19px;
-      font-size: 15px;
+      height: 32px;
+      min-height: 32px;
     }
 
     .video-shell {
@@ -702,7 +729,7 @@
       font-size: var(--font-body);
       color: var(--text);
       margin: -6px 0 30px;
-      line-height: 1.7;
+      line-height: var(--body-line);
       font-weight: 200;
     }
 
@@ -789,18 +816,22 @@
       padding: 0 2px;
     }
 
+    .account-role,
+    .account-name {
+      font-size: var(--font-body);
+      letter-spacing: -0.03em;
+    }
+
     .account-role {
       display: inline-block;
       min-width: 44px;
       margin-right: 10px;
       color: var(--text-soft);
-      font-size: var(--font-small);
       font-weight: 200;
     }
 
     .account-name {
       color: var(--text-strong);
-      font-size: var(--font-body);
       font-weight: 300;
     }
 
@@ -839,13 +870,13 @@
 
     .account-number-row {
       background: var(--white);
-      border-radius: 16px;
-      min-height: 44px;
+      border-radius: 24px;
+      min-height: 46px;
       display: grid;
-      grid-template-columns: 66px 1fr auto;
+      grid-template-columns: 70px 1fr auto;
       align-items: center;
       gap: 4px;
-      padding: 0 6px 0 11px;
+      padding: 0 6px 0 18px;
       color: var(--text-soft);
       box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045);
     }
@@ -863,25 +894,6 @@
       font-weight: 200;
     }
 
-    .copy-text-btn {
-      border: 0;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 300;
-      padding: 6px 8px;
-      min-width: 34px;
-      border-radius: 999px;
-      cursor: pointer;
-      box-shadow: none;
-      white-space: nowrap;
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
-    }
-
-    .copy-text-btn:active {
-      transform: scale(0.96);
-    }
-
     /* 9. 클로징 */
     .closing-heart {
       text-align: center;
@@ -892,7 +904,7 @@
     .closing-text {
       text-align: center;
       font-size: var(--font-body);
-      line-height: 1.9;
+      line-height: var(--body-line);
       color: var(--text-strong);
       font-weight: 200;
     }
@@ -1033,7 +1045,7 @@
     .food-modal-desc {
       text-align: center;
       font-size: var(--font-body);
-      line-height: 1.8;
+      line-height: var(--body-line);
       color: var(--text);
       margin-bottom: 26px;
       font-weight: 200;
@@ -1049,7 +1061,7 @@
       border-radius: 18px;
       padding: 16px;
       font-size: var(--font-body);
-      line-height: 1.8;
+      line-height: var(--body-line);
       color: var(--text);
       font-weight: 200;
     }
@@ -1127,21 +1139,15 @@
     }
 
     @media (max-width: 380px) {
-      section {
-        min-height: 58vh;
-        padding-top: 66px;
+      :root {
+        --section-gap: 66px;
       }
 
       .intro-section {
         min-height: 100vh;
         padding-top: 0;
-        padding-bottom: 56px;
+        padding-bottom: 48px;
         justify-content: center;
-      }
-
-      .closing {
-        min-height: 58vh;
-        padding-top: 66px;
       }
 
       .intro-message {
@@ -1164,18 +1170,14 @@
         font-size: 13px;
       }
 
-      .btn-rect.small {
-        width: 142px;
-        font-size: 12px;
-      }
-
       .profile-info-row {
         grid-template-columns: 84px 1fr;
       }
 
       .account-number-row {
-        grid-template-columns: 60px 1fr auto;
+        grid-template-columns: 64px 1fr auto;
         gap: 3px;
+        padding-left: 16px;
       }
 
       .bank-name,
@@ -1204,13 +1206,13 @@
         <div class="couple-card">
           <div class="couple-family">김상두 · 윤옥례의 아들</div>
           <div class="couple-name">김창수</div>
-          <button class="btn-rect small" onclick="openProfileModal('groom')">신랑을 소개합니다</button>
+          <button class="btn-rect" onclick="openProfileModal('groom')">신랑을 소개합니다</button>
         </div>
 
         <div class="couple-card">
           <div class="couple-family">최동영 · 박지원의 딸</div>
           <div class="couple-name">최보규</div>
-          <button class="btn-rect small" onclick="openProfileModal('bride')">신부를 소개합니다</button>
+          <button class="btn-rect" onclick="openProfileModal('bride')">신부를 소개합니다</button>
         </div>
       </div>
     </section>
@@ -1324,6 +1326,7 @@
     <!-- 6. 사진첩 / 영상 -->
     <section class="scroll-reveal">
       <div class="kicker reveal-child" style="--delay: 0ms;">사진첩</div>
+      <h2 class="title gallery-title reveal-child" style="--delay: 100ms;">사랑의 기록</h2>
 
       <div class="gallery-shell reveal-child" style="--delay: 160ms;">
         <div class="gallery-grid" id="galleryGrid">
@@ -1348,7 +1351,11 @@
             <div class="fig-caption">Fig. 03</div>
           </div>
 
-          <div class="gallery-item">
+          <div class="gallery-more-slot" id="galleryMoreWrap">
+            <button class="btn-rect" onclick="showMorePhotos()">더보기</button>
+          </div>
+
+          <div class="gallery-item hidden extra-photo">
             <div class="gallery-thumb fallback-box" data-fallback="사진 04" onclick="openViewer(3)">
               <img src="photo04.jpg" alt="사진 04" onerror="handleImageError(this)" />
             </div>
@@ -1383,10 +1390,6 @@
             <div class="fig-caption">Fig. 08</div>
           </div>
         </div>
-
-        <div class="gallery-more" id="galleryMoreWrap">
-          <button class="btn-rect small" onclick="showMorePhotos()">더보기</button>
-        </div>
       </div>
 
       <div class="video-shell reveal-child" style="--delay: 280ms;">
@@ -1409,7 +1412,7 @@
       <div class="account-wrap reveal-child" style="--delay: 280ms;">
         <div class="account-tabs">
           <button class="account-tab" onclick="toggleAccountGroup('groom', this)">신랑측</button>
-          <button class="account-tab" onclick="toggleAccountGroup('bride', this)">신부측</button>
+          <button class="account-tab active" onclick="toggleAccountGroup('bride', this)">신부측</button>
         </div>
 
         <div class="account-panel" id="account-groom">
@@ -1486,7 +1489,7 @@
           </div>
         </div>
 
-        <div class="account-panel" id="account-bride">
+        <div class="account-panel active" id="account-bride">
           <div class="account-box">
             <div class="account-person-row">
               <div class="account-person-head">
@@ -1797,16 +1800,11 @@
     }
 
     function toggleAccountGroup(type, btn) {
-      const targetPanel = document.getElementById("account-" + type);
-      const isAlreadyOpen = targetPanel.classList.contains("active");
-
       document.querySelectorAll(".account-tab").forEach(tab => tab.classList.remove("active"));
       document.querySelectorAll(".account-panel").forEach(panel => panel.classList.remove("active"));
 
-      if (!isAlreadyOpen) {
-        btn.classList.add("active");
-        targetPanel.classList.add("active");
-      }
+      btn.classList.add("active");
+      document.getElementById("account-" + type).classList.add("active");
     }
 
     function copyText(text) {
