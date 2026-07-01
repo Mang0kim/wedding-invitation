@@ -1235,6 +1235,105 @@
         font-size: 13px;
       }
     }
+
+    /* === 2026-07-01 refinement: opening spacing, guide/map/account/gallery polish === */
+    .intro-section {
+      justify-content: flex-start;
+      padding-top: 9vh;
+      padding-bottom: 0;
+    }
+
+    .opening-icon {
+      margin-bottom: 14px;
+    }
+
+    .intro-section .title {
+      margin-bottom: 63px;
+    }
+
+    .intro-message {
+      margin-bottom: 63px;
+    }
+
+    .wedding-count-text strong,
+    .gallery-subtitle strong {
+      color: var(--accent);
+      font-size: 1em;
+      font-weight: 300;
+    }
+
+    .map-link {
+      line-height: 1;
+    }
+
+    .map-link::after {
+      content: ">";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 9px;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1;
+      transform: scaleX(1.45);
+      transform-origin: center;
+    }
+
+    .guide-wrap {
+      padding: 8px 8px 40px;
+    }
+
+    .guide-tab {
+      font-size: var(--font-body);
+    }
+
+    .guide-tab.is-emoji {
+      font-size: 18px;
+    }
+
+    .guide-content {
+      min-height: 126px;
+      padding-top: 22px;
+    }
+
+    .gallery-more-cell {
+      align-items: center;
+    }
+
+    .gallery-more {
+      transform: translateY(-18px);
+    }
+
+    @media (max-width: 380px) {
+      .intro-section {
+        padding-top: 8vh;
+        padding-bottom: 0;
+      }
+
+      .intro-section .title,
+      .intro-message {
+        margin-bottom: 51px;
+      }
+
+      .guide-tab {
+        font-size: 15px;
+      }
+
+      .guide-tab.is-emoji {
+        font-size: 18px;
+      }
+
+      .guide-content {
+        min-height: 122px;
+        padding-top: 20px;
+      }
+
+      .gallery-more {
+        transform: translateY(-16px);
+      }
+    }
+
   </style>
 </head>
 
