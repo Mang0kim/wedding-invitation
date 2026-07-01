@@ -55,8 +55,6 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-snap-type: y proximity;
-      scroll-padding-top: 0;
     }
 
     body {
@@ -107,8 +105,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      scroll-snap-align: center;
-      scroll-snap-stop: normal;
     }
 
     .intro-section {
@@ -116,13 +112,11 @@
       padding-top: 0;
       padding-bottom: 56px;
       justify-content: center;
-      scroll-snap-align: start;
     }
 
     .closing {
       min-height: 82svh;
       padding: 88px 22px 76px;
-      scroll-snap-align: center;
     }
 
     .scroll-reveal {
@@ -160,7 +154,6 @@
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
-        scroll-snap-type: none;
       }
 
       .scroll-reveal,
@@ -638,9 +631,6 @@
       min-height: auto;
       padding: 96px 24px 96px;
       justify-content: flex-start;
-      scroll-snap-align: start;
-      scroll-snap-stop: normal;
-      scroll-margin-top: 24px;
     }
 
     .gallery-shell {
@@ -1355,6 +1345,60 @@
       }
     }
 
+
+    /* === gallery 13 photos + Apple-like continuous scroll === */
+    html {
+      scroll-snap-type: none !important;
+    }
+
+    section,
+    .intro-section,
+    .closing,
+    .gallery-section {
+      scroll-snap-align: none !important;
+      scroll-snap-stop: normal !important;
+      scroll-margin-top: 0 !important;
+    }
+
+    .scroll-reveal {
+      transform: translateY(48px) scale(0.99);
+      filter: blur(5px);
+      transition:
+        opacity 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.9s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gallery-grid {
+      align-items: start;
+    }
+
+    .gallery-item.featured-wide {
+      grid-column: 1 / -1;
+    }
+
+    .gallery-item.featured-wide .gallery-thumb {
+      aspect-ratio: 16 / 11;
+    }
+
+    .gallery-item.featured-tall .gallery-thumb {
+      aspect-ratio: 3 / 4;
+    }
+
+    .gallery-item.featured-square .gallery-thumb {
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-more-cell {
+      grid-column: 1 / -1;
+      aspect-ratio: auto;
+      padding: 8px 0 2px;
+    }
+
+    .gallery-more {
+      transform: none;
+    }
+
   </style>
 </head>
 
@@ -1497,21 +1541,21 @@
 
       <div class="gallery-shell reveal-child" style="--delay: 420ms;">
         <div class="gallery-grid" id="galleryGrid">
-          <div class="gallery-item">
+          <div class="gallery-item featured-wide">
             <div class="gallery-thumb fallback-box" data-fallback="사진 01" onclick="openViewer(0)">
               <img src="photo01.jpg" alt="사진 01" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 01</div>
           </div>
 
-          <div class="gallery-item">
+          <div class="gallery-item featured-tall">
             <div class="gallery-thumb fallback-box" data-fallback="사진 02" onclick="openViewer(1)">
               <img src="photo02.jpg" alt="사진 02" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 02</div>
           </div>
 
-          <div class="gallery-item">
+          <div class="gallery-item featured-square">
             <div class="gallery-thumb fallback-box" data-fallback="사진 03" onclick="openViewer(2)">
               <img src="photo03.jpg" alt="사진 03" onerror="handleImageError(this)" />
             </div>
@@ -1557,6 +1601,41 @@
               <img src="photo08.jpg" alt="사진 08" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 08</div>
+          </div>
+
+          <div class="gallery-item hidden extra-photo">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 09" onclick="openViewer(8)">
+              <img src="photo09.jpg" alt="사진 09" onerror="handleImageError(this)" />
+            </div>
+            <div class="fig-caption">Fig. 09</div>
+          </div>
+
+          <div class="gallery-item hidden extra-photo">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 10" onclick="openViewer(9)">
+              <img src="photo10.jpg" alt="사진 10" onerror="handleImageError(this)" />
+            </div>
+            <div class="fig-caption">Fig. 10</div>
+          </div>
+
+          <div class="gallery-item hidden extra-photo">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 11" onclick="openViewer(10)">
+              <img src="photo11.jpg" alt="사진 11" onerror="handleImageError(this)" />
+            </div>
+            <div class="fig-caption">Fig. 11</div>
+          </div>
+
+          <div class="gallery-item hidden extra-photo">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 12" onclick="openViewer(11)">
+              <img src="photo12.jpg" alt="사진 12" onerror="handleImageError(this)" />
+            </div>
+            <div class="fig-caption">Fig. 12</div>
+          </div>
+
+          <div class="gallery-item hidden extra-photo">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 13" onclick="openViewer(12)">
+              <img src="photo13.jpg" alt="사진 13" onerror="handleImageError(this)" />
+            </div>
+            <div class="fig-caption">Fig. 13</div>
           </div>
         </div>
 
@@ -1908,7 +1987,12 @@
       { src: "photo05.jpg", caption: "Fig. 05" },
       { src: "photo06.jpg", caption: "Fig. 06" },
       { src: "photo07.jpg", caption: "Fig. 07" },
-      { src: "photo08.jpg", caption: "Fig. 08" }
+      { src: "photo08.jpg", caption: "Fig. 08" },
+      { src: "photo09.jpg", caption: "Fig. 09" },
+      { src: "photo10.jpg", caption: "Fig. 10" },
+      { src: "photo11.jpg", caption: "Fig. 11" },
+      { src: "photo12.jpg", caption: "Fig. 12" },
+      { src: "photo13.jpg", caption: "Fig. 13" }
     ];
 
     let currentViewerIndex = 0;
