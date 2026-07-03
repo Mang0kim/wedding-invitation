@@ -1486,6 +1486,226 @@
       aspect-ratio: 16 / 9.5;
     }
 
+
+    /* === 2026-07-03 polish: profile, counts, guide, gallery viewer, copy toast === */
+    #profileModal.modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 0;
+    }
+
+    #profileModal .modal-sheet {
+      margin: 0 auto;
+      max-height: calc(100dvh - 48px);
+      padding: 34px 30px 28px;
+    }
+
+    #profileModal .profile-layout {
+      min-height: auto;
+      padding-top: 24px;
+      padding-bottom: 0;
+      justify-content: flex-start;
+    }
+
+    .profile-avatar {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: var(--surface-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.04);
+    }
+
+    .profile-body {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    #profileModal .modal-bottom-btn {
+      margin-top: 28px;
+    }
+
+    .map-link::after {
+      content: "↗";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 7px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1;
+      transform: translateY(-0.5px);
+      transform-origin: center;
+    }
+
+    .guide-wrap {
+      padding: 8px 8px 46px;
+    }
+
+    .guide-content {
+      min-height: 190px;
+      padding: 28px 14px 0;
+      line-height: 1.72;
+    }
+
+    .timeline-open-btn {
+      width: 21px;
+      height: 21px;
+      min-width: 21px;
+      border-radius: 50%;
+      font-size: 17px;
+      line-height: 21px;
+      box-shadow: none;
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-grid {
+      gap: 8px 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+    }
+
+    .gallery-item.featured-wide .gallery-thumb {
+      aspect-ratio: 16 / 9.5;
+    }
+
+    .fig-caption {
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      margin: 0;
+      padding: 0;
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 12px;
+      font-weight: 200;
+      line-height: 1;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    #viewerModal.modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    #viewerModal .modal-backdrop {
+      background: rgba(0, 0, 0, 0.74);
+      backdrop-filter: blur(10px);
+    }
+
+    .viewer-sheet {
+      width: auto;
+      max-width: calc(100vw - 32px);
+      height: auto;
+      max-height: calc(100dvh - 32px);
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .viewer-image-wrap {
+      flex: 0 1 auto;
+      width: auto;
+      height: auto;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100dvh - 32px);
+      margin: 0;
+      background: transparent;
+      border-radius: 0;
+      overflow: visible;
+    }
+
+    .viewer-image-wrap img {
+      width: auto;
+      height: auto;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100dvh - 32px);
+      object-fit: contain;
+      background: transparent;
+    }
+
+    .viewer-close {
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.38);
+    }
+
+    .viewer-nav {
+      width: 48px;
+      height: 64px;
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 44px;
+      font-weight: 200;
+      box-shadow: none;
+      backdrop-filter: none;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.38);
+    }
+
+    .viewer-prev {
+      left: -2px;
+    }
+
+    .viewer-next {
+      right: -2px;
+    }
+
+    .viewer-counter {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.28);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 1;
+      backdrop-filter: blur(10px);
+    }
+
+    .copy-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 18px);
+      opacity: 0;
+      z-index: 1200;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(44, 44, 44, 0.88);
+      color: var(--white);
+      font-size: var(--font-small);
+      font-weight: 300;
+      line-height: 1;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .copy-toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
   </style>
 </head>
 
@@ -1589,12 +1809,16 @@
 
         <div class="guide-content active" id="guide-meal">
           식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
-          현장 안내에 따라 편하게 이동해 주세요.
+          현장 안내에 따라 편하게 이동해 주세요.<br /><br />
+          신랑신부의 추천메뉴<br />
+          신랑: 부산하면 돼지고기 🐷<br />
+          신부: 브루어리에서 만든 무제한 생맥주 🍻
         </div>
 
         <div class="guide-content" id="guide-rain">
           가을 하늘 아래에서 진행되는 야외예식입니다.<br />
-          우천 시에는 호텔 본관에서 예식이 진행됩니다.
+          우천 시에는 호텔 본관에서 예식이 진행됩니다.<br /><br />
+          신랑신부에게 날씨의 요정이 되어주세요.
         </div>
 
         <div class="guide-content" id="guide-flower">
@@ -1898,6 +2122,7 @@
 
       <div class="profile-layout">
         <div>
+          <div class="profile-avatar" id="profileAvatar" aria-hidden="true">♡</div>
           <div class="profile-info" id="profileInfoArea"></div>
           <div class="profile-body" id="profileEssayBody"></div>
         </div>
@@ -1982,6 +2207,7 @@
 
     <div class="viewer-sheet">
       <button class="viewer-close" onclick="closeViewer()">×</button>
+      <div class="viewer-counter" id="viewerCounter">1 / 13</div>
 
       <div class="viewer-image-wrap" id="viewerSwipeArea">
         <button class="viewer-nav viewer-prev" onclick="moveViewer(-1)">‹</button>
@@ -1992,6 +2218,8 @@
       <div class="viewer-caption" id="viewerCaption">Fig. 01</div>
     </div>
   </div>
+
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">복사되었습니다.</div>
 
   <script>
     const VENUE_LOCATION = new naver.maps.LatLng(35.21951419444281, 129.08203204013648);
@@ -2010,6 +2238,26 @@
 
     const MEET_DATE = "2018-10-13";
     const WEDDING_DATE = "2026-10-03";
+
+    let weddingCountAnimated = false;
+    let meetCountAnimated = false;
+
+    function getDayDiffs() {
+      const meet = new Date(MEET_DATE);
+      const wedding = new Date(WEDDING_DATE);
+      const today = new Date();
+
+      meet.setHours(0, 0, 0, 0);
+      wedding.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      const oneDay = 1000 * 60 * 60 * 24;
+
+      return {
+        meetDiff: Math.floor((today - meet) / oneDay) + 1,
+        weddingDiff: Math.ceil((wedding - today) / oneDay)
+      };
+    }
 
     function animateNumber(el, target, duration = 1500, padLength = 2) {
       if (!el) return;
@@ -2038,32 +2286,35 @@
       requestAnimationFrame(frame);
     }
 
-    function updateDayCounts() {
-      const meet = new Date(MEET_DATE);
-      const wedding = new Date(WEDDING_DATE);
-      const today = new Date();
+    function startWeddingCountAnimation() {
+      if (weddingCountAnimated) return;
+      weddingCountAnimated = true;
 
-      meet.setHours(0, 0, 0, 0);
-      wedding.setHours(0, 0, 0, 0);
-      today.setHours(0, 0, 0, 0);
-
-      const oneDay = 1000 * 60 * 60 * 24;
-
-      const meetDiff = Math.floor((today - meet) / oneDay) + 1;
-      const weddingDiff = Math.ceil((wedding - today) / oneDay);
-
+      const { weddingDiff } = getDayDiffs();
       const weddingCountText = document.getElementById("weddingCountText");
+      if (!weddingCountText) return;
 
-      if (weddingDiff === 0 && weddingCountText) {
+      if (weddingDiff === 0) {
         weddingCountText.classList.add("wedding-today");
         weddingCountText.textContent = "오늘 우리 결혼합니다!";
-      } else if (weddingCountText) {
+      } else {
         weddingCountText.classList.remove("wedding-today");
         weddingCountText.innerHTML = '우리의 예식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.';
-        animateNumber(document.getElementById("weddingDayCount"), Math.max(weddingDiff, 0), 1500, 2);
+        animateNumber(document.getElementById("weddingDayCount"), Math.max(weddingDiff, 0), 1900, 2);
       }
+    }
 
-      animateNumber(document.getElementById("meetDayCount"), meetDiff, 1700, 4);
+    function startMeetCountAnimation() {
+      if (meetCountAnimated) return;
+      meetCountAnimated = true;
+
+      const { meetDiff } = getDayDiffs();
+      animateNumber(document.getElementById("meetDayCount"), meetDiff, 2100, 4);
+    }
+
+    function updateDayCounts() {
+      weddingCountAnimated = false;
+      meetCountAnimated = false;
     }
 
     function handleImageError(img) {
@@ -2091,6 +2342,7 @@
 
     const profileData = {
       groom: {
+        avatar: "🤵🏻",
         info: `
           <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">김창수</div></div>
           <div class="profile-info-row"><div class="profile-label">생년월일</div><div class="profile-value">1992년 8월 27일</div></div>
@@ -2101,6 +2353,7 @@
         body: `안녕하세요! 창수는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
       },
       bride: {
+        avatar: "👰🏻",
         info: `
           <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">최보규</div></div>
           <div class="profile-info-row"><div class="profile-label">생년월일</div><div class="profile-value">1996년 8월 28일</div></div>
@@ -2114,6 +2367,7 @@
 
     function openProfileModal(type) {
       const data = profileData[type];
+      document.getElementById("profileAvatar").textContent = data.avatar || "♡";
       document.getElementById("profileInfoArea").innerHTML = data.info;
       document.getElementById("profileEssayBody").textContent = data.body;
       openModalBase("profileModal");
@@ -2204,6 +2458,8 @@
       const image = galleryImages[currentViewerIndex];
       document.getElementById("viewerImage").src = image.src;
       document.getElementById("viewerCaption").textContent = image.caption;
+      const counter = document.getElementById("viewerCounter");
+      if (counter) counter.textContent = (currentViewerIndex + 1) + " / " + galleryImages.length;
     }
 
     function setupViewerSwipe() {
@@ -2244,17 +2500,43 @@
       }
     }
 
+    function showCopyToast(message) {
+      const toast = document.getElementById("copyToast");
+      if (!toast) return;
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      window.clearTimeout(showCopyToast.timer);
+      showCopyToast.timer = window.setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1600);
+    }
+
     function copyText(text) {
       navigator.clipboard.writeText(text)
-        .then(() => alert("복사되었습니다."))
-        .catch(() => alert("복사에 실패했습니다."));
+        .then(() => showCopyToast("복사되었습니다."))
+        .catch(() => showCopyToast("복사에 실패했습니다."));
+    }
+
+    function maybeStartCountAnimations(section) {
+      if (section.querySelector("#weddingCountText")) {
+        window.setTimeout(startWeddingCountAnimation, 3000);
+      }
+
+      if (section.querySelector("#meetDayCount")) {
+        window.setTimeout(startMeetCountAnimation, 800);
+      }
     }
 
     function setupScrollReveal() {
       const revealSections = document.querySelectorAll(".scroll-reveal");
 
       if (!("IntersectionObserver" in window)) {
-        revealSections.forEach(section => section.classList.add("reveal-visible"));
+        revealSections.forEach(section => {
+          section.classList.add("reveal-visible");
+          maybeStartCountAnimations(section);
+        });
         return;
       }
 
@@ -2262,6 +2544,7 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("reveal-visible");
+            maybeStartCountAnimations(entry.target);
           }
         });
       }, {
