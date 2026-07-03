@@ -1399,6 +1399,93 @@
       transform: none;
     }
 
+
+    /* === D-day count animation & timeline modal === */
+    .wedding-count-text.wedding-today {
+      color: var(--accent);
+      font-weight: 300;
+    }
+
+    .gallery-subtitle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .gallery-subtitle-text {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-open-btn {
+      width: 22px;
+      height: 22px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      font-family: Arial, sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-red);
+    }
+
+    .timeline-open-btn:active {
+      transform: translateY(-1px) scale(0.94);
+    }
+
+    .timeline-modal-content {
+      padding-top: 36px;
+    }
+
+    .timeline-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .timeline-item {
+      background: var(--surface-soft);
+      border-radius: 20px;
+      padding: 16px 18px;
+      text-align: left;
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-size: var(--font-small);
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+
+    .timeline-title {
+      color: var(--text-strong);
+      font-size: var(--font-body);
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+
+    .timeline-desc {
+      color: var(--text);
+      font-size: var(--font-small);
+      font-weight: 200;
+      line-height: 1.6;
+    }
+
+    .gallery-item.featured-wide .gallery-thumb {
+      aspect-ratio: 16 / 9.5;
+    }
+
   </style>
 </head>
 
@@ -1924,6 +2011,33 @@
     const MEET_DATE = "2018-10-13";
     const WEDDING_DATE = "2026-10-03";
 
+    function animateNumber(el, target, duration = 1500, padLength = 2) {
+      if (!el) return;
+
+      const safeTarget = Math.max(Number(target) || 0, 0);
+      const startTime = performance.now();
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function frame(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = easeOutCubic(progress);
+        const current = Math.round(safeTarget * eased);
+
+        el.textContent = String(current).padStart(padLength, "0");
+
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          el.textContent = String(safeTarget).padStart(padLength, "0");
+        }
+      }
+
+      requestAnimationFrame(frame);
+    }
+
     function updateDayCounts() {
       const meet = new Date(MEET_DATE);
       const wedding = new Date(WEDDING_DATE);
@@ -1938,8 +2052,18 @@
       const meetDiff = Math.floor((today - meet) / oneDay) + 1;
       const weddingDiff = Math.ceil((wedding - today) / oneDay);
 
-      document.getElementById("meetDayCount").textContent = String(meetDiff).padStart(4, "0");
-      document.getElementById("weddingDayCount").textContent = String(Math.max(weddingDiff, 0)).padStart(2, "0");
+      const weddingCountText = document.getElementById("weddingCountText");
+
+      if (weddingDiff === 0 && weddingCountText) {
+        weddingCountText.classList.add("wedding-today");
+        weddingCountText.textContent = "오늘 우리 결혼합니다!";
+      } else if (weddingCountText) {
+        weddingCountText.classList.remove("wedding-today");
+        weddingCountText.innerHTML = '우리의 예식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.';
+        animateNumber(document.getElementById("weddingDayCount"), Math.max(weddingDiff, 0), 1500, 2);
+      }
+
+      animateNumber(document.getElementById("meetDayCount"), meetDiff, 1700, 4);
     }
 
     function handleImageError(img) {
@@ -2005,6 +2129,14 @@
 
     function closeFoodModal() {
       closeModalBase("foodModal");
+    }
+
+    function openTimelineModal() {
+      openModalBase("timelineModal");
+    }
+
+    function closeTimelineModal() {
+      closeModalBase("timelineModal");
     }
 
     function switchGuide(type, btn) {
@@ -2146,6 +2278,7 @@
       if (e.key === "Escape") {
         closeProfileModal();
         closeFoodModal();
+        closeTimelineModal();
         closeViewer();
       }
     });
