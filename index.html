@@ -1465,8 +1465,8 @@
 
         <div class="date-divider"></div>
 
-        <div class="wedding-count-text">
-          우리의 예식이 <strong id="weddingDayCount">00</strong>일 남았습니다
+        <div class="wedding-count-text" id="weddingCountText">
+          우리의 예식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.
         </div>
       </div>
     </section>
@@ -1536,7 +1536,10 @@
       <div class="kicker reveal-child" style="--delay: 0ms;">사진첩</div>
       <h2 class="title reveal-child" style="--delay: 180ms;">우리의 장면들</h2>
       <div class="gallery-subtitle reveal-child" style="--delay: 280ms;">
-        함께한 <strong id="meetDayCount">0000</strong>일의 시간
+        <span class="gallery-subtitle-text">
+          함께한 <strong id="meetDayCount">0000</strong>일의 시간
+        </span>
+        <button class="timeline-open-btn" onclick="openTimelineModal()" aria-label="연애 타임라인 보기">+</button>
       </div>
 
       <div class="gallery-shell reveal-child" style="--delay: 420ms;">
@@ -1845,7 +1848,47 @@
       </div>
     </div>
   </div>
+    
+  <!-- 연애 타임라인 팝업 -->
+<div class="modal" id="timelineModal" aria-hidden="true">
+  <div class="modal-backdrop" onclick="closeTimelineModal()"></div>
+  <div class="modal-sheet">
+    <button class="close-x" onclick="closeTimelineModal()">×</button>
 
+    <div class="timeline-modal-content">
+      <div class="food-modal-title">우리의 시간</div>
+      <div class="food-modal-desc">
+        처음 만난 날부터 오늘까지,<br />
+        함께 쌓아온 장면들을 담았습니다.
+      </div>
+
+      <div class="timeline-list">
+        <div class="timeline-item">
+          <div class="timeline-date">2018.10.13</div>
+          <div class="timeline-title">처음 만난 날</div>
+          <div class="timeline-desc">서로의 시간이 처음 겹쳐진 날</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">0000.00.00</div>
+          <div class="timeline-title">함께한 어느 날</div>
+          <div class="timeline-desc">둘만의 기억으로 남은 장면</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2026.10.03</div>
+          <div class="timeline-title">우리의 결혼식</div>
+          <div class="timeline-desc">오래 함께할 약속을 나누는 날</div>
+        </div>
+      </div>
+
+      <div class="modal-bottom-btn">
+        <button class="btn-rect small no-plus" onclick="closeTimelineModal()">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
   <!-- 사진 전체보기 -->
   <div class="modal" id="viewerModal" aria-hidden="true">
     <div class="modal-backdrop" onclick="closeViewer()"></div>
