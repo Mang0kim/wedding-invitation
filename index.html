@@ -1706,6 +1706,206 @@
       transform: translate(-50%, 0);
     }
 
+
+    /* === 2026-07-05 additional polish: profile balance, calendar colors, guide, gallery magazine === */
+    #profileModal .modal-sheet {
+      max-height: calc(100dvh - 36px);
+      padding: 28px 28px 22px;
+    }
+
+    #profileModal .profile-layout {
+      padding-top: 12px;
+    }
+
+    .profile-avatar {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .profile-info {
+      max-width: 304px;
+      font-size: 13px;
+      line-height: 1.26;
+    }
+
+    .profile-info-row {
+      grid-template-columns: 66px 1fr;
+      gap: 10px;
+      margin-bottom: 5px;
+      line-height: 1.26;
+    }
+
+    .profile-label,
+    .profile-value {
+      font-size: 13px;
+      line-height: 1.26;
+    }
+
+    .profile-body {
+      max-width: 304px;
+      margin-top: 18px;
+      font-size: 15px;
+      line-height: 1.68;
+      text-align: justify;
+      text-justify: inter-character;
+    }
+
+    #profileModal .modal-bottom-btn {
+      margin-top: 20px;
+    }
+
+    .calendar-grid .sunday-name,
+    .calendar-grid .calendar-sunday {
+      color: rgba(236, 34, 31, 0.56);
+    }
+
+    .calendar-grid .saturday-name,
+    .calendar-grid .calendar-saturday {
+      color: rgba(0, 113, 227, 0.50);
+    }
+
+    .calendar-grid .wedding-day {
+      color: var(--white);
+    }
+
+    .map-link::after {
+      transform: translateY(1px);
+    }
+
+    .guide-wrap {
+      padding: 8px 8px 42px;
+    }
+
+    .guide-content {
+      min-height: 252px;
+      padding: 30px 14px 0;
+      line-height: 1.72;
+    }
+
+    .guide-red-line {
+      color: var(--accent);
+      font-weight: 300;
+    }
+
+    .guide-menu-card {
+      width: 100%;
+      margin: 22px auto 0;
+      padding: 15px 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 8px 22px rgba(44, 44, 44, 0.045);
+      text-align: left;
+    }
+
+    .guide-menu-title {
+      color: var(--accent);
+      font-size: var(--font-small);
+      font-weight: 300;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .guide-menu-row {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 10px;
+      align-items: baseline;
+      color: var(--text);
+      font-size: var(--font-small);
+      line-height: 1.62;
+    }
+
+    .guide-menu-row span {
+      color: var(--text-soft);
+      font-weight: 200;
+    }
+
+    .guide-menu-row strong {
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    .gallery-grid {
+      gap: 6px 12px;
+    }
+
+    .gallery-thumb {
+      overflow: hidden;
+    }
+
+    .gallery-thumb img {
+      transform: scale(1.04);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .gallery-thumb:active img {
+      transform: scale(1.08);
+    }
+
+    .gallery-item.mag-wide {
+      grid-column: 1 / -1;
+    }
+
+    .gallery-item.mag-wide .gallery-thumb {
+      aspect-ratio: 16 / 9.5;
+    }
+
+    .gallery-item.mag-square .gallery-thumb {
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-item.mag-tall .gallery-thumb {
+      aspect-ratio: 3 / 4;
+    }
+
+    .viewer-image-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .viewer-image-wrap img {
+      border-radius: 24px;
+      overflow: hidden;
+      transform: scale(1.015);
+      max-width: calc(100vw - 22px);
+      max-height: calc(100dvh - 76px);
+    }
+
+    .viewer-counter {
+      top: 18px;
+    }
+
+    @media (max-width: 380px) {
+      #profileModal .modal-sheet {
+        padding: 26px 24px 20px;
+      }
+
+      .profile-avatar {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
+        font-size: 20px;
+      }
+
+      .profile-info-row {
+        grid-template-columns: 60px 1fr;
+        gap: 8px;
+      }
+
+      .profile-body {
+        font-size: 14px;
+        line-height: 1.64;
+      }
+
+      .guide-content {
+        min-height: 246px;
+        padding-top: 28px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1747,26 +1947,26 @@
       <div class="date-card reveal-child" style="--delay: 220ms;">
         <div class="calendar-box">
           <div class="calendar-grid">
+            <div class="day-name sunday-name">일</div>
             <div class="day-name">월</div>
             <div class="day-name">화</div>
             <div class="day-name">수</div>
             <div class="day-name">목</div>
             <div class="day-name">금</div>
-            <div class="day-name">토</div>
-            <div class="day-name">일</div>
+            <div class="day-name saturday-name">토</div>
 
+            <div class="empty">.</div>
             <div class="empty">.</div>
             <div class="empty">.</div>
             <div class="empty">.</div>
             <div>1</div>
             <div>2</div>
             <div class="wedding-day">3</div>
-            <div>4</div>
 
-            <div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
-            <div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div>
-            <div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
-            <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div class="empty">.</div>
+            <div class="calendar-sunday">4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div class="calendar-saturday">10</div>
+            <div class="calendar-sunday">11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div class="calendar-saturday">17</div>
+            <div class="calendar-sunday">18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div class="calendar-saturday">24</div>
+            <div class="calendar-sunday">25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div class="calendar-saturday">31</div>
           </div>
         </div>
 
@@ -1802,17 +2002,22 @@
 
       <div class="guide-wrap reveal-child" style="--delay: 220ms;">
         <div class="guide-tabs">
-          <button class="guide-tab active is-emoji" onclick="switchGuide('meal', this)" data-label="식사안내" data-emoji="🍽️" aria-label="식사안내">🍽️</button>
+          <button class="guide-tab active is-emoji" onclick="switchGuide('flower', this)" data-label="화환안내" data-emoji="🌼" aria-label="화환안내">🌼</button>
+          <button class="guide-tab" onclick="switchGuide('meal', this)" data-label="식사안내" data-emoji="🍽️" aria-label="식사안내">식사안내</button>
           <button class="guide-tab" onclick="switchGuide('rain', this)" data-label="우천안내" data-emoji="☀️" aria-label="우천안내">우천안내</button>
-          <button class="guide-tab" onclick="switchGuide('flower', this)" data-label="화환안내" data-emoji="🌼" aria-label="화환안내">화환안내</button>
         </div>
 
-        <div class="guide-content active" id="guide-meal">
-          식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
-          현장 안내에 따라 편하게 이동해 주세요.<br /><br />
-          신랑신부의 추천메뉴<br />
-          신랑: 부산하면 돼지고기 🐷<br />
-          신부: 브루어리에서 만든 무제한 생맥주 🍻
+        <div class="guide-content" id="guide-meal">
+          <div class="guide-main-copy">
+            식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
+            현장 안내에 따라 편하게 이동해 주세요.
+          </div>
+
+          <div class="guide-menu-card">
+            <div class="guide-menu-title">신랑신부의 추천메뉴</div>
+            <div class="guide-menu-row"><span>신랑</span><strong>부산하면 돼지고기 🐷</strong></div>
+            <div class="guide-menu-row"><span>신부</span><strong>브루어리에서 만든 무제한 생맥주 🍻</strong></div>
+          </div>
         </div>
 
         <div class="guide-content" id="guide-rain">
@@ -1821,8 +2026,8 @@
           신랑신부에게 날씨의 요정이 되어주세요.
         </div>
 
-        <div class="guide-content" id="guide-flower">
-          화환은 정중히 사양합니다.<br />
+        <div class="guide-content active" id="guide-flower">
+          <span class="guide-red-line">화환은 정중히 사양합니다.</span><br />
           축하의 마음만으로도 충분히 감사드립니다.
         </div>
       </div>
@@ -1882,70 +2087,70 @@
             </div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-wide">
             <div class="gallery-thumb fallback-box" data-fallback="사진 04" onclick="openViewer(3)">
               <img src="photo04.jpg" alt="사진 04" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 04</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-square">
             <div class="gallery-thumb fallback-box" data-fallback="사진 05" onclick="openViewer(4)">
               <img src="photo05.jpg" alt="사진 05" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 05</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-tall">
             <div class="gallery-thumb fallback-box" data-fallback="사진 06" onclick="openViewer(5)">
               <img src="photo06.jpg" alt="사진 06" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 06</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-tall">
             <div class="gallery-thumb fallback-box" data-fallback="사진 07" onclick="openViewer(6)">
               <img src="photo07.jpg" alt="사진 07" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 07</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-wide">
             <div class="gallery-thumb fallback-box" data-fallback="사진 08" onclick="openViewer(7)">
               <img src="photo08.jpg" alt="사진 08" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 08</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-square">
             <div class="gallery-thumb fallback-box" data-fallback="사진 09" onclick="openViewer(8)">
               <img src="photo09.jpg" alt="사진 09" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 09</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-tall">
             <div class="gallery-thumb fallback-box" data-fallback="사진 10" onclick="openViewer(9)">
               <img src="photo10.jpg" alt="사진 10" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 10</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-square">
             <div class="gallery-thumb fallback-box" data-fallback="사진 11" onclick="openViewer(10)">
               <img src="photo11.jpg" alt="사진 11" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 11</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-wide">
             <div class="gallery-thumb fallback-box" data-fallback="사진 12" onclick="openViewer(11)">
               <img src="photo12.jpg" alt="사진 12" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 12</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo">
+          <div class="gallery-item hidden extra-photo mag-tall">
             <div class="gallery-thumb fallback-box" data-fallback="사진 13" onclick="openViewer(12)">
               <img src="photo13.jpg" alt="사진 13" onerror="handleImageError(this)" />
             </div>
