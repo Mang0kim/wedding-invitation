@@ -2328,6 +2328,165 @@
       }
     }
 
+
+    /* === 2026-07-05 requested refinements v3: profile body card, guide menu, gallery gaps, centered toast, timeline === */
+    #profileModal .profile-summary {
+      max-width: 326px;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    #profileModal .profile-info-row {
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    #profileModal .profile-body {
+      max-width: 326px;
+      margin-top: 18px;
+      padding: 18px 18px 20px;
+      border-radius: 22px;
+      background: rgba(245, 245, 247, 0.76);
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.035);
+      overflow-y: auto;
+    }
+
+    .guide-menu-card {
+      padding: 16px 18px 17px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 8px 22px rgba(44, 44, 44, 0.045);
+    }
+
+    .guide-menu-title {
+      margin-bottom: 12px;
+      text-align: center;
+      color: var(--accent);
+      font-size: var(--font-small);
+      font-weight: 300;
+    }
+
+    .guide-menu-row {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      min-height: 30px;
+      text-align: left;
+      line-height: 1.45;
+    }
+
+    .guide-menu-row + .guide-menu-row {
+      margin-top: 4px;
+    }
+
+    .guide-menu-row span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(236, 34, 31, 0.075);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .guide-menu-row strong {
+      display: block;
+      color: var(--text);
+      font-size: var(--font-small);
+      font-weight: 200;
+      text-align: left;
+    }
+
+    .gallery-grid {
+      grid-auto-flow: row dense;
+      grid-auto-rows: 40px;
+      gap: 8px;
+    }
+
+    .gallery-item.mag-wide {
+      grid-column: span 6;
+      grid-row: span 4;
+    }
+
+    .gallery-item.mag-square {
+      grid-column: span 3;
+      grid-row: span 4;
+    }
+
+    .gallery-item.mag-tall {
+      grid-column: span 3;
+      grid-row: span 4;
+    }
+
+    .copy-toast {
+      top: 50%;
+      bottom: auto;
+      transform: translate(-50%, calc(-50% + 14px));
+      background: rgba(44, 44, 44, 0.88);
+    }
+
+    .copy-toast.show {
+      transform: translate(-50%, -50%);
+    }
+
+    .timeline-modal-title {
+      text-align: center;
+      font-size: var(--font-body);
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+
+    .timeline-modal-content {
+      padding-top: 36px;
+    }
+
+    .timeline-list {
+      margin-top: 0;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      padding: 15px 17px;
+    }
+
+    .timeline-date {
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .timeline-title {
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      line-height: 1.58;
+    }
+
+    @media (max-width: 380px) {
+      #profileModal .profile-body {
+        padding: 16px 16px 18px;
+      }
+
+      .guide-menu-row {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .guide-menu-row span {
+        width: 38px;
+      }
+    }
+
   </style>
 </head>
 
@@ -2523,21 +2682,21 @@
             <div class="fig-caption">Fig. 05</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo mag-tall">
+          <div class="gallery-item hidden extra-photo mag-square">
             <div class="gallery-thumb fallback-box" data-fallback="사진 06" onclick="openViewer(5)">
               <img src="photo06.jpg" alt="사진 06" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 06</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo mag-tall">
+          <div class="gallery-item hidden extra-photo mag-wide">
             <div class="gallery-thumb fallback-box" data-fallback="사진 07" onclick="openViewer(6)">
               <img src="photo07.jpg" alt="사진 07" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 07</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo mag-wide">
+          <div class="gallery-item hidden extra-photo mag-square">
             <div class="gallery-thumb fallback-box" data-fallback="사진 08" onclick="openViewer(7)">
               <img src="photo08.jpg" alt="사진 08" onerror="handleImageError(this)" />
             </div>
@@ -2551,7 +2710,7 @@
             <div class="fig-caption">Fig. 09</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo mag-tall">
+          <div class="gallery-item hidden extra-photo mag-wide">
             <div class="gallery-thumb fallback-box" data-fallback="사진 10" onclick="openViewer(9)">
               <img src="photo10.jpg" alt="사진 10" onerror="handleImageError(this)" />
             </div>
@@ -2565,14 +2724,14 @@
             <div class="fig-caption">Fig. 11</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo mag-wide">
+          <div class="gallery-item hidden extra-photo mag-square">
             <div class="gallery-thumb fallback-box" data-fallback="사진 12" onclick="openViewer(11)">
               <img src="photo12.jpg" alt="사진 12" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 12</div>
           </div>
 
-          <div class="gallery-item hidden extra-photo mag-tall">
+          <div class="gallery-item hidden extra-photo mag-wide">
             <div class="gallery-thumb fallback-box" data-fallback="사진 13" onclick="openViewer(12)">
               <img src="photo13.jpg" alt="사진 13" onerror="handleImageError(this)" />
             </div>
@@ -2797,29 +2956,31 @@
     <button class="close-x" onclick="closeTimelineModal()">×</button>
 
     <div class="timeline-modal-content">
-      <div class="food-modal-title">우리의 시간</div>
-      <div class="food-modal-desc">
-        처음 만난 날부터 오늘까지,<br />
-        함께 쌓아온 장면들을 담았습니다.
-      </div>
+      <div class="timeline-modal-title">우리의 순간들</div>
 
       <div class="timeline-list">
         <div class="timeline-item">
-          <div class="timeline-date">2018.10.13</div>
-          <div class="timeline-title">처음 만난 날</div>
-          <div class="timeline-desc">서로의 시간이 처음 겹쳐진 날</div>
+          <div class="timeline-date">2017. 03. 08</div>
+          <div class="timeline-title">우리, 처음 만난 날</div>
+          <div class="timeline-desc">대학 선후배로, 좋은 친구가 되었습니다</div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">0000.00.00</div>
-          <div class="timeline-title">함께한 어느 날</div>
-          <div class="timeline-desc">둘만의 기억으로 남은 장면</div>
+          <div class="timeline-date">2018. 10. 13</div>
+          <div class="timeline-title">함께하기로 한 날</div>
+          <div class="timeline-desc">가장 친한 친구에서, 사랑하는 사이가 되었습니다</div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">2026.10.03</div>
-          <div class="timeline-title">우리의 결혼식</div>
-          <div class="timeline-desc">오래 함께할 약속을 나누는 날</div>
+          <div class="timeline-date">2022. 02. 27</div>
+          <div class="timeline-title">한국-독일 장거리</div>
+          <div class="timeline-desc">매일의 영상통화로 사랑을 키웠습니다</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025. 05. 05</div>
+          <div class="timeline-title">발리에서 프러포즈</div>
+          <div class="timeline-desc">둘만의 방식으로 평생을 약속했습니다</div>
         </div>
       </div>
 
