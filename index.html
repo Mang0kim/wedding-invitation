@@ -2608,6 +2608,136 @@
       }
     }
 
+
+    /* === 2026-07-05 timeline compact layout: no internal scroll === */
+    #timelineModal.modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 0;
+    }
+
+    #timelineModal .modal-sheet {
+      width: calc(100% - 44px);
+      max-width: 390px;
+      max-height: calc(100dvh - 36px);
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 32px 27px 28px;
+    }
+
+    #timelineModal .timeline-modal-content {
+      padding-top: 16px;
+    }
+
+    #timelineModal .timeline-modal-title {
+      margin-bottom: 20px;
+      font-size: var(--font-body);
+      line-height: 1.55;
+    }
+
+    #timelineModal .timeline-line-list {
+      max-width: 320px;
+      gap: 0;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item {
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 12px;
+      padding-bottom: 17px;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item::after {
+      left: 15px;
+      top: 34px;
+      bottom: 5px;
+      background: rgba(236, 34, 31, 0.18);
+    }
+
+    #timelineModal .timeline-marker {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      background: rgba(245, 245, 247, 0.92);
+    }
+
+    #timelineModal .timeline-text {
+      padding-top: 0;
+    }
+
+    #timelineModal .timeline-head {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+      line-height: 1.35;
+      min-width: 0;
+    }
+
+    #timelineModal .timeline-line-list .timeline-date,
+    #timelineModal .timeline-line-list .timeline-title {
+      margin: 0;
+      font-size: var(--font-small);
+      font-weight: 300;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    #timelineModal .timeline-line-list .timeline-date {
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    #timelineModal .timeline-line-list .timeline-title {
+      color: var(--text-strong);
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #timelineModal .timeline-line-list .timeline-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    #timelineModal .modal-bottom-btn {
+      display: none;
+    }
+
+    @media (max-width: 380px) {
+      #timelineModal .modal-sheet {
+        width: calc(100% - 32px);
+        padding: 30px 23px 26px;
+      }
+
+      #timelineModal .timeline-line-list {
+        max-width: 292px;
+      }
+
+      #timelineModal .timeline-line-list .timeline-item {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 10px;
+        padding-bottom: 15px;
+      }
+
+      #timelineModal .timeline-marker {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+      }
+
+      #timelineModal .timeline-line-list .timeline-item::after {
+        left: 14px;
+        top: 32px;
+      }
+
+      #timelineModal .timeline-line-list .timeline-desc {
+        font-size: 12.5px;
+        line-height: 1.45;
+      }
+    }
+
   </style>
 </head>
 
@@ -3083,8 +3213,10 @@
         <div class="timeline-item">
           <div class="timeline-marker" aria-hidden="true">⚽</div>
           <div class="timeline-text">
-            <div class="timeline-date">2017</div>
-            <div class="timeline-title">처음 인사를 나눈 날</div>
+            <div class="timeline-head">
+              <span class="timeline-date">2017</span>
+              <span class="timeline-title">처음 인사를 나눈 날</span>
+            </div>
             <div class="timeline-desc">대학 선후배로 만나 좋은 친구가 되었습니다.</div>
           </div>
         </div>
@@ -3092,8 +3224,10 @@
         <div class="timeline-item">
           <div class="timeline-marker" aria-hidden="true">❤️</div>
           <div class="timeline-text">
-            <div class="timeline-date">2018</div>
-            <div class="timeline-title">함께하기로 한 날</div>
+            <div class="timeline-head">
+              <span class="timeline-date">2018</span>
+              <span class="timeline-title">함께하기로 한 날</span>
+            </div>
             <div class="timeline-desc">친구였던 우리는 연인이 되었습니다.</div>
           </div>
         </div>
@@ -3101,8 +3235,10 @@
         <div class="timeline-item">
           <div class="timeline-marker" aria-hidden="true">✈️</div>
           <div class="timeline-text">
-            <div class="timeline-date">2022</div>
-            <div class="timeline-title">한국과 독일 사이</div>
+            <div class="timeline-head">
+              <span class="timeline-date">2022</span>
+              <span class="timeline-title">한국과 독일 사이</span>
+            </div>
             <div class="timeline-desc">매일의 영상통화로 서로의 하루를 이어갔습니다.</div>
           </div>
         </div>
@@ -3110,8 +3246,10 @@
         <div class="timeline-item">
           <div class="timeline-marker" aria-hidden="true">🎓</div>
           <div class="timeline-text">
-            <div class="timeline-date">2023 - 2024</div>
-            <div class="timeline-title">나란히 걸어온 시간</div>
+            <div class="timeline-head">
+              <span class="timeline-date">2023 - 2024</span>
+              <span class="timeline-title">나란히 걸어온 시간</span>
+            </div>
             <div class="timeline-desc">함께 고민하고 연구하며 서로를 더 깊이 이해했습니다.</div>
           </div>
         </div>
@@ -3119,8 +3257,10 @@
         <div class="timeline-item">
           <div class="timeline-marker" aria-hidden="true">💍</div>
           <div class="timeline-text">
-            <div class="timeline-date">2025</div>
-            <div class="timeline-title">발리에서의 프러포즈</div>
+            <div class="timeline-head">
+              <span class="timeline-date">2025</span>
+              <span class="timeline-title">발리에서의 프러포즈</span>
+            </div>
             <div class="timeline-desc">둘만의 방식으로 평생을 약속했습니다.</div>
           </div>
         </div>
