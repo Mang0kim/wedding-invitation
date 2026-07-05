@@ -3013,6 +3013,126 @@
     }
 
 
+
+    /* === 2026-07-05 popup sizing reset: fixed general popups + ratio-based photo viewer === */
+    :root {
+      --popup-edge: 16px;
+      --popup-width: min(398px, calc(100vw - (var(--popup-edge) * 2)));
+      --popup-fixed-height-target: 640px;
+      --popup-fixed-height: min(var(--popup-fixed-height-target), calc(var(--modal-vh) - 48px));
+      --modal-vh: 100dvh;
+      --modal-vtop: 0px;
+    }
+
+    .modal {
+      inset: auto 0 auto 0;
+      top: var(--modal-vtop);
+      height: var(--modal-vh);
+    }
+
+    #profileModal.modal.show,
+    #foodModal.modal.show,
+    #timelineModal.modal.show,
+    #viewerModal.modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    #profileModal .modal-sheet,
+    #foodModal .modal-sheet,
+    #timelineModal .modal-sheet {
+      width: var(--popup-width) !important;
+      max-width: var(--popup-width) !important;
+      height: var(--popup-fixed-height) !important;
+      max-height: var(--popup-fixed-height) !important;
+      min-height: 0 !important;
+      margin: 0 auto !important;
+      box-sizing: border-box;
+    }
+
+    #profileModal .modal-sheet,
+    #foodModal .modal-sheet,
+    #timelineModal .modal-sheet {
+      overflow: hidden;
+    }
+
+    #profileModal .profile-layout,
+    #foodModal .food-modal-content,
+    #timelineModal .timeline-modal-content {
+      height: 100%;
+      min-height: 0 !important;
+      box-sizing: border-box;
+    }
+
+    #profileModal .profile-layout,
+    #timelineModal .timeline-modal-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #foodModal .food-modal-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #viewerModal .modal-backdrop {
+      background: rgba(0, 0, 0, 0.74);
+      backdrop-filter: blur(10px);
+    }
+
+    #viewerModal .viewer-sheet {
+      width: var(--popup-width) !important;
+      max-width: var(--popup-width) !important;
+      height: auto !important;
+      max-height: calc(var(--modal-vh) - 32px) !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    #viewerModal .viewer-image-wrap {
+      width: 100% !important;
+      max-width: var(--popup-width) !important;
+      height: auto !important;
+      max-height: calc(var(--modal-vh) - 32px) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border-radius: 24px !important;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #viewerModal .viewer-image-wrap img {
+      width: auto !important;
+      max-width: 100% !important;
+      height: auto !important;
+      max-height: calc(var(--modal-vh) - 32px) !important;
+      object-fit: contain !important;
+      border-radius: 24px !important;
+      background: transparent !important;
+    }
+
+    @media (max-width: 380px) {
+      :root {
+        --popup-fixed-height-target: 610px;
+      }
+    }
+
   </style>
 </head>
 
