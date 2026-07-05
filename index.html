@@ -3784,6 +3784,41 @@
       }
     }
 
+
+    /* === 2026-07-05 final requested tweaks: faster counts, guide spacing, timeline rhythm, viewer nav opacity === */
+    #guide-meal .guide-main-copy {
+      margin-bottom: 26px !important;
+    }
+
+    #guide-meal .guide-menu-card {
+      margin-top: 26px !important;
+      padding-top: 22px !important;
+    }
+
+    #timelineModal .timeline-line-list {
+      gap: 40px !important;
+      margin-top: 28px !important;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item::after {
+      bottom: -40px !important;
+      background: rgba(236, 34, 31, 0.16) !important;
+    }
+
+    #viewerModal .viewer-nav {
+      color: rgba(255,255,255,0.48) !important;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.16) !important;
+    }
+
+    #viewerModal .viewer-nav:active {
+      color: rgba(255,255,255,0.68) !important;
+    }
+
 </style>
 </head>
 
@@ -4201,14 +4236,15 @@
       <div class="food-modal-content">
         <div class="food-modal-title">맛집 목록</div>
         <div class="food-modal-desc">
-          식사 이후 가볍게 들르기 좋은 곳과<br />
-          저희가 좋아하는 부산의 맛을 담아둘게요.
+          식사 후 가볍게 들릴 카페와<br />
+          저희가 좋아하는 식당을 소개합니다.<br />
+          즐거운 부산 여행 되세요!
         </div>
 
         <div class="food-basic-list">
-          <div class="food-basic-item">보규창수의 맛집</div>
-          <div class="food-basic-item">부산에서 먹어볼 것들</div>
           <div class="food-basic-item">카페 / 디저트</div>
+          <div class="food-basic-item">보규&amp;창수의 맛집</div>
+          <div class="food-basic-item">부산에서 먹어볼 것들</div>
         </div>
 
         <div class="modal-bottom-btn">
@@ -4390,7 +4426,7 @@
       } else {
         weddingCountText.classList.remove("wedding-today");
         weddingCountText.innerHTML = '우리의 예식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.';
-        animateNumber(document.getElementById("weddingDayCount"), Math.max(weddingDiff, 0), 1900, 2);
+        animateNumber(document.getElementById("weddingDayCount"), Math.max(weddingDiff, 0), 1400, 2);
       }
     }
 
@@ -4399,7 +4435,7 @@
       meetCountAnimated = true;
 
       const { meetDiff } = getDayDiffs();
-      animateNumber(document.getElementById("meetDayCount"), meetDiff, 2100, 4);
+      animateNumber(document.getElementById("meetDayCount"), meetDiff, 1500, 4);
     }
 
     function updateDayCounts() {
@@ -4623,11 +4659,11 @@
 
     function maybeStartCountAnimations(section) {
       if (section.querySelector("#weddingCountText")) {
-        window.setTimeout(startWeddingCountAnimation, 800);
+        window.setTimeout(startWeddingCountAnimation, 160);
       }
 
       if (section.querySelector("#meetDayCount")) {
-        window.setTimeout(startMeetCountAnimation, 800);
+        window.setTimeout(startMeetCountAnimation, 160);
       }
     }
 
