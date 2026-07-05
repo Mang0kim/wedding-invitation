@@ -3133,6 +3133,241 @@
       }
     }
 
+
+    /* === 2026-07-05 final refinements: guide tabs, fixed guide panel, profile alignment, compact timeline, 3x3 gallery === */
+    #profileModal .profile-summary {
+      width: 100% !important;
+      max-width: 326px !important;
+      margin: 0 auto !important;
+      padding: 0 18px !important;
+      box-sizing: border-box !important;
+    }
+
+    #profileModal .profile-info {
+      max-width: none !important;
+      margin: 0 !important;
+    }
+
+    #profileModal .profile-body {
+      max-width: 326px !important;
+      text-align: left !important;
+      text-justify: auto !important;
+    }
+
+    .map-links {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .map-link {
+      width: 100% !important;
+      min-width: 0 !important;
+      height: 40px !important;
+      justify-content: center !important;
+    }
+
+    .guide-tabs {
+      margin-bottom: 22px !important;
+    }
+
+    .guide-tab {
+      height: 44px !important;
+      font-size: var(--font-small) !important;
+      font-weight: 300 !important;
+    }
+
+    .guide-tab.is-emoji {
+      font-size: var(--font-small) !important;
+    }
+
+    .guide-wrap {
+      height: 372px !important;
+      min-height: 372px !important;
+      padding: 8px 8px 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-sizing: border-box !important;
+    }
+
+    .guide-content {
+      height: 274px !important;
+      min-height: 274px !important;
+      max-height: 274px !important;
+      padding: 26px 14px 0 !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      align-content: center;
+    }
+
+    #guide-meal.guide-content {
+      padding-top: 19px !important;
+    }
+
+    .guide-menu-card {
+      margin-top: 14px !important;
+    }
+
+    #timelineModal .timeline-modal-title {
+      margin-bottom: 34px !important;
+    }
+
+    #timelineModal .timeline-line-list {
+      flex: 0 0 auto !important;
+      justify-content: flex-start !important;
+      gap: 13px !important;
+      max-width: 326px !important;
+    }
+
+    #timelineModal .timeline-line-list::before {
+      left: 15px !important;
+      top: 26px !important;
+      bottom: 26px !important;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item {
+      padding-bottom: 0 !important;
+    }
+
+    #timelineModal .timeline-marker {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    #timelineModal .modal-bottom-btn {
+      margin-top: 13px !important;
+    }
+
+    #timelineModal .timeline-modal-content {
+      justify-content: flex-start !important;
+    }
+
+    .gallery-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      grid-auto-rows: auto !important;
+      gap: 8px !important;
+    }
+
+    .gallery-item,
+    .gallery-item.featured-wide,
+    .gallery-item.featured-tall,
+    .gallery-item.featured-square,
+    .gallery-item.mag-wide,
+    .gallery-item.mag-square,
+    .gallery-item.mag-tall,
+    .gallery-square-item,
+    .gallery-more-cell {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+      aspect-ratio: 1 / 1 !important;
+      display: block;
+      position: relative;
+      padding: 0 !important;
+    }
+
+    .gallery-item.hidden {
+      display: none !important;
+    }
+
+    .gallery-thumb {
+      width: 100% !important;
+      height: 100% !important;
+      aspect-ratio: 1 / 1 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    .gallery-thumb img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transform: scale(1.04) !important;
+    }
+
+    .gallery-more-cell {
+      background: rgba(245, 245, 247, 0.9);
+      cursor: pointer;
+    }
+
+    .gallery-more {
+      width: 100% !important;
+      height: 100% !important;
+      transform: none !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: var(--accent);
+      font-size: var(--font-small);
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .gallery-more::after {
+      content: "+";
+      margin-left: 6px;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .gallery-more .btn-rect {
+      display: none !important;
+    }
+
+    .fig-caption {
+      position: absolute !important;
+      top: 8px !important;
+      left: 9px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      color: rgba(255,255,255,0.94) !important;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.28) !important;
+      font-size: 11px !important;
+      line-height: 1 !important;
+      z-index: 2 !important;
+    }
+
+    .gallery-more-cell .fig-caption {
+      display: none !important;
+    }
+
+    #viewerModal .viewer-nav {
+      display: flex !important;
+      z-index: 12 !important;
+      color: rgba(255,255,255,0.95) !important;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      font-size: 46px !important;
+      width: 44px !important;
+      height: 44px !important;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.32);
+    }
+
+    #viewerModal .viewer-prev {
+      left: 8px !important;
+    }
+
+    #viewerModal .viewer-next {
+      right: 8px !important;
+    }
+
+    @media (max-width: 380px) {
+      .guide-wrap {
+        height: 360px !important;
+        min-height: 360px !important;
+      }
+
+      .guide-content {
+        height: 262px !important;
+        min-height: 262px !important;
+        max-height: 262px !important;
+      }
+
+      #timelineModal .timeline-line-list {
+        gap: 11px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -3229,9 +3464,9 @@
 
       <div class="guide-wrap reveal-child" style="--delay: 220ms;">
         <div class="guide-tabs">
-          <button class="guide-tab active is-emoji" onclick="switchGuide('flower', this)" data-label="화환안내" data-emoji="🌼" aria-label="화환안내">🌼</button>
-          <button class="guide-tab" onclick="switchGuide('meal', this)" data-label="식사안내" data-emoji="🍽️" aria-label="식사안내">식사안내</button>
-          <button class="guide-tab" onclick="switchGuide('rain', this)" data-label="우천안내" data-emoji="☀️" aria-label="우천안내">우천안내</button>
+          <button class="guide-tab active" onclick="switchGuide('flower', this)" data-label="화환안내" aria-label="화환안내">화환안내</button>
+          <button class="guide-tab" onclick="switchGuide('meal', this)" data-label="식사안내" aria-label="식사안내">식사안내</button>
+          <button class="guide-tab" onclick="switchGuide('rain', this)" data-label="우천안내" aria-label="우천안내">우천안내</button>
         </div>
 
         <div class="guide-content" id="guide-meal">
@@ -3287,104 +3522,90 @@
 
       <div class="gallery-shell reveal-child" style="--delay: 420ms;">
         <div class="gallery-grid" id="galleryGrid">
-          <div class="gallery-item featured-wide">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 01" onclick="openViewer(0)">
               <img src="photo01.jpg" alt="사진 01" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 01</div>
           </div>
-
-          <div class="gallery-item featured-tall">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 02" onclick="openViewer(1)">
               <img src="photo02.jpg" alt="사진 02" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 02</div>
           </div>
-
-          <div class="gallery-item featured-square">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 03" onclick="openViewer(2)">
               <img src="photo03.jpg" alt="사진 03" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 03</div>
           </div>
-
-          <div class="gallery-item gallery-more-cell" id="galleryMoreWrap">
-            <div class="gallery-more">
-              <button class="btn-rect small" onclick="showMorePhotos()">더보기</button>
-            </div>
-          </div>
-
-          <div class="gallery-item hidden extra-photo mag-wide">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 04" onclick="openViewer(3)">
               <img src="photo04.jpg" alt="사진 04" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 04</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-square">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 05" onclick="openViewer(4)">
               <img src="photo05.jpg" alt="사진 05" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 05</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-square">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 06" onclick="openViewer(5)">
               <img src="photo06.jpg" alt="사진 06" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 06</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-wide">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 07" onclick="openViewer(6)">
               <img src="photo07.jpg" alt="사진 07" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 07</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-square">
+          <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 08" onclick="openViewer(7)">
               <img src="photo08.jpg" alt="사진 08" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 08</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-square">
+          <div class="gallery-item gallery-more-cell" id="galleryMoreWrap">
+            <div class="gallery-more" onclick="showMorePhotos()" role="button" aria-label="사진 더보기">
+              <span>더보기</span>
+            </div>
+          </div>
+          <div class="gallery-item hidden extra-photo gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 09" onclick="openViewer(8)">
               <img src="photo09.jpg" alt="사진 09" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 09</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-wide">
+          <div class="gallery-item hidden extra-photo gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 10" onclick="openViewer(9)">
               <img src="photo10.jpg" alt="사진 10" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 10</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-square">
+          <div class="gallery-item hidden extra-photo gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 11" onclick="openViewer(10)">
               <img src="photo11.jpg" alt="사진 11" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 11</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-square">
+          <div class="gallery-item hidden extra-photo gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 12" onclick="openViewer(11)">
               <img src="photo12.jpg" alt="사진 12" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 12</div>
           </div>
-
-          <div class="gallery-item hidden extra-photo mag-wide">
+          <div class="gallery-item hidden extra-photo gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 13" onclick="openViewer(12)">
               <img src="photo13.jpg" alt="사진 13" onerror="handleImageError(this)" />
             </div>
             <div class="fig-caption">Fig. 13</div>
           </div>
         </div>
-
       </div>
 
       <div class="video-shell reveal-child" style="--delay: 280ms;">
@@ -3879,21 +4100,20 @@
       });
       document.querySelectorAll(".guide-content").forEach(panel => panel.classList.remove("active"));
 
-      btn.classList.add("active", "is-emoji");
-      btn.textContent = btn.dataset.emoji || btn.textContent;
+      btn.classList.add("active");
+      btn.textContent = btn.dataset.label || btn.textContent;
       document.getElementById("guide-" + type).classList.add("active");
     }
 
     function initGuideTabs() {
-      const activeTab = document.querySelector(".guide-tab.active");
-      if (!activeTab) return;
-      activeTab.classList.add("is-emoji");
-      activeTab.textContent = activeTab.dataset.emoji || activeTab.textContent;
+      document.querySelectorAll(".guide-tab").forEach(tab => {
+        tab.classList.remove("is-emoji");
+        tab.textContent = tab.dataset.label || tab.textContent;
+      });
     }
 
     function showMorePhotos() {
-      document.querySelectorAll(".extra-photo").forEach(item => item.classList.remove("hidden"));
-      document.getElementById("galleryMoreWrap").style.display = "none";
+      openViewer(8);
     }
 
     const galleryImages = [
@@ -4000,7 +4220,7 @@
 
     function maybeStartCountAnimations(section) {
       if (section.querySelector("#weddingCountText")) {
-        window.setTimeout(startWeddingCountAnimation, 3000);
+        window.setTimeout(startWeddingCountAnimation, 1700);
       }
 
       if (section.querySelector("#meetDayCount")) {
