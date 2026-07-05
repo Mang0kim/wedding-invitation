@@ -2949,6 +2949,70 @@
     }
 
 
+    /* === 2026-07-05 popup visual centering + unified mobile width === */
+    :root {
+      --popup-edge: 16px;
+      --popup-vpad: 24px;
+      --popup-width: min(398px, calc(100vw - (var(--popup-edge) * 2)));
+      --modal-vh: 100dvh;
+      --modal-vtop: 0px;
+    }
+
+    .modal {
+      inset: auto 0 auto 0;
+      top: var(--modal-vtop);
+      height: var(--modal-vh);
+    }
+
+    #profileModal.modal.show,
+    #foodModal.modal.show,
+    #timelineModal.modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--popup-vpad) 0;
+    }
+
+    #profileModal .modal-sheet,
+    #foodModal .modal-sheet,
+    #timelineModal .modal-sheet {
+      width: var(--popup-width);
+      max-width: var(--popup-width);
+      height: auto;
+      max-height: calc(var(--modal-vh) - (var(--popup-vpad) * 2));
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    #profileModal .modal-sheet,
+    #foodModal .modal-sheet {
+      overflow: auto;
+    }
+
+    #timelineModal .modal-sheet {
+      overflow: hidden;
+    }
+
+    #viewerModal.modal.show {
+      height: var(--modal-vh);
+      padding: var(--popup-edge);
+    }
+
+    #viewerModal .viewer-sheet,
+    #viewerModal .viewer-image-wrap,
+    #viewerModal .viewer-image-wrap img {
+      max-width: var(--popup-width);
+      max-height: calc(var(--modal-vh) - (var(--popup-edge) * 2));
+    }
+
+    @media (max-width: 380px) {
+      :root {
+        --popup-edge: 16px;
+        --popup-vpad: 20px;
+      }
+    }
+
+
   </style>
 </head>
 
@@ -3610,7 +3674,19 @@
       media.parentElement.classList.add("empty");
     }
 
+    function updateModalViewportVars() {
+      const root = document.documentElement;
+      if (window.visualViewport) {
+        root.style.setProperty("--modal-vh", window.visualViewport.height + "px");
+        root.style.setProperty("--modal-vtop", window.visualViewport.offsetTop + "px");
+      } else {
+        root.style.setProperty("--modal-vh", window.innerHeight + "px");
+        root.style.setProperty("--modal-vtop", "0px");
+      }
+    }
+
     function openModalBase(id) {
+      updateModalViewportVars();
       document.getElementById(id).classList.add("show");
       document.body.classList.add("modal-open");
     }
@@ -3839,6 +3915,13 @@
         observer.observe(section);
       });
     }
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", updateModalViewportVars);
+      window.visualViewport.addEventListener("scroll", updateModalViewportVars);
+    }
+    window.addEventListener("resize", updateModalViewportVars);
+    updateModalViewportVars();
 
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
