@@ -2487,6 +2487,127 @@
       }
     }
 
+
+    /* === 2026-07-05 timeline line layout === */
+    .timeline-modal-content {
+      padding-top: 36px;
+    }
+
+    .timeline-modal-title {
+      margin-bottom: 26px;
+      text-align: center;
+      font-size: var(--font-body);
+      line-height: 1.8;
+      color: var(--text);
+      font-weight: 300;
+    }
+
+    .timeline-line-list {
+      position: relative;
+      display: grid;
+      gap: 0;
+      margin: 0 auto;
+      max-width: 326px;
+    }
+
+    .timeline-line-list .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 14px;
+      padding: 0 0 28px;
+      background: transparent;
+      border-radius: 0;
+      text-align: left;
+      box-shadow: none;
+    }
+
+    .timeline-line-list .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 38px;
+      bottom: 8px;
+      width: 1px;
+      background: rgba(236, 34, 31, 0.20);
+    }
+
+    .timeline-line-list .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-line-list .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-marker {
+      position: relative;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--surface-soft);
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.04);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .timeline-text {
+      min-width: 0;
+      padding-top: 1px;
+    }
+
+    .timeline-line-list .timeline-date {
+      margin-bottom: 5px;
+      color: var(--accent);
+      font-size: var(--font-small);
+      font-weight: 300;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    .timeline-line-list .timeline-title {
+      margin-bottom: 5px;
+      color: var(--text-strong);
+      font-size: var(--font-body);
+      font-weight: 300;
+      line-height: 1.45;
+    }
+
+    .timeline-line-list .timeline-desc {
+      color: var(--text);
+      font-size: var(--font-small);
+      font-weight: 200;
+      line-height: 1.62;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 380px) {
+      .timeline-line-list {
+        max-width: 300px;
+      }
+
+      .timeline-line-list .timeline-item {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 12px;
+        padding-bottom: 26px;
+      }
+
+      .timeline-marker {
+        width: 32px;
+        height: 32px;
+        font-size: 17px;
+      }
+
+      .timeline-line-list .timeline-item::after {
+        left: 15px;
+        top: 36px;
+      }
+    }
+
   </style>
 </head>
 
@@ -2958,29 +3079,50 @@
     <div class="timeline-modal-content">
       <div class="timeline-modal-title">우리의 순간들</div>
 
-      <div class="timeline-list">
+      <div class="timeline-list timeline-line-list">
         <div class="timeline-item">
-          <div class="timeline-date">2017. 03. 08</div>
-          <div class="timeline-title">우리, 처음 만난 날</div>
-          <div class="timeline-desc">대학 선후배로, 좋은 친구가 되었습니다</div>
+          <div class="timeline-marker" aria-hidden="true">⚽</div>
+          <div class="timeline-text">
+            <div class="timeline-date">2017</div>
+            <div class="timeline-title">처음 인사를 나눈 날</div>
+            <div class="timeline-desc">대학 선후배로 만나 좋은 친구가 되었습니다.</div>
+          </div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">2018. 10. 13</div>
-          <div class="timeline-title">함께하기로 한 날</div>
-          <div class="timeline-desc">가장 친한 친구에서, 사랑하는 사이가 되었습니다</div>
+          <div class="timeline-marker" aria-hidden="true">❤️</div>
+          <div class="timeline-text">
+            <div class="timeline-date">2018</div>
+            <div class="timeline-title">함께하기로 한 날</div>
+            <div class="timeline-desc">친구였던 우리는 연인이 되었습니다.</div>
+          </div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">2022. 02. 27</div>
-          <div class="timeline-title">한국-독일 장거리</div>
-          <div class="timeline-desc">매일의 영상통화로 사랑을 키웠습니다</div>
+          <div class="timeline-marker" aria-hidden="true">✈️</div>
+          <div class="timeline-text">
+            <div class="timeline-date">2022</div>
+            <div class="timeline-title">한국과 독일 사이</div>
+            <div class="timeline-desc">매일의 영상통화로 서로의 하루를 이어갔습니다.</div>
+          </div>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">2025. 05. 05</div>
-          <div class="timeline-title">발리에서 프러포즈</div>
-          <div class="timeline-desc">둘만의 방식으로 평생을 약속했습니다</div>
+          <div class="timeline-marker" aria-hidden="true">🎓</div>
+          <div class="timeline-text">
+            <div class="timeline-date">2023 - 2024</div>
+            <div class="timeline-title">나란히 걸어온 시간</div>
+            <div class="timeline-desc">함께 고민하고 연구하며 서로를 더 깊이 이해했습니다.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true">💍</div>
+          <div class="timeline-text">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-title">발리에서의 프러포즈</div>
+            <div class="timeline-desc">둘만의 방식으로 평생을 약속했습니다.</div>
+          </div>
         </div>
       </div>
 
