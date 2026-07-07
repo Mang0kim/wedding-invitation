@@ -4715,7 +4715,7 @@
     }
 
 
-    /* === Entry screen: image ribbon opening gate + BGM start === */
+    /* === Entry screen: top-fold invitation gate + BGM start === */
     body.entry-locked {
       overflow: hidden;
     }
@@ -4743,94 +4743,146 @@
 
     .entry-card {
       width: min(350px, calc(100vw - 48px));
-      aspect-ratio: 2 / 3;
+      aspect-ratio: 0.72 / 1;
       position: relative;
-      overflow: hidden;
-      background: #fbfaf6;
-      box-shadow: 0 22px 58px rgba(44, 44, 44, 0.10);
-      border: 1px solid rgba(44, 44, 44, 0.045);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .entry-cover-button {
-      position: absolute;
-      inset: 0;
+    .entry-open-button {
+      position: relative;
       width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
       border: 0;
       background: transparent;
-      display: block;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
-      overflow: hidden;
+      perspective: 1400px;
     }
 
-    .entry-cover-base,
-    .entry-ribbon-half img {
+    .entry-fold-card {
       position: absolute;
-      inset: 0;
+      left: 50%;
+      top: 50%;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      user-select: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
-    }
-
-    .entry-cover-base {
-      z-index: 1;
+      height: 76%;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 22px 45px rgba(44, 44, 44, 0.08));
       transition:
-        opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.82s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 0.86s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.76s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.86s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .entry-ribbon-half {
+    .entry-card-base {
       position: absolute;
       inset: 0;
-      z-index: 2;
+      background: rgba(255, 255, 255, 0.97);
+      border: 1px solid rgba(44, 44, 44, 0.048);
+      box-shadow: 0 12px 28px rgba(44, 44, 44, 0.045);
       overflow: hidden;
-      opacity: 0;
-      transition:
-        opacity 0.2s ease,
-        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-      pointer-events: none;
-      will-change: transform, opacity, filter;
     }
 
-    .entry-ribbon-half.left {
-      clip-path: inset(34% 50% 25% 0);
-    }
-
-    .entry-ribbon-half.right {
-      clip-path: inset(34% 0 25% 50%);
-    }
-
-    .entry-title {
+    .entry-card-base::before {
+      content: "";
       position: absolute;
-      top: 66px;
+      left: 11%;
+      right: 11%;
+      top: 49%;
+      height: 1px;
+      background: rgba(236, 34, 31, 0.18);
+    }
+
+    .entry-card-base::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 57%;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(236, 34, 31, 0.88);
+      transform: translateX(-50%);
+      box-shadow: 0 5px 14px rgba(236, 34, 31, 0.14);
+    }
+
+    .entry-fold-body {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 24px 34px;
+      z-index: 1;
+    }
+
+    .entry-fold-body-copy {
+      color: rgba(89, 89, 89, 0.82);
+      font-size: 13px;
+      font-weight: 200;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .entry-fold-flap {
+      position: absolute;
       left: 0;
       right: 0;
-      z-index: 4;
-      text-align: center;
-      color: rgba(89, 89, 89, 0.82);
+      top: 0;
+      height: 43%;
+      background: rgba(255, 255, 255, 0.985);
+      border: 1px solid rgba(44, 44, 44, 0.048);
+      border-bottom-color: rgba(44, 44, 44, 0.072);
+      transform-origin: top center;
+      transform-style: preserve-3d;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition:
+        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.82s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 8px 20px rgba(44, 44, 44, 0.03);
+      backface-visibility: hidden;
+    }
+
+    .entry-fold-flap::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 1px;
+      background: rgba(44, 44, 44, 0.08);
+    }
+
+    .entry-flap-title {
+      color: rgba(89, 89, 89, 0.84);
       font-size: 17px;
       font-weight: 200;
       letter-spacing: 0.22em;
-      pointer-events: none;
-      transition:
-        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      line-height: 1;
+    }
+
+    .entry-flap-rule {
+      width: 74px;
+      height: 1px;
+      margin-top: 26px;
+      background: rgba(236, 34, 31, 0.28);
     }
 
     .entry-guide {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 58px;
-      z-index: 4;
+      bottom: 18px;
+      z-index: 8;
       text-align: center;
       color: rgba(89, 89, 89, 0.82);
       font-size: var(--font-small);
@@ -4843,62 +4895,36 @@
     }
 
     .entry-touch-hint {
-      display: inline-block;
-      margin-top: 8px;
-      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      min-height: 34px;
+      padding: 0 16px;
+      color: var(--white);
+      background: var(--accent);
+      border-radius: 999px;
+      box-shadow: var(--shadow-red);
       font-weight: 300;
       font-size: 13px;
       letter-spacing: -0.02em;
     }
 
-    .entry-glow {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      z-index: 3;
-      width: 190px;
-      height: 80px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.36);
-      filter: blur(18px);
+    .entry-screen.opening .entry-fold-flap {
+      transform: rotateX(-114deg);
+      opacity: 0.95;
+      box-shadow: 0 18px 30px rgba(44, 44, 44, 0.02);
+    }
+
+    .entry-screen.opening .entry-fold-card {
+      transform: translate(-50%, -50%) scale(1.018);
       opacity: 0;
-      transform: translate(-50%, 14%) scale(0.86);
-      pointer-events: none;
-      transition:
-        opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: drop-shadow(0 16px 30px rgba(44, 44, 44, 0.04)) blur(0.8px) brightness(1.04);
     }
 
-    .entry-screen.opening .entry-ribbon-half {
-      opacity: 1;
-      filter: blur(0.2px);
-    }
-
-    .entry-screen.opening .entry-ribbon-half.left {
-      transform: translateX(-54px) translateY(4px) rotate(-3deg);
-      opacity: 0;
-    }
-
-    .entry-screen.opening .entry-ribbon-half.right {
-      transform: translateX(54px) translateY(4px) rotate(3deg);
-      opacity: 0;
-    }
-
-    .entry-screen.opening .entry-cover-base {
-      opacity: 0;
-      transform: scale(1.035);
-      filter: blur(1.2px) brightness(1.04);
-    }
-
-    .entry-screen.opening .entry-title,
     .entry-screen.opening .entry-guide {
       opacity: 0;
-      transform: translateY(-8px);
-    }
-
-    .entry-screen.opening .entry-glow {
-      opacity: 1;
-      transform: translate(-50%, 14%) scale(1.18);
+      transform: translateY(10px);
     }
 
     @media (max-width: 380px) {
@@ -4906,13 +4932,16 @@
         width: min(330px, calc(100vw - 44px));
       }
 
-      .entry-title {
-        top: 60px;
+      .entry-fold-body {
+        padding-bottom: 30px;
+      }
+
+      .entry-flap-title {
         font-size: 16px;
       }
 
       .entry-guide {
-        bottom: 52px;
+        bottom: 16px;
         font-size: 13px;
       }
     }
@@ -4925,17 +4954,21 @@
 
   <div class="entry-screen" id="entryScreen">
     <div class="entry-card">
-      <button class="entry-cover-button" type="button" onclick="enterInvitation()" aria-label="초대장 열기">
-        <img class="entry-cover-base" src="entry_ribbon.png" alt="빨간 리본이 묶인 초대장" />
-        <span class="entry-ribbon-half left" aria-hidden="true"><img src="entry_ribbon.png" alt="" /></span>
-        <span class="entry-ribbon-half right" aria-hidden="true"><img src="entry_ribbon.png" alt="" /></span>
-        <span class="entry-glow" aria-hidden="true"></span>
+      <button class="entry-open-button" type="button" onclick="enterInvitation()" aria-label="초대장 열기">
+        <div class="entry-fold-card" aria-hidden="true">
+          <div class="entry-card-base"></div>
+          <div class="entry-fold-body">
+            <div class="entry-fold-body-copy">세 장으로 접힌 초대장을 열 듯<br />위쪽 커버를 열어주세요</div>
+          </div>
+          <div class="entry-fold-flap">
+            <div class="entry-flap-title">초대합니다</div>
+            <div class="entry-flap-rule"></div>
+          </div>
+        </div>
       </button>
 
-      <div class="entry-title">초대합니다</div>
       <div class="entry-guide">
-        리본을 풀어<br />
-        초대장을 열어주세요<br />
+        보규와 창수의 초대장을 열어주세요<br />
         <span class="entry-touch-hint">초대장 열기</span>
       </div>
     </div>
@@ -6025,17 +6058,35 @@
         });
 
         video.addEventListener("play", () => {
+          const bgm = document.getElementById("bgm");
+          if (bgm && !bgm.paused) {
+            bgm.dataset.pausedByVideo = "true";
+            bgm.pause();
+          }
+
           video.controls = true;
           overlay.classList.add("hidden");
         });
 
         video.addEventListener("pause", () => {
+          const bgm = document.getElementById("bgm");
           if (!video.ended) overlay.classList.remove("hidden");
+
+          if (bgm && bgm.dataset.pausedByVideo === "true") {
+            bgm.play().catch(() => {});
+            bgm.dataset.pausedByVideo = "false";
+          }
         });
 
         video.addEventListener("ended", () => {
+          const bgm = document.getElementById("bgm");
           video.controls = false;
           overlay.classList.remove("hidden");
+
+          if (bgm && bgm.dataset.pausedByVideo === "true") {
+            bgm.play().catch(() => {});
+            bgm.dataset.pausedByVideo = "false";
+          }
         });
       });
     }
