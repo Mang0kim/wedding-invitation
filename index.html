@@ -4730,7 +4730,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 0;
       transition:
         opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
         visibility 0.9s cubic-bezier(0.22, 1, 0.36, 1);
@@ -4743,7 +4743,7 @@
     }
 
     .entry-card {
-      width: min(350px, calc(100vw - 48px));
+      width: min(430px, 100vw);
       aspect-ratio: 0.72 / 1;
       position: relative;
       display: flex;
@@ -4773,9 +4773,9 @@
       transform: translate(-50%, -50%);
       filter: drop-shadow(0 22px 45px rgba(44, 44, 44, 0.08));
       transition:
-        transform 0.86s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.76s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.86s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1.25s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .entry-card-base {
@@ -4787,27 +4787,9 @@
       overflow: hidden;
     }
 
-    .entry-card-base::before {
-      content: "";
-      position: absolute;
-      left: 11%;
-      right: 11%;
-      top: 49%;
-      height: 1px;
-      background: rgba(236, 34, 31, 0.18);
-    }
-
+    .entry-card-base::before,
     .entry-card-base::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 57%;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(236, 34, 31, 0.88);
-      transform: translateX(-50%);
-      box-shadow: 0 5px 14px rgba(236, 34, 31, 0.14);
+      content: none;
     }
 
     .entry-fold-body {
@@ -4842,10 +4824,10 @@
       align-items: center;
       justify-content: center;
       transition:
-        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.82s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 8px 20px rgba(44, 44, 44, 0.03);
+        transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 18px 34px rgba(44, 44, 44, 0.10), 0 6px 12px rgba(44, 44, 44, 0.08);
       backface-visibility: hidden;
       transform: rotateX(calc(var(--entry-open, 0) * -86deg));
     }
@@ -4924,7 +4906,7 @@
 
     @media (max-width: 380px) {
       .entry-card {
-        width: min(330px, calc(100vw - 44px));
+        width: min(430px, 100vw);
       }
 
       .entry-fold-body {
@@ -5548,7 +5530,7 @@
     function updateEntryPull(distance) {
       if (invitationEntered) return;
       entryPullDistance = Math.max(0, distance);
-      const progress = Math.min(entryPullDistance / 140, 1);
+      const progress = Math.min(entryPullDistance / 240, 1);
       setEntryOpenProgress(progress);
       if (progress >= 1) enterInvitation();
     }
@@ -5587,7 +5569,7 @@
       }, { passive: false });
 
       entryScreen.addEventListener("touchend", () => {
-        if (!invitationEntered && entryPullDistance < 140) resetEntryPull();
+        if (!invitationEntered && entryPullDistance < 240) resetEntryPull();
       }, { passive: true });
     }
 
@@ -5606,11 +5588,11 @@
 
         window.setTimeout(() => {
           entryScreen.classList.add("hide");
-        }, 720);
+        }, 1050);
 
         window.setTimeout(() => {
           entryScreen.style.display = "none";
-        }, 1350);
+        }, 1800);
       }
 
       if (bgm) {
