@@ -4125,6 +4125,128 @@
       }
     }
 
+
+
+    /* === 2026-07-07 requested tweaks: gallery subtitle/more, food accordion, video button === */
+    .gallery-more {
+      gap: 6px !important;
+      line-height: 1 !important;
+      align-items: center !important;
+    }
+
+    .gallery-more span {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 20px !important;
+      line-height: 20px !important;
+    }
+
+    .gallery-more::after {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 20px !important;
+      line-height: 20px !important;
+      margin-left: 0 !important;
+      transform: translateY(-0.5px) !important;
+    }
+
+    #foodModal .food-category-item {
+      background: rgba(255, 255, 255, 0.88) !important;
+      border: 1px solid rgba(44, 44, 44, 0.075) !important;
+      box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045) !important;
+    }
+
+    .food-category-head {
+      align-items: center !important;
+      padding-top: 13px !important;
+      padding-bottom: 13px !important;
+    }
+
+    .food-category-toggle {
+      align-self: center !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .food-category-toggle::before {
+      top: 50% !important;
+      transform: translate(-50%, -55%) rotate(45deg) !important;
+      border-right-width: 1.4px !important;
+      border-bottom-width: 1.4px !important;
+    }
+
+    .food-category-item.open .food-category-toggle::before {
+      transform: translate(-50%, -42%) rotate(225deg) !important;
+    }
+
+    .video-play-overlay {
+      width: auto !important;
+      height: 36px !important;
+      min-height: 36px !important;
+      padding: 7px 8px 7px 16px !important;
+      border-radius: 999px !important;
+      background: var(--accent) !important;
+      background-color: var(--accent) !important;
+      color: var(--white) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      font-size: var(--font-small) !important;
+      font-weight: 300 !important;
+      line-height: 1 !important;
+      box-shadow: var(--shadow-red) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      filter: none !important;
+    }
+
+    .video-play-overlay span {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 20px !important;
+      line-height: 20px !important;
+      white-space: nowrap !important;
+    }
+
+    .video-play-overlay::before {
+      display: none !important;
+      content: none !important;
+    }
+
+    .video-play-overlay::after {
+      content: ">" !important;
+      width: 21px !important;
+      height: 21px !important;
+      flex: 0 0 21px !important;
+      border-radius: 50% !important;
+      background: var(--white) !important;
+      color: var(--accent) !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 15px !important;
+      font-weight: 300 !important;
+      line-height: 21px !important;
+      transform: scaleX(1.35) translateY(-0.3px) !important;
+      transform-origin: center !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    .video-play-overlay:active {
+      transform: translate(-50%, -50%) scale(0.97) !important;
+      background: var(--accent-dark) !important;
+    }
+
+    .video-play-icon {
+      display: none !important;
+    }
+
 </style>
 </head>
 
@@ -4354,9 +4476,7 @@
             <source src="wedding_film.mp4" type="video/mp4" />
           </video>
           <button class="video-play-overlay" type="button" aria-label="영상 재생">
-            <svg class="video-play-icon" viewBox="0 0 36 40" aria-hidden="true" focusable="false">
-              <path d="M8 6 Q8 3.8 9.8 4.9 L30.4 17.2 Q33.1 18.8 30.4 20.4 L9.8 32.7 Q8 33.8 8 31.6 Z"></path>
-            </svg>
+            <span>영상 재생하기</span>
           </button>
         </div>
       </div>
@@ -4599,7 +4719,7 @@
     <button class="close-x" onclick="closeTimelineModal()">×</button>
 
     <div class="timeline-modal-content">
-      <div class="timeline-modal-title">처음 만난 날부터, 오늘까지의 이야기를 담았습니다.</div>
+      <div class="timeline-modal-title">처음 만난 날부터, <strong id="timelineDayCount">0000</strong>일의 이야기</div>
 
       <div class="timeline-list timeline-line-list">
         <div class="timeline-item">
@@ -4687,7 +4807,7 @@
 
   <script>
     const WEDDING_SHARE_URL = "https://1003.highglossyworks.life";
-    const KAKAO_JAVASCRIPT_KEY = "b0e42b839c39c984c7c4d65705725a23";
+    const KAKAO_JAVASCRIPT_KEY = "acb700bb1f19c18ab35d6e5b38b402f9";
 
     function initKakaoShareSdk() {
       if (!window.Kakao) return false;
@@ -4820,6 +4940,7 @@
 
       const { meetDiff } = getDayDiffs();
       animateNumber(document.getElementById("meetDayCount"), meetDiff, 1500, 4);
+      animateNumber(document.getElementById("timelineDayCount"), meetDiff, 1500, 4);
     }
 
     function updateDayCounts() {
