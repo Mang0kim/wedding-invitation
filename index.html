@@ -8,7 +8,7 @@
   <title>김창수 · 최보규의 결혼식에 초대합니다</title>
 
   <meta property="og:title" content="김창수 · 최보규의 결혼식에 초대합니다" />
-  <meta property="og:description" content="2026년 10월 3일 오후 1시 호텔농심 야외정원" />
+  <meta property="og:description" content="2026년 10월 3일, 저희의 하루에 함께해 주세요." />
   <meta property="og:url" content="https://1003.highglossyworks.life" />
 
   <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=gzlsg53kum"></script>
@@ -4098,6 +4098,78 @@
         min-height: 186px !important;
         max-height: 186px !important;
       }
+    }
+
+
+    /* === 2026-07-07: chevron accordion toggle + plain red video play === */
+    .food-category-toggle {
+      width: 18px !important;
+      height: 18px !important;
+      border: 0 !important;
+      position: relative !important;
+      display: inline-block !important;
+      flex: 0 0 18px !important;
+      transform: none !important;
+      transition: transform 0.18s ease !important;
+      background: transparent !important;
+    }
+
+    .food-category-toggle::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      width: 11px;
+      height: 11px;
+      border-right: 3px solid #34434b;
+      border-bottom: 3px solid #34434b;
+      border-radius: 2px;
+      transform: translate(-50%, -50%) rotate(45deg);
+      box-sizing: border-box;
+    }
+
+    .food-category-item.open .food-category-toggle {
+      transform: rotate(180deg) !important;
+    }
+
+    .video-play-overlay {
+      width: 44px !important;
+      height: 44px !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      filter: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      outline: none !important;
+    }
+
+    .video-play-overlay::before,
+    .video-play-overlay::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    .video-play-icon {
+      width: 34px !important;
+      height: 38px !important;
+      margin-left: 3px !important;
+      display: block !important;
+      filter: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+    }
+
+    .video-play-icon path {
+      fill: var(--accent) !important;
+      filter: none !important;
+      box-shadow: none !important;
+    }
+
+    .video-play-overlay:active {
+      transform: translate(-50%, -50%) scale(0.94) !important;
     }
 
 </style>
