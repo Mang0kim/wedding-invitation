@@ -3819,6 +3819,154 @@
       color: rgba(255,255,255,0.68) !important;
     }
 
+
+    /* === 2026-07-07 requested tweaks: guide simplified, food categories, viewer zoom, video overlay === */
+    .guide-wrap {
+      height: 318px !important;
+      min-height: 318px !important;
+      padding-bottom: 22px !important;
+      touch-action: pan-y;
+    }
+
+    .guide-content {
+      height: 220px !important;
+      min-height: 220px !important;
+      max-height: 220px !important;
+      padding-top: 26px !important;
+    }
+
+    #guide-meal.guide-content,
+    #guide-rain.guide-content,
+    #guide-flower.guide-content {
+      padding-top: 26px !important;
+    }
+
+    #guide-meal .guide-main-copy {
+      margin-bottom: 0 !important;
+    }
+
+    #foodModal .food-modal-desc {
+      line-height: 1.35 !important;
+      margin-bottom: 24px !important;
+    }
+
+    #foodModal .food-category-list {
+      gap: 10px !important;
+    }
+
+    #foodModal .food-category-item {
+      padding: 14px 16px !important;
+      line-height: 1.45 !important;
+    }
+
+    .food-category-title {
+      color: var(--text-strong);
+      font-size: var(--font-body);
+      font-weight: 300;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .food-place-list {
+      display: grid;
+      gap: 5px;
+    }
+
+    .food-place {
+      color: var(--text);
+      font-size: var(--font-small);
+      font-weight: 200;
+      line-height: 1.45;
+    }
+
+    .food-place span {
+      color: var(--accent);
+      font-weight: 300;
+      margin-right: 6px;
+    }
+
+    .food-place.muted {
+      color: var(--text-soft);
+    }
+
+    #timelineModal .timeline-modal-title {
+      margin-bottom: 22px !important;
+    }
+
+    #timelineModal .timeline-line-list {
+      margin-top: 20px !important;
+    }
+
+    #viewerModal .viewer-image-wrap {
+      touch-action: none !important;
+    }
+
+    #viewerModal #viewerImage {
+      transform-origin: center center;
+      transition: transform 0.12s ease;
+      will-change: transform;
+    }
+
+    .video-box {
+      position: relative;
+    }
+
+    .video-play-overlay {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 58px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 12px 34px rgba(44, 44, 44, 0.16);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .video-play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .video-play-overlay:active {
+      transform: translate(-50%, -50%) scale(0.94);
+    }
+
+    .video-play-icon {
+      width: 0;
+      height: 0;
+      border-top: 11px solid transparent;
+      border-bottom: 11px solid transparent;
+      border-left: 17px solid var(--accent);
+      margin-left: 4px;
+    }
+
+    @media (max-width: 380px) {
+      .guide-wrap {
+        height: 306px !important;
+        min-height: 306px !important;
+      }
+
+      .guide-content {
+        height: 208px !important;
+        min-height: 208px !important;
+        max-height: 208px !important;
+      }
+
+      .video-play-overlay {
+        width: 54px;
+        height: 54px;
+      }
+    }
+
 </style>
 </head>
 
@@ -3924,12 +4072,6 @@
           <div class="guide-main-copy">
             식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
             현장 안내에 따라 편하게 이동해 주세요.
-          </div>
-
-          <div class="guide-menu-card">
-            <div class="guide-menu-title">신랑신부의 추천메뉴</div>
-            <div class="guide-menu-row"><span>신랑</span><strong>부산하면 돼지고기</strong></div>
-            <div class="guide-menu-row"><span>신부</span><strong>브루어리에서 만든 생맥주</strong></div>
           </div>
         </div>
 
@@ -4048,15 +4190,12 @@
 
       <div class="video-shell reveal-child" style="--delay: 280ms;">
         <div class="video-box fallback-box" data-fallback="영상">
-          <video 
-            controls 
-            playsinline 
-            preload="metadata"
-            poster="wedding_film_poster.jpg"
-            onerror="handleMediaError(this)"
-          >
+          <video controls playsinline preload="metadata" poster="wedding_film_poster.jpg" onerror="handleMediaError(this)">
             <source src="wedding_film.mp4" type="video/mp4" />
           </video>
+          <button class="video-play-overlay" type="button" aria-label="영상 재생">
+            <span class="video-play-icon"></span>
+          </button>
         </div>
       </div>
     </section>
@@ -4242,15 +4381,30 @@
       <div class="food-modal-content">
         <div class="food-modal-title">맛집 목록</div>
         <div class="food-modal-desc">
-          식사 후 가볍게 들릴 카페와<br />
           저희가 좋아하는 식당을 소개합니다.<br />
           즐거운 부산 여행 되세요!
         </div>
 
-        <div class="food-basic-list">
-          <div class="food-basic-item">카페 / 디저트</div>
-          <div class="food-basic-item">보규&amp;창수의 맛집</div>
-          <div class="food-basic-item">부산에서 먹어볼 것들</div>
+        <div class="food-basic-list food-category-list">
+          <div class="food-basic-item food-category-item">
+            <div class="food-category-title">가볍게 들리기 좋은 카페</div>
+            <div class="food-place-list">
+              <div class="food-place"><span>광안리</span> 바닷마을과자점</div>
+              <div class="food-place"><span>기장</span> 칠암사계</div>
+            </div>
+          </div>
+          <div class="food-basic-item food-category-item">
+            <div class="food-category-title">우리가 좋아하는 로컬 식당</div>
+            <div class="food-place-list">
+              <div class="food-place muted">추천 장소를 곧 채워둘게요</div>
+            </div>
+          </div>
+          <div class="food-basic-item food-category-item">
+            <div class="food-category-title">부산에 왔다면 들러볼 식당</div>
+            <div class="food-place-list">
+              <div class="food-place muted">추천 장소를 곧 채워둘게요</div>
+            </div>
+          </div>
         </div>
 
         <div class="modal-bottom-btn">
@@ -4556,6 +4710,61 @@
       });
     }
 
+    const guideOrder = ["flower", "meal", "rain"];
+    let guideTouchStartX = 0;
+    let guideTouchStartY = 0;
+
+    function getCurrentGuideIndex() {
+      const activePanel = document.querySelector(".guide-content.active");
+      if (!activePanel) return 0;
+      const type = activePanel.id.replace("guide-", "");
+      return Math.max(guideOrder.indexOf(type), 0);
+    }
+
+    function activateGuideByType(type) {
+      const btn = document.querySelector(`.guide-tab[onclick*="'${type}'"]`);
+      const panel = document.getElementById("guide-" + type);
+      if (!btn || !panel) return;
+
+      document.querySelectorAll(".guide-tab").forEach(tab => {
+        tab.classList.remove("active", "is-emoji");
+        tab.textContent = tab.dataset.label || tab.textContent;
+      });
+      document.querySelectorAll(".guide-content").forEach(item => item.classList.remove("active"));
+
+      btn.classList.add("active");
+      btn.textContent = btn.dataset.label || btn.textContent;
+      panel.classList.add("active");
+    }
+
+    function setupGuideSwipe() {
+      const guideWrap = document.querySelector(".guide-wrap");
+      if (!guideWrap) return;
+
+      guideWrap.addEventListener("touchstart", (e) => {
+        if (!e.changedTouches || !e.changedTouches.length) return;
+        guideTouchStartX = e.changedTouches[0].screenX;
+        guideTouchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      guideWrap.addEventListener("touchend", (e) => {
+        if (!e.changedTouches || !e.changedTouches.length) return;
+        const dx = e.changedTouches[0].screenX - guideTouchStartX;
+        const dy = e.changedTouches[0].screenY - guideTouchStartY;
+
+        if (Math.abs(dx) < 46 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+
+        const current = getCurrentGuideIndex();
+        const nextIndex = dx < 0
+          ? Math.min(current + 1, guideOrder.length - 1)
+          : Math.max(current - 1, 0);
+
+        if (nextIndex !== current) {
+          activateGuideByType(guideOrder[nextIndex]);
+        }
+      }, { passive: true });
+    }
+
     function showMorePhotos() {
       openViewer(8);
     }
@@ -4579,6 +4788,16 @@
     let currentViewerIndex = 0;
     let touchStartX = 0;
     let touchEndX = 0;
+    let viewerScale = 1;
+    let viewerTranslateX = 0;
+    let viewerTranslateY = 0;
+    let viewerPinchStartDistance = 0;
+    let viewerPinchStartScale = 1;
+    let viewerPanStartX = 0;
+    let viewerPanStartY = 0;
+    let viewerStartTranslateX = 0;
+    let viewerStartTranslateY = 0;
+    let viewerTouchMode = "swipe";
 
     function openViewer(index) {
       currentViewerIndex = index;
@@ -4604,6 +4823,43 @@
       if (viewerCaption) viewerCaption.textContent = image.caption || "";
       const counter = document.getElementById("viewerCounter");
       if (counter) counter.textContent = (currentViewerIndex + 1) + " / " + galleryImages.length;
+      window.requestAnimationFrame(resetViewerZoom);
+    }
+
+    function getTouchDistance(touches) {
+      const dx = touches[0].clientX - touches[1].clientX;
+      const dy = touches[0].clientY - touches[1].clientY;
+      return Math.hypot(dx, dy);
+    }
+
+    function clampViewerPan() {
+      if (viewerScale <= 1) {
+        viewerTranslateX = 0;
+        viewerTranslateY = 0;
+        return;
+      }
+
+      const image = document.getElementById("viewerImage");
+      const rect = image ? image.getBoundingClientRect() : { width: 320, height: 420 };
+      const maxX = Math.max(0, (rect.width * (viewerScale - 1)) / (2 * viewerScale));
+      const maxY = Math.max(0, (rect.height * (viewerScale - 1)) / (2 * viewerScale));
+
+      viewerTranslateX = Math.min(maxX, Math.max(-maxX, viewerTranslateX));
+      viewerTranslateY = Math.min(maxY, Math.max(-maxY, viewerTranslateY));
+    }
+
+    function applyViewerTransform() {
+      const image = document.getElementById("viewerImage");
+      if (!image) return;
+      clampViewerPan();
+      image.style.transform = `translate3d(${viewerTranslateX}px, ${viewerTranslateY}px, 0) scale(${viewerScale})`;
+    }
+
+    function resetViewerZoom() {
+      viewerScale = 1;
+      viewerTranslateX = 0;
+      viewerTranslateY = 0;
+      applyViewerTransform();
     }
 
     function setupViewerSwipe() {
@@ -4611,16 +4867,72 @@
       if (!swipeArea) return;
 
       swipeArea.addEventListener("touchstart", (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
+        if (e.touches.length === 2) {
+          viewerTouchMode = "pinch";
+          viewerPinchStartDistance = getTouchDistance(e.touches);
+          viewerPinchStartScale = viewerScale;
+          return;
+        }
+
+        if (e.touches.length === 1) {
+          touchStartX = e.touches[0].screenX;
+          touchEndX = touchStartX;
+          viewerPanStartX = e.touches[0].clientX;
+          viewerPanStartY = e.touches[0].clientY;
+          viewerStartTranslateX = viewerTranslateX;
+          viewerStartTranslateY = viewerTranslateY;
+          viewerTouchMode = viewerScale > 1 ? "pan" : "swipe";
+        }
+      }, { passive: false });
+
+      swipeArea.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const distance = getTouchDistance(e.touches);
+          if (!viewerPinchStartDistance) return;
+          viewerScale = Math.min(3, Math.max(1, viewerPinchStartScale * (distance / viewerPinchStartDistance)));
+          if (viewerScale <= 1.01) {
+            viewerScale = 1;
+            viewerTranslateX = 0;
+            viewerTranslateY = 0;
+          }
+          applyViewerTransform();
+          return;
+        }
+
+        if (e.touches.length === 1 && viewerTouchMode === "pan") {
+          e.preventDefault();
+          viewerTranslateX = viewerStartTranslateX + (e.touches[0].clientX - viewerPanStartX);
+          viewerTranslateY = viewerStartTranslateY + (e.touches[0].clientY - viewerPanStartY);
+          applyViewerTransform();
+        }
+      }, { passive: false });
 
       swipeArea.addEventListener("touchend", (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipeGesture();
-      }, { passive: true });
+        if (viewerTouchMode === "swipe" && e.changedTouches && e.changedTouches.length) {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipeGesture();
+        }
+
+        if (viewerScale <= 1.01) {
+          viewerScale = 1;
+          viewerTranslateX = 0;
+          viewerTranslateY = 0;
+        }
+        applyViewerTransform();
+        viewerPinchStartDistance = 0;
+      }, { passive: false });
+
+      swipeArea.addEventListener("dblclick", () => {
+        viewerScale = viewerScale > 1 ? 1 : 2;
+        viewerTranslateX = 0;
+        viewerTranslateY = 0;
+        applyViewerTransform();
+      });
     }
 
     function handleSwipeGesture() {
+      if (viewerScale > 1) return;
       const diff = touchEndX - touchStartX;
       if (Math.abs(diff) < 40) return;
 
@@ -4629,6 +4941,24 @@
       } else {
         moveViewer(-1);
       }
+    }
+
+    function setupVideoOverlay() {
+      document.querySelectorAll(".video-box").forEach(box => {
+        const video = box.querySelector("video");
+        const overlay = box.querySelector(".video-play-overlay");
+        if (!video || !overlay) return;
+
+        overlay.addEventListener("click", () => {
+          video.play().catch(() => {});
+        });
+
+        video.addEventListener("play", () => overlay.classList.add("hidden"));
+        video.addEventListener("pause", () => {
+          if (!video.ended) overlay.classList.remove("hidden");
+        });
+        video.addEventListener("ended", () => overlay.classList.remove("hidden"));
+      });
     }
 
     function toggleAccountGroup(type, btn) {
@@ -4719,7 +5049,9 @@
 
     updateDayCounts();
     initGuideTabs();
+    setupGuideSwipe();
     setupViewerSwipe();
+    setupVideoOverlay();
     setupScrollReveal();
     initVenueMap();
   </script>
