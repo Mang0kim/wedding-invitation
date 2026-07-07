@@ -4715,7 +4715,7 @@
     }
 
 
-    /* === Entry screen: ribbon opening gate + BGM start === */
+    /* === Entry screen: image ribbon opening gate + BGM start === */
     body.entry-locked {
       overflow: hidden;
     }
@@ -4731,8 +4731,8 @@
       justify-content: center;
       padding: 24px;
       transition:
-        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-        visibility 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .entry-screen.hide {
@@ -4743,126 +4743,162 @@
 
     .entry-card {
       width: min(350px, calc(100vw - 48px));
-      aspect-ratio: 1.48 / 1;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(44, 44, 44, 0.055);
-      box-shadow: 0 18px 46px rgba(44, 44, 44, 0.06);
+      aspect-ratio: 2 / 3;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
+      background: #fbfaf6;
+      box-shadow: 0 22px 58px rgba(44, 44, 44, 0.10);
+      border: 1px solid rgba(44, 44, 44, 0.045);
+    }
+
+    .entry-cover-button {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      display: block;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+    }
+
+    .entry-cover-base,
+    .entry-ribbon-half img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    .entry-cover-base {
+      z-index: 1;
+      transition:
+        opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.82s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .entry-ribbon-half {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow: hidden;
+      opacity: 0;
+      transition:
+        opacity 0.2s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+      will-change: transform, opacity, filter;
+    }
+
+    .entry-ribbon-half.left {
+      clip-path: inset(34% 50% 25% 0);
+    }
+
+    .entry-ribbon-half.right {
+      clip-path: inset(34% 0 25% 50%);
     }
 
     .entry-title {
       position: absolute;
-      top: 30px;
+      top: 66px;
       left: 0;
       right: 0;
+      z-index: 4;
       text-align: center;
-      color: var(--text-soft);
+      color: rgba(89, 89, 89, 0.82);
       font-size: 17px;
       font-weight: 200;
       letter-spacing: 0.22em;
-    }
-
-    .entry-ribbon {
-      width: 100%;
-      height: 82px;
-      border: 0;
-      background: transparent;
-      padding: 0;
-      margin: 16px 0 0;
-      position: relative;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .ribbon-line {
-      position: absolute;
-      top: 50%;
-      width: 50%;
-      height: 34px;
-      background: var(--accent);
-      transform: translateY(-50%);
+      pointer-events: none;
       transition:
-        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .ribbon-left {
-      left: 0;
-      border-radius: 0 3px 3px 0;
-    }
-
-    .ribbon-right {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-
-    .ribbon-knot {
-      position: relative;
-      z-index: 2;
-      width: 62px;
-      height: 42px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 8px 18px rgba(236, 34, 31, 0.16);
-      transition:
-        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .ribbon-knot::before,
-    .ribbon-knot::after {
-      content: "";
-      position: absolute;
-      top: 8px;
-      width: 58px;
-      height: 34px;
-      background: var(--accent);
-      border-radius: 60% 40% 55% 45%;
-    }
-
-    .ribbon-knot::before {
-      right: 38px;
-      transform: rotate(-10deg);
-    }
-
-    .ribbon-knot::after {
-      left: 38px;
-      transform: rotate(10deg);
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .entry-guide {
       position: absolute;
-      bottom: 26px;
       left: 0;
       right: 0;
+      bottom: 58px;
+      z-index: 4;
       text-align: center;
-      color: var(--text-soft);
+      color: rgba(89, 89, 89, 0.82);
       font-size: var(--font-small);
       font-weight: 200;
       line-height: 1.65;
+      pointer-events: none;
+      transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .entry-screen.opening .ribbon-left {
-      transform: translate(-56px, -50%) rotate(-4deg);
+    .entry-touch-hint {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--accent);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: -0.02em;
+    }
+
+    .entry-glow {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 3;
+      width: 190px;
+      height: 80px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.36);
+      filter: blur(18px);
+      opacity: 0;
+      transform: translate(-50%, 14%) scale(0.86);
+      pointer-events: none;
+      transition:
+        opacity 0.52s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .entry-screen.opening .entry-ribbon-half {
+      opacity: 1;
+      filter: blur(0.2px);
+    }
+
+    .entry-screen.opening .entry-ribbon-half.left {
+      transform: translateX(-54px) translateY(4px) rotate(-3deg);
       opacity: 0;
     }
 
-    .entry-screen.opening .ribbon-right {
-      transform: translate(56px, -50%) rotate(4deg);
+    .entry-screen.opening .entry-ribbon-half.right {
+      transform: translateX(54px) translateY(4px) rotate(3deg);
       opacity: 0;
     }
 
-    .entry-screen.opening .ribbon-knot {
-      transform: scale(0.86);
+    .entry-screen.opening .entry-cover-base {
       opacity: 0;
+      transform: scale(1.035);
+      filter: blur(1.2px) brightness(1.04);
+    }
+
+    .entry-screen.opening .entry-title,
+    .entry-screen.opening .entry-guide {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .entry-screen.opening .entry-glow {
+      opacity: 1;
+      transform: translate(-50%, 14%) scale(1.18);
     }
 
     @media (max-width: 380px) {
@@ -4871,12 +4907,12 @@
       }
 
       .entry-title {
-        top: 27px;
+        top: 60px;
         font-size: 16px;
       }
 
       .entry-guide {
-        bottom: 24px;
+        bottom: 52px;
         font-size: 13px;
       }
     }
@@ -4889,17 +4925,18 @@
 
   <div class="entry-screen" id="entryScreen">
     <div class="entry-card">
-      <div class="entry-title">초대합니다</div>
-
-      <button class="entry-ribbon" type="button" onclick="enterInvitation()" aria-label="초대장 열기">
-        <span class="ribbon-line ribbon-left"></span>
-        <span class="ribbon-knot"></span>
-        <span class="ribbon-line ribbon-right"></span>
+      <button class="entry-cover-button" type="button" onclick="enterInvitation()" aria-label="초대장 열기">
+        <img class="entry-cover-base" src="entry_ribbon.png" alt="빨간 리본이 묶인 초대장" />
+        <span class="entry-ribbon-half left" aria-hidden="true"><img src="entry_ribbon.png" alt="" /></span>
+        <span class="entry-ribbon-half right" aria-hidden="true"><img src="entry_ribbon.png" alt="" /></span>
+        <span class="entry-glow" aria-hidden="true"></span>
       </button>
 
+      <div class="entry-title">초대합니다</div>
       <div class="entry-guide">
         리본을 풀어<br />
-        초대장을 열어주세요
+        초대장을 열어주세요<br />
+        <span class="entry-touch-hint">초대장 열기</span>
       </div>
     </div>
   </div>
@@ -5487,11 +5524,11 @@
 
         window.setTimeout(() => {
           entryScreen.classList.add("hide");
-        }, 520);
+        }, 720);
 
         window.setTimeout(() => {
           entryScreen.style.display = "none";
-        }, 1100);
+        }, 1350);
       }
 
       if (bgm) {
