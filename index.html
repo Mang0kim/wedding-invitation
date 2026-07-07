@@ -4874,6 +4874,8 @@
 
     .entry-guide-text {
       display: block;
+      color: var(--accent);
+      font-weight: 300;
     }
 
     .entry-guide-mark {
@@ -5013,6 +5015,21 @@
     }
 
 
+    /* === Disable photo zoom interactions === */
+    #viewerModal #viewerImage,
+    #viewerModal .viewer-image-wrap img {
+      transform: none !important;
+      transition: none !important;
+      user-select: none !important;
+      -webkit-user-drag: none !important;
+      -webkit-touch-callout: none !important;
+    }
+
+    #viewerModal .viewer-image-wrap {
+      touch-action: pan-y !important;
+    }
+
+
 </style>
 </head>
 
@@ -5030,7 +5047,7 @@
           <div class="entry-card-base"></div>
           <div class="entry-fold-body">
             <div class="entry-guide">
-              <span class="entry-guide-text">살짝 밀어 초대장을 열어주세요</span>
+              <span class="entry-guide-text">살짝 밀어 청첩장을 열어주세요</span>
             </div>
           </div>
           <div class="entry-fold-flap">
@@ -5262,7 +5279,7 @@
 
       <div class="video-shell reveal-child" style="--delay: 280ms;">
         <div class="video-box fallback-box" data-fallback="영상">
-          <video playsinline preload="metadata" poster="wedding_film_poster.jpg" onerror="handleMediaError(this)">
+          <video playsinline muted preload="metadata" poster="wedding_film_poster.jpg" onerror="handleMediaError(this)">
             <source src="wedding_film.mp4" type="video/mp4" />
           </video>
           <button class="video-play-overlay" type="button" aria-label="영상 재생">
@@ -5470,16 +5487,37 @@
             <div class="food-place-list">
               <div class="food-place food-place-detail">
                 <div class="food-place-main">
-                  <span class="food-area">광안리</span>
-                  <strong class="food-name">바닷마을과자점</strong>
-                  <em class="food-comment">광안대교 뷰와 천국의 맛</em>
+                  <span class="food-area">온천장</span>
+                  <strong class="food-name">모모스커피 본점</strong>
+                  <em class="food-comment">맛있는 커피와 정원</em>
                 </div>
               </div>
               <div class="food-place food-place-detail">
                 <div class="food-place-main">
-                  <span class="food-area">온천장</span>
-                  <strong class="food-name">모모스커피 부산본점</strong>
-                  <em class="food-comment">차분한 공간과 맛있는 커피</em>
+                  <span class="food-area">광안리</span>
+                  <strong class="food-name">바닷마을과자점</strong>
+                  <em class="food-comment">제철재료 가득한 과자점</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">기장</span>
+                  <strong class="food-name">칠암사계</strong>
+                  <em class="food-comment">소금빵은 10시 오픈!</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
                 </div>
               </div>
             </div>
@@ -5491,7 +5529,41 @@
               <span class="food-category-toggle" aria-hidden="true"></span>
             </button>
             <div class="food-place-list">
-              <div class="food-place muted">추천 장소를 곧 채워둘게요</div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -5501,7 +5573,41 @@
               <span class="food-category-toggle" aria-hidden="true"></span>
             </button>
             <div class="food-place-list">
-              <div class="food-place muted">추천 장소를 곧 채워둘게요</div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">부산역</span>
+                  <strong class="food-name">신발원</strong>
+                  <em class="food-comment">부산 최고의 만두</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">해운대</span>
+                  <strong class="food-name">해운대암소갈비</strong>
+                  <em class="food-comment">면사리 꼭 추가하기</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">부산대</span>
+                  <strong class="food-name">톤쇼우</strong>
+                  <em class="food-comment">출발 할 때 예약</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
+              <div class="food-place food-place-detail">
+                <div class="food-place-main">
+                  <span class="food-area">ooo</span>
+                  <strong class="food-name">ooo</strong>
+                  <em class="food-comment">ooo</em>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -5611,6 +5717,7 @@
     let invitationEntered = false;
     let entryTouchStartY = 0;
     let entryPullDistance = 0;
+    let bgmUserPaused = false;
 
     function setEntryOpenProgress(progress) {
       const entryScreen = document.getElementById("entryScreen");
@@ -5621,10 +5728,10 @@
 
     function updateEntryPull(distance) {
       if (invitationEntered) return;
-      entryPullDistance = Math.max(0, distance);
-      const progress = Math.min(entryPullDistance / 240, 1);
+      entryPullDistance = Math.max(0, Math.abs(distance));
+      const progress = Math.min(entryPullDistance / 160, 1);
       setEntryOpenProgress(progress);
-      if (progress >= 1) enterInvitation();
+      if (progress >= 0.28) enterInvitation();
     }
 
     function resetEntryPull() {
@@ -5637,12 +5744,14 @@
       const entryScreen = document.getElementById("entryScreen");
       if (!entryScreen) return;
 
+      entryScreen.addEventListener("click", () => {
+        if (!invitationEntered) enterInvitation();
+      });
+
       entryScreen.addEventListener("wheel", (e) => {
         if (invitationEntered) return;
-        if (e.deltaY > 0) {
-          e.preventDefault();
-          updateEntryPull(entryPullDistance + e.deltaY);
-        }
+        e.preventDefault();
+        updateEntryPull(entryPullDistance + Math.abs(e.deltaY));
       }, { passive: false });
 
       entryScreen.addEventListener("touchstart", (e) => {
@@ -5653,15 +5762,13 @@
 
       entryScreen.addEventListener("touchmove", (e) => {
         if (invitationEntered || !e.touches.length) return;
-        const distance = entryTouchStartY - e.touches[0].clientY;
-        if (distance > 0) {
-          e.preventDefault();
-          updateEntryPull(distance);
-        }
+        const distance = e.touches[0].clientY - entryTouchStartY;
+        e.preventDefault();
+        updateEntryPull(distance);
       }, { passive: false });
 
       entryScreen.addEventListener("touchend", () => {
-        if (!invitationEntered && entryPullDistance < 240) resetEntryPull();
+        if (!invitationEntered) enterInvitation();
       }, { passive: true });
     }
 
@@ -5689,16 +5796,34 @@
       }
 
       if (bgm) {
-        bgm.volume = 0.45;
-        bgm.play()
-          .then(updateMusicToggle)
-          .catch(() => {
-            updateMusicToggle();
-            showCopyToast("음악을 재생하지 못했습니다.");
-          });
+        bgmUserPaused = false;
+        playBgm();
       }
     }
 
+
+    function playBgm() {
+      const bgm = document.getElementById("bgm");
+      if (!bgm || bgmUserPaused) return Promise.resolve(false);
+
+      bgm.volume = 0.45;
+      return bgm.play()
+        .then(() => {
+          updateMusicToggle();
+          return true;
+        })
+        .catch(() => {
+          updateMusicToggle();
+          return false;
+        });
+    }
+
+    function keepBgmPlaying() {
+      if (bgmUserPaused) return;
+      playBgm();
+      window.setTimeout(playBgm, 250);
+      window.setTimeout(playBgm, 900);
+    }
 
     function updateMusicToggle() {
       const bgm = document.getElementById("bgm");
@@ -5706,7 +5831,7 @@
       const text = document.getElementById("musicToggleText");
       if (!bgm || !toggle || !text) return;
 
-      const isOff = bgm.paused;
+      const isOff = bgmUserPaused || bgm.paused;
       toggle.classList.toggle("is-off", isOff);
       toggle.setAttribute("aria-pressed", isOff ? "true" : "false");
       toggle.setAttribute("aria-label", isOff ? "배경음악 켜기" : "배경음악 끄기");
@@ -5717,12 +5842,13 @@
       const bgm = document.getElementById("bgm");
       if (!bgm) return;
 
-      if (bgm.paused) {
-        bgm.volume = 0.45;
-        bgm.play()
-          .then(updateMusicToggle)
-          .catch(() => showCopyToast("음악을 재생하지 못했습니다."));
+      if (bgmUserPaused || bgm.paused) {
+        bgmUserPaused = false;
+        playBgm().then((played) => {
+          if (!played) showCopyToast("음악을 재생하지 못했습니다.");
+        });
       } else {
+        bgmUserPaused = true;
         bgm.pause();
         updateMusicToggle();
       }
@@ -6047,7 +6173,7 @@
     function applyViewerTransform() {
       const img = document.getElementById("viewerImage");
       if (!img) return;
-      img.style.transform = `translate(${viewerTranslateX}px, ${viewerTranslateY}px) scale(${viewerScale})`;
+      img.style.transform = "none";
     }
 
     function getTouchDistance(touches) {
@@ -6061,46 +6187,19 @@
       if (!swipeArea) return;
 
       swipeArea.addEventListener("touchstart", (e) => {
-        if (e.touches.length === 2) {
-          viewerLastDistance = getTouchDistance(e.touches);
-          return;
-        }
-
+        if (e.touches.length !== 1) return;
         touchStartX = e.changedTouches[0].screenX;
         touchEndX = touchStartX;
-        viewerPanStartX = e.changedTouches[0].clientX;
-        viewerPanStartY = e.changedTouches[0].clientY;
-        viewerStartTranslateX = viewerTranslateX;
-        viewerStartTranslateY = viewerTranslateY;
       }, { passive: true });
 
       swipeArea.addEventListener("touchmove", (e) => {
-        if (e.touches.length === 2) {
+        if (e.touches.length > 1) {
           e.preventDefault();
-          const distance = getTouchDistance(e.touches);
-          if (viewerLastDistance) {
-            const nextScale = Math.min(3, Math.max(1, viewerScale * (distance / viewerLastDistance)));
-            viewerScale = nextScale;
-            if (viewerScale === 1) {
-              viewerTranslateX = 0;
-              viewerTranslateY = 0;
-            }
-            applyViewerTransform();
-          }
-          viewerLastDistance = distance;
-          return;
-        }
-
-        if (e.touches.length === 1 && viewerScale > 1) {
-          e.preventDefault();
-          viewerTranslateX = viewerStartTranslateX + (e.touches[0].clientX - viewerPanStartX);
-          viewerTranslateY = viewerStartTranslateY + (e.touches[0].clientY - viewerPanStartY);
-          applyViewerTransform();
         }
       }, { passive: false });
 
       swipeArea.addEventListener("touchend", (e) => {
-        if (viewerScale > 1) return;
+        if (!e.changedTouches.length) return;
         touchEndX = e.changedTouches[0].screenX;
         handleSwipeGesture();
       }, { passive: true });
@@ -6208,23 +6307,30 @@
         const overlay = box.querySelector(".video-play-overlay");
         if (!video || !overlay) return;
 
+        video.muted = true;
+        video.volume = 0;
+
         overlay.addEventListener("click", () => {
+          keepBgmPlaying();
           video.controls = true;
-          video.play().catch(() => {});
+          video.play().then(keepBgmPlaying).catch(() => {});
         });
 
         video.addEventListener("play", () => {
           video.controls = true;
           overlay.classList.add("hidden");
+          keepBgmPlaying();
         });
 
         video.addEventListener("pause", () => {
           if (!video.ended) overlay.classList.remove("hidden");
+          keepBgmPlaying();
         });
 
         video.addEventListener("ended", () => {
           video.controls = false;
           overlay.classList.remove("hidden");
+          keepBgmPlaying();
         });
       });
     }
