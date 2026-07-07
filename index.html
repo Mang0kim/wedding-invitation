@@ -3967,6 +3967,139 @@
       }
     }
 
+
+    /* === 2026-07-07 requested tweaks v2: compact guide, food accordion, clean play button === */
+    .guide-wrap {
+      height: 292px !important;
+      min-height: 292px !important;
+      padding-bottom: 18px !important;
+    }
+
+    .guide-content {
+      height: 194px !important;
+      min-height: 194px !important;
+      max-height: 194px !important;
+      padding-top: 22px !important;
+    }
+
+    #guide-meal.guide-content,
+    #guide-rain.guide-content,
+    #guide-flower.guide-content {
+      padding-top: 22px !important;
+    }
+
+    .guide-ending-emoji {
+      display: inline-block;
+      font-size: 17px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    #foodModal .food-modal-desc {
+      line-height: 1.28 !important;
+      margin-bottom: 22px !important;
+    }
+
+    #foodModal .food-category-list {
+      gap: 9px !important;
+    }
+
+    #foodModal .food-category-item {
+      padding: 0 !important;
+      overflow: hidden !important;
+      background: var(--surface-soft) !important;
+    }
+
+    .food-category-head {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 16px;
+      border: 0;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      color: var(--text-strong);
+      text-align: left;
+    }
+
+    .food-category-head .food-category-title {
+      margin: 0 !important;
+      font-size: var(--font-body) !important;
+      line-height: 1.4 !important;
+      font-weight: 300 !important;
+    }
+
+    .food-category-toggle {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 7px solid var(--accent);
+      transform: rotate(0deg);
+      transition: transform 0.18s ease;
+      flex: 0 0 auto;
+    }
+
+    .food-category-item.open .food-category-toggle {
+      transform: rotate(180deg);
+    }
+
+    .food-category-item .food-place-list {
+      display: none;
+      padding: 0 16px 15px;
+      gap: 5px;
+    }
+
+    .food-category-item.open .food-place-list {
+      display: grid;
+    }
+
+    .video-play-overlay {
+      width: 64px !important;
+      height: 64px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+    }
+
+    .video-play-overlay:active {
+      transform: translate(-50%, -50%) scale(0.94) !important;
+    }
+
+    .video-play-icon {
+      width: 32px !important;
+      height: 36px !important;
+      margin-left: 4px !important;
+      display: block !important;
+      filter: drop-shadow(0 4px 10px rgba(44,44,44,0.12));
+    }
+
+    .video-play-icon path {
+      fill: var(--accent);
+    }
+
+    #viewerModal #viewerImage {
+      image-rendering: auto;
+    }
+
+    @media (max-width: 380px) {
+      .guide-wrap {
+        height: 282px !important;
+        min-height: 282px !important;
+      }
+
+      .guide-content {
+        height: 186px !important;
+        min-height: 186px !important;
+        max-height: 186px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -4071,19 +4204,21 @@
         <div class="guide-content" id="guide-meal">
           <div class="guide-main-copy">
             식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
-            현장 안내에 따라 편하게 이동해 주세요.
+            현장 안내에 따라 편하게 이동해 주세요.<br /><br />
+            <span class="guide-ending-emoji" aria-hidden="true">🍽️</span>
           </div>
         </div>
 
         <div class="guide-content" id="guide-rain">
           가을 하늘 아래에서 진행되는 야외예식입니다.<br />
           우천 시에는 호텔 본관에서 예식이 진행됩니다.<br /><br />
-          신랑신부에게 날씨의 요정이 되어주세요.
+          <span class="guide-ending-emoji" aria-hidden="true">☀️</span>
         </div>
 
         <div class="guide-content active" id="guide-flower">
           <span class="guide-red-line">화환은 정중히 사양합니다.</span><br />
-          축하의 마음만으로도 충분히 감사드립니다.
+          축하의 마음만으로도 충분히 감사드립니다.<br /><br />
+          <span class="guide-ending-emoji" aria-hidden="true">🌼</span>
         </div>
       </div>
     </section>
@@ -4194,7 +4329,9 @@
             <source src="wedding_film.mp4" type="video/mp4" />
           </video>
           <button class="video-play-overlay" type="button" aria-label="영상 재생">
-            <span class="video-play-icon"></span>
+            <svg class="video-play-icon" viewBox="0 0 36 40" aria-hidden="true" focusable="false">
+              <path d="M8 6 Q8 3.8 9.8 4.9 L30.4 17.2 Q33.1 18.8 30.4 20.4 L9.8 32.7 Q8 33.8 8 31.6 Z"></path>
+            </svg>
           </button>
         </div>
       </div>
@@ -4386,21 +4523,30 @@
         </div>
 
         <div class="food-basic-list food-category-list">
-          <div class="food-basic-item food-category-item">
-            <div class="food-category-title">가볍게 들리기 좋은 카페</div>
+          <div class="food-basic-item food-category-item open">
+            <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="true">
+              <span class="food-category-title">가볍게 들리기 좋은 카페</span>
+              <span class="food-category-toggle" aria-hidden="true"></span>
+            </button>
             <div class="food-place-list">
               <div class="food-place"><span>광안리</span> 바닷마을과자점</div>
               <div class="food-place"><span>기장</span> 칠암사계</div>
             </div>
           </div>
           <div class="food-basic-item food-category-item">
-            <div class="food-category-title">우리가 좋아하는 로컬 식당</div>
+            <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="false">
+              <span class="food-category-title">우리가 좋아하는 로컬 식당</span>
+              <span class="food-category-toggle" aria-hidden="true"></span>
+            </button>
             <div class="food-place-list">
               <div class="food-place muted">추천 장소를 곧 채워둘게요</div>
             </div>
           </div>
           <div class="food-basic-item food-category-item">
-            <div class="food-category-title">부산에 왔다면 들러볼 식당</div>
+            <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="false">
+              <span class="food-category-title">부산에 왔다면 들러볼 식당</span>
+              <span class="food-category-toggle" aria-hidden="true"></span>
+            </button>
             <div class="food-place-list">
               <div class="food-place muted">추천 장소를 곧 채워둘게요</div>
             </div>
@@ -4959,6 +5105,14 @@
         });
         video.addEventListener("ended", () => overlay.classList.remove("hidden"));
       });
+    }
+
+    function toggleFoodCategory(button) {
+      const item = button.closest(".food-category-item");
+      if (!item) return;
+
+      const isOpen = item.classList.toggle("open");
+      button.setAttribute("aria-expanded", isOpen ? "true" : "false");
     }
 
     function toggleAccountGroup(type, btn) {
