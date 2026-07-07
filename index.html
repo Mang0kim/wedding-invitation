@@ -4721,6 +4721,7 @@
     }
 
     .entry-screen {
+      --entry-open: 0;
       position: fixed;
       inset: 0;
       z-index: 2000;
@@ -4821,11 +4822,7 @@
     }
 
     .entry-fold-body-copy {
-      color: rgba(89, 89, 89, 0.82);
-      font-size: 13px;
-      font-weight: 200;
-      line-height: 1.6;
-      text-align: center;
+      display: none;
     }
 
     .entry-fold-flap {
@@ -4850,6 +4847,7 @@
         box-shadow 0.82s cubic-bezier(0.22, 1, 0.36, 1);
       box-shadow: 0 8px 20px rgba(44, 44, 44, 0.03);
       backface-visibility: hidden;
+      transform: rotateX(calc(var(--entry-open, 0) * -86deg));
     }
 
     .entry-fold-flap::after {
@@ -4871,17 +4869,14 @@
     }
 
     .entry-flap-rule {
-      width: 74px;
-      height: 1px;
-      margin-top: 26px;
-      background: rgba(236, 34, 31, 0.28);
+      display: none;
     }
 
     .entry-guide {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 18px;
+      bottom: 46px;
       z-index: 8;
       text-align: center;
       color: rgba(89, 89, 89, 0.82);
@@ -4958,18 +4953,16 @@
         <div class="entry-fold-card" aria-hidden="true">
           <div class="entry-card-base"></div>
           <div class="entry-fold-body">
-            <div class="entry-fold-body-copy">세 장으로 접힌 초대장을 열 듯<br />위쪽 커버를 열어주세요</div>
+            <div class="entry-fold-body-copy"></div>
           </div>
           <div class="entry-fold-flap">
             <div class="entry-flap-title">초대합니다</div>
-            <div class="entry-flap-rule"></div>
           </div>
         </div>
       </button>
 
       <div class="entry-guide">
-        보규와 창수의 초대장을 열어주세요<br />
-        <span class="entry-touch-hint">초대장 열기</span>
+        아래로 스크롤하여 청첩장을 열어주세요
       </div>
     </div>
   </div>
@@ -5542,6 +5535,61 @@
   <script>
 
     let invitationEntered = false;
+    let entryTouchStartY = 0;
+    let entryPullDistance = 0;
+
+    function setEntryOpenProgress(progress) {
+      const entryScreen = document.getElementById("entryScreen");
+      if (!entryScreen) return;
+      const safeProgress = Math.max(0, Math.min(progress, 1));
+      entryScreen.style.setProperty("--entry-open", safeProgress.toFixed(3));
+    }
+
+    function updateEntryPull(distance) {
+      if (invitationEntered) return;
+      entryPullDistance = Math.max(0, distance);
+      const progress = Math.min(entryPullDistance / 140, 1);
+      setEntryOpenProgress(progress);
+      if (progress >= 1) enterInvitation();
+    }
+
+    function resetEntryPull() {
+      if (invitationEntered) return;
+      entryPullDistance = 0;
+      setEntryOpenProgress(0);
+    }
+
+    function setupEntryScrollGate() {
+      const entryScreen = document.getElementById("entryScreen");
+      if (!entryScreen) return;
+
+      entryScreen.addEventListener("wheel", (e) => {
+        if (invitationEntered) return;
+        if (e.deltaY > 0) {
+          e.preventDefault();
+          updateEntryPull(entryPullDistance + e.deltaY);
+        }
+      }, { passive: false });
+
+      entryScreen.addEventListener("touchstart", (e) => {
+        if (invitationEntered || !e.touches.length) return;
+        entryTouchStartY = e.touches[0].clientY;
+        entryPullDistance = 0;
+      }, { passive: true });
+
+      entryScreen.addEventListener("touchmove", (e) => {
+        if (invitationEntered || !e.touches.length) return;
+        const distance = entryTouchStartY - e.touches[0].clientY;
+        if (distance > 0) {
+          e.preventDefault();
+          updateEntryPull(distance);
+        }
+      }, { passive: false });
+
+      entryScreen.addEventListener("touchend", () => {
+        if (!invitationEntered && entryPullDistance < 140) resetEntryPull();
+      }, { passive: true });
+    }
 
     function enterInvitation() {
       if (invitationEntered) return;
@@ -5553,6 +5601,7 @@
       document.body.classList.remove("entry-locked");
 
       if (entryScreen) {
+        entryScreen.style.setProperty("--entry-open", "1");
         entryScreen.classList.add("opening");
 
         window.setTimeout(() => {
@@ -6058,35 +6107,17 @@
         });
 
         video.addEventListener("play", () => {
-          const bgm = document.getElementById("bgm");
-          if (bgm && !bgm.paused) {
-            bgm.dataset.pausedByVideo = "true";
-            bgm.pause();
-          }
-
           video.controls = true;
           overlay.classList.add("hidden");
         });
 
         video.addEventListener("pause", () => {
-          const bgm = document.getElementById("bgm");
           if (!video.ended) overlay.classList.remove("hidden");
-
-          if (bgm && bgm.dataset.pausedByVideo === "true") {
-            bgm.play().catch(() => {});
-            bgm.dataset.pausedByVideo = "false";
-          }
         });
 
         video.addEventListener("ended", () => {
-          const bgm = document.getElementById("bgm");
           video.controls = false;
           overlay.classList.remove("hidden");
-
-          if (bgm && bgm.dataset.pausedByVideo === "true") {
-            bgm.play().catch(() => {});
-            bgm.dataset.pausedByVideo = "false";
-          }
         });
       });
     }
@@ -6146,6 +6177,7 @@
     });
 
     updateDayCounts();
+    setupEntryScrollGate();
     initGuideTabs();
     setupGuideSwipe();
     setupViewerSwipe();
