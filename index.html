@@ -4379,6 +4379,69 @@
       }
     }
 
+
+    /* === 2026-07-07 requested tweaks v3: softer food cards and wider closing gap === */
+    #foodModal .food-category-list {
+      gap: 15px !important;
+    }
+
+    #foodModal .food-category-item {
+      background: rgba(255, 255, 255, 0.46) !important;
+      border: 1px solid rgba(44, 44, 44, 0.045) !important;
+      box-shadow: none !important;
+    }
+
+    .food-category-head {
+      min-height: 50px !important;
+      padding: 12px 16px !important;
+    }
+
+    .food-category-item .food-place-list {
+      padding: 0 16px 16px !important;
+      gap: 10px !important;
+    }
+
+    .food-place-detail {
+      padding: 0 !important;
+      border-top: 0 !important;
+    }
+
+    .food-place-main {
+      display: grid !important;
+      grid-template-columns: 42px 88px minmax(0, 1fr) !important;
+      column-gap: 8px !important;
+      align-items: baseline !important;
+    }
+
+    .food-comment {
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+
+    .food-address {
+      display: none !important;
+    }
+
+    .closing-actions {
+      margin-top: 58px !important;
+    }
+
+    @media (max-width: 380px) {
+      #foodModal .food-category-list {
+        gap: 13px !important;
+      }
+
+      .food-place-main {
+        grid-template-columns: 38px 78px minmax(0, 1fr) !important;
+        column-gap: 7px !important;
+      }
+
+      .closing-actions {
+        margin-top: 50px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -4814,17 +4877,15 @@
                 <div class="food-place-main">
                   <span class="food-area">광안리</span>
                   <strong class="food-name">바닷마을과자점</strong>
-                  <em class="food-comment">“광안대교를 보며 먹는 천국의 디저트”</em>
+                  <em class="food-comment">광안대교를 보며 먹는 천국의 디저트</em>
                 </div>
-                <div class="food-address">부산 수영구 00로 00</div>
               </div>
               <div class="food-place food-place-detail">
                 <div class="food-place-main">
                   <span class="food-area">기장</span>
                   <strong class="food-name">칠암사계</strong>
-                  <em class="food-comment">“한적한 기장 앞바다와 기본에 충실한 빵”</em>
+                  <em class="food-comment">한적한 기장 앞바다와 기본에 충실한 빵</em>
                 </div>
-                <div class="food-address">부산 기장군 00로 00</div>
               </div>
             </div>
           </div>
