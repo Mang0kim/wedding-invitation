@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="format-detection" content="telephone=no" />
 
-  <title>김창수 · 최보규의 결혼식에 초대합니다</title>
+  <title>💌 최보규·김창수의 결혼식에 초대합니다</title>
 
-  <meta property="og:title" content="💌최보규·김창수의 결혼식에 초대합니다" />
-  <meta property="og:description" content="26년 10월 3일 오후 1시 호텔농심 야외정원" />
+  <meta property="og:title" content="💌 최보규·김창수의 결혼식에 초대합니다" />
+  <meta property="og:description" content="2026년 10월 3일 토요일 오후 1시&#10;호텔농심 야외정원" />
   <meta property="og:url" content="https://1003.highglossyworks.life" />
 
   <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=gzlsg53kum"></script>
@@ -234,7 +234,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: Arial, sans-serif;
+      font-family: inherit;
       font-size: 17px;
       font-weight: 300;
       line-height: 21px;
@@ -1428,7 +1428,7 @@
       border-radius: 50%;
       background: var(--accent);
       color: var(--white);
-      font-family: Arial, sans-serif;
+      font-family: inherit;
       font-size: 17px;
       font-weight: 300;
       line-height: 22px;
@@ -2066,7 +2066,7 @@
       content: "+";
       display: block;
       color: var(--white);
-      font-family: Arial, sans-serif;
+      font-family: inherit;
       font-size: 17px;
       font-weight: 300;
       line-height: 1;
@@ -3820,166 +3820,28 @@
     }
 
 
-    /* === 2026-07-07 requested tweaks: guide simplified, food categories, viewer zoom, video overlay === */
+    /* === 2026-07-07 consolidated refinements === */
+    .btn-rect::after,
+    .timeline-open-btn {
+      font-family: inherit !important;
+    }
+
     .guide-wrap {
-      height: 318px !important;
-      min-height: 318px !important;
-      padding-bottom: 22px !important;
-      touch-action: pan-y;
+      height: 272px !important;
+      min-height: 272px !important;
+      padding: 8px 8px 18px !important;
+      touch-action: pan-y !important;
     }
 
     .guide-content {
-      height: 220px !important;
-      min-height: 220px !important;
-      max-height: 220px !important;
-      padding-top: 26px !important;
-    }
-
-    #guide-meal.guide-content,
-    #guide-rain.guide-content,
-    #guide-flower.guide-content {
-      padding-top: 26px !important;
-    }
-
-    #guide-meal .guide-main-copy {
-      margin-bottom: 0 !important;
-    }
-
-    #foodModal .food-modal-desc {
-      line-height: 1.35 !important;
-      margin-bottom: 24px !important;
-    }
-
-    #foodModal .food-category-list {
-      gap: 10px !important;
-    }
-
-    #foodModal .food-category-item {
-      padding: 14px 16px !important;
-      line-height: 1.45 !important;
-    }
-
-    .food-category-title {
-      color: var(--text-strong);
-      font-size: var(--font-body);
-      font-weight: 300;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-
-    .food-place-list {
-      display: grid;
-      gap: 5px;
-    }
-
-    .food-place {
-      color: var(--text);
-      font-size: var(--font-small);
-      font-weight: 200;
-      line-height: 1.45;
-    }
-
-    .food-place span {
-      color: var(--accent);
-      font-weight: 300;
-      margin-right: 6px;
-    }
-
-    .food-place.muted {
-      color: var(--text-soft);
-    }
-
-    #timelineModal .timeline-modal-title {
-      margin-bottom: 22px !important;
-    }
-
-    #timelineModal .timeline-line-list {
-      margin-top: 20px !important;
-    }
-
-    #viewerModal .viewer-image-wrap {
-      touch-action: none !important;
-    }
-
-    #viewerModal #viewerImage {
-      transform-origin: center center;
-      transition: transform 0.12s ease;
-      will-change: transform;
-    }
-
-    .video-box {
-      position: relative;
-    }
-
-    .video-play-overlay {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 58px;
-      height: 58px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: 0 12px 34px rgba(44, 44, 44, 0.16);
-      backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 2;
-      transition: opacity 0.18s ease, transform 0.18s ease;
-    }
-
-    .video-play-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .video-play-overlay:active {
-      transform: translate(-50%, -50%) scale(0.94);
-    }
-
-    .video-play-icon {
-      width: 0;
-      height: 0;
-      border-top: 11px solid transparent;
-      border-bottom: 11px solid transparent;
-      border-left: 17px solid var(--accent);
-      margin-left: 4px;
-    }
-
-    @media (max-width: 380px) {
-      .guide-wrap {
-        height: 306px !important;
-        min-height: 306px !important;
-      }
-
-      .guide-content {
-        height: 208px !important;
-        min-height: 208px !important;
-        max-height: 208px !important;
-      }
-
-      .video-play-overlay {
-        width: 54px;
-        height: 54px;
-      }
-    }
-
-
-    /* === 2026-07-07 requested tweaks v2: compact guide, food accordion, clean play button === */
-    .guide-wrap {
-      height: 292px !important;
-      min-height: 292px !important;
-      padding-bottom: 18px !important;
-    }
-
-    .guide-content {
-      height: 194px !important;
-      min-height: 194px !important;
-      max-height: 194px !important;
-      padding-top: 22px !important;
+      height: 174px !important;
+      min-height: 174px !important;
+      max-height: 174px !important;
+      padding: 22px 14px 0 !important;
+      overflow: hidden !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
+      line-height: 1.72 !important;
     }
 
     #guide-meal.guide-content,
@@ -3989,14 +3851,14 @@
     }
 
     .guide-ending-emoji {
-      display: inline-block;
-      font-size: 17px;
-      line-height: 1;
-      margin-top: 2px;
+      display: inline-block !important;
+      font-size: 17px !important;
+      line-height: 1 !important;
+      margin-top: 0 !important;
     }
 
     #foodModal .food-modal-desc {
-      line-height: 1.28 !important;
+      line-height: 1.25 !important;
       margin-bottom: 22px !important;
     }
 
@@ -4011,18 +3873,19 @@
     }
 
     .food-category-head {
-      width: 100%;
-      min-height: 54px;
-      padding: 14px 16px;
-      border: 0;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      cursor: pointer;
-      color: var(--text-strong);
-      text-align: left;
+      width: 100% !important;
+      min-height: 54px !important;
+      padding: 14px 16px !important;
+      border: 0 !important;
+      background: transparent !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      cursor: pointer !important;
+      color: var(--text-strong) !important;
+      text-align: left !important;
+      font-family: inherit !important;
     }
 
     .food-category-head .food-category-title {
@@ -4033,117 +3896,141 @@
     }
 
     .food-category-toggle {
-      width: 0;
-      height: 0;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 7px solid var(--accent);
-      transform: rotate(0deg);
-      transition: transform 0.18s ease;
-      flex: 0 0 auto;
-    }
-
-    .food-category-item.open .food-category-toggle {
-      transform: rotate(180deg);
-    }
-
-    .food-category-item .food-place-list {
-      display: none;
-      padding: 0 16px 15px;
-      gap: 5px;
-    }
-
-    .food-category-item.open .food-place-list {
-      display: grid;
-    }
-
-    .video-play-overlay {
-      width: 64px !important;
-      height: 64px !important;
-      border: 0 !important;
-      border-radius: 0 !important;
-      background: transparent !important;
-      box-shadow: none !important;
-      backdrop-filter: none !important;
-    }
-
-    .video-play-overlay:active {
-      transform: translate(-50%, -50%) scale(0.94) !important;
-    }
-
-    .video-play-icon {
-      width: 32px !important;
-      height: 36px !important;
-      margin-left: 4px !important;
-      display: block !important;
-      filter: drop-shadow(0 4px 10px rgba(44,44,44,0.12));
-    }
-
-    .video-play-icon path {
-      fill: var(--accent);
-    }
-
-    #viewerModal #viewerImage {
-      image-rendering: auto;
-    }
-
-    @media (max-width: 380px) {
-      .guide-wrap {
-        height: 282px !important;
-        min-height: 282px !important;
-      }
-
-      .guide-content {
-        height: 186px !important;
-        min-height: 186px !important;
-        max-height: 186px !important;
-      }
-    }
-
-
-    /* === 2026-07-07: chevron accordion toggle + plain red video play === */
-    .food-category-toggle {
-      width: 18px !important;
-      height: 18px !important;
+      width: 20px !important;
+      height: 20px !important;
+      flex: 0 0 20px !important;
       border: 0 !important;
       position: relative !important;
       display: inline-block !important;
-      flex: 0 0 18px !important;
       transform: none !important;
       transition: transform 0.18s ease !important;
       background: transparent !important;
     }
 
     .food-category-toggle::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 45%;
-      width: 11px;
-      height: 11px;
-      border-right: 3px solid #34434b;
-      border-bottom: 3px solid #34434b;
-      border-radius: 2px;
-      transform: translate(-50%, -50%) rotate(45deg);
-      box-sizing: border-box;
+      content: "" !important;
+      position: absolute !important;
+      left: 50% !important;
+      top: 44% !important;
+      width: 12px !important;
+      height: 12px !important;
+      border-right: 1.4px solid var(--accent) !important;
+      border-bottom: 1.4px solid var(--accent) !important;
+      border-radius: 1.5px !important;
+      transform: translate(-50%, -50%) rotate(45deg) !important;
+      box-sizing: border-box !important;
     }
 
     .food-category-item.open .food-category-toggle {
       transform: rotate(180deg) !important;
     }
 
+    .food-category-item .food-place-list {
+      display: none !important;
+      padding: 0 16px 15px !important;
+      gap: 5px !important;
+    }
+
+    .food-category-item.open .food-place-list {
+      display: grid !important;
+    }
+
+    .food-place {
+      color: var(--text) !important;
+      font-size: var(--font-small) !important;
+      font-weight: 200 !important;
+      line-height: 1.45 !important;
+    }
+
+    .food-place span {
+      color: var(--accent) !important;
+      font-weight: 300 !important;
+      margin-right: 6px !important;
+    }
+
+    .food-place.muted {
+      color: var(--text-soft) !important;
+    }
+
+    .gallery-subtitle {
+      align-items: center !important;
+    }
+
+    .gallery-subtitle-text {
+      height: 24px !important;
+      line-height: 24px !important;
+    }
+
+    .timeline-open-btn {
+      width: 24px !important;
+      height: 24px !important;
+      min-width: 24px !important;
+      min-height: 24px !important;
+      align-self: center !important;
+    }
+
+    .timeline-open-btn::before {
+      width: 10px !important;
+      height: 1.4px !important;
+    }
+
+    .timeline-open-btn::after {
+      width: 1.4px !important;
+      height: 10px !important;
+    }
+
+    #timelineModal .timeline-modal-title {
+      margin-bottom: 22px !important;
+      line-height: 1.5 !important;
+    }
+
+    #timelineModal .timeline-line-list {
+      margin-top: 12px !important;
+    }
+
+    #viewerModal .viewer-image-wrap {
+      touch-action: none !important;
+    }
+
+    #viewerModal #viewerImage {
+      transform-origin: center center !important;
+      transition: transform 0.12s ease !important;
+      will-change: transform !important;
+      image-rendering: auto !important;
+    }
+
+    .video-box {
+      position: relative !important;
+    }
+
     .video-play-overlay {
-      width: 44px !important;
-      height: 44px !important;
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      width: 42px !important;
+      height: 42px !important;
       padding: 0 !important;
+      margin: 0 !important;
       border: 0 !important;
       border-radius: 0 !important;
       background: transparent !important;
+      background-color: transparent !important;
       box-shadow: none !important;
       filter: none !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
       outline: none !important;
+      cursor: pointer !important;
+      z-index: 2 !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+
+    .video-play-overlay.hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     .video-play-overlay::before,
@@ -4152,24 +4039,44 @@
       content: none !important;
     }
 
+    .video-play-overlay:active {
+      transform: translate(-50%, -50%) scale(0.94) !important;
+    }
+
     .video-play-icon {
       width: 34px !important;
       height: 38px !important;
-      margin-left: 3px !important;
+      margin: 0 0 0 4px !important;
       display: block !important;
-      filter: none !important;
-      box-shadow: none !important;
       background: transparent !important;
+      box-shadow: none !important;
+      filter: none !important;
+      overflow: visible !important;
     }
 
     .video-play-icon path {
       fill: var(--accent) !important;
+      stroke: none !important;
       filter: none !important;
       box-shadow: none !important;
     }
 
-    .video-play-overlay:active {
-      transform: translate(-50%, -50%) scale(0.94) !important;
+    .video-box video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none !important;
+    }
+
+    @media (max-width: 380px) {
+      .guide-wrap {
+        height: 262px !important;
+        min-height: 262px !important;
+      }
+
+      .guide-content {
+        height: 164px !important;
+        min-height: 164px !important;
+        max-height: 164px !important;
+      }
     }
 
 </style>
@@ -4277,20 +4184,20 @@
           <div class="guide-main-copy">
             식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
             현장 안내에 따라 편하게 이동해 주세요.<br /><br />
-            <span class="guide-ending-emoji" aria-hidden="true">🍽️</span>
+            <span class="guide-ending-emoji">🍽️</span>
           </div>
         </div>
 
         <div class="guide-content" id="guide-rain">
           가을 하늘 아래에서 진행되는 야외예식입니다.<br />
           우천 시에는 호텔 본관에서 예식이 진행됩니다.<br /><br />
-          <span class="guide-ending-emoji" aria-hidden="true">☀️</span>
+          <span class="guide-ending-emoji">☀️</span>
         </div>
 
         <div class="guide-content active" id="guide-flower">
           <span class="guide-red-line">화환은 정중히 사양합니다.</span><br />
           축하의 마음만으로도 충분히 감사드립니다.<br /><br />
-          <span class="guide-ending-emoji" aria-hidden="true">🌼</span>
+          <span class="guide-ending-emoji">🌼</span>
         </div>
       </div>
     </section>
@@ -4397,7 +4304,7 @@
 
       <div class="video-shell reveal-child" style="--delay: 280ms;">
         <div class="video-box fallback-box" data-fallback="영상">
-          <video controls playsinline preload="metadata" poster="wedding_film_poster.jpg" onerror="handleMediaError(this)">
+          <video playsinline preload="metadata" poster="wedding_film_poster.jpg" onerror="handleMediaError(this)">
             <source src="wedding_film.mp4" type="video/mp4" />
           </video>
           <button class="video-play-overlay" type="button" aria-label="영상 재생">
@@ -4605,6 +4512,7 @@
               <div class="food-place"><span>기장</span> 칠암사계</div>
             </div>
           </div>
+
           <div class="food-basic-item food-category-item">
             <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="false">
               <span class="food-category-title">우리가 좋아하는 로컬 식당</span>
@@ -4614,6 +4522,7 @@
               <div class="food-place muted">추천 장소를 곧 채워둘게요</div>
             </div>
           </div>
+
           <div class="food-basic-item food-category-item">
             <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="false">
               <span class="food-category-title">부산에 왔다면 들러볼 식당</span>
@@ -4639,7 +4548,7 @@
     <button class="close-x" onclick="closeTimelineModal()">×</button>
 
     <div class="timeline-modal-content">
-      <div class="timeline-modal-title">우리의 순간들</div>
+      <div class="timeline-modal-title">처음 만난 날부터, 오늘까지의 이야기를 담았습니다.</div>
 
       <div class="timeline-list timeline-line-list">
         <div class="timeline-item">
@@ -4928,61 +4837,6 @@
       });
     }
 
-    const guideOrder = ["flower", "meal", "rain"];
-    let guideTouchStartX = 0;
-    let guideTouchStartY = 0;
-
-    function getCurrentGuideIndex() {
-      const activePanel = document.querySelector(".guide-content.active");
-      if (!activePanel) return 0;
-      const type = activePanel.id.replace("guide-", "");
-      return Math.max(guideOrder.indexOf(type), 0);
-    }
-
-    function activateGuideByType(type) {
-      const btn = document.querySelector(`.guide-tab[onclick*="'${type}'"]`);
-      const panel = document.getElementById("guide-" + type);
-      if (!btn || !panel) return;
-
-      document.querySelectorAll(".guide-tab").forEach(tab => {
-        tab.classList.remove("active", "is-emoji");
-        tab.textContent = tab.dataset.label || tab.textContent;
-      });
-      document.querySelectorAll(".guide-content").forEach(item => item.classList.remove("active"));
-
-      btn.classList.add("active");
-      btn.textContent = btn.dataset.label || btn.textContent;
-      panel.classList.add("active");
-    }
-
-    function setupGuideSwipe() {
-      const guideWrap = document.querySelector(".guide-wrap");
-      if (!guideWrap) return;
-
-      guideWrap.addEventListener("touchstart", (e) => {
-        if (!e.changedTouches || !e.changedTouches.length) return;
-        guideTouchStartX = e.changedTouches[0].screenX;
-        guideTouchStartY = e.changedTouches[0].screenY;
-      }, { passive: true });
-
-      guideWrap.addEventListener("touchend", (e) => {
-        if (!e.changedTouches || !e.changedTouches.length) return;
-        const dx = e.changedTouches[0].screenX - guideTouchStartX;
-        const dy = e.changedTouches[0].screenY - guideTouchStartY;
-
-        if (Math.abs(dx) < 46 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-
-        const current = getCurrentGuideIndex();
-        const nextIndex = dx < 0
-          ? Math.min(current + 1, guideOrder.length - 1)
-          : Math.max(current - 1, 0);
-
-        if (nextIndex !== current) {
-          activateGuideByType(guideOrder[nextIndex]);
-        }
-      }, { passive: true });
-    }
-
     function showMorePhotos() {
       openViewer(8);
     }
@@ -5006,16 +4860,6 @@
     let currentViewerIndex = 0;
     let touchStartX = 0;
     let touchEndX = 0;
-    let viewerScale = 1;
-    let viewerTranslateX = 0;
-    let viewerTranslateY = 0;
-    let viewerPinchStartDistance = 0;
-    let viewerPinchStartScale = 1;
-    let viewerPanStartX = 0;
-    let viewerPanStartY = 0;
-    let viewerStartTranslateX = 0;
-    let viewerStartTranslateY = 0;
-    let viewerTouchMode = "swipe";
 
     function openViewer(index) {
       currentViewerIndex = index;
@@ -5036,41 +4880,12 @@
 
     function renderViewer() {
       const image = galleryImages[currentViewerIndex];
+      resetViewerZoom();
       document.getElementById("viewerImage").src = image.src;
       const viewerCaption = document.getElementById("viewerCaption");
       if (viewerCaption) viewerCaption.textContent = image.caption || "";
       const counter = document.getElementById("viewerCounter");
       if (counter) counter.textContent = (currentViewerIndex + 1) + " / " + galleryImages.length;
-      window.requestAnimationFrame(resetViewerZoom);
-    }
-
-    function getTouchDistance(touches) {
-      const dx = touches[0].clientX - touches[1].clientX;
-      const dy = touches[0].clientY - touches[1].clientY;
-      return Math.hypot(dx, dy);
-    }
-
-    function clampViewerPan() {
-      if (viewerScale <= 1) {
-        viewerTranslateX = 0;
-        viewerTranslateY = 0;
-        return;
-      }
-
-      const image = document.getElementById("viewerImage");
-      const rect = image ? image.getBoundingClientRect() : { width: 320, height: 420 };
-      const maxX = Math.max(0, (rect.width * (viewerScale - 1)) / (2 * viewerScale));
-      const maxY = Math.max(0, (rect.height * (viewerScale - 1)) / (2 * viewerScale));
-
-      viewerTranslateX = Math.min(maxX, Math.max(-maxX, viewerTranslateX));
-      viewerTranslateY = Math.min(maxY, Math.max(-maxY, viewerTranslateY));
-    }
-
-    function applyViewerTransform() {
-      const image = document.getElementById("viewerImage");
-      if (!image) return;
-      clampViewerPan();
-      image.style.transform = `translate3d(${viewerTranslateX}px, ${viewerTranslateY}px, 0) scale(${viewerScale})`;
     }
 
     function resetViewerZoom() {
@@ -5080,45 +4895,63 @@
       applyViewerTransform();
     }
 
+    let viewerScale = 1;
+    let viewerTranslateX = 0;
+    let viewerTranslateY = 0;
+    let viewerLastDistance = 0;
+    let viewerPanStartX = 0;
+    let viewerPanStartY = 0;
+    let viewerStartTranslateX = 0;
+    let viewerStartTranslateY = 0;
+
+    function applyViewerTransform() {
+      const img = document.getElementById("viewerImage");
+      if (!img) return;
+      img.style.transform = `translate(${viewerTranslateX}px, ${viewerTranslateY}px) scale(${viewerScale})`;
+    }
+
+    function getTouchDistance(touches) {
+      const dx = touches[0].clientX - touches[1].clientX;
+      const dy = touches[0].clientY - touches[1].clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
     function setupViewerSwipe() {
       const swipeArea = document.getElementById("viewerSwipeArea");
       if (!swipeArea) return;
 
       swipeArea.addEventListener("touchstart", (e) => {
         if (e.touches.length === 2) {
-          viewerTouchMode = "pinch";
-          viewerPinchStartDistance = getTouchDistance(e.touches);
-          viewerPinchStartScale = viewerScale;
+          viewerLastDistance = getTouchDistance(e.touches);
           return;
         }
 
-        if (e.touches.length === 1) {
-          touchStartX = e.touches[0].screenX;
-          touchEndX = touchStartX;
-          viewerPanStartX = e.touches[0].clientX;
-          viewerPanStartY = e.touches[0].clientY;
-          viewerStartTranslateX = viewerTranslateX;
-          viewerStartTranslateY = viewerTranslateY;
-          viewerTouchMode = viewerScale > 1 ? "pan" : "swipe";
-        }
-      }, { passive: false });
+        touchStartX = e.changedTouches[0].screenX;
+        touchEndX = touchStartX;
+        viewerPanStartX = e.changedTouches[0].clientX;
+        viewerPanStartY = e.changedTouches[0].clientY;
+        viewerStartTranslateX = viewerTranslateX;
+        viewerStartTranslateY = viewerTranslateY;
+      }, { passive: true });
 
       swipeArea.addEventListener("touchmove", (e) => {
         if (e.touches.length === 2) {
           e.preventDefault();
           const distance = getTouchDistance(e.touches);
-          if (!viewerPinchStartDistance) return;
-          viewerScale = Math.min(3, Math.max(1, viewerPinchStartScale * (distance / viewerPinchStartDistance)));
-          if (viewerScale <= 1.01) {
-            viewerScale = 1;
-            viewerTranslateX = 0;
-            viewerTranslateY = 0;
+          if (viewerLastDistance) {
+            const nextScale = Math.min(3, Math.max(1, viewerScale * (distance / viewerLastDistance)));
+            viewerScale = nextScale;
+            if (viewerScale === 1) {
+              viewerTranslateX = 0;
+              viewerTranslateY = 0;
+            }
+            applyViewerTransform();
           }
-          applyViewerTransform();
+          viewerLastDistance = distance;
           return;
         }
 
-        if (e.touches.length === 1 && viewerTouchMode === "pan") {
+        if (e.touches.length === 1 && viewerScale > 1) {
           e.preventDefault();
           viewerTranslateX = viewerStartTranslateX + (e.touches[0].clientX - viewerPanStartX);
           viewerTranslateY = viewerStartTranslateY + (e.touches[0].clientY - viewerPanStartY);
@@ -5127,30 +4960,13 @@
       }, { passive: false });
 
       swipeArea.addEventListener("touchend", (e) => {
-        if (viewerTouchMode === "swipe" && e.changedTouches && e.changedTouches.length) {
-          touchEndX = e.changedTouches[0].screenX;
-          handleSwipeGesture();
-        }
-
-        if (viewerScale <= 1.01) {
-          viewerScale = 1;
-          viewerTranslateX = 0;
-          viewerTranslateY = 0;
-        }
-        applyViewerTransform();
-        viewerPinchStartDistance = 0;
-      }, { passive: false });
-
-      swipeArea.addEventListener("dblclick", () => {
-        viewerScale = viewerScale > 1 ? 1 : 2;
-        viewerTranslateX = 0;
-        viewerTranslateY = 0;
-        applyViewerTransform();
-      });
+        if (viewerScale > 1) return;
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
     }
 
     function handleSwipeGesture() {
-      if (viewerScale > 1) return;
       const diff = touchEndX - touchStartX;
       if (Math.abs(diff) < 40) return;
 
@@ -5159,32 +4975,6 @@
       } else {
         moveViewer(-1);
       }
-    }
-
-    function setupVideoOverlay() {
-      document.querySelectorAll(".video-box").forEach(box => {
-        const video = box.querySelector("video");
-        const overlay = box.querySelector(".video-play-overlay");
-        if (!video || !overlay) return;
-
-        overlay.addEventListener("click", () => {
-          video.play().catch(() => {});
-        });
-
-        video.addEventListener("play", () => overlay.classList.add("hidden"));
-        video.addEventListener("pause", () => {
-          if (!video.ended) overlay.classList.remove("hidden");
-        });
-        video.addEventListener("ended", () => overlay.classList.remove("hidden"));
-      });
-    }
-
-    function toggleFoodCategory(button) {
-      const item = button.closest(".food-category-item");
-      if (!item) return;
-
-      const isOpen = item.classList.toggle("open");
-      button.setAttribute("aria-expanded", isOpen ? "true" : "false");
     }
 
     function toggleAccountGroup(type, btn) {
@@ -5217,6 +5007,86 @@
       navigator.clipboard.writeText(text)
         .then(() => showCopyToast("복사되었습니다."))
         .catch(() => showCopyToast("복사에 실패했습니다."));
+    }
+
+
+    function getGuideOrder() {
+      return ["flower", "meal", "rain"];
+    }
+
+    function setGuideByType(type) {
+      const tab = document.querySelector('.guide-tab[onclick*="' + type + '"]');
+      if (tab) switchGuide(type, tab);
+    }
+
+    function setupGuideSwipe() {
+      const guideWrap = document.querySelector(".guide-wrap");
+      if (!guideWrap) return;
+
+      let guideStartX = 0;
+      let guideStartY = 0;
+
+      guideWrap.addEventListener("touchstart", (e) => {
+        guideStartX = e.changedTouches[0].screenX;
+        guideStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      guideWrap.addEventListener("touchend", (e) => {
+        const endX = e.changedTouches[0].screenX;
+        const endY = e.changedTouches[0].screenY;
+        const diffX = endX - guideStartX;
+        const diffY = endY - guideStartY;
+
+        if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY) * 1.3) return;
+
+        const order = getGuideOrder();
+        const activePanel = document.querySelector(".guide-content.active");
+        if (!activePanel) return;
+
+        const currentType = activePanel.id.replace("guide-", "");
+        const currentIndex = order.indexOf(currentType);
+        if (currentIndex === -1) return;
+
+        const nextIndex = diffX < 0
+          ? Math.min(currentIndex + 1, order.length - 1)
+          : Math.max(currentIndex - 1, 0);
+
+        if (nextIndex !== currentIndex) setGuideByType(order[nextIndex]);
+      }, { passive: true });
+    }
+
+    function toggleFoodCategory(btn) {
+      const item = btn.closest(".food-category-item");
+      if (!item) return;
+      const isOpen = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    function setupVideoOverlay() {
+      document.querySelectorAll(".video-box").forEach(box => {
+        const video = box.querySelector("video");
+        const overlay = box.querySelector(".video-play-overlay");
+        if (!video || !overlay) return;
+
+        overlay.addEventListener("click", () => {
+          video.controls = true;
+          video.play().catch(() => {});
+        });
+
+        video.addEventListener("play", () => {
+          video.controls = true;
+          overlay.classList.add("hidden");
+        });
+
+        video.addEventListener("pause", () => {
+          if (!video.ended) overlay.classList.remove("hidden");
+        });
+
+        video.addEventListener("ended", () => {
+          video.controls = false;
+          overlay.classList.remove("hidden");
+        });
+      });
     }
 
     function maybeStartCountAnimations(section) {
