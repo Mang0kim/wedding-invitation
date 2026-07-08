@@ -5725,6 +5725,8 @@
         // 초대장에 진입하지 않은 대기 상태일 때만 일시정지
           if (!invitationEntered) {
             bgm.pause();
+          } else if (!bgmUserPaused) {
+            updateMusicToggle();
           }
         }).catch(() => {
           audioUnlocked = false; // 실패 시 다음 터치에서 재시도할 수 있도록 복구
@@ -5788,6 +5790,22 @@
         if (!invitationEntered) enterInvitation();
       }, { passive: true });
     }
+
+    // 화면 잠금 및 백그라운드 전환 감지
+    document.addEventListener("visibilitychange", () => {
+      const bgm = document.getElementById("bgm");
+      if (!bgm) return;
+
+      if (document.hidden) {
+    // 화면이 꺼지거나 백그라운드로 이동하면 오디오 일시정지
+        bgm.pause();
+      } else {
+    // 화면 복귀 시, 사용자가 직접 끄지 않은 상태라면 재생 재개
+        if (invitationEntered && !bgmUserPaused) {
+          playBgm();
+        }
+      }
+    });
 
     function enterInvitation() {
       if (invitationEntered) return;
