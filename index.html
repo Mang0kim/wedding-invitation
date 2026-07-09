@@ -4740,13 +4740,13 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: 62%;
+      top: 60%;
       height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
-      perspective: 1000px;
+      perspective: 1400px;
     }
     .entry-ribbon {
       position: absolute;
@@ -4772,23 +4772,38 @@
     .entry-ribbon-knot {
       position: absolute;
       z-index: 12;
-      font-size: 26px;
-      line-height: 1;
-      transform-origin: center center;
+      width: 110px;
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: cneter center;
       transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s;
-      transform: scale(calc(1 - var(--entry-open, 0) * 1.5)) rotate(calc(var(--entry-open, 0) * 180deg));
+      will-change: transform, opacity;
+      
+      transform: scale(calc(1 - var(--entry-open, 0) * 1.3)) rotate(calc(var(--entry-open, 0) * 140deg));
       opacity: calc(1 - var(--entry-open, 0) * 2);
     }
+    .entry-ribbon-knot .ribbon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      /* 살짝 투명한 수평선 배경과 자연스럽게 녹아들도록 소프트 섀도우 처리 */
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.12));
+    }
+    
     .entry-screen.opening .entry-ribbon.ribbon-left {
-      transform: rotateY(90deg) scaleX(0) translateX(-100px);
+      transform: rotateY(90deg) scaleX(0) translateX(-120px);
       opacity: 0;
     }
     .entry-screen.opening .entry-ribbon.ribbon-right {
-      transform: rotateY(-90deg) scaleX(0) translateX(100px);
+      transform: rotateY(-90deg) scaleX(0) translateX(120px);
       opacity: 0;
     }
     .entry-screen.opening .entry-ribbon-knot {
-      transform: scale(0) rotate(270deg);
+      transform: scale(0) rotate(220deg);
       opacity: 0;
     }
     /* === Entry screen: top-fold invitation gate + BGM start === */
@@ -5095,11 +5110,13 @@
             <div class="entry-ribbon-wrap">
               <div class="entry-ribbon ribbon-left"></div>
               <div class="entry-ribbon ribbon-right"></div>
-              <div class="entry-ribbon-knot">💌</div>
+              <div class="entry-ribbon-knot">
+                <img src="ribbon.png" alt="리본 매듭" class="ribbon-img" onerror="this.style.display='none';" />
+              </div>
             </div>
           
             <div class="entry-guide">
-              <span class="entry-guide-text">리본을 터치하거나 밀어서 열어주세요</span>
+              <span class="entry-guide-text">리본을 풀어주세요</span>
             </div>
           </div>
 
