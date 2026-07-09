@@ -1071,6 +1071,10 @@
     }
 
     /* 맛집 팝업 */
+    #foodModal .food-category-item.open .food-place-list {
+      display: grid !important;
+    }
+    
     .food-modal-content {
       padding-top: 36px;
     }
@@ -2944,8 +2948,6 @@
       max-width: var(--popup-width) !important;
       height: var(--popup-fixed-height) !important;
       max-height: var(--popup-fixed-height) !important;
-      margin: 0 auto !important;
-      box-sizing: border-box !important;
   
       /* 중요: 팝업 틀 자체는 튕기지 않게 스크롤을 막고 내부 본문만 스크롤 시킵니다 */
       overflow: hidden !important;
@@ -3090,10 +3092,9 @@
     }
 
     #foodModal .food-modal-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      overflow: hidden;
+      height: 100%;
+      display: flex !important;
+      flex-direction: column !important;
     }
 
     #viewerModal .modal-backdrop {
@@ -3680,6 +3681,7 @@
       flex: 1 1 auto !important;
       overflow-y: auto !important; /* 내부에서만 스크롤이 일어나도록 명시 */
       -webkit-overflow-scrolling: touch; /* iOS에서 부드러운 스크롤 바인딩 */
+      padding-right: 2px;
       padding-bottom: 24px; /* 하단 닫기 버튼과 겹치지 않게 여백 */
     }
 
@@ -4267,7 +4269,13 @@
 
     /* === 2026-07-07 requested tweaks v2: food place details, video button alignment, closing share === */
     #foodModal .food-place-list {
+      display: none !important;
+      padding: 0 16px 16px !important;
       gap: 12px !important;
+
+      max-height: 260px !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch;
     }
 
     .food-place-detail {
@@ -6355,7 +6363,20 @@
       const item = btn.closest(".food-category-item");
       if (!item) return;
       const isOpen = item.classList.toggle("open");
-      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+      document.querySelectorAll(".food-category-item").forEach(item => {
+        item.classList.remove("open");
+        const headBtn = item.querySelector(".food-category-head");
+        if (headBtn) headBtn.setAttribute("aria-expanded", "false");
+      });
+
+      if (!isOpen) {
+        currentItem.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+
+        const placeList = currentItem.querySelector(".food-place-list");
+        if (placeList) placeList.scrollTop = 0;
+      }
     }
 
     function setupVideoOverlay() {
