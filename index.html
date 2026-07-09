@@ -4736,7 +4736,61 @@
       }
     }
 
-
+    .entry-ribbon-wrap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 62%;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      perspective: 1000px;
+    }
+    .entry-ribbon {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #EC221F, #D61D1A);
+      box-shadow: 0 4px 12px rgba(236, 34, 31, 0.24);
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s;
+      will-change: transform, opacity;
+    }
+    .entry-ribbon.ribbon-left {
+      left: 0;
+      width: 50%;
+      transform-origin: left center;
+      transform: rotateY(calc(var(--entry-open, 0) * 90deg)) scaleX(calc(1 - var(--entry-open, 0)));
+    }
+    .entry-ribbon.ribbon-right {
+      right: 0;
+      width: 50%;
+      transform-origin: right center;
+      transform: rotateY(calc(var(--entry-open, 0) * -90deg)) scaleX(calc(1 - var(--entry-open, 0)));
+    }
+    .entry-ribbon-knot {
+      position: absolute;
+      z-index: 12;
+      font-size: 26px;
+      line-height: 1;
+      transform-origin: center center;
+      transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s;
+      transform: scale(calc(1 - var(--entry-open, 0) * 1.5)) rotate(calc(var(--entry-open, 0) * 180deg));
+      opacity: calc(1 - var(--entry-open, 0) * 2);
+    }
+    .entry-screen.opening .entry-ribbon.ribbon-left {
+      transform: rotateY(90deg) scaleX(0) translateX(-100px);
+      opacity: 0;
+    }
+    .entry-screen.opening .entry-ribbon.ribbon-right {
+      transform: rotateY(-90deg) scaleX(0) translateX(100px);
+      opacity: 0;
+    }
+    .entry-screen.opening .entry-ribbon-knot {
+      transform: scale(0) rotate(270deg);
+      opacity: 0;
+    }
     /* === Entry screen: top-fold invitation gate + BGM start === */
     body.entry-locked {
       overflow: hidden;
@@ -5067,11 +5121,19 @@
       <button class="entry-open-button" type="button" aria-label="초대장 열기">
         <div class="entry-fold-card" aria-hidden="true">
           <div class="entry-card-base"></div>
+        
           <div class="entry-fold-body">
+            <div class="entry-ribbon-wrap">
+              <div class="entry-ribbon ribbon-left"></div>
+              <div class="entry-ribbon ribbon-right"></div>
+              <div class="entry-ribbon-knot">💌</div>
+            </div>
+          
             <div class="entry-guide">
-              <span class="entry-guide-text">살짝 밀어 청첩장을 열어주세요</span>
+              <span class="entry-guide-text">리본을 터치하거나 밀어서 열어주세요</span>
             </div>
           </div>
+
           <div class="entry-fold-flap">
             <div class="entry-flap-title">초대합니다</div>
           </div>
