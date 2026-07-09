@@ -4775,7 +4775,6 @@
       transform: rotateY(calc(var(--entry-open, 0) * -90deg)) scaleX(calc(1 - var(--entry-open, 0)));
     }
     .entry-ribbon-knot {
-      
       position: absolute;
       z-index: 999 !important;
       width: 150px;
@@ -4786,6 +4785,8 @@
       transform-origin: center center;
       transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s;
       will-change: transform, opacity;
+
+      margin-top: 50px
       
       transform: translateZ(10px) scale(calc(1 - var(--entry-open, 0) * 1.3));
       opacity: calc(1 - var(--entry-open, 0));
@@ -5113,7 +5114,7 @@
           <div class="entry-card-base"></div>
         
           <div class="entry-fold-body">
-            <div class="entry-ribbon-wrap">
+            <div class="entry-">
               <div class="entry-ribbon ribbon-left"></div>
               <div class="entry-ribbon ribbon-right"></div>
               <div class="entry-ribbon-knot">
