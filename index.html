@@ -5029,6 +5029,28 @@
       touch-action: pan-y !important;
     }
 
+    /* ========== 여기서부터 복사해서 추가 ========== */
+    /* 1. 모달 활성화 시 배경 터치 스크롤 원천 차단 */
+    body.modal-open {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    /* 2. 맛집 팝업 내부 스크롤 활성화 및 스크롤 체이닝 차단 */
+    #foodModal .modal-sheet {
+      overflow-y: auto !important; 
+      overscroll-behavior: contain; 
+      touch-action: pan-y; 
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* 3. 콘텐츠가 잘리지 않도록 정렬 및 오버플로우 수정 */
+    #foodModal .food-modal-content {
+      justify-content: flex-start !important; 
+      overflow: visible !important; 
+    }
+    /* ========== 여기까지 ========== */
+
 
 </style>
 </head>
