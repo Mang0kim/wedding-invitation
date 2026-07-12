@@ -4844,8 +4844,8 @@
 
     .entry-flap-title {
       color: rgba(89, 89, 89, 0.84);
-      font-size: 17px;
-      font-weight: 200;
+      font-size: 19px;
+      font-weight: 500;
       letter-spacing: 0.22em;
       line-height: 1;
     }
@@ -6105,7 +6105,13 @@
         document.body.style.position = '';
         document.body.style.top = '';
         document.body.style.width = '';
+
+        document.documentElement.style.scrollBehavior = 'auto';
         window.scrollTo(0, lockScrollY);
+
+        setTeimeout(() => {
+          document.documentElement.style.scrollBevhavior = '';
+        }, 0);
       }
     }
 
