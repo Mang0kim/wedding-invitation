@@ -6081,8 +6081,17 @@
       }
     }
 
+    let lockScrollY = 0;
+    
     function openModalBase(id) {
       updateModalViewportVars();
+      if (!document.body.classList.contains("modal-open")) {
+        lockScrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.pop = '-${lockScrollY}px';
+        document.body.style.width = '100%';
+      }
+      
       document.getElementById(id).classList.add("show");
       document.body.classList.add("modal-open");
     }
@@ -6090,8 +6099,13 @@
     function closeModalBase(id) {
       document.getElementById(id).classList.remove("show");
       const stillOpen = document.querySelector(".modal.show");
+      
       if (!stillOpen) {
         document.body.classList.remove("modal-open");
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, lockScrollY);
       }
     }
 
