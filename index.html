@@ -5052,6 +5052,423 @@
     /* ========== 여기까지 ========== */
 
 
+
+
+    /* === 2026-07-13 consolidated responsive design === */
+    :root {
+      --font-21: 21px;
+      --font-16: 16px;
+      --font-14: 14px;
+      --font-12: 12px;
+      --popup-responsive-width: min(398px, calc(100vw - 32px));
+      --popup-responsive-height: min(640px, calc(100dvh - 32px));
+    }
+
+    /* 1. Buttons: content-based width and centered content group */
+    .btn-rect,
+    .btn-rect.small,
+    .food-center-btn .btn-rect,
+    .couple-card .btn-rect,
+    .share-action-btn,
+    .closing-actions .share-action-btn {
+      width: fit-content !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex: 0 0 auto !important;
+      white-space: nowrap !important;
+    }
+
+    .btn-rect,
+    .btn-rect.small,
+    .food-center-btn .btn-rect,
+    .couple-card .btn-rect {
+      padding: 7px 8px 7px 16px !important;
+      gap: 9px !important;
+    }
+
+    .btn-rect.no-plus,
+    .btn-rect.small.no-plus {
+      width: fit-content !important;
+      min-width: 0 !important;
+      padding: 9px 16px !important;
+      justify-content: center !important;
+    }
+
+    .couple-card,
+    .food-center-btn,
+    .modal-bottom-btn,
+    .closing-actions {
+      text-align: center !important;
+    }
+
+    /* 2. Four-level typography system */
+    .entry-flap-title,
+    .title,
+    .date-line,
+    .location-address,
+    .couple-name {
+      font-size: var(--font-21) !important;
+    }
+
+    .entry-guide,
+    .desc,
+    .intro-message,
+    .location-detail,
+    .wedding-count-text,
+    .gallery-subtitle,
+    .account-subtitle,
+    .closing-text,
+    .closing-heart,
+    .opening-icon,
+    .guide-tab,
+    .guide-content,
+    .guide-ending-emoji,
+    .profile-modal-title,
+    .profile-body,
+    .food-modal-desc,
+    .timeline-modal-title,
+    .timeline-marker,
+    .viewer-counter {
+      font-size: var(--font-16) !important;
+    }
+
+    .couple-family,
+    .btn-rect,
+    .btn-rect.small,
+    .map-link,
+    .account-tab,
+    .account-role,
+    .account-name,
+    .bank-name,
+    .account-number,
+    .profile-label,
+    .profile-value,
+    .food-category-title,
+    .timeline-date,
+    .timeline-title,
+    .timeline-desc,
+    .share-action-btn,
+    .calendar-grid div {
+      font-size: var(--font-14) !important;
+    }
+
+    .kicker,
+    .calendar-grid .day-name,
+    .close-x,
+    .viewer-close,
+    .copy-text-btn,
+    .food-area,
+    .food-name,
+    .food-comment,
+    .fig-caption,
+    .gallery-more,
+    .video-play-overlay,
+    .music-toggle {
+      font-size: var(--font-12) !important;
+    }
+
+    /* Keep icons visually balanced without creating extra text levels */
+    .person-actions .icon-btn {
+      font-size: 18px !important;
+    }
+
+    /* Prevent small-screen media rules from changing the four-level system */
+    @media (max-width: 380px) {
+      .entry-flap-title,
+      .title,
+      .date-line,
+      .location-address,
+      .couple-name {
+        font-size: var(--font-21) !important;
+      }
+
+      .entry-guide,
+      .desc,
+      .intro-message,
+      .profile-body,
+      .guide-tab,
+      .guide-content,
+      .timeline-modal-title,
+      .timeline-desc {
+        font-size: var(--font-16) !important;
+      }
+
+      .btn-rect,
+      .btn-rect.small,
+      .account-tab,
+      .bank-name,
+      .account-number,
+      .food-category-title,
+      .food-place-main .food-area,
+      .food-place-main .food-name,
+      .food-place-main .food-comment {
+        font-size: var(--font-14) !important;
+      }
+    }
+
+    /* 3. Unified popup shell: same visual size, never larger than viewport */
+    #profileModal.modal.show,
+    #foodModal.modal.show,
+    #timelineModal.modal.show {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 !important;
+    }
+
+    #profileModal .modal-sheet,
+    #foodModal .modal-sheet,
+    #timelineModal .modal-sheet {
+      width: var(--popup-responsive-width) !important;
+      max-width: var(--popup-responsive-width) !important;
+      height: var(--popup-responsive-height) !important;
+      max-height: var(--popup-responsive-height) !important;
+      min-height: 0 !important;
+      margin: 0 auto !important;
+      padding: 32px 28px 24px !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+
+    #profileModal .profile-layout,
+    #foodModal .food-modal-content,
+    #timelineModal .timeline-modal-content {
+      height: 100% !important;
+      min-height: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+
+    #profileModal .modal-bottom-btn,
+    #foodModal .modal-bottom-btn,
+    #timelineModal .modal-bottom-btn {
+      flex: 0 0 auto !important;
+      margin-top: 18px !important;
+      padding-top: 0 !important;
+    }
+
+    /* Profile popup: fixed title/info, scrollable essay only */
+    #profileModal .profile-layout {
+      padding-top: 18px !important;
+      justify-content: flex-start !important;
+    }
+
+    #profileModal .profile-content {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      overflow: hidden !important;
+    }
+
+    .profile-modal-title {
+      flex: 0 0 auto !important;
+      margin: 0 0 24px !important;
+      text-align: center !important;
+      color: var(--text-strong) !important;
+      font-weight: 300 !important;
+      line-height: 1.45 !important;
+    }
+
+    #profileModal .profile-summary {
+      flex: 0 0 auto !important;
+    }
+
+    #profileModal .profile-body {
+      flex: 1 1 auto !important;
+      max-height: none !important;
+      min-height: 0 !important;
+      overflow-y: auto !important;
+      overscroll-behavior: contain !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin-top: 18px !important;
+      padding: 18px 18px 20px !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Food popup: intro fixed, gray list box scrolls, close button always visible */
+    #foodModal .food-modal-content {
+      padding-top: 24px !important;
+      justify-content: flex-start !important;
+    }
+
+    #foodModal .food-modal-desc {
+      flex: 0 0 auto !important;
+      margin: 0 0 22px !important;
+      line-height: 1.6 !important;
+    }
+
+    .food-scroll-box {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      width: 100% !important;
+      padding: 16px 12px 24px !important;
+      border-radius: 22px !important;
+      background: rgba(245, 245, 247, 0.76) !important;
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.035) !important;
+      overflow-y: auto !important;
+      overscroll-behavior: contain !important;
+      touch-action: pan-y !important;
+      -webkit-overflow-scrolling: touch !important;
+      box-sizing: border-box !important;
+    }
+
+    #foodModal .food-category-list {
+      display: grid !important;
+      gap: 16px !important;
+      padding: 0 0 10px !important;
+      margin: 0 !important;
+    }
+
+    #foodModal .food-category-item {
+      background: rgba(255, 255, 255, 0.82) !important;
+      border: 1px solid rgba(44, 44, 44, 0.045) !important;
+      box-shadow: none !important;
+    }
+
+    #foodModal .modal-bottom-btn {
+      margin-top: 22px !important;
+    }
+
+    /* Timeline popup: no scrolling; distribute all items within available height */
+    #timelineModal .timeline-modal-content {
+      padding-top: 24px !important;
+      justify-content: flex-start !important;
+    }
+
+    #timelineModal .timeline-modal-title {
+      flex: 0 0 auto !important;
+      margin: 0 0 clamp(14px, 2.6dvh, 24px) !important;
+      line-height: 1.5 !important;
+    }
+
+    #timelineModal .timeline-line-list {
+      position: relative !important;
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      width: 100% !important;
+      max-width: 326px !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      gap: 0 !important;
+      overflow: visible !important;
+    }
+
+    #timelineModal .timeline-line-list::before {
+      content: "" !important;
+      position: absolute !important;
+      left: 16px !important;
+      top: 34px !important;
+      bottom: 34px !important;
+      width: 1px !important;
+      background: rgba(236, 34, 31, 0.16) !important;
+      z-index: 0 !important;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item {
+      position: relative !important;
+      z-index: 1 !important;
+      flex: 0 0 auto !important;
+      display: grid !important;
+      grid-template-columns: 34px minmax(0, 1fr) !important;
+      gap: 14px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      align-items: start !important;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    #timelineModal .timeline-marker {
+      width: 34px !important;
+      height: 34px !important;
+      flex: 0 0 34px !important;
+      background: rgba(245, 245, 247, 0.96) !important;
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.045) !important;
+    }
+
+    #timelineModal .timeline-head {
+      margin-bottom: 3px !important;
+      gap: 8px !important;
+    }
+
+    #timelineModal .timeline-desc {
+      line-height: 1.45 !important;
+    }
+
+    #timelineModal .modal-bottom-btn {
+      margin-top: clamp(14px, 2.2dvh, 22px) !important;
+    }
+
+    @media (max-height: 700px) {
+      #profileModal .modal-sheet,
+      #foodModal .modal-sheet,
+      #timelineModal .modal-sheet {
+        padding-top: 26px !important;
+        padding-bottom: 20px !important;
+      }
+
+      #profileModal .profile-layout,
+      #foodModal .food-modal-content,
+      #timelineModal .timeline-modal-content {
+        padding-top: 14px !important;
+      }
+
+      .profile-modal-title {
+        margin-bottom: 16px !important;
+      }
+
+      #profileModal .profile-body {
+        margin-top: 14px !important;
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+      }
+
+      #foodModal .food-modal-desc {
+        margin-bottom: 16px !important;
+      }
+
+      #foodModal .modal-bottom-btn,
+      #profileModal .modal-bottom-btn,
+      #timelineModal .modal-bottom-btn {
+        margin-top: 14px !important;
+      }
+
+      #timelineModal .timeline-modal-title {
+        margin-bottom: 12px !important;
+      }
+
+      #timelineModal .timeline-marker {
+        width: 30px !important;
+        height: 30px !important;
+        flex-basis: 30px !important;
+      }
+
+      #timelineModal .timeline-line-list .timeline-item {
+        grid-template-columns: 30px minmax(0, 1fr) !important;
+        gap: 11px !important;
+      }
+
+      #timelineModal .timeline-line-list::before {
+        left: 14px !important;
+        top: 30px !important;
+        bottom: 30px !important;
+      }
+
+      #timelineModal .timeline-desc {
+        line-height: 1.35 !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -5141,7 +5558,7 @@
         <div class="date-divider"></div>
 
         <div class="wedding-count-text" id="weddingCountText">
-          우리의 예식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.
+          우리의 결혼식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.
         </div>
       </div>
     </section>
@@ -5175,8 +5592,8 @@
 
         <div class="guide-content" id="guide-meal">
           <div class="guide-main-copy">
-            식사는 예식 후 호텔 내 지정 공간에서 진행됩니다.<br />
-            현장 안내에 따라 편하게 이동해 주세요.<br /><br />
+            식사는 예식 후 지정 공간에서 진행됩니다.<br /><br />
+            현장 안내에 따라 이동해 주세요.<br /><br />
             <span class="guide-ending-emoji">🍽️</span>
           </div>
         </div>
@@ -5191,8 +5608,8 @@
 
         <div class="guide-content active" id="guide-flower">
           <div class="guide-main-copy">
-            <span class="guide-red-line">화환은 정중히 사양합니다.</span><br />
-            축하의 마음만으로도 충분히 감사드립니다.<br /><br />
+            <span class="guide-red-line">화환은 정중히 사양합니다.</span><br /><br />
+            축하의 마음만으로도 감사드립니다.<br /><br />
             <span class="guide-ending-emoji">🌼</span>
           </div>
         </div>
@@ -5468,6 +5885,7 @@
 
       <div class="profile-layout">
         <div class="profile-content">
+          <div class="profile-modal-title" id="profileModalTitle"></div>
           <div class="profile-summary">
             <div class="profile-avatar" id="profileAvatar" aria-hidden="true">♡</div>
             <div class="profile-info" id="profileInfoArea"></div>
@@ -5488,13 +5906,13 @@
       <button class="close-x" onclick="closeFoodModal()">×</button>
 
       <div class="food-modal-content">
-        <div class="food-modal-title">맛집 목록</div>
         <div class="food-modal-desc">
           저희가 좋아하는 식당을 소개합니다.<br />
           즐거운 부산 여행 되세요!
         </div>
 
-        <div class="food-basic-list food-category-list">
+        <div class="food-scroll-box">
+          <div class="food-basic-list food-category-list">
           <div class="food-basic-item food-category-item">
             <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="true">
               <span class="food-category-title">가볍게 들리기 좋은 카페</span>
@@ -5632,6 +6050,7 @@
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
 
@@ -6041,7 +6460,7 @@
         weddingCountText.textContent = "오늘 우리 결혼합니다!";
       } else {
         weddingCountText.classList.remove("wedding-today");
-        weddingCountText.innerHTML = '우리의 예식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.';
+        weddingCountText.innerHTML = '우리의 결혼식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.';
         animateNumber(document.getElementById("weddingDayCount"), Math.max(weddingDiff, 0), 1400, 2);
       }
     }
@@ -6088,7 +6507,7 @@
       if (!document.body.classList.contains("modal-open")) {
         lockScrollY = window.scrollY;
         document.body.style.position = 'fixed';
-        document.body.style.pop = '-${lockScrollY}px';
+        document.body.style.top = `-${lockScrollY}px`;
         document.body.style.width = '100%';
       }
       
@@ -6109,14 +6528,15 @@
         document.documentElement.style.scrollBehavior = 'auto';
         window.scrollTo(0, lockScrollY);
 
-        setTeimeout(() => {
-          document.documentElement.style.scrollBevhavior = '';
+        setTimeout(() => {
+          document.documentElement.style.scrollBehavior = '';
         }, 0);
       }
     }
 
     const profileData = {
       groom: {
+        title: "신부가 쓰는 신랑 소개서",
         avatar: "🤵🏻",
         info: `
           <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">김창수</div></div>
@@ -6128,6 +6548,7 @@
         body: `안녕하세요! 창수는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
       },
       bride: {
+        title: "신랑이 쓰는 신부 소개서",
         avatar: "👰🏻",
         info: `
           <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">최보규</div></div>
@@ -6142,6 +6563,7 @@
 
     function openProfileModal(type) {
       const data = profileData[type];
+      document.getElementById("profileModalTitle").textContent = data.title || "";
       document.getElementById("profileAvatar").textContent = data.avatar || "♡";
       document.getElementById("profileInfoArea").innerHTML = data.info;
       document.getElementById("profileEssayBody").textContent = data.body;
