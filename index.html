@@ -7148,6 +7148,133 @@
       }
     }
 
+
+
+    /* === 2026-07-15 requested refinements === */
+    /* Profile: portrait on the left, information on the right, no decorative frame */
+    #profileModal .profile-summary {
+      display: grid !important;
+      grid-template-columns: 96px minmax(0, 1fr) !important;
+      grid-template-areas: "photo info" !important;
+      column-gap: 16px !important;
+      align-items: start !important;
+      padding: 0 8px !important;
+    }
+
+    #profileModal .profile-photo-frame {
+      grid-area: photo !important;
+      justify-self: start !important;
+      width: 96px !important;
+      height: 124px !important;
+      margin: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      overflow: hidden !important;
+    }
+
+    #profileModal .profile-photo-frame::before,
+    #profileModal .profile-photo-frame::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    #profileModal .profile-photo {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    #profileModal .profile-photo-placeholder {
+      background: rgba(245, 245, 247, 0.72) !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    #profileModal .profile-info {
+      grid-area: info !important;
+    }
+
+    /* Food list: area, restaurant and comment on one line */
+    #foodModal .food-category-item .food-place-list,
+    #foodModal .food-category-item.open .food-place-list {
+      padding: 10px 16px 18px !important;
+      gap: 10px !important;
+    }
+
+    #foodModal .food-place-main {
+      display: grid !important;
+      grid-template-columns: 50px max-content minmax(0, 1fr) !important;
+      grid-template-areas: "area name comment" !important;
+      column-gap: 8px !important;
+      row-gap: 0 !important;
+      align-items: baseline !important;
+      width: 100% !important;
+    }
+
+    #foodModal .food-area {
+      grid-area: area !important;
+      white-space: nowrap !important;
+    }
+
+    #foodModal .food-name {
+      grid-area: name !important;
+      white-space: nowrap !important;
+    }
+
+    #foodModal .food-comment {
+      grid-area: comment !important;
+      display: block !important;
+      min-width: 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: clip !important;
+      overflow-wrap: normal !important;
+      word-break: normal !important;
+      line-height: 1.42 !important;
+    }
+
+    /* Timeline years in red */
+    #timelineModal .timeline-date {
+      color: var(--accent) !important;
+    }
+
+    /* Photo viewer close button stays white on the dark overlay */
+    #viewerModal .viewer-close,
+    .viewer-close {
+      color: rgba(255, 255, 255, 0.96) !important;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.24) !important;
+    }
+
+    @media (max-width: 380px), (max-height: 700px) {
+      #profileModal .profile-summary {
+        grid-template-columns: 84px minmax(0, 1fr) !important;
+        column-gap: 12px !important;
+        padding: 0 2px !important;
+      }
+
+      #profileModal .profile-photo-frame {
+        width: 84px !important;
+        height: 110px !important;
+      }
+
+      #foodModal .food-place-main {
+        grid-template-columns: 44px max-content minmax(0, 1fr) !important;
+        column-gap: 6px !important;
+      }
+
+      #foodModal .food-area,
+      #foodModal .food-name,
+      #foodModal .food-comment {
+        font-size: 13px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -7347,12 +7474,12 @@
           </div>
           <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 06" onclick="openViewer(5)">
-              <img src="photo06.jpg" alt="사진 06" onerror="handleImageError(this)" />
+              <img src="photo07.jpg" alt="사진 07" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
             <div class="gallery-thumb fallback-box" data-fallback="사진 07" onclick="openViewer(6)">
-              <img src="photo07.jpg" alt="사진 07" onerror="handleImageError(this)" />
+              <img src="photo06.jpg" alt="사진 06" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
@@ -7547,7 +7674,7 @@
     <section class="closing scroll-reveal">
       <div class="closing-heart reveal-child" style="--delay: 0ms;">❤️</div>
       <div class="closing-text reveal-child" style="--delay: 120ms;">
-        아이를 키우는 데에는 온 마을이 필요하다는 속담이 있습니다.<br />
+        한 아이를 키우는 데에는 온 마을이 필요하다고 합니다.<br />
         지금까지 저희의 따뜻한 마을이 되어주셔서 감사합니다.<br />
       </div>
 
@@ -8224,8 +8351,8 @@
       { src: "photo03.jpg", caption: "" },
       { src: "photo04.jpg", caption: "" },
       { src: "photo05.jpg", caption: "" },
-      { src: "photo06.jpg", caption: "" },
       { src: "photo07.jpg", caption: "" },
+      { src: "photo06.jpg", caption: "" },
       { src: "photo08.jpg", caption: "" },
       { src: "photo09.jpg", caption: "" },
       { src: "photo10.jpg", caption: "" },
