@@ -10,9 +10,13 @@
   <meta property="og:title" content="💌 최보규·김창수의 결혼식에 초대합니다" />
   <meta property="og:description" content="2026년 10월 3일 토요일 오후 1시&#10;호텔농심 야외정원" />
   <meta property="og:url" content="https://1003.highglossyworks.life" />
-  <meta property="og:image" content="https://1003.highglossyworks.life/wedding_film_poster.jpg" />
-  <meta property="og:image:secure_url" content="https://1003.highglossyworks.life/wedding_film_poster.jpg" />
+  <meta property="og:image" content="https://1003.highglossyworks.life/photo01.jpg" />
+  <meta property="og:image:secure_url" content="https://1003.highglossyworks.life/photo01.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="최보규·김창수 모바일 청첩장 대표 사진" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://1003.highglossyworks.life/photo01.jpg" />
+  <link rel="image_src" href="https://1003.highglossyworks.life/photo01.jpg" />
 
   <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=gzlsg53kum"></script>
   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"></script>
@@ -6970,6 +6974,180 @@
       }
     }
 
+
+
+    /* === 2026-07-14 profile photo + food spacing final pass === */
+    /* Profile header: information on the left, actual portrait on the right */
+    #profileModal .profile-summary {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) 96px !important;
+      grid-template-areas: "info photo" !important;
+      column-gap: 14px !important;
+      align-items: start !important;
+      width: var(--popup-inner-width) !important;
+      max-width: var(--popup-inner-width) !important;
+      padding: 0 10px !important;
+    }
+
+    #profileModal .profile-info {
+      grid-area: info !important;
+      min-width: 0 !important;
+    }
+
+    #profileModal .profile-photo-frame {
+      grid-area: photo !important;
+      position: relative !important;
+      display: block !important;
+      width: 96px !important;
+      height: 124px !important;
+      margin: 0 !important;
+      border-radius: 19px !important;
+      overflow: hidden !important;
+      background: rgba(245, 245, 247, 0.94) !important;
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.05) !important;
+    }
+
+    #profileModal .profile-photo {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      opacity: 1 !important;
+    }
+
+    #profileModal .profile-photo-placeholder {
+      position: absolute !important;
+      inset: 0 !important;
+      display: none !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: rgba(89, 89, 89, 0.52) !important;
+      font-size: 12px !important;
+      font-weight: 200 !important;
+      letter-spacing: -0.02em !important;
+    }
+
+    #profileModal .profile-photo-frame.is-empty .profile-photo {
+      display: none !important;
+    }
+
+    #profileModal .profile-photo-frame.is-empty .profile-photo-placeholder {
+      display: flex !important;
+    }
+
+    #profileModal .profile-info-row {
+      grid-template-columns: 48px minmax(0, 1fr) !important;
+      gap: 7px !important;
+      margin-bottom: 5px !important;
+      align-items: start !important;
+    }
+
+    #profileModal .profile-label,
+    #profileModal .profile-value {
+      line-height: 1.42 !important;
+    }
+
+    #profileModal .profile-value {
+      min-width: 0 !important;
+      word-break: keep-all !important;
+    }
+
+    #profileModal .profile-body {
+      margin-top: 25px !important;
+    }
+
+    /* Food popup: balanced card rhythm and clearer title-to-first-item spacing */
+    #foodModal .food-scroll-box {
+      padding: 14px 12px 18px !important;
+    }
+
+    #foodModal .food-category-list {
+      gap: 14px !important;
+      padding-bottom: 2px !important;
+    }
+
+    #foodModal .food-category-head {
+      min-height: 52px !important;
+      padding: 13px 16px !important;
+    }
+
+    #foodModal .food-category-item .food-place-list,
+    #foodModal .food-category-item.open .food-place-list {
+      padding: 9px 16px 17px !important;
+      gap: 12px !important;
+    }
+
+    #foodModal .food-place-list .food-place:first-child {
+      margin-top: 0 !important;
+    }
+
+    #foodModal .food-place-main {
+      grid-template-columns: 52px minmax(0, 1fr) !important;
+      column-gap: 9px !important;
+      row-gap: 2px !important;
+      align-items: baseline !important;
+    }
+
+    #foodModal .food-area,
+    #foodModal .food-name,
+    #foodModal .food-comment {
+      line-height: 1.42 !important;
+    }
+
+    #foodModal .food-comment {
+      line-height: 1.48 !important;
+    }
+
+    @media (max-width: 380px), (max-height: 700px) {
+      #profileModal .profile-summary {
+        grid-template-columns: minmax(0, 1fr) 84px !important;
+        column-gap: 11px !important;
+        padding: 0 4px !important;
+      }
+
+      #profileModal .profile-photo-frame {
+        width: 84px !important;
+        height: 110px !important;
+        border-radius: 17px !important;
+      }
+
+      #profileModal .profile-info-row {
+        grid-template-columns: 43px minmax(0, 1fr) !important;
+        gap: 6px !important;
+      }
+
+      #profileModal .profile-body {
+        margin-top: 20px !important;
+      }
+
+      #foodModal .food-scroll-box {
+        padding: 12px 10px 16px !important;
+      }
+
+      #foodModal .food-category-list {
+        gap: 12px !important;
+      }
+
+      #foodModal .food-category-head {
+        min-height: 50px !important;
+        padding: 12px 14px !important;
+      }
+
+      #foodModal .food-category-item .food-place-list,
+      #foodModal .food-category-item.open .food-place-list {
+        padding: 8px 14px 15px !important;
+        gap: 10px !important;
+      }
+
+      #foodModal .food-place-main {
+        grid-template-columns: 48px minmax(0, 1fr) !important;
+        column-gap: 8px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -7387,7 +7565,10 @@
       <div class="profile-layout">
         <div class="profile-content">
           <div class="profile-summary">
-            <div class="profile-avatar" id="profileAvatar" aria-hidden="true">♡</div>
+            <div class="profile-avatar profile-photo-frame" id="profileAvatar">
+              <img id="profilePhoto" class="profile-photo" src="" alt="프로필 사진" onerror="handleProfilePhotoError(this)" />
+              <span class="profile-photo-placeholder" aria-hidden="true">사진</span>
+            </div>
             <div class="profile-info" id="profileInfoArea"></div>
           </div>
           <div class="profile-body" id="profileEssayBody"></div>
@@ -7773,7 +7954,7 @@
         content: {
           title: "💌 최보규·김창수의 결혼식에 초대합니다",
           description: "2026년 10월 3일 토요일 오후 1시\n호텔농심 야외정원",
-          imageUrl: WEDDING_SHARE_URL + "/wedding_film_poster.jpg",
+          imageUrl: WEDDING_SHARE_URL + "/photo01.jpg",
           link: {
             mobileWebUrl: WEDDING_SHARE_URL,
             webUrl: WEDDING_SHARE_URL
@@ -7944,7 +8125,8 @@
 
     const profileData = {
       groom: {
-        avatar: "",
+        photo: "profile_groom.jpg",
+        photoAlt: "신랑 김창수 프로필 사진",
         essayTitle: "",
         info: `
           <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">김창수</div></div>
@@ -7956,7 +8138,8 @@
         body: `안녕하세요! 창수는 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세.\n만\n반\n잘\n부`
       },
       bride: {
-        avatar: "",
+        photo: "profile_bride.jpg",
+        photoAlt: "신부 최보규 프로필 사진",
         essayTitle: "",
         info: `
           <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">최보규</div></div>
@@ -7969,9 +8152,24 @@
       }
     };
 
+    function handleProfilePhotoError(img) {
+      const frame = img.closest(".profile-photo-frame");
+      if (frame) frame.classList.add("is-empty");
+      img.removeAttribute("src");
+    }
+
     function openProfileModal(type) {
       const data = profileData[type];
-      document.getElementById("profileAvatar").textContent = data.avatar || "";
+      const frame = document.getElementById("profileAvatar");
+      const photo = document.getElementById("profilePhoto");
+
+      if (frame && photo) {
+        frame.classList.remove("is-empty");
+        photo.alt = data.photoAlt || "프로필 사진";
+        photo.src = data.photo || "";
+        if (!data.photo) frame.classList.add("is-empty");
+      }
+
       document.getElementById("profileInfoArea").innerHTML = data.info;
       document.getElementById("profileEssayBody").textContent = data.body;
       openModalBase("profileModal");
