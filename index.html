@@ -5754,6 +5754,211 @@
       font-weight: 200 !important;
     }
 
+
+
+    /* === 2026-07-14 requested detail refinements === */
+    /* 1. Cover title: 19px, light weight */
+    .entry-flap-title {
+      font-size: 19px !important;
+      font-weight: 300 !important;
+    }
+
+    /* 2. Profile information and essay: 16px */
+    #profileModal .profile-label,
+    #profileModal .profile-value,
+    #profileModal .profile-body {
+      font-size: 16px !important;
+    }
+
+    /* 3. Wedding-day subtle pulse: about 1px expansion on each side */
+    .calendar-grid .wedding-day {
+      transform-origin: center !important;
+      animation: weddingDayMicroPulse 1.9s ease-in-out infinite !important;
+    }
+
+    @keyframes weddingDayMicroPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .calendar-grid .wedding-day {
+        animation: none !important;
+      }
+    }
+
+    /* 4. Flower notice: first line red, second line black */
+    #guide-flower .guide-red-line {
+      color: var(--accent) !important;
+    }
+
+    #guide-flower .guide-black-line {
+      color: var(--text) !important;
+      font-weight: 200 !important;
+    }
+
+    /* 5-8. Food popup typography, centered geometric chevron, wrapping comments */
+    #foodModal .food-category-title {
+      font-size: 14px !important;
+    }
+
+    #foodModal .food-area,
+    #foodModal .food-name,
+    #foodModal .food-comment {
+      font-size: 12px !important;
+      line-height: 1.45 !important;
+    }
+
+    #foodModal .food-category-toggle {
+      position: relative !important;
+      width: 20px !important;
+      height: 20px !important;
+      flex: 0 0 20px !important;
+      transform: none !important;
+      display: block !important;
+      overflow: visible !important;
+    }
+
+    #foodModal .food-category-toggle::before {
+      content: "" !important;
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      width: 8px !important;
+      height: 8px !important;
+      border: 0 !important;
+      border-right: 1.4px solid var(--accent) !important;
+      border-bottom: 1.4px solid var(--accent) !important;
+      background: transparent !important;
+      transform: translate(-50%, -65%) rotate(45deg) !important;
+      transform-origin: center !important;
+      box-sizing: border-box !important;
+    }
+
+    #foodModal .food-category-item.open .food-category-toggle {
+      transform: none !important;
+    }
+
+    #foodModal .food-category-item.open .food-category-toggle::before {
+      transform: translate(-50%, -35%) rotate(225deg) !important;
+    }
+
+    #foodModal .food-place-main {
+      display: grid !important;
+      grid-template-columns: 42px minmax(78px, 92px) minmax(0, 1fr) !important;
+      column-gap: 8px !important;
+      align-items: start !important;
+    }
+
+    #foodModal .food-comment {
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      word-break: keep-all !important;
+      overflow-wrap: break-word !important;
+    }
+
+    /* 9. Timeline: compact card, no marker circle, square emoji */
+    #timelineModal .timeline-modal-title {
+      margin-bottom: 14px !important;
+    }
+
+    #timelineModal .timeline-scroll-box {
+      max-width: 294px !important;
+      padding: 14px 14px !important;
+      border-radius: 20px !important;
+    }
+
+    #timelineModal .timeline-line-list {
+      gap: 8px !important;
+      justify-content: flex-start !important;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item {
+      grid-template-columns: 28px minmax(0, 1fr) !important;
+      gap: 10px !important;
+    }
+
+    #timelineModal .timeline-marker {
+      width: 28px !important;
+      height: 28px !important;
+      min-width: 28px !important;
+      min-height: 28px !important;
+      flex: 0 0 28px !important;
+      aspect-ratio: 1 / 1 !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 1 !important;
+      font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif !important;
+      font-size: 16px !important;
+      transform: none !important;
+      overflow: visible !important;
+    }
+
+    #timelineModal .timeline-line-list::before {
+      left: 13.5px !important;
+      top: 27px !important;
+      bottom: 27px !important;
+    }
+
+    #timelineModal .timeline-head {
+      margin-bottom: 2px !important;
+    }
+
+    #timelineModal .timeline-desc {
+      line-height: 1.35 !important;
+    }
+
+    #timelineModal .modal-bottom-btn {
+      margin-top: 14px !important;
+    }
+
+    /* 10. Photo viewer controls */
+    #viewerModal .viewer-nav {
+      font-size: 21px !important;
+    }
+
+    #viewerModal .viewer-counter {
+      font-size: 12px !important;
+    }
+
+    /* 12. Close X buttons */
+    .close-x,
+    .viewer-close {
+      font-size: 21px !important;
+    }
+
+    @media (max-width: 380px) {
+      .entry-flap-title {
+        font-size: 19px !important;
+      }
+
+      #profileModal .profile-label,
+      #profileModal .profile-value,
+      #profileModal .profile-body {
+        font-size: 16px !important;
+      }
+
+      #timelineModal .timeline-scroll-box {
+        max-width: 286px !important;
+        padding: 12px 13px !important;
+      }
+
+      #timelineModal .timeline-line-list {
+        gap: 6px !important;
+      }
+
+      #foodModal .food-place-main {
+        grid-template-columns: 38px minmax(72px, 82px) minmax(0, 1fr) !important;
+        column-gap: 6px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -5893,8 +6098,8 @@
 
         <div class="guide-content active" id="guide-flower">
           <div class="guide-main-copy">
-            <span class="guide-red-line">화환은 정중히 사양합니다.<br />
-            축하의 마음만으로도 감사드립니다.<br /><br />
+            <span class="guide-red-line">화환은 정중히 사양합니다.</span><br />
+            <span class="guide-black-line">축하의 마음만으로도 감사합니다.</span><br /><br />
             <span class="guide-ending-emoji">🌼</span>
           </div>
         </div>
@@ -6015,7 +6220,7 @@
       <div class="kicker reveal-child" style="--delay: 0ms;">계좌안내</div>
       <h2 class="title reveal-child" style="--delay: 180ms;">마음 전하실 곳</h2>
       <div class="account-subtitle reveal-child" style="--delay: 320ms;">
-        전해주시는 따뜻한 마음은 소중히 받겠습니다.
+        보내주시는 마음은 소중히 받겠습니다.
       </div>
 
       <div class="account-wrap reveal-child" style="--delay: 480ms;">
