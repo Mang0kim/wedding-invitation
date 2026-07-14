@@ -5469,6 +5469,285 @@
       }
     }
 
+
+    /* === 2026-07-14 latest typography + timeline card refinement === */
+    :root {
+      --font-21: 21px;
+      --font-16: 16px;
+      --font-14: 14px;
+      --font-12: 12px;
+    }
+
+    /* 21px: section titles and key information */
+    .title,
+    .date-line,
+    .location-address,
+    .couple-name {
+      font-size: var(--font-21) !important;
+    }
+
+    /* 16px: main copy, popup headings and primary supporting text */
+    .entry-flap-title,
+    .opening-icon,
+    .desc,
+    .intro-message,
+    .location-detail,
+    .wedding-count-text,
+    .gallery-subtitle,
+    .account-subtitle,
+    .closing-text,
+    .closing-heart,
+    .guide-content,
+    .guide-ending-emoji,
+    .profile-modal-title,
+    .food-modal-desc,
+    .timeline-modal-title,
+    .timeline-marker {
+      font-size: var(--font-16) !important;
+    }
+
+    /* 14px: tabs, information rows, popup body text and standard actions */
+    .entry-guide,
+    .couple-family,
+    .map-link,
+    .guide-tab,
+    .profile-label,
+    .profile-value,
+    .profile-body,
+    .calendar-grid div,
+    .food-category-title,
+    .viewer-counter,
+    .timeline-date,
+    .timeline-title,
+    .timeline-desc,
+    .account-tab,
+    .account-role,
+    .account-name,
+    .bank-name,
+    .account-number,
+    .share-action-btn {
+      font-size: var(--font-14) !important;
+    }
+
+    /* 12px: compact buttons, kickers and small auxiliary information */
+    .btn-rect,
+    .btn-rect.small,
+    .kicker,
+    .calendar-grid .day-name,
+    .copy-text-btn,
+    .food-area,
+    .food-name,
+    .food-comment,
+    .fig-caption,
+    .gallery-more,
+    .video-play-overlay,
+    .music-toggle {
+      font-size: var(--font-12) !important;
+    }
+
+    /* Bottom close buttons keep the existing physical button size. */
+    .modal-bottom-btn .btn-rect,
+    .modal-bottom-btn .btn-rect.small,
+    .modal-bottom-btn .btn-rect.no-plus {
+      font-size: var(--font-12) !important;
+      min-height: 36px !important;
+      padding: 9px 16px !important;
+    }
+
+    /* Viewer arrows are a visual control rather than body typography. */
+    #viewerModal .viewer-nav {
+      font-size: var(--font-21) !important;
+    }
+
+    /* Keep the four-level typography identical across narrow screens. */
+    @media (max-width: 380px) {
+      .title,
+      .date-line,
+      .location-address,
+      .couple-name {
+        font-size: var(--font-21) !important;
+      }
+
+      .entry-flap-title,
+      .opening-icon,
+      .desc,
+      .intro-message,
+      .location-detail,
+      .wedding-count-text,
+      .gallery-subtitle,
+      .account-subtitle,
+      .closing-text,
+      .closing-heart,
+      .guide-content,
+      .guide-ending-emoji,
+      .profile-modal-title,
+      .food-modal-desc,
+      .timeline-modal-title,
+      .timeline-marker {
+        font-size: var(--font-16) !important;
+      }
+
+      .entry-guide,
+      .couple-family,
+      .map-link,
+      .guide-tab,
+      .profile-label,
+      .profile-value,
+      .profile-body,
+      .calendar-grid div,
+      .food-category-title,
+      .viewer-counter,
+      .timeline-date,
+      .timeline-title,
+      .timeline-desc,
+      .account-tab,
+      .account-role,
+      .account-name,
+      .bank-name,
+      .account-number,
+      .share-action-btn {
+        font-size: var(--font-14) !important;
+      }
+
+      .btn-rect,
+      .btn-rect.small,
+      .kicker,
+      .calendar-grid .day-name,
+      .copy-text-btn,
+      .food-area,
+      .food-name,
+      .food-comment,
+      .fig-caption,
+      .gallery-more,
+      .video-play-overlay,
+      .music-toggle {
+        font-size: var(--font-12) !important;
+      }
+    }
+
+    /* Timeline: same soft gray card language as the profile essay box. */
+    #timelineModal .timeline-modal-content {
+      padding-top: 24px !important;
+      overflow: hidden !important;
+    }
+
+    #timelineModal .timeline-modal-title {
+      flex: 0 0 auto !important;
+      margin: 0 0 18px !important;
+      line-height: 1.5 !important;
+    }
+
+    #timelineModal .timeline-scroll-box {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      width: 100% !important;
+      max-width: 326px !important;
+      margin: 0 auto !important;
+      padding: clamp(15px, 2.4dvh, 20px) 18px !important;
+      border-radius: 22px !important;
+      background: rgba(245, 245, 247, 0.76) !important;
+      box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.035) !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      align-items: stretch !important;
+    }
+
+    #timelineModal .timeline-line-list {
+      position: relative !important;
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      gap: clamp(8px, 1.8dvh, 18px) !important;
+      overflow: visible !important;
+    }
+
+    #timelineModal .timeline-line-list::before {
+      left: 16px !important;
+      top: 34px !important;
+      bottom: 34px !important;
+    }
+
+    #timelineModal .timeline-line-list .timeline-item {
+      grid-template-columns: 34px minmax(0, 1fr) !important;
+      gap: 14px !important;
+      flex: 0 0 auto !important;
+    }
+
+    #timelineModal .timeline-marker {
+      width: 34px !important;
+      height: 34px !important;
+      flex: 0 0 34px !important;
+      background: rgba(255, 255, 255, 0.78) !important;
+      box-shadow: 0 6px 14px rgba(44, 44, 44, 0.035), inset 0 0 0 1px rgba(44, 44, 44, 0.035) !important;
+    }
+
+    #timelineModal .timeline-head {
+      gap: 8px !important;
+      margin-bottom: 3px !important;
+    }
+
+    #timelineModal .timeline-desc {
+      line-height: 1.42 !important;
+    }
+
+    #timelineModal .modal-bottom-btn {
+      flex: 0 0 auto !important;
+      margin-top: 18px !important;
+    }
+
+    @media (max-height: 700px) {
+      #timelineModal .timeline-modal-content {
+        padding-top: 14px !important;
+      }
+
+      #timelineModal .timeline-modal-title {
+        margin-bottom: 12px !important;
+      }
+
+      #timelineModal .timeline-scroll-box {
+        padding: 13px 15px !important;
+      }
+
+      #timelineModal .timeline-line-list {
+        gap: 7px !important;
+      }
+
+      #timelineModal .timeline-line-list .timeline-item {
+        grid-template-columns: 30px minmax(0, 1fr) !important;
+        gap: 10px !important;
+      }
+
+      #timelineModal .timeline-marker {
+        width: 30px !important;
+        height: 30px !important;
+        flex-basis: 30px !important;
+      }
+
+      #timelineModal .timeline-line-list::before {
+        left: 14px !important;
+        top: 30px !important;
+        bottom: 30px !important;
+      }
+
+      #timelineModal .timeline-head {
+        margin-bottom: 2px !important;
+      }
+
+      #timelineModal .timeline-desc {
+        line-height: 1.32 !important;
+      }
+
+      #timelineModal .modal-bottom-btn {
+        margin-top: 12px !important;
+      }
+    }
+
 </style>
 </head>
 
@@ -6069,7 +6348,8 @@
     <div class="timeline-modal-content">
       <div class="timeline-modal-title">처음 만난 날부터, <strong id="timelineDayCount">0000</strong>일의 이야기</div>
 
-      <div class="timeline-list timeline-line-list">
+      <div class="timeline-scroll-box">
+        <div class="timeline-list timeline-line-list">
         <div class="timeline-item">
           <div class="timeline-marker" aria-hidden="true">⚽</div>
           <div class="timeline-text">
@@ -6123,6 +6403,7 @@
             </div>
             <div class="timeline-desc">둘만의 방식으로 평생을 약속했습니다.</div>
           </div>
+        </div>
         </div>
       </div>
 
