@@ -7305,6 +7305,52 @@
       }
     }
 
+
+
+    /* === 2026-07-16 Android text scaling + timeline inner scroll === */
+    /* Keep CSS font sizes consistent between iPhone Safari and Android Chrome. */
+    html {
+      -webkit-text-size-adjust: 100% !important;
+      text-size-adjust: 100% !important;
+    }
+
+    /* The body remains fixed by overflow:hidden while popup scroll areas can receive touch gestures. */
+    body.modal-open {
+      touch-action: auto !important;
+    }
+
+    /* Make the gray timeline card itself vertically scrollable. */
+    #timelineModal .timeline-scroll-box {
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      overscroll-behavior: contain !important;
+      touch-action: pan-y !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin !important;
+      scrollbar-color: rgba(89, 89, 89, 0.24) transparent !important;
+    }
+
+    #timelineModal .timeline-scroll-box::-webkit-scrollbar {
+      width: 4px !important;
+    }
+
+    #timelineModal .timeline-scroll-box::-webkit-scrollbar-track {
+      background: transparent !important;
+    }
+
+    #timelineModal .timeline-scroll-box::-webkit-scrollbar-thumb {
+      background: rgba(89, 89, 89, 0.22) !important;
+      border-radius: 999px !important;
+    }
+
+    /* Content keeps its natural height so overflow produces an actual scroll range. */
+    #timelineModal .timeline-line-list {
+      flex: 0 0 auto !important;
+      min-height: max-content !important;
+      justify-content: flex-start !important;
+      padding-right: 4px !important;
+    }
+
 </style>
 </head>
 
