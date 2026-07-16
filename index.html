@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta
     name="viewport"
-    content="width=390, initial-scale=1.0, viewport-fit=cover"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   />
   <meta name="format-detection" content="telephone=no" />
 
@@ -107,7 +107,7 @@
     }
 
     .wrap {
-      width: 390px;
+      width: 100%;
       max-width: 390px;
       margin: 0 auto;
       padding: 0 0 80px;
@@ -7356,10 +7356,15 @@
       justify-content: flex-start !important;
       padding-right: 4px !important;
     }
+    
     html,
     body {
       -webkit-text-size-adjust: 100% !important;
       text-size-adjust: 100% !important;
+
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
     }
 
     button,
@@ -7370,6 +7375,12 @@
       text-size-adjust: 100% !important;
     }
 
+    .wrap {
+      width: 100%;
+      max-width: 430px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 </head>
 
