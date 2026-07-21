@@ -7381,6 +7381,41 @@
       margin-left: auto;
       margin-right: auto;
     }
+    
+    /* === 팝업 내 텍스트 유동적 축소 (가로 330px 대응) === */
+    #profileModal .profile-label,
+    #profileModal .profile-value,
+    #profileModal .profile-body,
+    #foodModal .food-modal-desc,
+    #foodModal .food-category-title,
+    #timelineModal .timeline-modal-title {
+      font-size: var(--font-16) !important;
+    }
+
+    #foodModal .food-area,
+    #foodModal .food-name,
+    #foodModal .food-comment,
+    #timelineModal .timeline-date,
+    #timelineModal .timeline-title,
+    #timelineModal .timeline-desc {
+      font-size: var(--font-14) !important;
+    }
+
+    /* 380px 이하 좁은 화면에 지정된 고정 픽셀(px) 덮어쓰기 */
+    @media (max-width: 380px), (max-height: 700px) {
+      #profileModal .profile-label,
+      #profileModal .profile-value,
+      #profileModal .profile-body,
+      #timelineModal .timeline-modal-title {
+        font-size: var(--font-16) !important;
+      }
+      
+      #foodModal .food-area,
+      #foodModal .food-name,
+      #foodModal .food-comment {
+        font-size: var(--font-14) !important;
+      }
+    }
   </style>
 </head>
 
