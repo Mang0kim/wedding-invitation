@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>💌 최보규·김창수의 결혼식에 초대합니다</title>
+
+  <meta property="og:title" content="💌 최보규·김창수의 결혼식에 초대합니다" />
+  <meta property="og:description" content="2026년 10월 3일 토요일 오후 1시&#10;호텔농심 야외정원" />
+  <meta property="og:url" content="https://1003.highglossyworks.life" />
+  <meta property="og:image" content="https://1003.highglossyworks.life/photo01.jpg" />
+  <meta property="og:image:secure_url" content="https://1003.highglossyworks.life/photo01.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:alt" content="최보규·김창수 모바일 청첩장 대표 사진" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://1003.highglossyworks.life/photo01.jpg" />
+  <link rel="image_src" href="https://1003.highglossyworks.life/photo01.jpg" />
+
+  <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=gzlsg53kum"></script>
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+
+  <style>
+    /* === 1. Base Variables & Typography System === */
+    :root {
+      --bg: #fbfbfd;
+      --surface: #ffffff;
+      --surface-soft: #f5f5f7;
+      --surface-deep: #eeeeef;
+
+      --black: #2C2C2C; --gray: #595959; --red: #EC221F; --white: #FFFFFF;
+      --text: #2C2C2C; --text-strong: #2C2C2C; --text-soft: #595959;
+
+      --line: rgba(44, 44, 44, 0.09);
+      --shadow-soft: 0 18px 45px rgba(44, 44, 44, 0.06);
+      --shadow-red: 0 8px 18px rgba(236, 34, 31, 0.12);
+
+      --accent: #EC221F; --accent-dark: #D61D1A;
+
+      --radius-card: 28px; --radius-small: 18px;
+
+      --font-21: clamp(17px, 5.38vw, 21px);
+      --font-16: clamp(13px, 4.10vw, 16px);
+      --font-14: clamp(11.5px, 3.58vw, 14px);
+      --font-12: clamp(10px, 3.07vw, 12px);
+
+      --popup-responsive-width: min(398px, calc(100vw - 32px));
+      --popup-responsive-height: min(640px, calc(100dvh - 32px));
+      --popup-inner-width: min(326px, 100%);
+      --popup-soft: rgba(245, 245, 247, 0.82);
+
+      --modal-vh: 100dvh;
+      --modal-vtop: 0px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+      background: radial-gradient(circle at top, #ffffff 0%, #fbfbfd 42%, #f5f5f7 100%);
+      color: var(--text);
+      font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: var(--font-16);
+      font-weight: 200;
+      line-height: 1.7;
+      word-break: keep-all;
+      letter-spacing: -0.03em;
+      -webkit-font-smoothing: antialiased;
+      scroll-snap-type: none;
+    }
+
+    body.modal-open { overflow: hidden; touch-action: auto; }
+    body.entry-locked { overflow: hidden; }
+
+    img, video { max-width: 100%; display: block; }
+    button, input, textarea, select { font-family: inherit; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    strong { font-weight: 300; }
+
+    .wrap {
+      width: 100%; max-width: 430px; margin: 0 auto; padding: 0 0 80px; background: transparent;
+    }
+
+    section {
+      min-height: 100svh; padding: 88px 24px; display: flex; flex-direction: column; justify-content: center;
+      scroll-snap-align: none; scroll-snap-stop: normal; scroll-margin-top: 0;
+    }
+
+    /* === 2. Typography Classes === */
+    .title, .date-line, .location-address, .couple-name, #viewerModal .viewer-nav, .close-x, .viewer-close {
+      font-size: var(--font-21);
+    }
+    .entry-flap-title {
+      font-size: 19px; font-weight: 300; color: var(--text-strong); letter-spacing: 0.22em; line-height: 1;
+    }
+    .desc, .intro-message, .location-detail, .wedding-count-text, .gallery-subtitle, .account-subtitle, .closing-text, .closing-heart, .opening-icon, .guide-content, .guide-ending-emoji, .profile-modal-title, .food-modal-desc, .timeline-modal-title, .timeline-marker {
+      font-size: var(--font-16);
+    }
+    .entry-guide, .couple-family, .map-link, .guide-tab, .calendar-grid div, .food-category-title, .timeline-date, .timeline-title, .timeline-desc, .account-tab, .account-role, .account-name, .bank-name, .account-number, .share-action-btn {
+      font-size: var(--font-14);
+    }
+    .btn-rect, .btn-rect.small, .kicker, .calendar-grid .day-name, .copy-text-btn, .food-area, .food-name, .food-comment, .fig-caption, .gallery-more, .video-play-overlay, .music-toggle, .viewer-counter {
+      font-size: var(--font-12);
+    }
+
+    .kicker { text-align: center; color: var(--accent); font-weight: 300; margin-bottom: 9px; line-height: 1; }
+    .title { text-align: center; color: var(--text-strong); font-weight: 300; line-height: 1.45; margin: 0 0 28px; }
+    .desc { text-align: center; color: var(--text); font-weight: 200; line-height: 2; margin: 0 auto; }
+
+    /* === 3. Buttons === */
+    .btn-rect, .share-action-btn {
+      border: 0; background: var(--accent); color: var(--white); border-radius: 999px;
+      min-height: 34px; font-weight: 300; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      transition: transform 0.14s ease, background 0.14s ease; white-space: nowrap; line-height: 1; width: fit-content; padding: 7px 8px 7px 16px;
+    }
+    .btn-rect:active { transform: scale(0.97); background: var(--accent-dark); }
+    .btn-rect::after {
+      content: ""; width: 21px; height: 21px; flex: 0 0 21px; border-radius: 50%; display: inline-block; box-sizing: border-box;
+      background: linear-gradient(var(--accent), var(--accent)) center / 9px 1.35px no-repeat, linear-gradient(var(--accent), var(--accent)) center / 1.35px 9px no-repeat, var(--white);
+    }
+    .btn-rect.small { min-height: 32px; padding: 6px 7px 6px 14px; }
+    .btn-rect.small::after {
+      width: 20px; height: 20px; flex-basis: 20px;
+      background: linear-gradient(var(--accent), var(--accent)) center / 8.5px 1.3px no-repeat, linear-gradient(var(--accent), var(--accent)) center / 1.3px 8.5px no-repeat, var(--white);
+    }
+    .btn-rect.no-plus { padding: 9px 16px; justify-content: center; }
+    .btn-rect.no-plus::after { display: none; content: none; }
+    .modal-bottom-btn .btn-rect { min-height: 36px; padding: 9px 17px; }
+
+    /* === 4. Scroll Reveal Animations === */
+    .scroll-reveal {
+      transform: translateY(48px) scale(0.99); filter: blur(5px); opacity: 0;
+      transition: opacity 1.9s cubic-bezier(0.22, 1, 0.36, 1), transform 1.9s cubic-bezier(0.22, 1, 0.36, 1), filter 1.9s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform, filter;
+    }
+    .scroll-reveal.reveal-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    .reveal-child {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 1.65s cubic-bezier(0.22, 1, 0.36, 1), transform 1.65s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--delay, 0ms); will-change: opacity, transform;
+    }
+    .reveal-visible .reveal-child { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .scroll-reveal, .reveal-child, .calendar-grid .wedding-day { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; animation: none !important; }
+    }
+
+    /* === 5. Layout Sections === */
+    .intro-section { min-height: 100svh; justify-content: flex-start; padding-top: 9vh; padding-bottom: 0; }
+    .opening-icon { text-align: center; line-height: 1; margin: 0 0 14px; }
+    .intro-section .title { margin-bottom: 63px; }
+    .intro-message { max-width: 330px; margin: 0 auto 63px; line-height: 1.55; }
+    
+    .couple-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+    .couple-card { text-align: center; }
+    .couple-family { color: var(--text-soft); min-height: 48px; display: flex; align-items: flex-end; justify-content: center; }
+    .couple-name { margin-top: 8px; color: var(--text-strong); letter-spacing: -0.045em; }
+    .couple-card .btn-rect { margin-top: 16px; }
+
+    /* Date & Calendar */
+    .date-line { text-align: center; color: var(--text-strong); margin-bottom: 42px; line-height: 1.45; letter-spacing: -0.045em; }
+    .date-card { width: 100%; max-width: 350px; margin: 0 auto; padding: 34px 14px 26px; background: rgba(255, 255, 255, 0.78); border: 1px solid rgba(44, 44, 44, 0.04); border-radius: var(--radius-card); box-shadow: var(--shadow-soft); backdrop-filter: blur(18px); }
+    .calendar-box { margin-bottom: 18px; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 9px; max-width: 340px; margin: 0 auto; color: var(--text-soft); }
+    .calendar-grid div { height: 30px; display: flex; align-items: center; justify-content: center; font-weight: 200; }
+    .calendar-grid .day-name { height: 20px; }
+    .calendar-grid .empty { color: transparent; }
+    .calendar-grid .sunday-name, .calendar-grid .calendar-sunday, .calendar-grid .calendar-holiday { color: rgba(236, 34, 31, 0.56); }
+    .calendar-grid .saturday-name, .calendar-grid .calendar-saturday { color: rgba(0, 113, 227, 0.50); }
+    
+    @keyframes weddingDayMicroPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+    .calendar-grid .wedding-day { width: 28px; height: 28px; margin: auto; background: var(--accent); color: var(--white); border-radius: 50%; font-weight: 300; transform-origin: center; }
+    .reveal-visible .wedding-day { animation: weddingDayMicroPulse 1.9s ease-in-out infinite; }
+    
+    .date-divider { height: 1px; background: var(--line); margin: 0 auto 22px; max-width: 330px; }
+    .wedding-count-text { text-align: center; color: var(--text); line-height: 1.7; letter-spacing: -0.03em; }
+    .wedding-count-text strong { color: var(--accent); font-weight: 300; font-size: 1em; }
+    .wedding-count-text.wedding-today { color: var(--accent); font-weight: 300; }
+
+    /* Location & Guide */
+    .location-address { text-align: center; color: var(--text-strong); line-height: 1.45; margin-bottom: 10px; letter-spacing: -0.045em; }
+    .location-detail { text-align: center; color: var(--text); margin: 0 auto 34px; }
+    .map-box { max-width: 350px; margin: 0 auto; }
+    .map-image { width: 100%; aspect-ratio: 1.36 / 1; background: linear-gradient(135deg, #f3f3f5, #ffffff); border: 1px solid rgba(44, 44, 44, 0.06); border-radius: var(--radius-card); box-shadow: var(--shadow-soft); overflow: hidden; }
+    .map-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-top: 16px; }
+    .map-link { height: 40px; color: var(--text-strong); display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 300; background: rgba(255, 255, 255, 0.86); border-radius: 999px; box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045); backdrop-filter: blur(12px); border: 1px solid rgba(44, 44, 44, 0.06); line-height: 1; }
+    .map-link::after { content: "↗"; display: inline-flex; align-items: center; justify-content: center; margin-left: 7px; color: var(--accent); transform: translateY(1px); }
+
+    .guide-wrap { max-width: 350px; margin: 0 auto; background: var(--surface-soft); border-radius: var(--radius-card); padding: 8px 8px 18px; box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03); height: 272px; display: flex; flex-direction: column; touch-action: pan-y; }
+    .guide-tabs { background: rgba(255, 255, 255, 0.45); border-radius: 999px; padding: 5px; display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 22px; }
+    .guide-tab { border: 0; background: transparent; color: var(--text-soft); font-weight: 300; height: 44px; border-radius: 999px; cursor: pointer; transition: background 0.22s, color 0.22s, transform 0.16s; }
+    .guide-tab.active { background: var(--white); color: var(--accent); box-shadow: 0 8px 24px rgba(44, 44, 44, 0.06); }
+    .guide-content { display: none; height: 174px; padding: 22px 14px 0; text-align: center; line-height: 1.72; overflow: hidden; }
+    .guide-content.active { display: block; }
+    .guide-red-line { color: var(--accent); font-weight: 300; }
+    .guide-black-line { color: var(--text); }
+    .guide-ending-emoji { display: inline-block; margin-top: 0; line-height: 1; }
+    
+    .guide-menu-card { max-width: 244px; margin: 15px auto 0; padding: 13px 15px 12px; border-radius: 22px; background: rgba(255, 255, 255, 0.62); box-shadow: 0 8px 18px rgba(44, 44, 44, 0.035); text-align: left; }
+    .guide-menu-title { margin: 0 0 8px; color: var(--text-soft); font-weight: 300; text-align: center; }
+    .guide-menu-row { display: grid; grid-template-columns: 42px 1fr; column-gap: 8px; align-items: baseline; line-height: 1.62; text-align: left; }
+    .guide-menu-row span { color: var(--accent); }
+    .guide-menu-row strong { color: var(--text); }
+
+    /* Food & Gallery */
+    .food-section .title { margin-top: 0; margin-bottom: 16px; }
+    .food-section .desc { max-width: 330px; margin-bottom: 34px; }
+    .food-center-btn { text-align: center; }
+
+    .gallery-section { padding-top: 96px; padding-bottom: 96px; justify-content: flex-start; }
+    .gallery-subtitle { display: flex; align-items: center; justify-content: center; gap: 7px; margin: -12px auto 34px; }
+    .gallery-subtitle-text { display: inline-flex; align-items: center; height: 24px; line-height: 24px; }
+    .gallery-subtitle-text strong { color: var(--accent); font-weight: 300; }
+    
+    .timeline-open-btn { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); border: 0; display: inline-flex; align-items: center; justify-content: center; position: relative; cursor: pointer; }
+    .timeline-open-btn::before, .timeline-open-btn::after { content: ""; position: absolute; background: var(--white); border-radius: 999px; }
+    .timeline-open-btn::before { width: 10px; height: 1.4px; }
+    .timeline-open-btn::after { width: 1.4px; height: 10px; }
+    .timeline-open-btn:active { transform: scale(0.94); }
+
+    .gallery-shell { max-width: 350px; margin: 0 auto; width: min(350px, calc(100vw - 48px)); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; grid-auto-rows: auto; }
+    .gallery-item { aspect-ratio: 1/1; position: relative; overflow: hidden; background: transparent; }
+    .gallery-item.hidden { display: none; }
+    .gallery-item.mag-wide { grid-column: span 6; grid-row: span 4; }
+    .gallery-item.mag-square { grid-column: span 3; grid-row: span 4; }
+    .gallery-item.mag-tall { grid-column: span 3; grid-row: span 5; }
+    
+    .gallery-thumb { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--surface-soft); cursor: pointer; }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .gallery-thumb:active img { transform: scale(1.08); }
+    .fig-caption { position: absolute; top: 8px; left: 9px; color: rgba(255,255,255,0.94); text-shadow: 0 1px 8px rgba(0,0,0,0.28); z-index: 2; margin: 0; }
+    
+    .gallery-more-cell { background: rgba(245, 245, 247, 0.9); cursor: pointer; display: block; position: relative; aspect-ratio: 1/1; }
+    .gallery-more { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); gap: 6px; font-weight: 300; }
+    .gallery-more::after { content: ""; width: 10px; height: 10px; background: linear-gradient(var(--accent), var(--accent)) center / 10px 1.35px no-repeat, linear-gradient(var(--accent), var(--accent)) center / 1.35px 10px no-repeat; }
+    .gallery-more .btn-rect, .gallery-more-cell .fig-caption { display: none; }
+
+    /* Video */
+    .video-shell { max-width: 350px; margin: 20px auto 0; overflow: hidden; }
+    .video-box { aspect-ratio: 16/10; background: var(--surface-soft); position: relative; display: flex; align-items: center; justify-content: center; }
+    .video-box video { width: 100%; height: 100%; object-fit: cover; }
+    .video-play-overlay { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 36px; padding: 7px 8px 7px 16px; border-radius: 999px; background: var(--accent); color: var(--white); display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; cursor: pointer; z-index: 2; }
+    .video-play-overlay span { height: 20px; line-height: 20px; display: inline-flex; align-items: center; }
+    .video-play-overlay::after { content: "›"; width: 21px; height: 21px; background: var(--white); color: var(--accent); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 300; transform: translateY(-1px); }
+    .video-play-overlay.hidden { opacity: 0; pointer-events: none; }
+
+    /* Accounts */
+    .account-subtitle { text-align: center; margin: -6px 0 30px; }
+    .account-wrap { max-width: 350px; margin: 0 auto; background: var(--surface-soft); border-radius: var(--radius-card); padding: 8px 8px 18px; box-shadow: inset 0 0 0 1px rgba(44, 44, 44, 0.03); }
+    .account-tabs { background: rgba(255, 255, 255, 0.45); border-radius: 999px; padding: 5px; display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 18px; }
+    .account-tab { border: 0; height: 44px; background: transparent; border-radius: 999px; color: var(--text-soft); font-weight: 300; cursor: pointer; transition: background 0.22s, color 0.22s; }
+    .account-tab.active { background: var(--white); color: var(--accent); box-shadow: 0 8px 24px rgba(44, 44, 44, 0.06); }
+    .account-panel { display: none; }
+    .account-panel.active { display: block; }
+    .account-person-row { border-radius: 18px; }
+    .account-person-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; padding: 0 8px 0 16px; }
+    .account-role { display: inline-block; min-width: 44px; margin-right: 10px; color: var(--text-soft); font-weight: 200; }
+    .account-name { color: var(--text-strong); font-weight: 300; }
+    .person-actions { display: flex; gap: 10px; }
+    .icon-btn { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: 18px; line-height: 1; }
+    .account-number-row { background: var(--white); border-radius: 22px; min-height: 46px; display: grid; grid-template-columns: 72px 1fr auto; align-items: center; gap: 6px; padding: 0 8px 0 16px; box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045); }
+    .bank-name, .account-number { color: var(--text-soft); font-weight: 200; }
+    .copy-text-btn { border: 0; background: var(--accent); color: var(--white); padding: 6px 8px; border-radius: 999px; cursor: pointer; font-weight: 300; }
+    .copy-text-btn:active { transform: scale(0.96); }
+    .account-divider { height: 1px; background: var(--line); margin: 18px 0; }
+
+    /* Closing & Music */
+    .closing { min-height: 82svh; padding: 88px 22px 76px; }
+    .closing-heart { text-align: center; margin-bottom: 10px; }
+    .closing-text { text-align: center; line-height: 1.9; color: var(--text-strong); }
+    .closing-actions { margin-top: 44px; display: flex; justify-content: center; text-align: center; }
+    .share-action-btn { background: rgba(255, 255, 255, 0.72); color: var(--accent); border: 1px solid rgba(236, 34, 31, 0.18); min-width: 156px; padding: 8px 15px; box-shadow: 0 8px 18px rgba(44, 44, 44, 0.045); backdrop-filter: blur(12px); }
+
+    .music-toggle { position: fixed; right: 16px; bottom: 18px; z-index: 1100; border: 1px solid rgba(44, 44, 44, 0.08); background: rgba(255, 255, 255, 0.82); border-radius: 999px; min-height: 36px; padding: 8px 13px 8px 12px; display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 10px 26px rgba(44, 44, 44, 0.08); backdrop-filter: blur(14px); cursor: pointer; opacity: 0; visibility: hidden; pointer-events: none; transition: all 0.28s ease; }
+    body.music-control-visible .music-toggle { opacity: 1; visibility: visible; pointer-events: auto; }
+    .music-toggle-icon { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: var(--white); display: inline-flex; align-items: center; justify-content: center; }
+    .music-toggle.is-off .music-toggle-icon { background: rgba(89, 89, 89, 0.55); }
+
+    /* === 6. Unified Modals === */
+    .modal { position: fixed; inset: auto 0 auto 0; top: var(--modal-vtop); height: var(--modal-vh); display: none; z-index: 999; align-items: center; justify-content: center; padding: 0; }
+    .modal.show { display: flex; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.36); backdrop-filter: blur(12px); }
+    
+    .modal-sheet {
+      position: relative; width: var(--popup-responsive-width); max-width: 398px; height: var(--popup-responsive-height); max-height: calc(100dvh - 32px);
+      margin: 0; padding: 42px 28px 22px; border-radius: 32px; background: rgba(255,255,255,.97); border: 1px solid rgba(255, 255, 255, 0.64);
+      box-shadow: 0 28px 70px rgba(44, 44, 44, 0.18); overflow: hidden; display: flex; flex-direction: column; box-sizing: border-box;
+    }
+    
+    .close-x, .viewer-close { position: absolute; top: 18px; right: 18px; width: 30px; height: 30px; border: 0; background: transparent; color: var(--accent); font-weight: 300; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; z-index: 3; }
+    .modal-bottom-btn { flex: 0 0 auto; margin: 18px 0 0; text-align: center; }
+
+    /* Profile Modal */
+    #profileModal .profile-layout { height: 100%; display: flex; flex-direction: column; padding-top: 34px; overflow: hidden; }
+    #profileModal .profile-content { flex: 1 1 auto; display: flex; flex-direction: column; overflow: hidden; }
+    #profileModal .profile-summary { display: grid; grid-template-columns: 96px minmax(0, 1fr); grid-template-areas: "photo info"; column-gap: 16px; align-items: start; width: var(--popup-inner-width); margin: 0 auto; padding: 0 8px; flex: 0 0 auto; }
+    #profileModal .profile-photo-frame { grid-area: photo; width: 96px; height: 124px; border-radius: 0; background: transparent; overflow: hidden; position: relative; }
+    #profileModal .profile-photo { width: 100%; height: 100%; object-fit: cover; }
+    #profileModal .profile-photo-placeholder { position: absolute; inset: 0; display: none; background: rgba(245, 245, 247, 0.72); align-items: center; justify-content: center; color: rgba(89,89,89,0.52); }
+    #profileModal .profile-photo-frame.is-empty .profile-photo { display: none; }
+    #profileModal .profile-photo-frame.is-empty .profile-photo-placeholder { display: flex; }
+    #profileModal .profile-info { grid-area: info; }
+    #profileModal .profile-info-row { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 7px; margin-bottom: 5px; align-items: start; }
+    #profileModal .profile-label { font-weight: 300; line-height: 1.42; }
+    #profileModal .profile-value { font-weight: 200; line-height: 1.42; word-break: keep-all; }
+    #profileModal .profile-body { width: var(--popup-inner-width); flex: 1 1 auto; margin: 25px auto 0; padding: 20px 18px 24px; border-radius: 24px; background: var(--popup-soft); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; color: var(--text); white-space: pre-line; line-height: 1.7; text-align: left; }
+
+    /* Food Modal */
+    #foodModal .food-modal-content { height: 100%; padding-top: 40px; display: flex; flex-direction: column; overflow: hidden; }
+    #foodModal .food-modal-desc { flex: 0 0 auto; margin: 0 0 30px; text-align: center; line-height: 1.5; }
+    #foodModal .food-scroll-box { width: var(--popup-inner-width); flex: 1 1 auto; margin: 0 auto; padding: 14px 12px 18px; border-radius: 24px; background: var(--popup-soft); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+    #foodModal .food-category-list { display: grid; gap: 14px; padding-bottom: 2px; margin: 0; }
+    #foodModal .food-category-item { background: rgba(255,255,255,.92); border-radius: 18px; overflow: hidden; }
+    #foodModal .food-category-head { width: 100%; min-height: 52px; padding: 13px 16px; border: 0; background: transparent; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left; }
+    #foodModal .food-category-title { font-weight: 400; color: var(--text-strong); line-height: 1.4; margin: 0; }
+    #foodModal .food-category-toggle { position: relative; width: 20px; height: 20px; flex: 0 0 20px; display: block; border: 0; background: transparent; }
+    #foodModal .food-category-toggle::before { content: ""; position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; border-right: 1.4px solid var(--accent); border-bottom: 1.4px solid var(--accent); transform: translate(-50%, -65%) rotate(45deg); }
+    #foodModal .food-category-item.open .food-category-head { background: rgba(255, 255, 255, 0.30); }
+    #foodModal .food-category-item.open .food-category-toggle::before { transform: translate(-50%, -35%) rotate(225deg); }
+    #foodModal .food-place-list { display: none; padding: 10px 16px 18px; gap: 10px; }
+    #foodModal .food-category-item.open .food-place-list { display: grid; }
+    #foodModal .food-place-main { display: grid; grid-template-columns: 46px max-content minmax(0, 1fr); grid-template-areas: "area name comment"; column-gap: 6px; row-gap: 0; align-items: baseline; width: 100%; }
+    #foodModal .food-area { grid-area: area; color: var(--accent); font-weight: 300; white-space: nowrap; margin: 0; line-height: 1.42; }
+    #foodModal .food-name { grid-area: name; color: var(--text-strong); font-weight: 300; white-space: nowrap; line-height: 1.42; }
+    #foodModal .food-comment { grid-area: comment; color: var(--text-soft); font-weight: 200; white-space: nowrap; overflow: hidden; text-overflow: clip; line-height: 1.42; }
+
+    /* Timeline Modal */
+    #timelineModal .timeline-modal-content { height: 100%; padding-top: 42px; display: flex; flex-direction: column; overflow: hidden; }
+    #timelineModal .timeline-modal-title { flex: 0 0 auto; margin: 0 0 36px; text-align: center; font-weight: 200; white-space: nowrap; }
+    #timelineModal .timeline-modal-title strong { color: var(--accent); font-weight: 300; }
+    #timelineModal .timeline-scroll-box { width: var(--popup-inner-width); flex: 1 1 auto; margin: 0 auto; padding: 20px 16px; border-radius: 20px; background: var(--popup-soft); overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: rgba(89, 89, 89, 0.24) transparent; }
+    #timelineModal .timeline-line-list { position: relative; display: flex; flex-direction: column; gap: 13px; justify-content: flex-start; padding-right: 4px; }
+    #timelineModal .timeline-line-list .timeline-item { position: relative; display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 11px; z-index: 1; overflow: visible; }
+    #timelineModal .timeline-marker { width: 30px; height: 30px; flex: 0 0 30px; border-radius: 50%; background: rgba(245, 245, 247, 0.76); display: inline-flex; align-items: center; justify-content: center; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; z-index: 2; }
+    #timelineModal .timeline-line-list .timeline-item::after { content: ""; position: absolute; left: 14.5px; top: 15px; width: 1px; height: calc(100% + 13px); background: rgba(236,34,31,.16); z-index: 0; }
+    #timelineModal .timeline-line-list .timeline-item:last-child::after { height: 15px; }
+    #timelineModal .timeline-head { display: grid; grid-template-columns: 40px minmax(0,1fr); gap: 5px; align-items: start; margin-bottom: 2px; }
+    #timelineModal .timeline-date { color: var(--accent); font-weight: 200; white-space: nowrap; line-height: 1.35; }
+    #timelineModal .timeline-title { color: var(--text-strong); font-weight: 300; white-space: normal; line-height: 1.35; }
+    #timelineModal .timeline-desc { color: var(--text-soft); font-weight: 200; line-height: 1.4; white-space: normal; }
+
+    /* Viewer Modal */
+    #viewerModal .modal-backdrop { background: rgba(0, 0, 0, 0.74); backdrop-filter: blur(10px); }
+    #viewerModal .viewer-sheet { width: var(--popup-responsive-width); height: auto; max-height: calc(var(--modal-vh) - 32px); background: transparent; border: 0; box-shadow: none; display: flex; align-items: center; justify-content: center; overflow: visible; }
+    #viewerModal .viewer-close { color: rgba(255, 255, 255, 0.96); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.24); }
+    #viewerModal .viewer-image-wrap { width: 100%; border-radius: 24px; display: flex; align-items: center; justify-content: center; position: relative; touch-action: pan-y; }
+    #viewerModal #viewerImage { max-width: 100%; max-height: calc(var(--modal-vh) - 32px); object-fit: contain; border-radius: 24px; transform: none; transition: none; user-select: none; -webkit-user-drag: none; }
+    #viewerModal .viewer-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: transparent; border: 0; color: rgba(255,255,255,0.48); text-shadow: 0 1px 8px rgba(0,0,0,0.16); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 12; }
+    #viewerModal .viewer-nav:active { color: rgba(255,255,255,0.68); }
+    #viewerModal .viewer-prev { left: 8px; }
+    #viewerModal .viewer-next { right: 8px; }
+    .viewer-counter { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); padding: 5px 10px; border-radius: 999px; background: rgba(0, 0, 0, 0.28); color: rgba(255, 255, 255, 0.92); z-index: 4; backdrop-filter: blur(10px); }
+
+    .copy-toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 14px)); background: rgba(44, 44, 44, 0.88); color: var(--white); padding: 10px 16px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity 0.22s ease, transform 0.22s ease; z-index: 1200; font-weight: 300; }
+    .copy-toast.show { opacity: 1; transform: translate(-50%, -50%); }
+
+    /* === 7. Entry Envelope === */
+    .entry-screen { --entry-open: 0; position: fixed; inset: 0; z-index: 2000; background: radial-gradient(circle at top, #ffffff 0%, #fbfbfd 48%, #f5f5f7 100%); display: flex; align-items: center; justify-content: center; transition: opacity 0.9s, visibility 0.9s; }
+    .entry-screen.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    .entry-card { width: min(430px, 100vw); aspect-ratio: 0.72 / 1; position: relative; }
+    .entry-open-button { width: 100%; height: 100%; border: 0; background: transparent; cursor: pointer; perspective: 1400px; -webkit-tap-highlight-color: transparent; }
+    .entry-fold-card { position: absolute; left: 50%; top: 50%; width: 100%; height: 76%; transform: translate(-50%, -50%); filter: drop-shadow(0 22px 45px rgba(44, 44, 44, 0.08)); transition: transform 1.25s, opacity 1.05s, filter 1.25s; }
+    .entry-card-base { position: absolute; inset: 0; background: rgba(255, 255, 255, 0.97); border: 1px solid rgba(44, 44, 44, 0.048); box-shadow: 0 12px 28px rgba(44, 44, 44, 0.045); }
+    .entry-fold-body { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 0 24px 42px; z-index: 1; }
+    .entry-guide { display: flex; flex-direction: column; align-items: center; gap: 9px; color: rgba(89, 89, 89, 0.82); transition: opacity 0.55s, transform 0.55s; }
+    .entry-guide-text { display: inline-flex; align-items: center; justify-content: center; gap: 7px; color: var(--accent); font-weight: 300; line-height: 1.45; }
+    .entry-guide-mark { width: 22px; height: 22px; color: var(--accent); font-size: 20px; animation: entryGuideFloat 1.35s ease-in-out infinite; }
+    @keyframes entryGuideFloat { 0%, 100% { transform: translateY(0); opacity: 0.7; } 50% { transform: translateY(5px); opacity: 1; } }
+    
+    .entry-fold-flap { position: absolute; left: 0; right: 0; top: 0; height: 43%; background: rgba(255, 255, 255, 0.985); border: 1px solid rgba(44, 44, 44, 0.048); border-bottom-color: rgba(44, 44, 44, 0.072); transform-origin: top center; z-index: 3; display: flex; align-items: center; justify-content: center; box-shadow: 0 18px 34px rgba(44, 44, 44, 0.10), 0 6px 12px rgba(44, 44, 44, 0.08); backface-visibility: hidden; transform: rotateX(calc(var(--entry-open, 0) * -86deg)); transition: transform 1.35s, opacity 1.15s, box-shadow 1.35s; }
+    .entry-screen.opening .entry-fold-flap { transform: rotateX(-114deg); opacity: 0.95; box-shadow: 0 18px 30px rgba(44, 44, 44, 0.02); }
+    .entry-screen.opening .entry-fold-card { transform: translate(-50%, -50%) scale(1.018); opacity: 0; filter: drop-shadow(0 16px 30px rgba(44, 44, 44, 0.04)) blur(0.8px); }
+    .entry-screen.opening .entry-guide { opacity: 0; transform: translateY(10px); }
+
+    /* === 8. Media Queries === */
+    @media (max-width: 380px), (max-height: 700px) {
+      #profileModal .modal-sheet, #foodModal .modal-sheet, #timelineModal .modal-sheet { padding: 36px 22px 18px; }
+      #profileModal .profile-layout { padding-top: 28px; }
+      #profileModal .profile-summary { grid-template-columns: 84px minmax(0, 1fr); column-gap: 12px; padding: 0 2px; }
+      #profileModal .profile-photo-frame { width: 84px; height: auto; border-radius: 17px; }
+      #profileModal .profile-info-row { grid-template-columns: 44px minmax(0, 1fr); gap: 6px; }
+      #profileModal .profile-body { margin-top: 20px; padding: 17px 16px 20px; }
+      
+      #foodModal .food-scroll-box { padding: 12px 10px 16px; }
+      #foodModal .food-category-list { gap: 12px; }
+      #foodModal .food-category-head { min-height: 50px; padding: 12px 14px; }
+      #foodModal .food-category-item .food-place-list, #foodModal .food-category-item.open .food-place-list { padding: 8px 14px 15px; gap: 10px; }
+      #foodModal .food-place-main { grid-template-columns: 44px max-content minmax(0, 1fr); column-gap: 6px; }
+
+      #timelineModal .timeline-scroll-box { padding: 20px 16px; }
+      #timelineModal .timeline-line-list { gap: 11px; }
+      #timelineModal .timeline-line-list .timeline-item { grid-template-columns: 30px minmax(0,1fr); gap: 10px; }
+      #timelineModal .timeline-marker { width: 30px; height: 30px; flex-basis: 30px; font-size: 15px; }
+      #timelineModal .timeline-line-list .timeline-item::after { left: 14.5px; top: 30px; bottom: -11px; }
+      #timelineModal .timeline-head { grid-template-columns: 38px minmax(0,1fr); gap: 3px; }
+
+      .entry-fold-body { padding-bottom: 38px; }
+      .guide-wrap { height: 360px; min-height: 360px; }
+      .guide-content { height: 262px; min-height: 262px; max-height: 262px; }
+      .closing-actions { margin-top: 38px; }
+      .music-toggle { right: 14px; bottom: 16px; min-height: 34px; padding: 7px 12px 7px 11px; }
+    }
+  </style>
+</head>
+
+<body class="entry-locked">
+  <audio id="bgm" src="bgm.mp3" preload="auto" loop></audio>
+  <button class="music-toggle" id="musicToggle" type="button" onclick="toggleBgm()" aria-pressed="false" aria-label="배경음악 끄기">
+    <span class="music-toggle-icon" aria-hidden="true">♪</span>
+    <span id="musicToggleText">음악 끄기</span>
+  </button>
+
+  <div class="entry-screen" id="entryScreen">
+    <div class="entry-card">
+      <button class="entry-open-button" type="button" aria-label="초대장 열기">
+        <div class="entry-fold-card" aria-hidden="true">
+          <div class="entry-card-base"></div>
+          <div class="entry-fold-body">
+            <div class="entry-guide">
+              <span class="entry-guide-text">살짝 밀어 청첩장을 열어주세요</span>
+            </div>
+          </div>
+          <div class="entry-fold-flap">
+            <div class="entry-flap-title">초대합니다</div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro-section scroll-reveal">
+      <div class="opening-icon reveal-child" style="--delay: 0ms;">💌</div>
+      <h2 class="title reveal-child" style="--delay: 120ms;">마음을 담아 초대드립니다</h2>
+      <p class="desc intro-message reveal-child" style="--delay: 240ms;">
+        9년 동안 함께 쌓아온 수많은 기억들 위에<br />
+        오래 꺼내 보고 싶은 하루를 남기려 합니다.<br /><br />
+        저희에게 행복한 기억으로 남을 10월 3일,<br />
+        그날의 시간과 장면 속에<br />
+        함께 웃고 있는 여러분이 계셨으면 좋겠습니다.
+      </p>
+
+      <div class="couple-grid reveal-child" style="--delay: 360ms;">
+        <div class="couple-card">
+          <div class="couple-family">김상두 · 윤옥례의 아들</div>
+          <div class="couple-name">김창수</div>
+          <button class="btn-rect small" onclick="openProfileModal('groom')">신랑을 소개합니다</button>
+        </div>
+
+        <div class="couple-card">
+          <div class="couple-family">최동영 · 박지원의 딸</div>
+          <div class="couple-name">최보규</div>
+          <button class="btn-rect small" onclick="openProfileModal('bride')">신부를 소개합니다</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">예식일자</div>
+      <div class="date-line reveal-child" style="--delay: 100ms;">2026년 10월 3일 토요일 오후 1시</div>
+
+      <div class="date-card reveal-child" style="--delay: 220ms;">
+        <div class="calendar-box">
+          <div class="calendar-grid">
+            <div class="day-name sunday-name">일</div>
+            <div class="day-name">월</div>
+            <div class="day-name">화</div>
+            <div class="day-name">수</div>
+            <div class="day-name">목</div>
+            <div class="day-name">금</div>
+            <div class="day-name saturday-name">토</div>
+
+            <div class="empty">.</div>
+            <div class="empty">.</div>
+            <div class="empty">.</div>
+            <div class="empty">.</div>
+            <div>1</div>
+            <div>2</div>
+            <div class="wedding-day">3</div>
+
+            <div class="calendar-sunday">4</div><div class="calendar-holiday">5</div><div>6</div><div>7</div><div>8</div><div class="calendar-holiday">9</div><div class="calendar-saturday">10</div>
+            <div class="calendar-sunday">11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div class="calendar-saturday">17</div>
+            <div class="calendar-sunday">18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div class="calendar-saturday">24</div>
+            <div class="calendar-sunday">25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div class="calendar-saturday">31</div>
+          </div>
+        </div>
+
+        <div class="date-divider"></div>
+
+        <div class="wedding-count-text" id="weddingCountText">
+          우리의 결혼식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.
+        </div>
+      </div>
+    </section>
+
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">예식장소</div>
+      <div class="location-address reveal-child" style="--delay: 180ms;">호텔농심 야외정원</div>
+      <div class="location-detail reveal-child" style="--delay: 260ms;">
+        부산시 동래구 금강공원로 23번길 20
+      </div>
+
+      <div class="map-box reveal-child" style="--delay: 360ms;">
+        <div class="map-image" id="map"></div>
+        <div class="map-links">
+          <a class="map-link" href="https://map.naver.com/p/search/%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">네이버</a>
+          <a class="map-link" href="https://www.tmap.co.kr/search?searchKeyword=%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">티맵</a>
+          <a class="map-link" href="https://map.kakao.com/link/search/%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">카카오</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">예식안내</div>
+
+      <div class="guide-wrap reveal-child" style="--delay: 220ms;">
+        <div class="guide-tabs">
+          <button class="guide-tab active" onclick="switchGuide('flower', this)" data-label="화환안내" aria-label="화환안내">화환안내</button>
+          <button class="guide-tab" onclick="switchGuide('meal', this)" data-label="식사안내" aria-label="식사안내">식사안내</button>
+          <button class="guide-tab" onclick="switchGuide('rain', this)" data-label="우천안내" aria-label="우천안내">우천안내</button>
+        </div>
+
+        <div class="guide-content" id="guide-meal">
+          <div class="guide-main-copy">
+            식사는 예식 후 지정 공간에서 진행됩니다.<br />
+            현장 안내에 따라 이동해 주세요.<br /><br />
+            <span class="guide-ending-emoji">🍽️</span>
+          </div>
+        </div>
+
+        <div class="guide-content" id="guide-rain">
+          <div class="guide-main-copy">
+            가을 하늘 아래에서 진행되는 야외예식입니다.<br />
+            우천 시에는 호텔 본관에서 예식이 진행됩니다.<br /><br />
+            <span class="guide-ending-emoji">☀️</span>
+          </div>
+        </div>
+
+        <div class="guide-content active" id="guide-flower">
+          <div class="guide-main-copy">
+            <span class="guide-red-line">화환은 정중히 사양합니다.</span><br />
+            <span class="guide-black-line">축하의 마음만으로도 감사합니다.</span><br /><br />
+            <span class="guide-ending-emoji">🌼</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="food-section scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">그리고,</div>
+      <h2 class="title reveal-child" style="--delay: 180ms;">보규❤️창수의 맛집 지도</h2>
+      <p class="desc reveal-child" style="--delay: 360ms;">
+        부산까지 먼 걸음을 해주신 감사한 분들을 위해<br />
+        나누고 싶은 부산의 맛집 목록을 준비했습니다.
+      </p>
+
+      <div class="food-center-btn reveal-child" style="--delay: 520ms;">
+        <button class="btn-rect" onclick="openFoodModal()">맛집 목록 둘러보기</button>
+      </div>
+    </section>
+
+    <section class="gallery-section scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">사진첩</div>
+      <h2 class="title reveal-child" style="--delay: 180ms;">우리의 장면들</h2>
+      <div class="gallery-subtitle reveal-child" style="--delay: 280ms;">
+        <span class="gallery-subtitle-text">
+          함께한&nbsp;<strong id="meetDayCount">0000</strong>일의 시간
+        </span>
+        <button class="timeline-open-btn" onclick="openTimelineModal()" aria-label="연애 타임라인 보기"></button>
+      </div>
+
+      <div class="gallery-shell reveal-child" style="--delay: 420ms;">
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 01" onclick="openViewer(0)">
+              <img src="photo01.jpg" alt="사진 01" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 02" onclick="openViewer(1)">
+              <img src="photo02.jpg" alt="사진 02" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 03" onclick="openViewer(2)">
+              <img src="photo03.jpg" alt="사진 03" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 04" onclick="openViewer(3)">
+              <img src="photo05.jpg" alt="사진 05" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 05" onclick="openViewer(4)">
+              <img src="photo04.jpg" alt="사진 04" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 06" onclick="openViewer(5)">
+              <img src="photo07.jpg" alt="사진 07" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 07" onclick="openViewer(6)">
+              <img src="photo06.jpg" alt="사진 06" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 08" onclick="openViewer(7)">
+              <img src="photo08.jpg" alt="사진 08" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-more-cell" id="galleryMoreWrap">
+            <div class="gallery-more" onclick="showMorePhotos()" role="button" aria-label="사진 더보기">
+              <span>더보기</span>
+            </div>
+          </div>
+          <div class="gallery-item hidden extra-photo gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 09" onclick="openViewer(8)">
+              <img src="photo09.jpg" alt="사진 09" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item hidden extra-photo gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 10" onclick="openViewer(9)">
+              <img src="photo10.jpg" alt="사진 10" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item hidden extra-photo gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 11" onclick="openViewer(10)">
+              <img src="photo11.jpg" alt="사진 11" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item hidden extra-photo gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 12" onclick="openViewer(11)">
+              <img src="photo12.jpg" alt="사진 12" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item hidden extra-photo gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 13" onclick="openViewer(12)">
+              <img src="photo13.jpg" alt="사진 13" onerror="handleImageError(this)" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-shell reveal-child" style="--delay: 280ms;">
+        <div class="video-box fallback-box" data-fallback="영상">
+          <video playsinline muted preload="metadata" poster="wedding_film_poster.jpg" onerror="handleMediaError(this)">
+            <source src="wedding_film.mp4" type="video/mp4" />
+          </video>
+          <button class="video-play-overlay" type="button" aria-label="영상 재생">
+            <span>영상 재생하기</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="scroll-reveal">
+      <div class="kicker reveal-child" style="--delay: 0ms;">계좌안내</div>
+      <h2 class="title reveal-child" style="--delay: 180ms;">마음 전하실 곳</h2>
+      <div class="account-subtitle reveal-child" style="--delay: 320ms;">
+        보내주시는 마음은 소중히 받겠습니다.
+      </div>
+
+      <div class="account-wrap reveal-child" style="--delay: 480ms;">
+        <div class="account-tabs">
+          <button class="account-tab" onclick="toggleAccountGroup('groom', this)">신랑측</button>
+          <button class="account-tab active" onclick="toggleAccountGroup('bride', this)">신부측</button>
+        </div>
+
+        <div class="account-panel" id="account-groom">
+          <div class="account-box">
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">신랑</span>
+                  <strong class="account-name">김창수</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01082954008" aria-label="전화">📞</a>
+                  <a class="icon-btn" href="sms:01082954008" aria-label="문자">💬</a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">케이뱅크</div>
+                <div class="account-number">100-207-164233</div>
+                <button class="copy-text-btn" onclick="copyText('케이뱅크 100-207-164233')">복사</button>
+              </div>
+            </div>
+
+            <div class="account-divider"></div>
+
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">아버지</span>
+                  <strong class="account-name">김상두</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01046274008" aria-label="전화">📞</a>
+                  <a class="icon-btn" href="sms:01046274008" aria-label="문자">💬</a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">농협은행</div>
+                <div class="account-number">627-01-058571</div>
+                <button class="copy-text-btn" onclick="copyText('농협은행 627-01-058571')">복사</button>
+              </div>
+            </div>
+
+            <div class="account-divider"></div>
+
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">어머니</span>
+                  <strong class="account-name">윤옥례</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01036314008" aria-label="전화">📞</a>
+                  <a class="icon-btn" href="sms:01036314008" aria-label="문자">💬</a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">농협은행</div>
+                <div class="account-number">175511-52-153342</div>
+                <button class="copy-text-btn" onclick="copyText('농협은행 175511-52-153342')">복사</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="account-panel active" id="account-bride">
+          <div class="account-box">
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">신부</span>
+                  <strong class="account-name">최보규</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01028407468" aria-label="전화">📞</a>
+                  <a class="icon-btn" href="sms:01028407468" aria-label="문자">💬</a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">케이뱅크</div>
+                <div class="account-number">100-132-900130</div>
+                <button class="copy-text-btn" onclick="copyText('케이뱅크 100-132-900130')">복사</button>
+              </div>
+            </div>
+
+            <div class="account-divider"></div>
+
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">아버지</span>
+                  <strong class="account-name">최동영</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01035597468" aria-label="전화">📞</a>
+                  <a class="icon-btn" href="sms:01035597468" aria-label="문자">💬</a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">국민은행</div>
+                <div class="account-number">671-24-0047-235</div>
+                <button class="copy-text-btn" onclick="copyText('국민은행 671-24-0047-235')">복사</button>
+              </div>
+            </div>
+
+            <div class="account-divider"></div>
+
+            <div class="account-person-row">
+              <div class="account-person-head">
+                <div>
+                  <span class="account-role">어머니</span>
+                  <strong class="account-name">박지원</strong>
+                </div>
+                <div class="person-actions">
+                  <a class="icon-btn" href="tel:01035937468" aria-label="전화">📞</a>
+                  <a class="icon-btn" href="sms:01035937468" aria-label="문자">💬</a>
+                </div>
+              </div>
+              <div class="account-number-row">
+                <div class="bank-name">국민은행</div>
+                <div class="account-number">667901-04-072940</div>
+                <button class="copy-text-btn" onclick="copyText('국민은행 667901-04-072940')">복사</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing scroll-reveal">
+      <div class="closing-heart reveal-child" style="--delay: 0ms;">❤️</div>
+      <div class="closing-text reveal-child" style="--delay: 120ms;">
+        한 아이를 키우는 데에는 온 마을이 필요하다고 합니다.<br />
+        지금까지 저희의 따뜻한 마을이 되어주셔서 감사합니다.<br />
+      </div>
+
+      <div class="closing-actions reveal-child" style="--delay: 240ms;">
+        <button class="share-action-btn" type="button" onclick="shareKakaoInvite()">카카오톡 공유하기</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal" id="profileModal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeProfileModal()"></div>
+    <div class="modal-sheet">
+      <button class="close-x" onclick="closeProfileModal()">×</button>
+      <div class="profile-layout">
+        <div class="profile-content">
+          <div class="profile-summary">
+            <div class="profile-avatar profile-photo-frame" id="profileAvatar">
+              <img id="profilePhoto" class="profile-photo" src="" alt="프로필 사진" onerror="handleProfilePhotoError(this)" />
+              <span class="profile-photo-placeholder" aria-hidden="true">사진</span>
+            </div>
+            <div class="profile-info" id="profileInfoArea"></div>
+          </div>
+          <div class="profile-body" id="profileEssayBody"></div>
+        </div>
+        <div class="modal-bottom-btn">
+          <button class="btn-rect small no-plus" onclick="closeProfileModal()">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Food Modal -->
+  <div class="modal" id="foodModal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeFoodModal()"></div>
+    <div class="modal-sheet">
+      <button class="close-x" onclick="closeFoodModal()">×</button>
+      <div class="food-modal-content">
+        <div class="food-modal-desc">
+          저희가 좋아하는 식당을 소개합니다.<br />
+          즐거운 부산 여행 되세요!
+        </div>
+        <div class="food-scroll-box">
+          <div class="food-basic-list food-category-list">
+            <div class="food-basic-item food-category-item">
+              <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="true">
+                <span class="food-category-title">가볍게 들리기 좋은 카페</span>
+                <span class="food-category-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="food-place-list">
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">온천장</span><strong class="food-name">모모스커피 본점</strong><em class="food-comment">부산의 자랑, 세계적 커피</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">동래</span><strong class="food-name">수안커피컴퍼니</strong><em class="food-comment">깔끔한 드립커피 맛집</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">동래</span><strong class="food-name">레이지모먼트</strong><em class="food-comment">아늑한 공간과 커피, 케이크</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">동래</span><strong class="food-name">쿠루미과자점</strong><em class="food-comment">부산 빵지순례 필수 코스</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">광안리</span><strong class="food-name">바닷마을과자점</strong><em class="food-comment">제철재료 가득한 과자점</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">기장</span><strong class="food-name">칠암사계</strong><em class="food-comment">소금빵 오픈런 10시 시작</em></div></div>
+              </div>
+            </div>
+
+            <div class="food-basic-item food-category-item">
+              <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="false">
+                <span class="food-category-title">우리가 자주 찾는 부산 맛집</span>
+                <span class="food-category-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="food-place-list">
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">동래</span><strong class="food-name">주문진막국수</strong><em class="food-comment">사직구장의 대장 맛집</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">동래</span><strong class="food-name">국제밀면</strong><em class="food-comment">보규 기준 부산 밀면 근본</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">동래</span><strong class="food-name">신가네떡볶이</strong><em class="food-comment">부산식 떡볶이는 여기서!</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">해운대</span><strong class="food-name">기와집대구탕</strong><em class="food-comment">술안주로도 해장으로도 추천</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">해운대</span><strong class="food-name">맛찬들왕소금구이</strong><em class="food-comment">부산가족외식=맛찬들</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">기장</span><strong class="food-name">전산가든</strong><em class="food-comment">아구찜, 산초방아를 곁들인</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">사상</span><strong class="food-name">할매재첩국집</strong><em class="food-comment">장인어른이 물려준 신랑 맛집</em></div></div>
+              </div>
+            </div>
+
+            <div class="food-basic-item food-category-item">
+              <button class="food-category-head" type="button" onclick="toggleFoodCategory(this)" aria-expanded="false">
+                <span class="food-category-title">부산에 왔다면 꼭 들러볼 곳</span>
+                <span class="food-category-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="food-place-list">
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">부산역</span><strong class="food-name">신발원</strong><em class="food-comment">부산 최고의 중식 만두</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">부산대</span><strong class="food-name">톤쇼우</strong><em class="food-comment">대기 4시간도 가치 있는 돈카츠</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">광안리</span><strong class="food-name">수변최고돼지국밥</strong><em class="food-comment">고소한 항정살 가득</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">해운대</span><strong class="food-name">금수복국</strong><em class="food-comment">깔끔하고 시원한 지리 복국</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">전체</span><strong class="food-name">이재모피자</strong><em class="food-comment">본점 오픈런 또는 배달 추천!</em></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-bottom-btn">
+          <button class="btn-rect small no-plus" onclick="closeFoodModal()">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <!-- Timeline Modal -->
+  <div class="modal" id="timelineModal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeTimelineModal()"></div>
+    <div class="modal-sheet">
+      <button class="close-x" onclick="closeTimelineModal()">×</button>
+      <div class="timeline-modal-content">
+        <div class="timeline-modal-title">처음 만난 날부터, <strong id="timelineDayCount">0000</strong>일의 이야기</div>
+        <div class="timeline-scroll-box">
+          <div class="timeline-list timeline-line-list">
+            <div class="timeline-item">
+              <div class="timeline-marker" aria-hidden="true">⚽</div>
+              <div class="timeline-text">
+                <div class="timeline-head">
+                  <span class="timeline-date">2017</span>
+                  <span class="timeline-title">처음 인사를 나눈 날</span>
+                </div>
+                <div class="timeline-desc">보규의 첫 대학 행사였던 동아리 개강총회 날, 우리는 우연히 같은 테이블에 앉았습니다.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker" aria-hidden="true">❤️</div>
+              <div class="timeline-text">
+                <div class="timeline-head">
+                  <span class="timeline-date">2018</span>
+                  <span class="timeline-title">우리라는 이름의 시작</span>
+                </div>
+                <div class="timeline-desc">익숙했던 마음을 조금 다르게 바라본 순간, 친구였던 우리는 연인이 되었습니다.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker" aria-hidden="true">✈️</div>
+              <div class="timeline-text">
+                <div class="timeline-head">
+                  <span class="timeline-date">2022</span>
+                  <span class="timeline-title">한국과 독일 사이</span>
+                </div>
+                <div class="timeline-desc">여덟 시간의 시차에도 매일 이어진 영상통화로 우리의 핸드폰은 독일 햇살보다 뜨거웠습니다.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker" aria-hidden="true">🎓</div>
+              <div class="timeline-text">
+                <div class="timeline-head">
+                  <span class="timeline-date">2023</span>
+                  <span class="timeline-title">단단해지는 마음</span>
+                </div>
+                <div class="timeline-desc">치열했던 대학원 시절을 함께 견디며, 힘든 순간에도 곁을 지키고 싶은 사람임을 알게 되었습니다.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker" aria-hidden="true">💍</div>
+              <div class="timeline-text">
+                <div class="timeline-head">
+                  <span class="timeline-date">2025</span>
+                  <span class="timeline-title">발리에서의 프러포즈</span>
+                </div>
+                <div class="timeline-desc">한국에서부터 비밀리에 준비한 창수의 마음이 발리에서 보규에게 닿았습니다. 당연히 YES!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-bottom-btn">
+          <button class="btn-rect small no-plus" onclick="closeTimelineModal()">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="modal" id="viewerModal" aria-hidden="true">
+    <div class="modal-backdrop" onclick="closeViewer()"></div>
+    <div class="viewer-sheet">
+      <button class="viewer-close" onclick="closeViewer()">×</button>
+      <div class="viewer-counter" id="viewerCounter">1 / 13</div>
+      <div class="viewer-image-wrap" id="viewerSwipeArea">
+        <button class="viewer-nav viewer-prev" onclick="moveViewer(-1)">‹</button>
+        <img id="viewerImage" src="" alt="전체화면 사진" />
+        <button class="viewer-nav viewer-next" onclick="moveViewer(1)">›</button>
+      </div>
+      <div class="viewer-caption" id="viewerCaption" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">복사되었습니다.</div>
+
+  <script>
+    let invitationEntered = false;
+    let entryTouchStartY = 0;
+    let entryPullDistance = 0;
+    let bgmUserPaused = false;
+    let audioUnlocked = false;
+    
+    function unlockAudioContext() {
+      if (audioUnlocked) return;
+      audioUnlocked = true;
+  
+      const bgm = document.getElementById("bgm");
+      if (!bgm) return;
+
+      const playPromise = bgm.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          if (!invitationEntered) {
+            bgm.pause();
+          } else if (!bgmUserPaused) {
+            updateMusicToggle();
+          }
+        }).catch(() => {
+          audioUnlocked = false; 
+        });
+      }
+    }
+
+    function setEntryOpenProgress(progress) {
+      const entryScreen = document.getElementById("entryScreen");
+      if (!entryScreen) return;
+      const safeProgress = Math.max(0, Math.min(progress, 1));
+      entryScreen.style.setProperty("--entry-open", safeProgress.toFixed(3));
+    }
+
+    function updateEntryPull(distance) {
+      if (invitationEntered) return;
+      entryPullDistance = Math.max(0, Math.abs(distance));
+      const progress = Math.min(entryPullDistance / 160, 1);
+      setEntryOpenProgress(progress);
+      if (progress >= 0.28) enterInvitation();
+    }
+
+    function resetEntryPull() {
+      if (invitationEntered) return;
+      entryPullDistance = 0;
+      setEntryOpenProgress(0);
+    }
+
+    function setupEntryScrollGate() {
+      const entryScreen = document.getElementById("entryScreen");
+      if (!entryScreen) return;
+
+      window.addEventListener("touchstart", unlockAudioContext, { once: true, passive: true });
+      window.addEventListener("click", unlockAudioContext, { once: true, passive: true });
+
+      entryScreen.addEventListener("click", () => {
+        if (!invitationEntered) enterInvitation();
+      });
+
+      entryScreen.addEventListener("wheel", (e) => {
+        if (invitationEntered) return;
+        e.preventDefault();
+        updateEntryPull(entryPullDistance + Math.abs(e.deltaY));
+      }, { passive: false });
+
+      entryScreen.addEventListener("touchstart", (e) => {
+        if (invitationEntered || !e.touches.length) return;
+        entryTouchStartY = e.touches[0].clientY;
+        entryPullDistance = 0;
+      }, { passive: true });
+
+      entryScreen.addEventListener("touchmove", (e) => {
+        if (invitationEntered || !e.touches.length) return;
+        const distance = e.touches[0].clientY - entryTouchStartY;
+        e.preventDefault();
+        updateEntryPull(distance);
+      }, { passive: false });
+
+      entryScreen.addEventListener("touchend", () => {
+        if (!invitationEntered) enterInvitation();
+      }, { passive: true });
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      const bgm = document.getElementById("bgm");
+      if (!bgm) return;
+
+      if (document.hidden) {
+        bgm.pause();
+      } else {
+        if (invitationEntered && !bgmUserPaused) {
+          playBgm();
+        }
+      }
+    });
+
+    function enterInvitation() {
+      if (invitationEntered) return;
+      invitationEntered = true;
+
+      const entryScreen = document.getElementById("entryScreen");
+      const bgm = document.getElementById("bgm");
+
+      document.body.classList.remove("entry-locked");
+      document.body.classList.add("music-control-visible");
+
+      if (entryScreen) {
+        entryScreen.style.setProperty("--entry-open", "1");
+        entryScreen.classList.add("opening");
+
+        window.setTimeout(() => {
+          entryScreen.classList.add("hide");
+        }, 1050);
+
+        window.setTimeout(() => {
+          entryScreen.style.display = "none";
+        }, 1800);
+      }
+
+      if (bgm) {
+        bgmUserPaused = false;
+        playBgm();
+      }
+    }
+
+    function playBgm() {
+      const bgm = document.getElementById("bgm");
+      if (!bgm || bgmUserPaused) return Promise.resolve(false);
+
+      bgm.volume = 0.45;
+      return bgm.play()
+        .then(() => {
+          updateMusicToggle();
+          return true;
+        })
+        .catch(() => {
+          updateMusicToggle();
+          return false;
+        });
+    }
+
+    function keepBgmPlaying() {
+      if (bgmUserPaused) return;
+      playBgm();
+      window.setTimeout(playBgm, 250);
+      window.setTimeout(playBgm, 900);
+    }
+
+    function updateMusicToggle() {
+      const bgm = document.getElementById("bgm");
+      const toggle = document.getElementById("musicToggle");
+      const text = document.getElementById("musicToggleText");
+      if (!bgm || !toggle || !text) return;
+
+      const isOff = bgmUserPaused || bgm.paused;
+      toggle.classList.toggle("is-off", isOff);
+      toggle.setAttribute("aria-pressed", isOff ? "true" : "false");
+      toggle.setAttribute("aria-label", isOff ? "배경음악 켜기" : "배경음악 끄기");
+      text.textContent = isOff ? "음악 켜기" : "음악 끄기";
+    }
+
+    function toggleBgm() {
+      const bgm = document.getElementById("bgm");
+      if (!bgm) return;
+
+      if (bgmUserPaused || bgm.paused) {
+        bgmUserPaused = false;
+        playBgm().then((played) => {
+          if (!played) showCopyToast("음악을 재생하지 못했습니다.");
+        });
+      } else {
+        bgmUserPaused = true;
+        bgm.pause();
+        updateMusicToggle();
+      }
+    }
+
+    const WEDDING_SHARE_URL = "https://1003.highglossyworks.life";
+    const KAKAO_JAVASCRIPT_KEY = "acb700bb1f19c18ab35d6e5b38b402f9";
+
+    function initKakaoShareSdk() {
+      if (!window.Kakao) return false;
+
+      if (!Kakao.isInitialized()) {
+        Kakao.init(KAKAO_JAVASCRIPT_KEY);
+      }
+
+      return true;
+    }
+
+    function copyInviteLink() {
+      copyText(WEDDING_SHARE_URL);
+    }
+
+    function shareKakaoInvite() {
+      if (!initKakaoShareSdk()) {
+        showCopyToast("카카오톡 공유를 불러오지 못했습니다.");
+        return;
+      }
+
+      Kakao.Share.sendDefault({
+        objectType: "feed",
+        content: {
+          title: "💌 최보규·김창수의 결혼식에 초대합니다",
+          description: "2026년 10월 3일 토요일 오후 1시\n호텔농심 야외정원",
+          imageUrl: WEDDING_SHARE_URL + "/photo01.jpg",
+          link: {
+            mobileWebUrl: WEDDING_SHARE_URL,
+            webUrl: WEDDING_SHARE_URL
+          }
+        },
+        buttons: [
+          {
+            title: "청첩장 보기",
+            link: {
+              mobileWebUrl: WEDDING_SHARE_URL,
+              webUrl: WEDDING_SHARE_URL
+            }
+          }
+        ]
+      });
+    }
+
+    const VENUE_LOCATION = new naver.maps.LatLng(35.21951419444281, 129.08203204013648);
+
+    function initVenueMap() {
+      const map = new naver.maps.Map("map", {
+        center: VENUE_LOCATION,
+        zoom: 17,
+      });
+
+      new naver.maps.Marker({
+        position: VENUE_LOCATION,
+        map: map,
+      });
+    }
+
+    const MEET_DATE = "2018-10-13";
+    const WEDDING_DATE = "2026-10-03";
+
+    let weddingCountAnimated = false;
+    let meetCountAnimated = false;
+
+    function getDayDiffs() {
+      const meet = new Date(MEET_DATE);
+      const wedding = new Date(WEDDING_DATE);
+      const today = new Date();
+
+      meet.setHours(0, 0, 0, 0);
+      wedding.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      const oneDay = 1000 * 60 * 60 * 24;
+
+      return {
+        meetDiff: Math.floor((today - meet) / oneDay) + 1,
+        weddingDiff: Math.ceil((wedding - today) / oneDay)
+      };
+    }
+
+    function animateNumber(el, target, duration = 1500, padLength = 2) {
+      if (!el) return;
+
+      const safeTarget = Math.max(Number(target) || 0, 0);
+      const startTime = performance.now();
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function frame(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = easeOutCubic(progress);
+        const current = Math.round(safeTarget * eased);
+
+        el.textContent = String(current).padStart(padLength, "0");
+
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          el.textContent = String(safeTarget).padStart(padLength, "0");
+        }
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    function startWeddingCountAnimation() {
+      if (weddingCountAnimated) return;
+      weddingCountAnimated = true;
+
+      const { weddingDiff } = getDayDiffs();
+      const weddingCountText = document.getElementById("weddingCountText");
+      if (!weddingCountText) return;
+
+      if (weddingDiff === 0) {
+        weddingCountText.classList.add("wedding-today");
+        weddingCountText.textContent = "오늘 우리 결혼합니다!";
+      } else {
+        weddingCountText.classList.remove("wedding-today");
+        weddingCountText.innerHTML = '우리의 결혼식까지 <strong id="weddingDayCount">00</strong>일 남았습니다.';
+        animateNumber(document.getElementById("weddingDayCount"), Math.max(weddingDiff, 0), 1400, 2);
+      }
+    }
+
+    function startMeetCountAnimation() {
+      if (meetCountAnimated) return;
+      meetCountAnimated = true;
+
+      const { meetDiff } = getDayDiffs();
+      animateNumber(document.getElementById("meetDayCount"), meetDiff, 1500, 4);
+      animateNumber(document.getElementById("timelineDayCount"), meetDiff, 1500, 4);
+    }
+
+    function updateDayCounts() {
+      weddingCountAnimated = false;
+      meetCountAnimated = false;
+    }
+
+    function handleImageError(img) {
+      img.style.display = "none";
+      img.parentElement.classList.add("empty");
+    }
+
+    function handleMediaError(media) {
+      media.style.display = "none";
+      media.parentElement.classList.add("empty");
+    }
+
+    function updateModalViewportVars() {
+      const root = document.documentElement;
+      if (window.visualViewport) {
+        root.style.setProperty("--modal-vh", window.visualViewport.height + "px");
+        root.style.setProperty("--modal-vtop", window.visualViewport.offsetTop + "px");
+      } else {
+        root.style.setProperty("--modal-vh", window.innerHeight + "px");
+        root.style.setProperty("--modal-vtop", "0px");
+      }
+    }
+
+    let lockScrollY = 0;
+    
+    function openModalBase(id) {
+      updateModalViewportVars();
+      if (!document.body.classList.contains("modal-open")) {
+        lockScrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${lockScrollY}px`;
+        document.body.style.width = '100%';
+      }
+      
+      const modal = document.getElementById(id);
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      
+      document.body.classList.add("modal-open");
+    }
+
+    function closeModalBase(id) {
+      const modal = document.getElementById(id);
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      
+      const stillOpen = document.querySelector(".modal.show");
+      
+      if (!stillOpen) {
+        document.body.classList.remove("modal-open");
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, lockScrollY);
+
+        setTimeout(() => {
+          document.documentElement.style.scrollBehavior = '';
+        }, 0);
+      }
+    }
+
+    const profileData = {
+      groom: {
+        photo: "profile_groom.jpg",
+        photoAlt: "신랑 김창수 프로필 사진",
+        essayTitle: "",
+        info: `
+          <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">김창수</div></div>
+          <div class="profile-info-row"><div class="profile-label">생일</div><div class="profile-value">1992년 8월 27일</div></div>
+          <div class="profile-info-row"><div class="profile-label">출생</div><div class="profile-value">전라남도 광양시</div></div>
+          <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTJ(용의주도한 전략가)</div></div>
+          <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">부모님, 누나 2명</div></div>
+        `,
+        body: `박사. 강의. 신중. 과묵\n만\n반\n잘\n부`
+      },
+      bride: {
+        photo: "profile_bride.jpg",
+        photoAlt: "신부 최보규 프로필 사진",
+        essayTitle: "",
+        info: `
+          <div class="profile-info-row"><div class="profile-label">이름</div><div class="profile-value">최보규</div></div>
+          <div class="profile-info-row"><div class="profile-label">생일</div><div class="profile-value">1996년 8월 28일</div></div>
+          <div class="profile-info-row"><div class="profile-label">출생</div><div class="profile-value">부산광역시</div></div>
+          <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTP(객관적인 분석가)</div></div>
+          <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">부모님, 남동생</div></div>
+        `,
+        body: `유구한 역사와 전통에 빛나는 우리 대한국민은 3ㆍ1운동으로 건립된 대한민국임시정부의 법통과 불의에 항거한 4ㆍ19민주이념을 계승하고, 조국의 민주개혁과 평화적 통일의 사명에 입각하여 정의ㆍ인도와 동포애로써 민족의 단결을 공고히 하고, 모든 사회적 폐습과 불의를 타파하며, 자율과 조화를 바탕으로 자유민주적 기본질서를 더욱 확고히 하여 정치ㆍ경제ㆍ사회ㆍ문화의 모든 영역에 있어서 각인의 기회를 균등히 하고, 능력을 최고도로 발휘하게 하며, 자유와 권리에 따르는 책임과 의무를 완수하게 하여, 안으로는 국민생활의 균등한 향상을 기하고 밖으로는 항구적인 세계평화와 인류공영에 이바지함으로써 우리들과 우리들의 자손의 안전과 자유와 행복을 영원히 확보할 것을 다짐하면서 1948년 7월 12일에 제정되고 8차에 걸쳐 개정된 헌법을 이제 국회의 의결을 거쳐 국민투표에 의하여 개정한다.`
+      }
+    };
+
+    function handleProfilePhotoError(img) {
+      const frame = img.closest(".profile-photo-frame");
+      if (frame) frame.classList.add("is-empty");
+      img.removeAttribute("src");
+    }
+
+    function openProfileModal(type) {
+      const data = profileData[type];
+      const frame = document.getElementById("profileAvatar");
+      const photo = document.getElementById("profilePhoto");
+
+      if (frame && photo) {
+        frame.classList.remove("is-empty");
+        photo.alt = data.photoAlt || "프로필 사진";
+        photo.src = data.photo || "";
+        if (!data.photo) frame.classList.add("is-empty");
+      }
+
+      document.getElementById("profileInfoArea").innerHTML = data.info;
+      document.getElementById("profileEssayBody").textContent = data.body;
+      openModalBase("profileModal");
+    }
+
+    function closeProfileModal() {
+      closeModalBase("profileModal");
+    }
+
+    function openFoodModal() {
+      openModalBase("foodModal");
+    }
+
+    function closeFoodModal() {
+      closeModalBase("foodModal");
+    }
+
+    function openTimelineModal() {
+      openModalBase("timelineModal");
+    }
+
+    function closeTimelineModal() {
+      closeModalBase("timelineModal");
+    }
+
+    function switchGuide(type, btn) {
+      document.querySelectorAll(".guide-tab").forEach(tab => {
+        tab.classList.remove("active", "is-emoji");
+        tab.textContent = tab.dataset.label || tab.textContent;
+      });
+      document.querySelectorAll(".guide-content").forEach(panel => panel.classList.remove("active"));
+
+      btn.classList.add("active");
+      btn.textContent = btn.dataset.label || btn.textContent;
+      document.getElementById("guide-" + type).classList.add("active");
+    }
+
+    function initGuideTabs() {
+      document.querySelectorAll(".guide-tab").forEach(tab => {
+        tab.classList.remove("is-emoji");
+        tab.textContent = tab.dataset.label || tab.textContent;
+      });
+    }
+
+    function showMorePhotos() {
+      openViewer(8);
+    }
+
+    const galleryImages = [
+      { src: "photo01.jpg", caption: "" },
+      { src: "photo02.jpg", caption: "" },
+      { src: "photo03.jpg", caption: "" },
+      { src: "photo05.jpg", caption: "" },
+      { src: "photo04.jpg", caption: "" },
+      { src: "photo07.jpg", caption: "" },
+      { src: "photo06.jpg", caption: "" },
+      { src: "photo08.jpg", caption: "" },
+      { src: "photo09.jpg", caption: "" },
+      { src: "photo10.jpg", caption: "" },
+      { src: "photo11.jpg", caption: "" },
+      { src: "photo12.jpg", caption: "" },
+      { src: "photo13.jpg", caption: "" }
+    ];
+
+    let currentViewerIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function openViewer(index) {
+      currentViewerIndex = index;
+      renderViewer();
+      openModalBase("viewerModal");
+    }
+
+    function closeViewer() {
+      closeModalBase("viewerModal");
+    }
+
+    function moveViewer(step) {
+      currentViewerIndex += step;
+      if (currentViewerIndex < 0) currentViewerIndex = galleryImages.length - 1;
+      if (currentViewerIndex >= galleryImages.length) currentViewerIndex = 0;
+      renderViewer();
+    }
+
+    function renderViewer() {
+      const image = galleryImages[currentViewerIndex];
+      resetViewerZoom();
+      document.getElementById("viewerImage").src = image.src;
+      const viewerCaption = document.getElementById("viewerCaption");
+      if (viewerCaption) viewerCaption.textContent = image.caption || "";
+      const counter = document.getElementById("viewerCounter");
+      if (counter) counter.textContent = (currentViewerIndex + 1) + " / " + galleryImages.length;
+    }
+
+    function resetViewerZoom() {
+      viewerScale = 1;
+      viewerTranslateX = 0;
+      viewerTranslateY = 0;
+      applyViewerTransform();
+    }
+
+    let viewerScale = 1;
+    let viewerTranslateX = 0;
+    let viewerTranslateY = 0;
+
+    function applyViewerTransform() {
+      const img = document.getElementById("viewerImage");
+      if (!img) return;
+      img.style.transform = "none";
+    }
+
+    function setupViewerSwipe() {
+      const swipeArea = document.getElementById("viewerSwipeArea");
+      if (!swipeArea) return;
+
+      swipeArea.addEventListener("touchstart", (e) => {
+        if (e.touches.length !== 1) return;
+        touchStartX = e.changedTouches[0].screenX;
+        touchEndX = touchStartX;
+      }, { passive: true });
+
+      swipeArea.addEventListener("touchmove", (e) => {
+        if (e.touches.length > 1) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      swipeArea.addEventListener("touchend", (e) => {
+        if (!e.changedTouches.length) return;
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+      }, { passive: true });
+    }
+
+    function handleSwipeGesture() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) < 40) return;
+
+      if (diff < 0) {
+        moveViewer(1);
+      } else {
+        moveViewer(-1);
+      }
+    }
+
+    function toggleAccountGroup(type, btn) {
+      const targetPanel = document.getElementById("account-" + type);
+      const isAlreadyOpen = targetPanel.classList.contains("active");
+
+      document.querySelectorAll(".account-tab").forEach(tab => tab.classList.remove("active"));
+      document.querySelectorAll(".account-panel").forEach(panel => panel.classList.remove("active"));
+
+      if (!isAlreadyOpen) {
+        btn.classList.add("active");
+        targetPanel.classList.add("active");
+      }
+    }
+
+    function showCopyToast(message) {
+      const toast = document.getElementById("copyToast");
+      if (!toast) return;
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      window.clearTimeout(showCopyToast.timer);
+      showCopyToast.timer = window.setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1600);
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => showCopyToast("복사되었습니다."))
+        .catch(() => showCopyToast("복사에 실패했습니다."));
+    }
+
+    function getGuideOrder() {
+      return ["flower", "meal", "rain"];
+    }
+
+    function setGuideByType(type) {
+      const tab = document.querySelector('.guide-tab[onclick*="' + type + '"]');
+      if (tab) switchGuide(type, tab);
+    }
+
+    function setupGuideSwipe() {
+      const guideWrap = document.querySelector(".guide-wrap");
+      if (!guideWrap) return;
+
+      let guideStartX = 0;
+      let guideStartY = 0;
+
+      guideWrap.addEventListener("touchstart", (e) => {
+        guideStartX = e.changedTouches[0].screenX;
+        guideStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      guideWrap.addEventListener("touchend", (e) => {
+        const endX = e.changedTouches[0].screenX;
+        const endY = e.changedTouches[0].screenY;
+        const diffX = endX - guideStartX;
+        const diffY = endY - guideStartY;
+
+        if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY) * 1.3) return;
+
+        const order = getGuideOrder();
+        const activePanel = document.querySelector(".guide-content.active");
+        if (!activePanel) return;
+
+        const currentType = activePanel.id.replace("guide-", "");
+        const currentIndex = order.indexOf(currentType);
+        if (currentIndex === -1) return;
+
+        const nextIndex = diffX < 0
+          ? Math.min(currentIndex + 1, order.length - 1)
+          : Math.max(currentIndex - 1, 0);
+
+        if (nextIndex !== currentIndex) setGuideByType(order[nextIndex]);
+      }, { passive: true });
+    }
+
+    function toggleFoodCategory(btn) {
+      const item = btn.closest(".food-category-item");
+      if (!item) return;
+      const isOpen = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    function setupVideoOverlay() {
+      document.querySelectorAll(".video-box").forEach(box => {
+        const video = box.querySelector("video");
+        const overlay = box.querySelector(".video-play-overlay");
+        if (!video || !overlay) return;
+
+        video.muted = true;
+        video.volume = 0;
+
+        overlay.addEventListener("click", () => {
+          keepBgmPlaying();
+          video.controls = true;
+          video.play().then(keepBgmPlaying).catch(() => {});
+        });
+
+        video.addEventListener("play", () => {
+          video.controls = true;
+          overlay.classList.add("hidden");
+          keepBgmPlaying();
+        });
+
+        video.addEventListener("pause", () => {
+          if (!video.ended) overlay.classList.remove("hidden");
+          keepBgmPlaying();
+        });
+
+        video.addEventListener("ended", () => {
+          video.controls = false;
+          overlay.classList.remove("hidden");
+          keepBgmPlaying();
+        });
+      });
+    }
+
+    function maybeStartCountAnimations(section) {
+      if (section.querySelector("#weddingCountText")) {
+        window.setTimeout(startWeddingCountAnimation, 160);
+      }
+
+      if (section.querySelector("#meetDayCount")) {
+        window.setTimeout(startMeetCountAnimation, 160);
+      }
+    }
+
+    function setupScrollReveal() {
+      const revealSections = document.querySelectorAll(".scroll-reveal");
+
+      if (!("IntersectionObserver" in window)) {
+        revealSections.forEach(section => {
+          section.classList.add("reveal-visible");
+          maybeStartCountAnimations(section);
+        });
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            maybeStartCountAnimations(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.18,
+        rootMargin: "0px 0px -8% 0px"
+      });
+
+      revealSections.forEach(section => {
+        observer.observe(section);
+      });
+    }
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", updateModalViewportVars);
+      window.visualViewport.addEventListener("scroll", updateModalViewportVars);
+    }
+    window.addEventListener("resize", updateModalViewportVars);
+    updateModalViewportVars();
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeProfileModal();
+        closeFoodModal();
+        closeTimelineModal();
+        closeViewer();
+      }
+    });
+
+    const bgmForToggle = document.getElementById("bgm");
+    if (bgmForToggle) {
+      bgmForToggle.addEventListener("play", updateMusicToggle);
+      bgmForToggle.addEventListener("pause", updateMusicToggle);
+    }
+
+    updateDayCounts();
+    setupEntryScrollGate();
+    initGuideTabs();
+    setupGuideSwipe();
+    setupViewerSwipe();
+    setupVideoOverlay();
+    setupScrollReveal();
+    initVenueMap();
+  </script>
+</body>
+</html>
