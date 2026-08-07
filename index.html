@@ -5041,30 +5041,11 @@
       touch-action: pan-y !important;
     }
 
-    /* ========== 여기서부터 복사해서 추가 ========== */
     /* 1. 모달 활성화 시 배경 터치 스크롤 원천 차단 */
     body.modal-open {
       overflow: hidden;
-      touch-action: none;
+      touch-action: auto;
     }
-
-    /* 2. 맛집 팝업 내부 스크롤 활성화 및 스크롤 체이닝 차단 */
-    #foodModal .modal-sheet {
-      overflow-y: auto !important; 
-      overscroll-behavior: contain; 
-      touch-action: pan-y; 
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* 3. 콘텐츠가 잘리지 않도록 정렬 및 오버플로우 수정 */
-    #foodModal .food-modal-content {
-      justify-content: flex-start !important; 
-      overflow: visible !important; 
-    }
-    /* ========== 여기까지 ========== */
-
-
-
 
     /* === 2026-07-13 consolidated responsive design === */
     :root {
@@ -6311,7 +6292,6 @@
       font-size: 16px !important;
       line-height: 1.7 !important;
       color: var(--text) !important;
-      white-space: pre-line !important;
     }
 
     #profileModal .profile-essay-title {
@@ -6330,6 +6310,10 @@
       font-size: 16px !important;
       font-weight: 200 !important;
       line-height: 1.7 !important;
+    }
+    #profileModal .profile-essay-copy strong {
+      font-weight: 500 !important;
+      color: var(--text-strong) !important;
     }
 
     /* Food popup */
@@ -7271,7 +7255,7 @@
         height: 110px !important;
       }
       
-      // 20260721
+      /* 20260721 */
       #foodModal .food-place-main {
         grid-template-columns: 32px max-content minmax(0, 1fr) !important;
         column-gap: 2px !important;
@@ -7321,11 +7305,6 @@
     html {
       -webkit-text-size-adjust: 100% !important;
       text-size-adjust: 100% !important;
-    }
-
-    /* The body remains fixed by overflow:hidden while popup scroll areas can receive touch gestures. */
-    body.modal-open {
-      touch-action: auto !important;
     }
 
     /* Make the gray timeline card itself vertically scrollable. */
@@ -7842,7 +7821,7 @@
             </div>
             <div class="profile-info" id="profileInfoArea"></div>
           </div>
-          <div class="profile-body" id="profileEssayBody"></div>
+          <div class="profile-body profile-essay-copy" id="profileEssayBody"></div>
         </div>
 
         <div class="modal-bottom-btn">
@@ -8243,16 +8222,22 @@
       });
     }
 
-    const VENUE_LOCATION = new naver.maps.LatLng(35.21951419444281, 129.08203204013648);
-
     function initVenueMap() {
+      if (!window.naver || !naver.maps) {
+        console.warn("네이버 지도를 불러오지 못했습니다.");
+        return;
+      }
+      
+      const venueLocation =
+        new naver.maps.LatLng(35.21951419444281, 129.08203204013648);
+      
       const map = new naver.maps.Map("map", {
-        center: VENUE_LOCATION,
+        center: venueLocation,
         zoom: 17,
       });
-
+      
       new naver.maps.Marker({
-        position: VENUE_LOCATION,
+        position: venueLocation,
         map: map,
       });
     }
@@ -8406,8 +8391,7 @@
           <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTJ(용의주도한 전략가)</div></div>
           <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">부모님, 누나 2명</div></div>
         `,
-        body: `
-        <strong>성실하고 이타적인 사람</strong>
+        body: `<strong>성실하고 이타적인 사람</strong>
         창수는 자신의 성실한 노력이 다른 사람에게 도움이 되기를 바라는 따뜻한 사람입니다. 자신의 연구가 사람들의 삶을 조금 더 나아지게 하는 데 쓰이기를 바라며 박사학위연구를 하고, 대학 강의를 통해 쌓아온 배움과 경험을 학생들에게 나누고 있습니다. 자신의 성취에만 머무르지 않고 세상과 나누려는 모습은 제가 존경하고 믿는 창수의 모습입니다.
         <strong>차분한 얼굴의 활동가</strong>
         차분해 보이는 모습과 달리 창수는 일주일에 두 번 이상 축구를 할 만큼 몸을 움직이는 일을 좋아합니다. 여름이면 계곡과 바다에 몸을 던지고, 겨울이면 눈밭에서 누구보다 신나게 구르기도 합니다. 승부에도 진심이라 저에게도, 여섯 살 조카에게도 좀처럼 져주는 법이 없습니다. 덕분에 저도 언제나 최선을 다하게 됩니다.
@@ -8416,7 +8400,7 @@
         <strong>용기를 주는 사람</strong>
         무엇보다 창수는 제가 하는 모든 일에 가장 큰 믿음과 응원을 보내주는 사람입니다. 교환학생과 대학원을 비롯해 제가 용기 내 시작한 많은 일의 출발에는 늘 창수가 있었습니다. “너는 똑똑해”, “너는 할 수 있어.” 확신에 가득찬 창수의 응원은 제게 용기가 되었고, 그 위에서 저는 더 용감하고 멋진 사람으로 성장할 수 있었습니다.
         <strong>그래서 결혼합니다</strong>
-        성실하게 자신의 삶을 살아가고, 좋아하는 일에는 누구보다 진심이며, 가장 가까운 사람에게는 아낌없는 믿음과 응원을 보내주는 사람. 창수와 보낸 9년의 시간동안 저는 더 용감하고 즐거운 사람이 될 수 있었고 성장하는 제 모습에서 행복한 미래를 꿈꿈 수 있었습니다. 그래서 결혼을 결심했습니다.`
+        성실하게 자신의 삶을 살아가고, 좋아하는 일에는 누구보다 진심이며, 가장 가까운 사람에게는 아낌없는 믿음과 응원을 보내주는 사람. 창수와 보낸 9년의 시간 동안 저는 더 용감하고 즐거운 사람이 될 수 있었고 성장하는 제 모습에서 행복한 미래를 꿈꿀 수 있었습니다. 그래서 결혼을 결심했습니다.`
       },
       bride: {
         photo: "profile_bride.jpg",
@@ -8452,7 +8436,7 @@
       }
 
       document.getElementById("profileInfoArea").innerHTML = data.info;
-      document.getElementById("profileEssayBody").textContent = data.body;
+      document.getElementById("profileEssayBody").innerHTML = data.body;
       openModalBase("profileModal");
     }
 
