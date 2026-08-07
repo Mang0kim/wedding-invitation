@@ -86,10 +86,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    body.modal-open {
-      overflow: hidden;
-    }
-
     img,
     video {
       max-width: 100%;
@@ -6312,7 +6308,7 @@
       line-height: 1.7 !important;
     }
     #profileModal .profile-essay-copy strong {
-      font-weight: 500 !important;
+      font-weight: 300 !important;
       color: var(--text-strong) !important;
     }
 
@@ -8228,25 +8224,19 @@
         return;
       }
       
-      function initVenueMap() {
-        if (!window.naver || !naver.maps) {
-          console.warn("네이버 지도를 불러오지 못했습니다.");
-          return;
-        }
-        
-      const venueLocation =
-        new naver.maps.LatLng(35.21951419444281, 129.08203204013648);
+    const venueLocation =
+      new naver.maps.LatLng(35.21951419444281, 129.08203204013648);
 
-      const map = new naver.maps.Map("map", {
-        center: venueLocation,
-        zoom: 17,
-      });
-
-      new naver.maps.Marker({ 
-        position: venueLocation,
-        map: map,
-      });
-      }
+    const map = new naver.maps.Map("map", {
+      center: venueLocation,
+      zoom: 17,
+    });
+      
+    new naver.maps.Marker({
+      position: venueLocation,
+      map: map,
+    });
+  }
 
     const MEET_DATE = "2018-10-13";
     const WEDDING_DATE = "2026-10-03";
@@ -8532,40 +8522,19 @@
 
     function renderViewer() {
       const image = galleryImages[currentViewerIndex];
-      resetViewerZoom();
+      
       document.getElementById("viewerImage").src = image.src;
+      
       const viewerCaption = document.getElementById("viewerCaption");
-      if (viewerCaption) viewerCaption.textContent = image.caption || "";
+      if (viewerCaption) {
+        viewerCaption.textContent = image.caption || "";
+      }
+      
       const counter = document.getElementById("viewerCounter");
-      if (counter) counter.textContent = (currentViewerIndex + 1) + " / " + galleryImages.length;
-    }
-
-    function resetViewerZoom() {
-      viewerScale = 1;
-      viewerTranslateX = 0;
-      viewerTranslateY = 0;
-      applyViewerTransform();
-    }
-
-    let viewerScale = 1;
-    let viewerTranslateX = 0;
-    let viewerTranslateY = 0;
-    let viewerLastDistance = 0;
-    let viewerPanStartX = 0;
-    let viewerPanStartY = 0;
-    let viewerStartTranslateX = 0;
-    let viewerStartTranslateY = 0;
-
-    function applyViewerTransform() {
-      const img = document.getElementById("viewerImage");
-      if (!img) return;
-      img.style.transform = "none";
-    }
-
-    function getTouchDistance(touches) {
-      const dx = touches[0].clientX - touches[1].clientX;
-      const dy = touches[0].clientY - touches[1].clientY;
-      return Math.sqrt(dx * dx + dy * dy);
+      if (counter) {
+        counter.textContent =
+          (currentViewerIndex + 1) + " / " + galleryImages.length;
+      }
     }
 
     function setupViewerSwipe() {
