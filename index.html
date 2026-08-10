@@ -7194,38 +7194,56 @@
       padding: 10px 16px 18px !important;
       gap: 10px !important;
     }
-/* 여긴가2 */
-    #foodModal .food-place-main {
-      display: grid !important;
-      grid-template-columns: 46px max-content minmax(0, 1fr);
-      grid-template-areas: "area name comment" !important;
-      column-gap: 2px !important;
-      row-gap: 0 !important;
-      align-items: baseline !important;
-      width: 100% !important;
-    }
+/* 맛집 목록: 기본은 지역-가게명-설명 한 줄 */
+#foodModal .food-place-main {
+  display: grid !important;
+  grid-template-columns: 46px max-content minmax(0, 1fr) !important;
+  grid-template-areas: "area name comment" !important;
+  column-gap: 10px !important;
+  row-gap: 3px !important;
+  align-items: baseline !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
 
-    #foodModal .food-area {
-      grid-area: area !important;
-      white-space: nowrap !important;
-    }
+#foodModal .food-area {
+  grid-area: area !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
 
-    #foodModal .food-name {
-      grid-area: name !important;
-      white-space: nowrap !important;
-    }
+#foodModal .food-name {
+  grid-area: name !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+}
 
-    #foodModal .food-comment {
-      grid-area: comment !important;
-      display: block !important;
-      min-width: 0 !important;
-      white-space: nowrap !important;
-      overflow: hidden !important;
-      text-overflow: clip !important;
-      overflow-wrap: normal !important;
-      word-break: normal !important;
-      line-height: 1.42 !important;
-    }
+#foodModal .food-comment {
+  grid-area: comment !important;
+  display: block !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-break: keep-all !important;
+}
+
+/* 한 줄에 안 들어가는 행만 설명을 아래로 */
+#foodModal .food-place-main.comment-below {
+  grid-template-columns: 46px minmax(0, 1fr) !important;
+  grid-template-areas:
+    "area name"
+    ". comment" !important;
+  column-gap: 10px !important;
+  row-gap: 3px !important;
+}
+
+#foodModal .food-place-main.comment-below .food-comment {
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: keep-all !important;
+}
 
     /* Timeline years in red */
     #timelineModal .timeline-date {
@@ -7253,16 +7271,23 @@
       
       /* 20260721 */
       #foodModal .food-place-main {
-        grid-template-columns: 32px max-content minmax(0, 1fr) !important;
-        column-gap: 2px !important;
-      }
+  grid-template-columns: 42px max-content minmax(0, 1fr) !important;
+  column-gap: 8px !important;
+}
 
-      #foodModal .food-area,
-      #foodModal .food-name,
-      #foodModal .food-comment {
-        font-size: 13px !important;
-      }
-    }
+#foodModal .food-place-main.comment-below {
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  grid-template-areas:
+    "area name"
+    ". comment" !important;
+  column-gap: 8px !important;
+}
+
+#foodModal .food-area,
+#foodModal .food-name,
+#foodModal .food-comment {
+  font-size: 13px !important;
+}
 
 
 
@@ -8487,7 +8512,7 @@
 
     const galleryImages = [
       { src: "photo13.jpg", caption: "" },
-      { src: "photo01.jpg", caption: "" }
+      { src: "photo01.jpg", caption: "" },
       { src: "photo02.jpg", caption: "" },
       { src: "photo03.jpg", caption: "" },
       { src: "photo05.jpg", caption: "" },
