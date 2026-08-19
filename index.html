@@ -7188,62 +7188,64 @@
       grid-area: info !important;
     }
 
-    /* Food list: area, restaurant and comment on one line */
+    /* Food list: one line when it fits; comment drops below the restaurant name only when needed */
     #foodModal .food-category-item .food-place-list,
     #foodModal .food-category-item.open .food-place-list {
       padding: 10px 16px 18px !important;
       gap: 10px !important;
     }
-/* 맛집 목록: 기본은 지역-가게명-설명 한 줄 */
-#foodModal .food-place-main {
-  display: grid !important;
-  grid-template-columns: 46px max-content minmax(0, 1fr) !important;
-  grid-template-areas: "area name comment" !important;
-  column-gap: 10px !important;
-  row-gap: 3px !important;
-  align-items: baseline !important;
-  width: 100% !important;
-  min-width: 0 !important;
-}
 
-#foodModal .food-area {
-  grid-area: area !important;
-  margin: 0 !important;
-  white-space: nowrap !important;
-}
+    #foodModal .food-place-main {
+      display: grid !important;
+      grid-template-columns: 46px max-content minmax(0, 1fr) !important;
+      grid-template-areas: "area name comment" !important;
+      column-gap: 10px !important;
+      row-gap: 3px !important;
+      align-items: baseline !important;
+      width: 100% !important;
+      min-width: 0 !important;
+    }
 
-#foodModal .food-name {
-  grid-area: name !important;
-  min-width: 0 !important;
-  white-space: nowrap !important;
-}
+    #foodModal .food-area {
+      grid-area: area !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      white-space: nowrap !important;
+    }
 
-#foodModal .food-comment {
-  grid-area: comment !important;
-  display: block !important;
-  min-width: 0 !important;
-  margin: 0 !important;
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
-  word-break: keep-all !important;
-}
+    #foodModal .food-name {
+      grid-area: name !important;
+      min-width: 0 !important;
+      white-space: nowrap !important;
+    }
 
-/* 한 줄에 안 들어가는 행만 설명을 아래로 */
-#foodModal .food-place-main.comment-below {
-  grid-template-columns: 46px minmax(0, 1fr) !important;
-  grid-template-areas:
-    "area name"
-    ". comment" !important;
-  column-gap: 10px !important;
-  row-gap: 3px !important;
-}
+    #foodModal .food-comment {
+      grid-area: comment !important;
+      display: block !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      overflow-wrap: normal !important;
+      word-break: keep-all !important;
+    }
 
-#foodModal .food-place-main.comment-below .food-comment {
-  white-space: normal !important;
-  overflow-wrap: anywhere !important;
-  word-break: keep-all !important;
-}
+    #foodModal .food-place-main.comment-below {
+      grid-template-columns: 46px minmax(0, 1fr) !important;
+      grid-template-areas:
+        "area name"
+        ". comment" !important;
+      column-gap: 10px !important;
+      row-gap: 3px !important;
+    }
+
+    #foodModal .food-place-main.comment-below .food-comment {
+      white-space: normal !important;
+      overflow: visible !important;
+      overflow-wrap: anywhere !important;
+      word-break: keep-all !important;
+    }
 
     /* Timeline years in red */
     #timelineModal .timeline-date {
@@ -7269,25 +7271,25 @@
         height: 110px !important;
       }
       
-      /* 20260721 */
+      /* Narrow screens: keep spacing readable; only the comment moves below when required */
       #foodModal .food-place-main {
-  grid-template-columns: 42px max-content minmax(0, 1fr) !important;
-  column-gap: 8px !important;
-}
+        grid-template-columns: 42px max-content minmax(0, 1fr) !important;
+        column-gap: 8px !important;
+      }
 
-#foodModal .food-place-main.comment-below {
-  grid-template-columns: 42px minmax(0, 1fr) !important;
-  grid-template-areas:
-    "area name"
-    ". comment" !important;
-  column-gap: 8px !important;
-}
+      #foodModal .food-place-main.comment-below {
+        grid-template-columns: 42px minmax(0, 1fr) !important;
+        grid-template-areas:
+          "area name"
+          ". comment" !important;
+        column-gap: 8px !important;
+      }
 
-#foodModal .food-area,
-#foodModal .food-name,
-#foodModal .food-comment {
-  font-size: 13px !important;
-}
+      #foodModal .food-area,
+      #foodModal .food-name,
+      #foodModal .food-comment {
+        font-size: 13px !important;
+      }
 
 
 
@@ -7592,43 +7594,43 @@
       <div class="gallery-shell reveal-child" style="--delay: 420ms;">
         <div class="gallery-grid" id="galleryGrid">
           <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 01" onclick="openViewer(0)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 13" onclick="openViewer(0)">
+              <img src="photo13.jpg" alt="사진 13" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 01" onclick="openViewer(1)">
               <img src="photo01.jpg" alt="사진 01" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 02" onclick="openViewer(1)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 02" onclick="openViewer(2)">
               <img src="photo02.jpg" alt="사진 02" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 03" onclick="openViewer(2)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 03" onclick="openViewer(3)">
               <img src="photo03.jpg" alt="사진 03" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 04" onclick="openViewer(3)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 05" onclick="openViewer(4)">
               <img src="photo05.jpg" alt="사진 05" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 05" onclick="openViewer(4)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 04" onclick="openViewer(5)">
               <img src="photo04.jpg" alt="사진 04" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 06" onclick="openViewer(5)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 07" onclick="openViewer(6)">
               <img src="photo07.jpg" alt="사진 07" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 07" onclick="openViewer(6)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 06" onclick="openViewer(7)">
               <img src="photo06.jpg" alt="사진 06" onerror="handleImageError(this)" />
-            </div>
-          </div>
-          <div class="gallery-item gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 08" onclick="openViewer(7)">
-              <img src="photo08.jpg" alt="사진 08" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item gallery-more-cell" id="galleryMoreWrap">
@@ -7637,28 +7639,28 @@
             </div>
           </div>
           <div class="gallery-item hidden extra-photo gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 09" onclick="openViewer(8)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 08" onclick="openViewer(8)">
+              <img src="photo08.jpg" alt="사진 08" onerror="handleImageError(this)" />
+            </div>
+          </div>
+          <div class="gallery-item hidden extra-photo gallery-square-item">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 09" onclick="openViewer(9)">
               <img src="photo09.jpg" alt="사진 09" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item hidden extra-photo gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 10" onclick="openViewer(9)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 10" onclick="openViewer(10)">
               <img src="photo10.jpg" alt="사진 10" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item hidden extra-photo gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 11" onclick="openViewer(10)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 11" onclick="openViewer(11)">
               <img src="photo11.jpg" alt="사진 11" onerror="handleImageError(this)" />
             </div>
           </div>
           <div class="gallery-item hidden extra-photo gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 12" onclick="openViewer(11)">
+            <div class="gallery-thumb fallback-box" data-fallback="사진 12" onclick="openViewer(12)">
               <img src="photo12.jpg" alt="사진 12" onerror="handleImageError(this)" />
-            </div>
-          </div>
-          <div class="gallery-item hidden extra-photo gallery-square-item">
-            <div class="gallery-thumb fallback-box" data-fallback="사진 13" onclick="openViewer(12)">
-              <img src="photo13.jpg" alt="사진 13" onerror="handleImageError(this)" />
             </div>
           </div>
         </div>
@@ -8471,8 +8473,43 @@
       closeModalBase("profileModal");
     }
 
+    function updateFoodPlaceLayouts() {
+      document.querySelectorAll("#foodModal .food-place-main").forEach((row) => {
+        if (row.offsetParent === null) return;
+
+        const area = row.querySelector(".food-area");
+        const name = row.querySelector(".food-name");
+        const comment = row.querySelector(".food-comment");
+        if (!area || !name || !comment) return;
+
+        row.classList.remove("comment-below");
+
+        const style = getComputedStyle(row);
+        const gap = parseFloat(style.columnGap) || 10;
+        const availableWidth = row.clientWidth;
+
+        const areaWidth = area.getBoundingClientRect().width;
+        const nameWidth = name.scrollWidth;
+        const commentWidth = comment.scrollWidth;
+
+        const requiredWidth =
+          areaWidth + nameWidth + commentWidth + (gap * 2);
+
+        if (requiredWidth > availableWidth + 0.5) {
+          row.classList.add("comment-below");
+        }
+      });
+    }
+
+    function refreshFoodPlaceLayouts() {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(updateFoodPlaceLayouts);
+      });
+    }
+
     function openFoodModal() {
       openModalBase("foodModal");
+      refreshFoodPlaceLayouts();
     }
 
     function closeFoodModal() {
@@ -8679,8 +8716,11 @@
     function toggleFoodCategory(btn) {
       const item = btn.closest(".food-category-item");
       if (!item) return;
+
       const isOpen = item.classList.toggle("open");
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+      refreshFoodPlaceLayouts();
     }
 
     function setupVideoOverlay() {
@@ -8786,5 +8826,14 @@
     setupScrollReveal();
     initVenueMap();
   </script>
+
+  <script>
+    window.addEventListener("resize", refreshFoodPlaceLayouts);
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(refreshFoodPlaceLayouts);
+    }
+  </script>
+
 </body>
 </html>
