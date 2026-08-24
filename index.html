@@ -6994,7 +6994,7 @@
               </button>
               <div class="food-place-list">
                 <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">부산역</span><strong class="food-name">신발원</strong><em class="food-comment">부산 최고의 중식 만두</em></div></div>
-                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">부산대</span><strong class="food-name">톤쇼우</strong><em class="food-comment">결혼식장을 대기장소로 쓰세요ㅎ!</em></div></div>
+                <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">부산대</span><strong class="food-name">톤쇼우</strong><em class="food-comment">대기 2시간까지는 해볼만한 돈카츠</em></div></div>
                 <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">광안리</span><strong class="food-name">수변최고돼지국밥</strong><em class="food-comment">고소한 항정살 가득</em></div></div>
                 <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">해운대</span><strong class="food-name">금수복국</strong><em class="food-comment">깔끔하고 시원한 지리 복국</em></div></div>
                 <div class="food-place food-place-detail"><div class="food-place-main"><span class="food-area">전체</span><strong class="food-name">이재모피자</strong><em class="food-comment">꿀팁: 본점 오픈런 또는 배달</em></div></div>
@@ -7529,8 +7529,8 @@
           <div class="profile-info-row"><div class="profile-label">MBTI</div><div class="profile-value">INTP(객관적인 분석가)</div></div>
           <div class="profile-info-row"><div class="profile-label">가족</div><div class="profile-value">부모님, 남동생</div></div>
         `,
-        body: `<strong>보규는 뜨거운 열정 가득한 부산 여자입니다.</strong>
-        무엇을 하든 대충하는 법이 없습니다. 어릴 적엔 토할 때까지 티비를 봤고, 쓰러질 때까지 수능 공부를 했고, 걱정되는 마음에 제가 그만하면 되지 않냐고 다그칠 때 까지 연구에 임했습니다. 보규는 하고자 하는 것이라면, 누구보다 뜨거운 열정을 불태웁니다. 누가 부산 싸나이의 열정을 외치던가요. 보규를 보면 부산 싸나이의 열정은 비할 바가 못됩니다.
+        body: `<strong>보규는 뜨거운 열정 가득한 부산 여자입니다.</strong> 
+무엇을 하든 대충하는 법이 없습니다. 어릴 적엔 토할 때까지 티비를 봤고, 쓰러질 때까지 수능 공부를 했고, 걱정되는 마음에 제가 그만하면 되지 않냐고 다그칠 때 까지 연구에 임했습니다. 보규는 하고자 하는 것이라면, 누구보다 뜨거운 열정을 불태웁니다. 누가 부산 싸나이의 열정을 외치던가요. 보규를 보면 부산 싸나이의 열정은 비할 바가 못됩니다.
 
 <strong>보규는 뜨거운 열정처럼 체온도 높습니다.</strong> 
 그래서 추운 날이면, 보규의 손은 저의 주머니 속 따뜻한 손난로가 되어 얼음장같은 제 손을 녹여줍니다. 수박을 마음껏 먹을 수 있어 제가 좋아하는 여름날에도 보규의 손은 여전히 따뜻합니다. 어느 무더운 여름 날, 보규와 손을 잡고 걸었고 너무나도 더웠습니다. 그 순간에 제가 원망한 건 뜨겁게 느껴지는 보규의 손이 아닌 제가 좋아했던 여름이었습니다. 그래서 저는 보규와 평생 함께 하기로 마음 먹었습니다.`
@@ -7547,6 +7547,7 @@
       const data = profileData[type];
       const frame = document.getElementById("profileAvatar");
       const photo = document.getElementById("profilePhoto");
+      const essay = document.getElementById("profileEssayBody");
 
       if (frame && photo) {
         frame.classList.remove("is-empty");
@@ -7556,8 +7557,19 @@
       }
 
       document.getElementById("profileInfoArea").innerHTML = data.info;
-      document.getElementById("profileEssayBody").innerHTML = data.body;
+
+      if (essay) {
+        essay.innerHTML = data.body;
+        essay.scrollTop = 0;
+      }
+
       openModalBase("profileModal");
+
+      // 같은 프로필 모달을 신랑/신부가 공유하므로,
+      // 브라우저가 이전 스크롤 위치를 복원하지 못하도록 열린 뒤에도 한 번 더 초기화
+      requestAnimationFrame(() => {
+        if (essay) essay.scrollTop = 0;
+      });
     }
 
     function closeProfileModal() {
