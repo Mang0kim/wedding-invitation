@@ -4139,7 +4139,7 @@
         <div class="map-image" id="map"></div>
         <div class="map-links">
           <a class="map-link" href="https://map.naver.com/p/search/%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">네이버</a>
-          <a class="map-link" href="https://www.tmap.co.kr/search?searchKeyword=%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">티맵</a>
+          <a class="map-link" href="https://www.tmap.co.kr/search?searchKeyword=%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" onclick="openTmapNavi('호텔농심', event)" target="_blank" rel="noopener">티맵</a>
           <a class="map-link" href="https://map.kakao.com/link/search/%ED%98%B8%ED%85%94%EB%86%8D%EC%8B%AC" target="_blank" rel="noopener">카카오</a>
         </div>
       </div>
@@ -4856,6 +4856,34 @@
           }
         ]
       });
+    }
+
+    function openTmapNavi(placeName, event) {
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (!isMobile) return; // PC에서는 기존 href(웹 링크)로 동작
+
+      if (event) event.preventDefault();
+
+      const encodedName = encodeURIComponent(placeName);
+      const appScheme = `tmap://search?name=${encodedName}`;
+
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isAndroid) {
+    // 안드로이드 크롬 인텐트: 앱 자동 실행 및 미설치 시 플레이스토어 연결
+        location.href = `intent://search?name=${encodedName}#Intent;scheme=tmap;package=com.skt.tmap.ku;end`;
+      } else if (isIOS) {
+    // iOS: 앱스킴 호출 후 미설치 시 앱스토어로 대체 이동
+        const startTime = Date.now();
+        location.href = appScheme;
+
+        setTimeout(() => {
+          if (Date.now() - startTime < 1500) {
+            location.href = "https://apps.apple.com/kr/app/tmap-%EB%8C%80%EC%A4%91%EA%B5%90%ED%86%B5-%EB%82%B4%EB%B9%84/id431589174";
+          }
+        }, 1000);
+      }
     }
 
     function initVenueMap() {
